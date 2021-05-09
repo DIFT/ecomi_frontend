@@ -36,7 +36,7 @@ const Index = () => {
             <div className={`mb-14 sm:mb-20 xl:mb-8`}>
                 <span className={`block mb-3 text-xs`}>OMI token metrics as of {moment().format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://www.coinbase.com/price/ecomi"} target={"_blank"} className={`text-blue-500`}>https://www.coinbase.com/price/ecomi</a>)</span>
                 <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                    <ul className={`grid grid-cols-6 gap-4`}>
+                    <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>OMI Price</span>
                             <span className={`block text-3xl text-green-400`}>${prices && prices[0].data.OMI.quote.USD.price.toString().substring(0,8)}</span>

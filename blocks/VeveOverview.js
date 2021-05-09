@@ -157,7 +157,7 @@ const VeveOverview = () => {
             <div className={`bg-gray-50 border-b pb-5 pt-5`}>
                 <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                     <span className={`block mb-3 text-xs`}>VEVE metrics as of {moment().format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-blue-500`}>https://cutt.ly/wbT97hb</a>)</span>
-                    <ul className={`grid grid-cols-6 gap-4`}>
+                    <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>Total sales</span>
                             <span className={`block text-3xl text-green-400`}>$14,512,009</span>

@@ -31,7 +31,8 @@ const BrandsBlock = () => {
     ]
 
     const breakpoints = [
-        { width: 450, itemsToShow: 6},
+        { width: 440, itemsToShow: 1},
+        { width: 450, itemsToShow: 3},
         { width: 550, itemsToShow: 6},
         { width: 1280, itemsToShow: 12},
         { width: 1536, itemsToShow: 12 }
