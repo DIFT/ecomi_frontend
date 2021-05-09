@@ -1,0 +1,127 @@
+#hero-wrap{
+  background: #2b233e;
+  .generic{
+    height: auto;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+  .homepage{
+    height: calc(80vh);
+    min-height: 250px;
+    position: relative;
+    overflow: hidden;
+    .lead{
+      color: #5e9ee8;
+      position: relative;
+      &:before, &:after{
+        content:"";
+        height: 2px;
+        width: 25%;
+        border-radius: 3px;
+        border: 1px solid #999;
+        position: absolute;
+        top: 50%;
+      }
+      &:before{
+        left: 0;
+      }
+      &:after{
+        right: 0;
+      }
+    }
+    small{
+      text-transform: uppercase;
+      color: #ff2696;
+      display: block;
+      text-align: center;
+      font-weight: 600;
+      text-shadow: 1px 1px 1px #000;
+    }
+  }
+  #matrix-container{
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 0;
+    opacity: 0.7;
+  }
+}
+
+#agency-partners{
+  margin: 100px 0 50px 0;
+}
+
+.alienbuild-plain-logo{
+  font-family: "Alienbuild";
+  text-transform: none;
+  text-align: center;
+  font-size: 42px;
+  line-height: 42px;
+  margin-bottom: 0;
+  font-weight: 100;
+  position: relative;
+  color: #fff;
+}
+
+.alienbuild-logo{
+  background: linear-gradient(-90deg, #4bcf96 0%, #764fd0 100%);
+  width: auto;
+  display: inline-block;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+  box-shadow: 1px 1px 0 0 #000000, inset 1px 1px 0 0 rgba(255,255,255,0.3);
+  opacity: 0.8;
+  position: relative;
+  overflow: hidden;
+  &:after{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    animation-name: shine;
+    animation-iteration-count: infinite;
+    animation-duration: 8s;
+    z-index: -1;
+  }
+  span{
+    font-family: "Alienbuild";
+    text-transform: none;
+    text-align: center;
+    font-size: 42px;
+    line-height: 42px;
+    margin-bottom: 0;
+    font-weight: 100;
+    position: relative;
+    color: #000;
+  }
+}
+
+.gradient-text{
+  &--white{
+    background: linear-gradient(-90deg, #F7F7F7 0%, #CCCCCCC 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    text-shadow: 2px 1px 0 rgba(0,0,0,0.05);
+  }
+  &--test{
+    background: linear-gradient(-90deg, #ff2696 0%, #3C82F6 100%);
+    display: inline-block;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+  }
+}
+
+// Shine animation
+@keyframes shine {
+  0%   { transform: translateX(100%); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}

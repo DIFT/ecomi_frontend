@@ -1,0 +1,27 @@
+//.ecomi-art{
+//  position: absolute;
+//  right: -250px;
+//  width: 1100px;
+//  top: -400px;
+//}
+
+.ecomi-rings{
+  position: absolute;
+  width: 100%;
+  max-width: 1100px;
+  right: -150px;
+  top: -450px;
+}
+
+.phone-viewport{
+  background: #2D2D2D;
+  padding: 5px 0;
+  border-radius: 40px;
+  overflow: hidden;
+  height: 735px;
+  margin: 20px 0;
+  width: 352px;
+  img{
+    width: 100%;
+  }
+}

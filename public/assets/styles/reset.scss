@@ -1,0 +1,33 @@
+// Box sizing fix
+*{ box-sizing: border-box; }
+
+// Default padding fixes
+body{
+  //background: $dark-background;
+  padding: 0;
+  margin: 0;
+  //color: $text;
+}
+ul, ol{
+  margin: 0;
+  padding: 0;
+  li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+button{
+  &:focus{
+    outline: none;
+  }
+}
+
+a{
+  transition: 0.3s all;
+  &:hover{
+    transition: 0.3s all;
+    //color: lighten($link-color, 5%);
+  }
+}

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Stuffed Cannelloni';
+    src: url('StuffedCannelloni.eot');
+    src: url('StuffedCannelloni.eot?#iefix') format('embedded-opentype'),
+        url('StuffedCannelloni.woff2') format('woff2'),
+        url('StuffedCannelloni.woff') format('woff'),
+        url('StuffedCannelloni.ttf') format('truetype'),
+        url('StuffedCannelloni.svg#StuffedCannelloni') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
