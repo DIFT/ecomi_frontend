@@ -172,7 +172,7 @@ const VeveOverview = () => {
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>30 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.2%</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.0%</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>No. NFT sales</span>
@@ -190,7 +190,7 @@ const VeveOverview = () => {
 
     return(
         <>
-            <ReactTooltip clickable={`true`} globalEventOff='click' />
+            <ReactTooltip clickable={true} globalEventOff='click' />
 
             <section className={`pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-white`}>
                 <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>

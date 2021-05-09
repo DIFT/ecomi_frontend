@@ -1,0 +1,196 @@
+.device{
+  margin: 20px 0;
+  width: 352px;
+  background: #2D2D2D;
+  overflow: hidden;
+  border-radius: 40px;
+  &__header{
+    padding: 15px 20px 10px 20px;
+    &-button{
+      text-align: center;
+      transition: 0.6s all;
+      position: relative;
+      &:hover{
+        transition: 0.3s all;
+        color: $veveBlue;
+      }
+      .bag-counter{
+        background: #4F4F4F;
+        position: absolute;
+        font-size: 12px;
+        line-height: 12px;
+        color: $veveBlue;
+        padding: 1px 4px;
+        left: -20px;
+        bottom: 0;
+        border-radius: 2px;
+      }
+      img{
+        width: auto;
+        height: auto;
+        &.search{
+          width: 20px;
+        }
+        &.bag{
+          width: 15px;
+          margin-right: 20px;
+        }
+      }
+    }
+    &-img{
+      width: 17px;
+      margin: auto;
+      height: 17px;
+    }
+    &-logo{
+      width: 90px;
+    }
+  }
+  &__content{
+    background: #4F4F4F;
+    height: 630px;
+  }
+  &__footer{
+    padding: 10px 20px;
+    &-button{
+      text-align: center;
+      width: 100%;
+      transition: 0.6s all;
+      &:hover{
+        transition: 0.3s all;
+        color: $veveBlue;
+      }
+      &:focus{
+        outline: none;
+      }
+      &.active{
+        .device__footer-title{
+          color: $veveBlue;
+
+        }
+      }
+    }
+    &-img{
+      width: 17px;
+      margin: auto;
+      height: 17px;
+    }
+    &-title{
+      margin-top: 3px;
+      display: block;
+    }
+  }
+}
+
+.w-500{
+  width: 500px;
+}
+
+.veve-light-grey{
+  color: $veveLightGrey;
+}
+
+.veve-light-grey-bg{
+  background: $veveLightGrey;
+}
+
+.device__screen--collection{
+  .collection-controls{
+    .controller{
+      background: rgb(201,201,201);
+      background: radial-gradient(circle, #ccc 30%, rgba(153,153,153,1) 100%);
+      span{
+        background: #1E1E1E;
+        margin-top: 22px;
+      }
+    }
+  }
+  .ar-options{
+    color: #fff;
+    text-align: center;
+    opacity: 0.7;
+    margin-top: 35px;
+    .ar-icon, .plus-icon, .camera-icon{
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      background: #333;
+      margin: auto;
+    }
+    .ar-icon{
+      font-size: 14px;
+      line-height: 33px;
+      font-weight: 600;
+    }
+    .camera-icon{
+      height: 40px;
+      width: 40px;
+      padding: 10px 0;
+      img{
+        width: 23px;
+        margin: auto;
+      }
+    }
+    .plus-icon{
+      font-size: 36px;
+      line-height: 24px;
+      font-weight: 300;
+    }
+  }
+}
+
+.device{ cursor: grab; }
+
+.feed{
+  &-tags{
+    button{
+      background: #424242;
+    }
+  }
+  &-post{
+    &__header{
+      background: $veveDarkGrey;
+      vertical-align: middle;
+      align-items: center;
+      display: flex;
+      border-radius: 10px 10px 0 0;
+    }
+    &__avatar{
+      border: 1px solid #ccc;
+    }
+    &__author{
+      color: $veveBlue;
+      margin-right: 5px;
+    }
+    &__counter{
+      background: $veveLightGrey;
+    }
+    &__comment{
+      background: #cacaca;
+    }
+    &__footer{
+      background: #cacaca;
+    }
+  }
+}
+
+.rec.rec-arrow {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  min-width: 24px;
+  background: transparent;
+  min-height: 24px;
+  font-size: 12px;
+  line-height: 24px;
+  color: #8c8c8c;
+  &:hover{
+    color: #8c8c8c;
+    background: transparent;
+  }
+}
+/* hide disabled buttons */
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}

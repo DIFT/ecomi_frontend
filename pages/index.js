@@ -3,12 +3,9 @@ import Link from "next/link"
 import { useState, useEffect } from 'react'
 import moment from 'moment'
 import CountUp from 'react-countup';
-import ReactTooltip from 'react-tooltip'
-import PhoneApplication from "../components/PhoneApplication";
 import VeveOverview from "../blocks/VeveOverview";
 moment().format()
 import { isChangeGoodOrBad } from "../utils";
-import BrandsBlock from "../blocks/BrandsBlock";
 
 const Index = () => {
 
