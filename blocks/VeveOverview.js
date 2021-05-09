@@ -160,7 +160,7 @@ const VeveOverview = () => {
                     <ul className={`grid grid-cols-6 gap-4`}>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>Total sales</span>
-                            <span className={`block text-3xl text-green-400`}>$14,515,241</span>
+                            <span className={`block text-3xl text-green-400`}>$14,512,009</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>24 hour change</span>
@@ -176,11 +176,11 @@ const VeveOverview = () => {
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>No. NFT sales</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(514,826)}`}>514,826</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(514,826)}`}>532,602</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>30 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(31.1)}`}>31.1%</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(31.1)}`}>33.3%</span>
                         </li>
                     </ul>
                 </div>
