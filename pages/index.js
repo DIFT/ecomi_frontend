@@ -13,7 +13,7 @@ const Index = () => {
     const [prices, setPrices] = useState()
 
     const getData = () => {
-        fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=omi', {
+        fetch('http://localhost:8000/api/metrics/omi', {
             method: 'GET',
             headers: {
                 'X-CMC_PRO_API_KEY': 'c867dd02-79fe-449c-8e65-02040c1534fd',
@@ -22,8 +22,8 @@ const Index = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setRtPrice(data.data.OMI.quote.USD.price)
-                setPrices([data])
+                setRtPrice(data[0].price.currentPrice)
+                setPrices([data[0]])
             })
             .catch(e => console.log('Failed to fetch:', e))
     }
@@ -39,27 +39,27 @@ const Index = () => {
                     <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>OMI Price</span>
-                            <span className={`block text-3xl text-green-400`}>${prices && prices[0].data.OMI.quote.USD.price.toString().substring(0,8)}</span>
+                            <span className={`block text-3xl text-green-400`}>${rtPrice && rtPrice.toString().substring(0,8)}</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>1 hour change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].data.OMI.quote.USD.percent_change_1h)}`}>{prices && prices[0].data.OMI.quote.USD.percent_change_1h.toString().substring(0,6)}%</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].price.percent_change_1h)}`}>{prices && prices[0].price.percent_change_1h.toString().substring(0,6)}%</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>24 hour change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].data.OMI.quote.USD.percent_change_24h)}`}>{prices && prices[0].data.OMI.quote.USD.percent_change_24h.toString().substring(0,6)}%</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].price.percent_change_24h)}`}>{prices && prices[0].price.percent_change_24h.toString().substring(0,6)}%</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>7 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].data.OMI.quote.USD.percent_change_7d)}`}>{prices && prices[0].data.OMI.quote.USD.percent_change_7d.toString().substring(0,6)}%</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].price.percent_change_7d)}`}>{prices && prices[0].price.percent_change_7d.toString().substring(0,6)}%</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>30 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].data.OMI.quote.USD.percent_change_30d)}`}>{prices && prices[0].data.OMI.quote.USD.percent_change_30d.toString().substring(0,6)}%</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].price.percent_change_30d)}`}>{prices && prices[0].price.percent_change_30d.toString().substring(0,6)}%</span>
                         </li>
                         <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
                             <span className={`block text-sm`}>60 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].data.OMI.quote.USD.percent_change_60d)}`}>{prices && prices[0].data.OMI.quote.USD.percent_change_60d.toString().substring(0,6)}%</span>
+                            <span className={`block text-3xl ${isChangeGoodOrBad(prices && prices[0].price.percent_change_60d)}`}>{prices && prices[0].price.percent_change_60d.toString().substring(0,6)}%</span>
                         </li>
                     </ul>
                 </div>
