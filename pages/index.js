@@ -6,6 +6,7 @@ import CountUp from 'react-countup';
 import VeveOverview from "../blocks/VeveOverview";
 moment().format()
 import { isChangeGoodOrBad } from "../utils";
+import { API } from "../config"
 
 const Index = () => {
 
@@ -13,7 +14,7 @@ const Index = () => {
     const [prices, setPrices] = useState()
 
     const getData = () => {
-        fetch('http://localhost:8000/api/metrics/omi', {
+        fetch(`${API}/metrics/omi`, {
             method: 'GET',
             headers: {
                 'X-CMC_PRO_API_KEY': 'c867dd02-79fe-449c-8e65-02040c1534fd',
