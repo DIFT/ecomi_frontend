@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import {API} from "../../../config";
+import PortraitCard from '../PortraitCard'
 
 const BrandsScreen = ({ slug }) => {
 
@@ -18,10 +19,11 @@ const BrandsScreen = ({ slug }) => {
 
     return(
         <>
-            {/*{JSON.stringify(collectibles)}*/}
-            {collectibles && collectibles.map((collectible) => (
-                <li>{collectible.title}</li>
-            ))}
+            <div className="grid grid-cols-2 gap-4 px-2">
+                {collectibles && collectibles.map((collectible) => (
+                    <PortraitCard collectible={collectible} />
+                ))}
+            </div>
         </>
     )
 }

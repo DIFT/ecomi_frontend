@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
+import dynamic from "next/dynamic"
 import { getCookie } from '../../actions/auth';
 import { create, getBrands, removeBrand } from '../../actions/brand';
 import { getLicenses } from "../../actions/license";
+
+import { QuillFormats, QuillModules } from "../../helpers/quill";
+
+const ReactQuill = dynamic(() => import('react-quill'), {ssr: false})
 
 const Brand = ({ router }) => {
 
@@ -16,6 +21,8 @@ const Brand = ({ router }) => {
         removed: false,
         reload: false
     });
+
+    const [description, setDesc] = useState('')
 
     const [licenses, setLicenses] = useState([])
     const [checkedLicense, setCheckedLicense] = useState([])
@@ -143,6 +150,14 @@ const Brand = ({ router }) => {
         }
     };
 
+    const handleDesc = e => {
+        setDesc(e)
+        formData.set('description', e)
+        if (typeof window !== 'undefined'){
+            localStorage.setItem('collectible', JSON.stringify(e))
+        }
+    }
+
     // const mouseMoveHandler = e => {
     //     setValues({ ...values, error: false, success: false, removed: '' });
     // };
@@ -151,6 +166,17 @@ const Brand = ({ router }) => {
         <form onSubmit={clickSubmit}>
             <label>Name</label>
             <input type="text" onChange={handleChange} value={name} required />
+
+            <div className="quill">
+                <ReactQuill
+                    modules={QuillModules}
+                    formats={QuillFormats}
+                    value={description}
+                    placeholder={"Write something awesome."}
+                    onChange={handleDesc}
+                />
+            </div>
+
             <div>
                 <button type="submit">
                     Create Brand

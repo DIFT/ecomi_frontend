@@ -32,7 +32,13 @@ const AdminIndex = () => (
                     <Link href={`/admin/crud/collectible`}>Create Collectible</Link>
                 </li>
                 <li>
-                    <Link href={`/admin/crud/brand`}>Create Brand</Link>
+                    <Link href={`/admin/crud/collectibles`}>Update/Delete Collectible</Link>
+                </li>
+                <li>
+                    <Link href={`/admin/brands/brand`}>Create Brand</Link>
+                </li>
+                <li>
+                    <Link href={`/admin/brands/brands`}>Update/Delete Brand</Link>
                 </li>
                 <li>
                     <a href={`/admin/crud/licenses`}>Create Licenses</a>
