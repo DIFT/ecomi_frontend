@@ -15,11 +15,7 @@ const Index = () => {
 
     const getData = () => {
         fetch(`${API}/metrics/omi`, {
-            method: 'GET',
-            headers: {
-                'X-CMC_PRO_API_KEY': 'c867dd02-79fe-449c-8e65-02040c1534fd',
-                'Accepts': 'application/json'
-            }
+            method: 'GET'
         })
             .then(response => response.json())
             .then(data => {
