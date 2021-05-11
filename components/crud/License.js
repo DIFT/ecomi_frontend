@@ -2,80 +2,67 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { getCookie } from '../../actions/auth';
-import { create, getBrands, removeBrand } from '../../actions/brand';
-import {getLicenses} from "../../actions/license";
+import { create, getLicenses, removeLicense } from '../../actions/license';
+import { getBrands } from "../../actions/brand";
 
-const Brand = ({ router }) => {
+const License = ({ router }) => {
     const [values, setValues] = useState({
         name: '',
         error: false,
         success: false,
-        formData: new FormData(),
-        brands: [],
+        formData: '',
+        license: [],
         removed: false,
         reload: false
     });
 
-    const [licenses, setLicenses] = useState([])
-    const [checkedLicense, setCheckedLicense] = useState([])
+    const [brands, setBrands] = useState([])
+    const [checkedBrand, setCheckedBrand] = useState([])
+
+    const { name, error, success, formData, license, removed, reload } = values;
+    const token = getCookie('token');
 
     useEffect(() => {
         setValues({ ...values, formData: new FormData() })
-        initLicenses()
-        loadBrands();
+        initBrands()
+        loadLicenses();
     },[router])
 
-    const { name, error, success, formData, brands, removed, reload } = values;
-    const token = getCookie('token');
-
-    const initLicenses = () => {
-        getLicenses()
+    const initBrands = () => {
+        getBrands()
             .then(data => {
                 if (data.error){
                     setValues({...values, error: data.error})
                 } else {
-                    setLicenses(data)
+                    setBrands(data)
                 }
             })
     }
 
-    const showLicenses = () => {
+    const showBrands = () => {
         return(
-            licenses && licenses.map((license, index) => (
+            brands && brands.map((brand, index) => (
                 <li key={index}>
-                    <input type="checkbox" onChange={handleLicenseToggle(license._id)} />
-                    <label>{license.name}</label>
+                    <input type="checkbox" onChange={handleBrandToggle(brand._id)} />
+                    <label>{brand.name}</label>
                 </li>
             ))
         )
     }
 
-    const handleLicenseToggle = (license) => () => {
-        setValues({...values, error: ''})
-        const clickedLicense = checkedLicense.indexOf(license)
-        const all = [...checkedLicense]
-
-        if (clickedLicense === -1){
-            all.push(license)
-        } else {
-            all.splice(clickedLicense, 1)
-        }
-        setCheckedLicense(all)
-        formData.set('license', all)
-    }
-
-    const loadBrands = () => {
-        getBrands().then(data => {
+    const loadLicenses = () => {
+        getLicenses().then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setValues({ ...values, brands: data });
+                setValues({ ...values, license: data });
             }
         });
     };
 
-    const showBrands = () => {
-        return brands.map((c, i) => {
+
+    const showLicenses = () => {
+        return license.map((c, i) => {
             return (
                 <li>
                     <button
@@ -91,15 +78,15 @@ const Brand = ({ router }) => {
     };
 
     const deleteConfirm = slug => {
-        let answer = window.confirm('Are you sure you want to delete this brand?');
+        let answer = window.confirm('Are you sure you want to delete this license?');
         if (answer) {
-            deleteBrand(slug);
+            deleteLicense(slug);
         }
     };
 
-    const deleteBrand = slug => {
+    const deleteLicense = slug => {
         // console.log('delete', slug);
-        removeBrand(slug, token).then(data => {
+        removeLicense(slug, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
@@ -110,7 +97,7 @@ const Brand = ({ router }) => {
 
     const clickSubmit = e => {
         e.preventDefault();
-        // console.log('create brand', name);
+        // console.log('create license', name);
         create({ name }, token).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
@@ -126,19 +113,19 @@ const Brand = ({ router }) => {
 
     const showSuccess = () => {
         if (success) {
-            return <p className="text-success">Brand is created</p>;
+            return <p className="text-success">License is created</p>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <p className="text-danger">Brand already exist</p>;
+            return <p className="text-danger">License already exist</p>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <p className="text-danger">Brand is removed</p>;
+            return <p className="text-danger">License is removed</p>;
         }
     };
 
@@ -146,13 +133,27 @@ const Brand = ({ router }) => {
     //     setValues({ ...values, error: false, success: false, removed: '' });
     // };
 
-    const newBrandForm = () => (
+    const handleBrandToggle = (brand) => () => {
+        setValues({...values, error: ''})
+        const clickedBrand = checkedBrand.indexOf(brand)
+        const all = [...checkedBrand]
+
+        if (clickedBrand === -1){
+            all.push(brand)
+        } else {
+            all.splice(clickedBrand, 1)
+        }
+        setCheckedBrand(all)
+        formData.set('brand', all)
+    }
+
+    const newLicenseForm = () => (
         <form onSubmit={clickSubmit}>
             <label>Name</label>
             <input type="text" onChange={handleChange} value={name} required />
             <div>
                 <button type="submit">
-                    Create Brand
+                    Create
                 </button>
             </div>
         </form>
@@ -164,18 +165,16 @@ const Brand = ({ router }) => {
             {showError()}
             {showRemoved()}
 
-            {newBrandForm()}
+            {newLicenseForm()}
 
-            <h5 className={`text-lg font-bold mt-5`}>Licenses</h5>
-            <ul>{showLicenses()}</ul>
+            <h5 className={`text-lg font-bold mt-5`}>Brands</h5>
+            <ul>{showBrands()}</ul>
 
             <hr/>
-            <h5 className={`text-lg font-bold mt-5`}>Existing Brands</h5>
-            <ul>
-                {showBrands()}
-            </ul>
+            <h5 className={`text-lg font-bold mt-5`}>Existing licenses</h5>
+            <ul>{showLicenses()}</ul>
         </>
     );
 };
 
-export default Brand;
+export default License;

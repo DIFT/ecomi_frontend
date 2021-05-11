@@ -20,7 +20,10 @@ const AdminIndex = () => (
                     <a href={`/admin/crud/blogs`}>Update/Delete Blog</a>
                 </li>
                 <li>
-                    <a href={`/admin/crud/brands`}>Create Brand</a>
+                    <Link href={`/admin/crud/brand`}>Brand</Link>
+                </li>
+                <li>
+                    <a href={`/admin/crud/licenses`}>Create Licenses</a>
                 </li>
             </ul>
         </Admin>
