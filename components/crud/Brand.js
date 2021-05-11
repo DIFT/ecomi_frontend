@@ -3,9 +3,10 @@ import Link from 'next/link';
 import Router from 'next/router';
 import { getCookie } from '../../actions/auth';
 import { create, getBrands, removeBrand } from '../../actions/brand';
-import {getLicenses} from "../../actions/license";
+import { getLicenses } from "../../actions/license";
 
 const Brand = ({ router }) => {
+
     const [values, setValues] = useState({
         name: '',
         error: false,
