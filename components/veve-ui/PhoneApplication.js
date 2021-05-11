@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { gsap } from 'gsap'
+import ListBrandsScreen from "./screens/ListBrands";
+import BrandScreen from "./screens/BrandScreen";
 
 const PhoneApplication = ({screen, setTab}) => {
 
     const [deviceScreen, setDeviceScreen] = useState('store');
+    const [slug, setSlug] = useState('');
 
     useEffect(() => {
         setDeviceScreen(screen)
@@ -39,6 +42,11 @@ const PhoneApplication = ({screen, setTab}) => {
         e.preventDefault()
         setDeviceScreen(screen)
         setTab(tab)
+    }
+
+    const getClickData = (slug, screen) => {
+        setDeviceScreen(screen)
+        setSlug(slug)
     }
 
     const phoneFooter = () => {
@@ -215,12 +223,12 @@ const PhoneApplication = ({screen, setTab}) => {
                                     </div>
                                 </div>
 
-                                <div className={`text-center w-36 bg-gray-300 rounded-md bg-black items-center justify-center flex mr-2`}>
+                                <button onClick={e => setDeviceScreen('brands')} className={`text-center w-36 bg-gray-300 rounded-md bg-black items-center justify-center flex mr-2`}>
                                     <div>
                                         <img src={`./assets/images/veve/icons/viewall.png`} width={`40`} className={`block mx-auto mb-3`}/>
                                         <span className="block">View all</span>
                                     </div>
-                                </div>
+                                </button>
 
 
                             </div>
@@ -447,14 +455,6 @@ const PhoneApplication = ({screen, setTab}) => {
         )
     }
 
-    const brandsScreen = () => {
-        return (
-            <>
-                BRANDS YO.
-            </>
-        )
-    }
-
     const getScreen = (deviceScreen) => {
         switch (deviceScreen){
             case 'store':
@@ -473,7 +473,10 @@ const PhoneApplication = ({screen, setTab}) => {
                 return profileScreen()
             break
             case 'brands':
-                return brandsScreen()
+                return <ListBrandsScreen getClickData={getClickData} />
+            break
+            case 'brand':
+                return <BrandScreen setDeviceScreen={setDeviceScreen} slug={slug} />
             break
             default:
                 return(

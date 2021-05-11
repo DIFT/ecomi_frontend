@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import PhoneApplication from "../components/PhoneApplication";
+import PhoneApplication from "../components/veve-ui/PhoneApplication";
 import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import { isChangeGoodOrBad } from "../utils";
