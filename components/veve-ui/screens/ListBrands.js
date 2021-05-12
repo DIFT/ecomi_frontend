@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import {API} from "../../../config";
+import {getBrands} from "../../../actions/brand";
 
 
 const ListBrandsScreen = ({ getClickData }) => {
@@ -7,15 +8,19 @@ const ListBrandsScreen = ({ getClickData }) => {
     const [brands, setBrands] = useState([])
 
     useEffect(() => {
-        fetch(`${API}/brands`, {
-            method: 'GET'
-        })
-            .then(response => response.json())
-            .then(data => {
-                setBrands(data)
-            })
-            .catch(e => console.log('Failed to fetch:', e))
+        loadBrands()
     },[])
+
+    const loadBrands = () => {
+        getBrands()
+            .then((data) => {
+                if (data.error){
+                    console.log('Error loading brands: ', data.error)
+                } else {
+                    setBrands(data)
+                }
+            })
+    }
 
     return(
         <>
