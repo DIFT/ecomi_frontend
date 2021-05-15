@@ -24,6 +24,7 @@ const Index = () => {
             })
             .catch(e => console.log('Failed to fetch:', e))
     }
+
     useEffect(() => {
         getData()
     },[])
