@@ -47,7 +47,7 @@ const Collectible = () => {
                         {licenses && licenses.map((license) => (
                             <li className={`inline-block`}>
                                 <Link href={`/licenses/${license.slug}`}>
-                                    <a><img src={`./assets/images/veve/tiles/brands/${license.slug}.jpg`} alt={`${license.name}`} className={`rounded-md`} width={`150`} /></a>
+                                    <a><img src={`./assets/images/veve/tiles/brands/${license.slug}.jpg`} alt={`${license.name}`} className={`rounded-md`} width={`130`} /></a>
                                 </Link>
                             </li>
                         ))}
@@ -58,7 +58,7 @@ const Collectible = () => {
                         {brands && brands.map((brand) => (
                             <li className={`inline-block`}>
                                 <Link href={`/brands/${brand.slug}`}>
-                                    <a><img src={`./assets/images/veve/tiles/brands/${brand.slug}.jpg`} alt={`${brand.name}`} className={`rounded-md`} width={`150`} /></a>
+                                    <a><img src={`./assets/images/veve/tiles/brands/${brand.slug}.jpg`} alt={`${brand.name}`} className={`rounded-md`} width={`130`} /></a>
                                 </Link>
                             </li>
                         ))}

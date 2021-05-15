@@ -66,7 +66,7 @@ const Index = () => {
 
     const ecomiOverview = () => {
         return(
-            <section className={`bg-gray-50 pt-16 pb-12 sm:pt-20 md:pt-24 xl:pt-32 sm:pb-20 relative border-t border-b`} style={{ overflowX: 'clip'}}>
+            <section className={`pt-16 pb-12 sm:pt-20 md:pt-24 xl:pt-32 sm:pb-20 relative border-b border-gray-800 border-t-2`} style={{ overflowX: 'clip'}}>
                 <div className="ecomi-rings">
                     <img src={`./assets/images/ecomi-art.png`} />
                 </div>
@@ -157,22 +157,22 @@ const Index = () => {
 
     return(
         <Default>
-            <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 overflow-hidden pb-12 sm:pb-20`}>
+            <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 overflow-hidden pb-12 sm:pb-20 text-white`}>
                 <header className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                     <div className={`px-4 sm:px-6 md:px-8 mb-14 sm:mb-20 xl:mb-8`}>
-                        <h1 className={`ecomiFont text-2xl font-medium block mb-0 mt-14 text-gray-400`}>
-                            <img src={`./assets/images/ecomi.png`} width={`50`} className={`inline-block mr-3`}/>
-                            <span className={`text-gray-900 font-extrabold`}>ECOMI</span> INVESTORS
+                        <h1 className={`ecomiFont text-2xl font-medium block mb-0 mt-14`}>
+                            <img src={`./assets/images/ecomi-rings-white.svg`} width={`50`} className={`inline-block mr-3`}/>
+                            <span className={`font-extrabold `}>ECOMI</span> <span className={`text-gray-300`}>INVESTORS</span>
                         </h1>
-                        <h1 className={`text-4xl sm:text-6xl lg:text-7xl leading-none font-medium tracking-tight text-gray-900 mt-10 mb-8 sm:mt-10 sm:mb-10`}>
+                        <h1 className={`text-4xl sm:text-6xl lg:text-7xl leading-none font-medium tracking-tight mt-10 mb-8 sm:mt-10 sm:mb-10`}>
                             Community due diligence package for curious investors.
                         </h1>
-                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
-                            This is the <strong className={`text-black`}>unofficial</strong> due diligence package and rumour mill ran by enthusiastic and optimistic Ecomi investors. We've done all the heavy lifting for you to so that you can make your own informed decision. You can also view the <a href={`https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view`} target={'_blank'} className={`text-blue-500`}>official whitepaper here</a>.
+                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-300`}>
+                            This is the <strong className={`text-white`}>unofficial</strong> due diligence package and rumour mill ran by enthusiastic and optimistic Ecomi investors. We've done all the heavy lifting for you to so that you can make your own informed decision. You can also view the <a href={`https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view`} target={'_blank'} className={`text-blue-500`}>official whitepaper here</a>.
                         </p>
-                        <small className="text-sm font-semibold tracking-wide uppercase mb-4">Did you know?</small>
-                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
-                            If you had chosen to invest just <strong className={`text-gray-900`}>$10,000</strong> into ECOMI {moment("20210131", "YYYYMMDD").fromNow()}, today your investment would be worth a staggering <strong className={`sm:px-2 sm:py-2 inline-block bg-gray-50 border border-gray-200 rounded-xl text-green-400 text-lg sm:text-3xl`}>$<CountUp end={333555703.802535 * rtPrice} duration={2.75} separator="," decimals={4} decimal="."/></strong>
+                        <small className="text-sm font-semibold tracking-wide uppercase mb-4 text-gray-500">Did you know?</small>
+                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-300`}>
+                            If you had chosen to invest just <strong className={`text-white`}>$10,000</strong> into ECOMI {moment("20210131", "YYYYMMDD").fromNow()}, today your investment would be worth a staggering <strong className={`sm:px-2 sm:py-2 inline-block bg-gray-800 rounded-xl text-green-400 text-lg sm:text-3xl`}>$<CountUp end={333555703.802535 * rtPrice} duration={2.75} separator="," decimals={4} decimal="."/></strong>
                         </p>
                         <p className={`max-w-screen-lg text-lg mb-0 sm:mb-2`}>ECOMI(OMI) is currently available to buy on the following exchanges</p>
                         <ul className={`flex flex-wrap space-y-4 sm:space-y-0 sm:space-x-4 text-center`}>

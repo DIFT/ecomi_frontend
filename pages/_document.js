@@ -21,7 +21,7 @@ class MyDocument extends Document {
 
     render() {
         return (
-            <Html lang={`en`} className="text-gray-500 antialiased bg-white js-focus-visible">
+            <Html lang={`en`} className="antialiased js-focus-visible">
                 <Head>
                     <meta charSet={"UTF-8"} />
                     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
