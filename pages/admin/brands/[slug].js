@@ -8,7 +8,7 @@ const Brand = () => (
         <Admin>
             <a href={`/admin/crud/collectibles`}>Back</a>
             <h2>Update Brand</h2>
-            <BrandUpdate />
+            {/*<BrandUpdate />*/}
         </Admin>
     </Default>
 )
