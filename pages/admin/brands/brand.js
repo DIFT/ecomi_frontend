@@ -6,7 +6,7 @@ const Brands = () => (
     <Default>
         <Admin>
             <h2>Manage Brands</h2>
-            <Brand />
+            {/*<Brand />*/}
         </Admin>
     </Default>
 )
