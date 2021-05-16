@@ -1,8 +1,10 @@
 import Default from "../../../templates/Default"
 import { API } from "../../../config"
 import Link from "next/link"
+import Carousel from "react-elastic-carousel"
 import { useEffect, useState } from 'react'
 import { getMarketPlaceListings } from "../../../actions/marketplace/marketplace"
+import CollectibleAuctionCard from "../../../components/ecomi/CollectibleAuctionCard";
 
 const Marketplace = () => {
 
@@ -23,6 +25,7 @@ const Marketplace = () => {
                     setOffset(data.pageInfo.endCursor)
                 }
             })
+            .catch(e => console.log('Error fetching listings ', e))
     }
 
     const handleLoadMore = (e) => {
@@ -38,54 +41,42 @@ const Marketplace = () => {
             })
     }
 
-    const handleClick = (id) => {
-        console.log('ID of listing is: ', id)
-    }
+    const breakpoints = [
+        { width: 440, itemsToShow: 1},
+        { width: 450, itemsToShow: 3},
+        { width: 1280, itemsToShow: 6},
+    ]
 
     return (
         <>
-            <div className="container text-white">
-                <ul>
-                    {listings && listings.map((listing, index) => (
-                        <li className="inline-block mr-3 border">
-                            <Link href={`/ecomi/marketplace/${listing.node.id}`}>
-                                <a>
-                                    <button>
-                                        <img src={listing.node.element.collectibleType.image.url} alt={listing.node.element.collectibleType.name} width={`100`} />
-                                        Price: {listing.node.currentPrice}
-                                        <br/>
-                                        Listing id: {listing.node.id}
-                                        <br/>
-                                        Collectible id: {listing.node.element.collectibleType.id}
-                                        <br/>
-                                        Collectible Name: {listing.node.element.collectibleType.name}
-                                        <br/>
-                                        Rarity: {listing.node.element.collectibleType.rarity}
-                                        <br/>
-                                        Total issued: {listing.node.element.collectibleType.totalIssued}
-                                        <br/>
-                                        Issue number: {listing.node.element.formattedIssueNumber}
-                                        <br/>
-                                        Seller: {listing.node.seller.id}
-                                        <br/>
-                                        Username: {listing.node.seller.username}
-                                        <br/>
-                                        {listing.node.endingAt ? `Ending at ${listing.node.endingAt}` : null}
-                                        <br/>
-                                        {listing.node.listingType === "AUCTION" ? `Auction with ${listing.node.bids.totalCount} bids on it.` : 'Buy it now'}
-                                        <br/>
-                                        Number of similar listings: {listing.node.marketMetadata.totalMarketListings}
-                                        <br/>
-                                        Status: {listing.node.status}
-                                    </button>
-                                </a>
-                            </Link>
-                        </li>
-                    ))}
+            <Default>
+                <section className={`text-white relative`}>
+                    <div className="container">
+                        <div className="grid grid-cols-3 items-center">
+                            <div className={`col-span-2`}>
+                                <h6 className={`text-3xl mb-3`}>Latest Marketplace listings</h6>
+                                <small className={`block mb-5`}>Drag or scroll to see more premium collectibles</small>
+                            </div>
+                        </div>
+                    </div>
+
+                <ul className={`cursor-grab`}>
+                    <Carousel
+                        breakPoints={breakpoints}
+                        itemPadding={[20, 20]}
+                        pagination={false}
+                        outerSpacing={150}
+                        showEmptySlots
+                    >
+                        {listings && listings.map((listing, index) => (
+                            <CollectibleAuctionCard collectible={listing} index={index} />
+                        ))}
+                    </Carousel>
                 </ul>
 
                 <button className={`text-lg text-center p-3 m-3 border`} onClick={e => handleLoadMore()}>LOAD MORE</button>
-            </div>
+                </section>
+            </Default>
         </>
     )
 }

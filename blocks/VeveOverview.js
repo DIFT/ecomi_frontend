@@ -16,19 +16,9 @@ const VeveOverview = () => {
     const storeBlock = () => {
         return(
             <div className={`${tab === 1 ? 'block' : 'hidden'}`}>
-                <div className={`w-12 h-12 rounded-xl mb-8 bg-gradient-to-br flex items-center justify-center from-purple-400 to-purple-600 mb-8 p-2`}>
-                    <lord-icon
-                        animation="hover"
-                        palette="#ffffff"
-                        size={'30px'}
-                        params="30"
-                        className={`inline`}
-                        src={`./assets/icons/411-news-newspaper/411-news-newspaper-solid.json`}>
-                    </lord-icon>
-                </div>
                 <small className={`sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-500 mb-3 block`}>Grow your collection</small>
-                <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10`}>Store front</h2>
-                <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
+                <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Store front</h2>
+                <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-400`}>
                     Users can browse collectibles from their favorite brands in premium digital format and grow their collections.
                 </p>
                 <p className={`leading-relaxed mb-8 text-lg`}>
@@ -42,18 +32,8 @@ const VeveOverview = () => {
         return(
             <div className={`${tab === 2 ? 'block' : 'hidden'}`}>
                 <div className={`flex-1`}>
-                    <div className={`w-12 h-12 rounded-xl mb-8 bg-gradient-to-br flex items-center justify-center from-blue-400 to-blue-600 mb-8 p-2`}>
-                        <lord-icon
-                            animation="hover"
-                            palette="#ffffff"
-                            size={'30px'}
-                            params="30"
-                            className={`inline`}
-                            src={`./assets/icons/474-vr-glasses-gogle/474-vr-glasses-gogle-solid.json`}>
-                        </lord-icon>
-                    </div>
                     <small className={`sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-blue-500 mb-3 block`}>Interactive NFTs</small>
-                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10`}>Collection</h2>
+                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Collection</h2>
                     <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
                         Users can put their collection on display in their own virtual 3D showrooms. Customize, decorate, create and share.
                     </p>
@@ -69,18 +49,8 @@ const VeveOverview = () => {
         return(
             <div className={`${tab === 3 ? 'block' : 'hidden'}`}>
                 <div className={`flex-1`}>
-                    <div className={`w-12 h-12 rounded-xl mb-8 bg-gradient-to-br flex items-center justify-center from-indigo-400 to-indigo-600 mb-8 p-2`}>
-                        <lord-icon
-                            animation="hover"
-                            palette="#ffffff"
-                            size={'30px'}
-                            params="30"
-                            className={`inline`}
-                            src={`./assets/icons/202-chat/202-chat-solid.json`}>
-                        </lord-icon>
-                    </div>
                     <small className={`sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-indigo-500 mb-3 block`}>Show 'n' tell</small>
-                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10`}>Feed</h2>
+                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Feed</h2>
                     <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
                         The VEVE feed is at the heart of the VEVE community. Users can utilise the feed to share content, raise discussion, like, comment and subscribe to others users.
                     </p>
@@ -96,18 +66,8 @@ const VeveOverview = () => {
         return(
             <div className={`${tab === 4 ? 'block' : 'hidden'}`}>
                 <div className={`flex-1`}>
-                    <div className={`w-12 h-12 rounded-xl mb-8 bg-gradient-to-br flex items-center justify-center from-green-400 to-green-600 mb-8 p-2`}>
-                        <lord-icon
-                            animation="hover"
-                            palette="#ffffff"
-                            size={'30px'}
-                            params="30"
-                            className={`inline`}
-                            src={`./assets/icons/99-price-tag-empty/99-price-tag-empty-solid.json`}>
-                        </lord-icon>
-                    </div>
                     <small className={`sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-green-500 mb-3 block`}>Buy, sell and trade</small>
-                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10`}>Market</h2>
+                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Market</h2>
                     <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
                         The market is the 'ebay' of digital collectibles and allows users to buy, sell and swap with each other.
                     </p>
@@ -129,18 +89,8 @@ const VeveOverview = () => {
         return(
             <div className={`${tab === 5 ? 'block' : 'hidden'}`}>
                 <div className={`flex-1`}>
-                    <div className={`w-12 h-12 rounded-xl mb-8 bg-gradient-to-br flex items-center justify-center from-yellow-400 to-yellow-600 mb-8 p-2`}>
-                        <lord-icon
-                            animation="hover"
-                            palette="#ffffff"
-                            size={'30px'}
-                            params="30"
-                            className={`inline`}
-                            src={`./assets/icons/474-vr-glasses-gogle/474-vr-glasses-gogle-solid.json`}>
-                        </lord-icon>
-                    </div>
                     <small className={`sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-yellow-600 mb-3 block`}>Management</small>
-                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10`}>Account</h2>
+                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Account</h2>
                     <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
                         Manage your entire collection from your phone. Browse your collectibles, complete sets, and much more.
                     </p>
@@ -154,31 +104,31 @@ const VeveOverview = () => {
 
     const veveMetrics = () => {
         return(
-            <div className={`bg-gray-50 border-b pb-5 pt-5`}>
+            <div className={`pt-16 pb-12 sm:pt-20 md:pt-24 xl:pt-32 sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
                 <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                    <span className={`block mb-3 text-xs`}>VEVE metrics as of {moment().format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-blue-500`}>https://cutt.ly/wbT97hb</a>)</span>
+                    <span className={`block mb-3 text-xs text-white`}>VEVE metrics as of {moment().format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-blue-500`}>https://cutt.ly/wbT97hb</a>)</span>
                     <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
-                        <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
+                        <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>Total sales</span>
                             <span className={`block text-3xl text-green-400`}>$14,512,009</span>
                         </li>
-                        <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
+                        <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>24 hour change</span>
                             <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.0%</span>
                         </li>
-                        <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
+                        <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>7 day change</span>
                             <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.0%</span>
                         </li>
-                        <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
+                        <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>30 day change</span>
                             <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.0%</span>
                         </li>
-                        <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
+                        <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>No. NFT sales</span>
                             <span className={`block text-3xl ${isChangeGoodOrBad(514,826)}`}>532,602</span>
                         </li>
-                        <li className={`bg-white text-gray-400 leading-6 py-3 sm:px-3 rounded-xl shadow`}>
+                        <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>30 day change</span>
                             <span className={`block text-3xl ${isChangeGoodOrBad(31.1)}`}>33.3%</span>
                         </li>
@@ -191,19 +141,18 @@ const VeveOverview = () => {
     return(
         <>
             <ReactTooltip clickable={true} globalEventOff='click' />
-
-            <section className={`pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-white`}>
+            <section className={`pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-gray-900 borer-t border-b border-black`}>
                 <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
                     <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                        <div className={`px-4 sm:px-6 md:px-8 mb-14 sm:mb-20 xl:mb-8 text-center`}>
+                        <div className={`px-4 sm:px-6 md:px-8 mb-14 sm:mb-20 xl:mb-8 text-center text-gray-300`}>
                             <small className="sm:text-lg sm:leading-snug text-gray-400 mb-3 block">ECOMI Presents...</small>
                             <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10">
-                                <img src={`./assets/images/veve-logo.png`} width={`300`} className={`mx-auto`} alt={`VEVE`} />
+                                <img src={`./assets/images/veve-logo--white.png`} width={`200`} className={`mx-auto`} alt={`VEVE`} />
                             </h1>
                             <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>VEVE is an app-based marketplace for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs). With VEVE, users can obtain common, rare, or one-of-a-kind digital collectibles, customise and showcase them in the virtual showrooms, as well as buy, sell or trade collectibles with other VEVE users.</p>
                             <ul className={`flex justify-center mb-10`}>
                                 <li className={`inline-block mr-5`}>
-                                    <a href="https://play.google.com/store/apps/details?id=com.ecomi.veve" target={"_blank"} className="flex mt-3 w-48 h-14 bg-black text-white rounded-lg items-center justify-center">
+                                    <a href="https://play.google.com/store/apps/details?id=com.ecomi.veve" target={"_blank"} className="flex mt-3 w-48 h-14 bg-black text-white border-gray-600 border rounded items-center justify-center">
                                         <div className="mr-3">
                                             <svg viewBox="30 336.7 120.9 129.2" width="30">
                                                 <path fill="#FFD400"
@@ -223,7 +172,7 @@ const VeveOverview = () => {
                                     </a>
                                 </li>
                                 <li className={`inline-block`}>
-                                    <a href="https://apps.apple.com/us/app/ve-ve/id1478403837" target={"_blank"} className="flex mt-3 w-48 h-14 bg-black text-white rounded-xl items-center justify-center">
+                                    <a href="https://apps.apple.com/us/app/ve-ve/id1478403837" target={"_blank"} className="flex mt-3 w-48 h-14 bg-black text-white border-gray-600 border rounded items-center justify-center">
                                         <div className="mr-3">
                                             <svg viewBox="0 0 384 512" width="30">
                                                 <path fill="currentColor"
@@ -243,18 +192,18 @@ const VeveOverview = () => {
             </section>
 
             <section>
-                <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 border-t`}>
+                <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
                     {veveMetrics()}
                 </div>
             </section>
 
-            <section className={`pt-16 pb-12 sm:pt-20 md:pt-24 xl:pt-32 sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 bg-white`}>
+            <section className={`pb-12  sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
                 <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                     <div className="flex flex-wrap items-center ">
                         <div className={`mr-36`}>
                             <PhoneApplication screen={`store`} setTab={setTab} />
                         </div>
-                        <div className={`flex-1`}>
+                        <div className={`flex-1 text-white`}>
                             {storeBlock()}
                             {collectionBlock()}
                             {feedBlock()}
@@ -265,7 +214,7 @@ const VeveOverview = () => {
                 </div>
             </section>
 
-            <BrandsBlock />
+            {/*<BrandsBlock />*/}
 
         </>
     )

@@ -4,11 +4,11 @@ import Link from "next/link"
 import { readMarketplaceListing } from "../../../actions/marketplace/marketplace"
 import { DOMAIN, APP_NAME } from '../../../config'
 
-const MarketplaceListing = ({ collectibleOwnership, query }) => {
+const MarketplaceListing = ({ marketListing, query }) => {
 
     const head = () => (
         <Head>
-            <title>{collectibleOwnership.element.collectibleType.name} | {APP_NAME}</title>
+            <title>{marketListing.element.collectibleType.name} | {APP_NAME}</title>
             {/*<meta name={"description"} content={`${category.name}`} />*/}
             {/*<link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />*/}
             {/*<meta property={"og:title"} content={`${category.name} | ${APP_NAME}`} />*/}
@@ -27,11 +27,11 @@ const MarketplaceListing = ({ collectibleOwnership, query }) => {
     const previousOwnersBlock = () => {
         return(
             <>
-                id: {collectibleOwnership.element.id}
+                id: {marketListing.element.id}
                 <br/>
-                Previous owners: {collectibleOwnership.element.transactions.edges.length}
+                Previous owners: {marketListing.element.transactions.edges.length}
                 <ul>
-                    {collectibleOwnership.element.transactions.edges.map((owner, index) => (
+                    {marketListing.element.transactions.edges.map((owner, index) => (
                         <li key={index}>
                             Amount: {owner.node.amountUsd}
                             <br/>
@@ -63,23 +63,26 @@ const MarketplaceListing = ({ collectibleOwnership, query }) => {
                 <main>
                     <div className="container text-white">
                         <Link href={`/ecomi/marketplace`} className={`text-white`}><a>Back</a></Link>
-                        <h1>{collectibleOwnership.element.collectibleType.name} - {collectibleOwnership.element.formattedIssueNumber}</h1>
+                        <h1>{marketListing.element.collectibleType.name} - {marketListing.element.formattedIssueNumber}</h1>
                         <br/>
-                        Price: {collectibleOwnership.currentPrice}
+                        Price: {marketListing.currentPrice}
                         <br/>
-                        id: {collectibleOwnership.element.collectibleType.id}
                         <br/>
-                        name: <Link href={`/ecomi/collectibles/${collectibleOwnership.element.collectibleType.id}`}><a>{collectibleOwnership.element.collectibleType.name}</a></Link>
+                        brand: <Link href={`/ecomi/brands/${marketListing.element.collectibleType.brand.id}`}>{marketListing.element.collectibleType.brand.name}</Link>
                         <br/>
-                        Serial: {collectibleOwnership.element.formattedIssueNumber}
+                        id: {marketListing.element.collectibleType.id}
                         <br/>
-                        rarity: {collectibleOwnership.element.collectibleType.rarity}
+                        name: <Link href={`/ecomi/collectibles/${marketListing.element.collectibleType.id}`}><a>{marketListing.element.collectibleType.name}</a></Link>
                         <br/>
-                        totalIssued: {collectibleOwnership.element.collectibleType.totalIssued}
+                        Serial: {marketListing.element.formattedIssueNumber}
                         <br/>
-                        totalAvailable: {collectibleOwnership.element.collectibleType.totalAvailable}
+                        rarity: {marketListing.element.collectibleType.rarity}
                         <br/>
-                        image: <img src={collectibleOwnership.element.collectibleType.image.url} alt={collectibleOwnership.element.collectibleType.name} title={collectibleOwnership.element.collectibleType.name} />
+                        totalIssued: {marketListing.element.collectibleType.totalIssued}
+                        <br/>
+                        totalAvailable: {marketListing.element.collectibleType.totalAvailable}
+                        <br/>
+                        image: <img src={marketListing.element.collectibleType.image.url} alt={marketListing.element.collectibleType.name} title={marketListing.element.collectibleType.name} />
                         <hr/>
                         <br/>
                         {previousOwnersBlock()}
@@ -97,7 +100,7 @@ MarketplaceListing.getInitialProps = ({ query }) => {
                 console.log('Error: ', data.error)
             } else {
                 return {
-                    collectibleOwnership: data,
+                    marketListing: data,
                     query
                 }
             }

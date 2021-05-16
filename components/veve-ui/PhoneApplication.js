@@ -497,7 +497,7 @@ const PhoneApplication = ({screen, setTab}) => {
                 </div>
                 {phoneFooter()}
             </div>
-            <span className={`text-sm text-center block`}>*You can interact with the above emulation.</span>
+            <span className={`text-sm text-center block text-white`}>*You can interact with the above emulation.</span>
         </article>
     )
 }

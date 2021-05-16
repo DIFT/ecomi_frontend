@@ -1,3 +1,177 @@
 body{
   background: #0E1032;
+  background-image: url('/assets/images/ui/texture.png');
+  background-size: 20%;
+}
+
+.texture-bg{
+  background-image: url('/assets/images/ui/texture.png');
+  background-size: 20%;
+}
+
+.ecomi__blue--radial-bg{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: radial-gradient(circle, rgba(14,16,50,1) 0%, rgba(0,212,255,0) 100%);
+  background: radial-gradient(circle, rgba(37,41,106,1) 0%, rgba(0,212,255,0) 100%);
+  background-blend-mode: multiply;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.st0{fill:#464878;}
+.st1{fill:none;stroke:#464878;stroke-width:3;stroke-miterlimit:10;}
+
+
+.veve-card{
+  border-radius: 10px;
+  box-shadow: 0 0 0 3px #464878;
+  transition: 0.6s all;
+  &--ultra_rare{
+    box-shadow: 0 0 0 3px #F87171;
+  }
+  &--rare{
+    box-shadow: 0 0 0 3px #FBBF24;
+  }
+  &:hover{
+    box-shadow:0 0 0 3px #f82b78;
+    transform: scale(1.05);
+    transition: 0.3s all;
+  }
+  .card {
+    width: auto;
+    background-color: #211799;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+    figure{
+      animation: holoCard 15s ease infinite;
+    }
+    img{
+      transform: scale(1.09);
+    }
+  }
+
+  .card > span {
+    position: relative;
+    top: 45%;
+  }
+
+  .card{
+    &:before, &:after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+
+      opacity: 0.2;
+      z-index: 1;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    &.uncommon{
+      &:after{
+        content: "";
+        background-image: url("/assets/images/ui/sparkles.gif");
+        background-position: center;
+        background-size: 180%;
+        mix-blend-mode: color-dodge;
+        border-radius: 10px;
+        opacity: 1;
+        z-index: 2;
+        animation: holoSparkle 5s ease infinite;
+      }
+    }
+    &.ultra_rare, &.rare{
+      &:before, &:after{
+        background-image: linear-gradient(115deg, transparent 0%, rgb(0, 231, 255) 30%, rgb(255, 0, 231) 70%, transparent 100%);
+        background-position: 0% 0%;
+        background-repeat: no-repeat;
+        background-size: 200% 200%;
+        mix-blend-mode: color-dodge;
+      }
+      &:before{
+        opacity: 0.6;
+        animation: none;
+        transition: none;
+        background-image: linear-gradient(115deg, transparent 0%, transparent 25%, rgba(0, 231, 255,0.7) 45%, rgba(255, 0, 231,0.7) 55%, transparent 70%, transparent 100%
+        );
+      }
+      &:after{
+        background-image: url("/assets/images/ui/sparkles.gif");
+        background-position: center;
+        background-size: 180%;
+        mix-blend-mode: color-dodge;
+        border-radius: 10px;
+        opacity: 1;
+        z-index: 2;
+        animation: holoSparkle 5s ease infinite;
+      }
+    }
+    &.ultra_rare{
+      &:before{
+        animation: holoGradient 15s ease infinite;
+      }
+    }
+  }
+
+  @keyframes holoSparkle {
+    0%, 5% {
+      opacity: 0.1;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.1;
+    }
+  }
+
+  @keyframes holoGradient {
+    0%, 100% {
+      opacity: 0;
+      background-position: 0% 0%;
+    }
+    8% {
+      opacity: 0;
+    }
+    10% {
+      background-position: 0% 0%;
+    }
+    19% {
+      background-position: 100% 100%;
+      opacity: 0.5;
+    }
+    35% {
+      background-position: 100% 100%;
+    }
+    55% {
+      background-position: 0% 0%;
+      opacity: 0.3;
+    }
+    75% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes holoCard {
+    0%, 100% {
+      transform: none;
+    }
+    25% {
+      transform: rotateZ(-3deg) rotateX(-7deg) rotateY(6deg);
+    }
+    66% {
+      transform: rotateZ(3deg) rotateX(7deg) rotateY(-6deg);
+    }
+  }
 }
