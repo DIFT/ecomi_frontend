@@ -1,8 +1,18 @@
 import Head from "next/head"
 import Default from "../../../templates/Default"
 import Link from "next/link"
+import dynamic from "next/dynamic";
 import { readMarketplaceListing } from "../../../actions/marketplace/marketplace"
 import { DOMAIN, APP_NAME } from '../../../config'
+import MarketListing from "../../../templates/MarketListing";
+import Image from "next/image";
+import Countdown from 'react-countdown'
+import {getPercentageChange, getRarityThresholds, getSerialRarity} from "../../../utils";
+
+const CollectibleValueChart = dynamic(
+    () => import("../../../components/ecomi/CollectibleValueChart"),
+    { ssr: false }
+);
 
 const MarketplaceListing = ({ marketListing, query }) => {
 
@@ -60,34 +70,74 @@ const MarketplaceListing = ({ marketListing, query }) => {
         <>
             {head()}
             <Default>
-                <main>
-                    <div className="container text-white">
-                        <Link href={`/ecomi/marketplace`} className={`text-white`}><a>Back</a></Link>
-                        <h1>{marketListing.element.collectibleType.name} - {marketListing.element.formattedIssueNumber}</h1>
-                        <br/>
-                        Price: {marketListing.currentPrice}
-                        <br/>
-                        <br/>
-                        brand: <Link href={`/ecomi/brands/${marketListing.element.collectibleType.brand.id}`}>{marketListing.element.collectibleType.brand.name}</Link>
-                        <br/>
-                        id: {marketListing.element.collectibleType.id}
-                        <br/>
-                        name: <Link href={`/ecomi/collectibles/${marketListing.element.collectibleType.id}`}><a>{marketListing.element.collectibleType.name}</a></Link>
-                        <br/>
-                        Serial: {marketListing.element.formattedIssueNumber}
-                        <br/>
-                        rarity: {marketListing.element.collectibleType.rarity}
-                        <br/>
-                        totalIssued: {marketListing.element.collectibleType.totalIssued}
-                        <br/>
-                        totalAvailable: {marketListing.element.collectibleType.totalAvailable}
-                        <br/>
-                        image: <img src={marketListing.element.collectibleType.image.url} alt={marketListing.element.collectibleType.name} title={marketListing.element.collectibleType.name} />
-                        <hr/>
-                        <br/>
-                        {previousOwnersBlock()}
+                <article className={`container text-white`}>
+                    <div className="grid grid-cols-5 gap-20">
+                        <div className={`col-span-2`}>
+                            <img src={marketListing.element.collectibleType.image.url} alt={marketListing.element.collectibleType.name} title={marketListing.element.collectibleType.name} width={`100%`} />
+                        </div>
+                        <div className={`col-span-3`}>
+                            <Link href={`/ecomi/brands/${marketListing.element.collectibleType.brand.id}`}><a className={`text-blue-500`}>
+                                <img src={marketListing.element.collectibleType.brand.image.url} alt={marketListing.element.collectibleType.brand.name} width={`70`} className={`border  border-gray-600 inline-block mr-2 rounded-md `}/>
+                                <span className={`uppercase ml-2 text-xs font-medium`}>{marketListing.element.collectibleType.brand.name}</span>
+                            </a></Link>
+                            <h1 className={`text-6xl mt-5 mb-5`}>{marketListing.element.collectibleType.name}</h1>
+
+                            <span className={`inline-block px-1 text-xs font-medium rounded border ${getRarityThresholds(marketListing.element.collectibleType.rarity)}`}>{marketListing.element.collectibleType.rarity}</span>
+
+                            <span className={`inline-block px-1 text-xs font-medium rounded border ml-1 ${getSerialRarity(marketListing.element.formattedIssueNumber)}`}>{marketListing.element.formattedIssueNumber}</span>
+
+                            <span className={`inline-block text-xs rounded border ml-1 px-1 text-gray-300`}>Total issued: {marketListing.element.collectibleType.totalIssued}</span>
+
+                            <span className={`inline-block text-xs rounded border ml-1 px-1 text-gray-300`}>Provenance: {marketListing.element.transactions.edges.length}</span>
+
+
+                            {marketListing.listingType === "AUCTION" ? (
+                                <span className={`block text-3xl mt-5 mb-5 text-red-500 font-medium`}>
+                                    <Countdown date={marketListing.endingAt} /> left
+                                </span>
+                            ) : null}
+
+                            <div className="block mt-5">
+                                <Image
+                                    src="/assets/images/veve/icons/gem.png"
+                                    alt={`Price is ${marketListing.currentPrice}`}
+                                    width={20}
+                                    height={20}
+                                    className={`inline-block mr-2`}
+                                />
+                                <span className="ml-3 text-3xl">{marketListing.currentPrice}
+                                    {marketListing.listingType === "AUCTION" ? (
+                                        <span className={`text-sm inline-block ml-2 mr-2`}>({marketListing.bids.totalCount} bids)</span>
+                                    ) : null}
+                                    {getPercentageChange(marketListing.currentPrice, marketListing.element.collectibleType.storePrice)}
+                                    <span className={`text-xs ml-2 text-gray-300`}>RRP: {marketListing.element.collectibleType.storePrice}</span>
+                                </span>
+                            </div>
+
+                            <span className={`block text-sm text-gray-300 mt-2`}>Listed by <Link href={`/ecomi/users/${marketListing.seller.username}`}><a className={`text-blue-500`}>
+                                {marketListing.seller.avatar !== null ? (
+                                    <img src={marketListing.seller.avatar.url} alt={marketListing.seller.username} className={`rounded-full h-5 w-5 inline-block mr-2 ml-1 border`} />
+                                ) : null}
+                                {marketListing.seller.username}
+                            </a></Link></span>
+
+                            <span className={`display-linebreak block mt-10 mb-5 text-lg`}>
+                            {marketListing.element.collectibleType.description}
+                            </span>
+
+                            <CollectibleValueChart
+                                historicalValue={marketListing.element.transactions.edges}
+                                name={marketListing.element.collectibleType.name}
+                                issueNumber={marketListing.element.formattedIssueNumber}
+                                rarity={marketListing.element.collectibleType.rarity}
+                                storePrice={marketListing.element.collectibleType.storePrice}
+                            />
+
+                            {previousOwnersBlock()}
+
+                        </div>
                     </div>
-                </main>
+                </article>
             </Default>
         </>
     )

@@ -25,7 +25,7 @@ const Header = () => {
         <>
             <DynamicLordIcon />
             <header className={`p-5 absolute w-full z-10`}>
-                <div className="grid grid-cols-2">
+                <div className="flex justify-between">
                     <div>
                         <h1 className={`ecomiFont flex mt-10`}>
                             <Link href={`/`}><a className={`text-center absolute left-20 top-10 mt-2 `}>

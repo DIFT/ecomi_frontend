@@ -30,3 +30,19 @@ export const readMarketplaceListing = (slug) => {
         })
         .catch(err => console.log(err))
 }
+
+export const getMarketPlaceEndingSoonest = (props) => {
+    return fetch(`${API}/ecomi/marketplace/ending-soonest`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            offset: props
+        })
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}

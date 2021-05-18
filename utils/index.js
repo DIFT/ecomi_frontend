@@ -12,7 +12,7 @@ export const soldOut = (collectible) => {
     if (collectible < 1){
         return <span className={`bg-red-300 text-red-800 font-bold uppercase text-sm absolute z-10 py-1 px-2 -right-2 -top-3 rounded border border-red-800`}>Sold out</span>
     } else {
-        return collectible
+        return
     }
 }
 
@@ -32,7 +32,8 @@ export const getRarityThresholds = (collectible) => {
             threshold = 'bg-red-400 border-red-800 text-red-900'
             break
         case 'SECRET_RARE':
-            threshold = 'bg-pink-400 border-pink-800 text-pink-900'
+            threshold = 'bg-pink-400 border-pink-800 text-pink-900 omg'
+            break
         default:
             threshold = 'bg-gray-400 border-gray-800 text-gray-900'
             break
@@ -132,4 +133,9 @@ export const getPercentageChange = (currentPrice, storePrice) => {
             <CountUp end={calc} duration={2.75} separator="," decimals={2} decimal="."/>%
         </span>
     }
+}
+
+export const getPercentageChangeNumberOnly = (currentPrice, storePrice) => {
+    const calc = (currentPrice - storePrice) / storePrice * 100
+    return calc
 }

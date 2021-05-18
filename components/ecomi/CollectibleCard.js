@@ -14,7 +14,7 @@ const CollectibleCard = ({collectible, index}) => {
                                 </figure>
                             </div>
                             <figcaption>
-                                <div className="py-2 px-4 bg-gray-900">
+                                <div className="py-2 px-4 bg-gray-900 h-9 overflow-hidden">
                                     <h6 className={`text-gray-300 font-medium`}>{collectible.node.name}</h6>
                                 </div>
                                 <div className="py-1 px-4 bg-gray-600 text-sm">

@@ -28,6 +28,9 @@ body{
   border-radius: 10px;
   box-shadow: 0 0 0 3px #464878;
   transition: 0.6s all;
+  &__secret_rare{
+    box-shadow: 0 0 0 3px #F87171;
+  }
   &--ultra_rare{
     box-shadow: 0 0 0 3px #F87171;
   }
@@ -90,7 +93,7 @@ body{
         animation: holoSparkle 5s ease infinite;
       }
     }
-    &.ultra_rare, &.rare{
+    &.ultra_rare, &.rare, &.secret_rare{
       &:before, &:after{
         background-image: linear-gradient(115deg, transparent 0%, rgb(0, 231, 255) 30%, rgb(255, 0, 231) 70%, transparent 100%);
         background-position: 0% 0%;
@@ -119,6 +122,14 @@ body{
     &.ultra_rare{
       &:before{
         animation: holoGradient 15s ease infinite;
+      }
+    }
+    &.secret_rare{
+      &:before{
+        animation: holoGradient 3s ease infinite;
+      }
+      &:after{
+        animation: none;
       }
     }
   }
@@ -173,4 +184,36 @@ body{
       transform: rotateZ(3deg) rotateX(7deg) rotateY(-6deg);
     }
   }
+}
+
+.omg{
+  position: relative;
+  &:before, &:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0.2;
+    z-index: 1;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  &:after{
+    background-image: url("/assets/images/ui/sparkles.gif");
+    background-position: center;
+    background-size: 180%;
+    mix-blend-mode: color-dodge;
+    border-radius: 10px;
+    opacity: 1;
+    z-index: 2;
+    animation: holoSparkle 15s ease infinite;
+  }
+}
+
+.rec-item-wrapper { display: flex; align-items: center; }
+
+.display-linebreak {
+  white-space: pre-line;
 }
