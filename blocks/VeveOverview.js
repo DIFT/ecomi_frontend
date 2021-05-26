@@ -16,7 +16,7 @@ const VeveOverview = () => {
     const storeBlock = () => {
         return(
             <div className={`${tab === 1 ? 'block' : 'hidden'}`}>
-                <small className={`sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-500 mb-3 block`}>Grow your collection</small>
+                <small className={`sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-400 mb-3 block`}>Grow your collection</small>
                 <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Store front</h2>
                 <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-400`}>
                     Users can browse collectibles from their favorite brands in premium digital format and grow their collections.
@@ -149,7 +149,7 @@ const VeveOverview = () => {
                             <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10">
                                 <img src={`./assets/images/veve-logo--white.png`} width={`200`} className={`mx-auto`} alt={`VEVE`} />
                             </h1>
-                            <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>VEVE is an app-based marketplace for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs). With VEVE, users can obtain common, rare, or one-of-a-kind digital collectibles, customise and showcase them in the virtual showrooms, as well as buy, sell or trade collectibles with other VEVE users.</p>
+                            <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>VEVE is an app-based marketplace available on iOS and Android for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs). With VEVE, users can obtain common, rare, or one-of-a-kind digital collectibles, customise and showcase them in the virtual showrooms, as well as buy, sell or trade collectibles with other VEVE users.</p>
                             <ul className={`flex justify-center mb-10`}>
                                 <li className={`inline-block mr-5`}>
                                     <a href="https://play.google.com/store/apps/details?id=com.ecomi.veve" target={"_blank"} className="flex mt-3 w-48 h-14 bg-black text-white border-gray-600 border rounded items-center justify-center">
@@ -197,6 +197,37 @@ const VeveOverview = () => {
                 </div>
             </section>
 
+            <section className={`pb-12  sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 text-white`}>
+                <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
+                    <small className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-400 mb-3 block">$370 billion dollar market</small>
+                    <p className={`mb-8`}>The collectibles industry is said to be worth approximately $370 billion dollars as of March 2020
+                        <span className={`cursor-pointer`} data-tip={`Source: <strong className="font-bold z-10"><a href="https://techcrunch.com/2020/03/25/the-future-of-collectibles-is-digital/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAIu8AJeYB16zZo4BOLLKZdJd3lfzCHdUFBUQZoJm-zvnHvWGSrALKXtClg4P7wG9QPXodNAO7aQRwXJBnyaWF7kN0oPeaOgGOrTMy4numrPdywZXhsOAhZvfn4KUSbuGI5R4cK_nBO_cJFzyfXYrUEoMfcVWwDYEj0b4NsdaXuq1" target="_blank" class="text-blue-400">techcrunch.com</a></strong>`} data-html={true} data-event='click focus'>
+                                    <lord-icon
+                                        animation="click"
+                                        palette="#34D399"
+                                        size={'30px'}
+                                        params="30"
+                                        className={`inline`}
+                                        src={`./assets/icons/24-approved-checked/24-approved-checked-solid.json`}>
+                                    </lord-icon>
+                                </span>
+                        VEVE identified a gap in this market for premium digital collectibles backed by blockchain technology, which allows uniqueness, scarcity and accurate provenance of collectibles.</p>
+
+                    <p>Using the VEVE app collectible enthusiasts and hobbyists can purchase a multitude of collectibles from their favourite brands. Each collectible is minted within a limited number of availability and is assigned a type of rarity typically associated with collectibles. The app was officially launched in October 2020 and regularly drops new collectibles every Thursday 4pm GMT - <strong>The drops reguarly sell out within minutes!</strong>
+                        <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-blue-400">YouTube Live</a>`} data-html={true} data-event='click focus'>
+                                    <lord-icon
+                                        animation="click"
+                                        palette="#34D399"
+                                        size={'30px'}
+                                        params="30"
+                                        className={`inline`}
+                                        src={`./assets/icons/24-approved-checked/24-approved-checked-solid.json`}>
+                                    </lord-icon>
+                            </span>
+                    </p>
+                </div>
+            </section>
+
             <section className={`pb-12  sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
                 <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                     <div className="flex flex-wrap items-center ">
@@ -211,6 +242,13 @@ const VeveOverview = () => {
                             {accountBlock()}
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section className={`pb-12  sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 text-white`}>
+                <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
+                    <small className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-400 mb-3 block">Envrionmentally concious</small>
+                    <p>VEVE is the first digital collectibles platform committed to carbon neutral NFTs </p>
                 </div>
             </section>
 

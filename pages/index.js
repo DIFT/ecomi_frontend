@@ -9,7 +9,12 @@ moment().format()
 import { isChangeGoodOrBad } from "../utils";
 import { API } from "../config"
 import FireFly from "../components/ui/Firefly";
-import LatestDrops from "../blocks/ecomi/LatestDrops";
+import dynamic from "next/dynamic";
+
+const LatestDrops = dynamic(
+    () => import("../blocks/ecomi/LatestDrops"),
+    { ssr: false }
+);
 
 const Index = () => {
 
@@ -59,7 +64,7 @@ const Index = () => {
                                         className={`inline`}
                                         src={`./assets/icons/24-approved-checked/24-approved-checked-solid.json`}>
                                     </lord-icon>
-                                </span>
+                            </span>
                         </p>
                         <ul className={`flex flex-wrap space-y-4 sm:space-y-0 sm:space-x-4 text-center`}>
                             <li className={`inline-block`}>

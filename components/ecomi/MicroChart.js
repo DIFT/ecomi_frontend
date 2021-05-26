@@ -9,14 +9,11 @@ import {getPercentageChangeNumberOnly, getRarityThresholds, getSerialRarity} fro
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-function Chart({ historicalValue, storePrice}) {
+const MicroChart = ({ historicalValue, storePrice}) => {
 
-    console.log('Collectible data is: ', historicalValue)
-
-    //console.log('Collectible history is: ', historicalValue)
     useLayoutEffect(() => {
 
-        let chart = am4core.create("chartdiv", am4charts.XYChart);
+        let chart = am4core.create("microchart", am4charts.XYChart);
 
         let nftPriceHistory = []
         historicalValue && historicalValue.forEach((transaction) => {
@@ -27,32 +24,38 @@ function Chart({ historicalValue, storePrice}) {
                 "change": getPercentageChangeNumberOnly(transaction.node.amountUsd, storePrice)
             })
         })
-        console.log('My test data is: ', nftPriceHistory)
+
+        chart.padding(0, 0, 0, 0);
 
         chart.data = nftPriceHistory
 
         // Create axes
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-        dateAxis.renderer.minGridDistance = 60;
+        dateAxis.renderer.grid.template.disabled = true;
+        dateAxis.renderer.labels.template.disabled = true;
+        dateAxis.startLocation = 0.5;
+        dateAxis.endLocation = 0.7;
+        dateAxis.cursorTooltipEnabled = false;
 
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.min = 0;
+        valueAxis.renderer.grid.template.disabled = true;
+        valueAxis.renderer.baseGrid.disabled = true;
+        valueAxis.renderer.labels.template.disabled = true;
+        valueAxis.cursorTooltipEnabled = false;
 
         // Create series
         var series = chart.series.push(new am4charts.LineSeries());
-        series.dataFields.valueY = "value";
-        series.dataFields.dateX = "date";
         series.tooltipText = "Buyer: {buyer} Paid: [bold]{value}[/] - {change}%"
-        series.strokeWidth = 3;
+        series.dataFields.dateX = "date";
+        series.dataFields.valueY = "value";
         series.tensionX = 0.8;
+        series.strokeWidth = 2;
         series.fillOpacity = 0.2;
         series.stroke = chart.colors.getIndex(6);
         series.fill = chart.colors.getIndex(4);
-        // series.contents.stroke = chart.colors.getIndex(4)
 
         series.tooltip.pointerOrientation = "vertical";
-
-        chart.cursor = new am4charts.XYCursor();
-        chart.cursor.xAxis = dateAxis;
 
         var bullet = series.bullets.push(new am4charts.CircleBullet());
         bullet.circle.opacity = 0;
@@ -64,10 +67,8 @@ function Chart({ historicalValue, storePrice}) {
         };
     }, []);
     return(
-        <div className={`bg-gray-800 px-8 py-8 border border-gray-700`}>
-            <div id="chartdiv" style={{ width: "100%", height: "400px" }}></div>
-        </div>
+        <div id="microchart" style={{ width: "100px", height: "20px" }} className={`inline-block ml-2`}></div>
     )
 }
 
-export default Chart
+export default MicroChart

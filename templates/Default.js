@@ -1,6 +1,11 @@
 import Header from "../components/ui/Header";
 import Footer from "../components/ui/Footer";
-import FireFly from "../components/ui/Firefly";
+import dynamic from "next/dynamic";
+
+const FireFly = dynamic(
+    () => import("../components/ui/Firefly"),
+    { ssr: false }
+);
 
 const Default = ({ children }) => {
     return(

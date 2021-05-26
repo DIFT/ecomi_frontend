@@ -75,7 +75,7 @@ const CollectibleMarketCard = ({collectible, index}) => {
                                         {collectible.node.seller.avatar !== null ? (
                                             <img src={collectible.node.seller.avatar.url} alt={collectible.node.seller.username} className={`rounded-full h-4 w-4 inline-block mr-2 border`} />
                                         ) : null}
-                                    {collectible.node.seller.username}
+                                    {truncate(collectible.node.seller.username, 10)}
                                 </span>
                             </div>
 
