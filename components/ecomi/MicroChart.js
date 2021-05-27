@@ -46,7 +46,7 @@ const MicroChart = ({ historicalValue, storePrice}) => {
 
         // Create series
         var series = chart.series.push(new am4charts.LineSeries());
-        series.tooltipText = "Buyer: {buyer} Paid: [bold]{value}[/] - {change}%"
+        series.tooltipText = "Buyer: {buyer} \n Paid: [bold]{value}[/] \n - {change}%"
         series.dataFields.dateX = "date";
         series.dataFields.valueY = "value";
         series.tensionX = 0.8;

@@ -3,14 +3,14 @@ import Carousel from 'react-elastic-carousel'
 const BrandsBlock = () => {
 
     const brands = [
-        { name: 'Batman', asset: './assets/images/brands/batman.jpg' },
-        { name: 'Street Fighter', asset: './assets/images/brands/street-fighter.jpg' },
-        { name: 'Warner Brothers', asset: './assets/images/brands/warner-brothers.jpg' },
-        { name: 'Jurassic Park', asset: './assets/images/brands/jurassic-park.jpg' },
-        { name: 'Superman', asset: './assets/images/brands/superman.jpg' },
-        { name: 'Tokidoki', asset: './assets/images/brands/tokidoki.jpg' },
-        { name: 'CBS', asset: './assets/images/brands/cbs.jpg' },
-        { name: 'Cartoon Network', asset: './assets/images/brands/cartoon-network.jpg' },
+        { name: 'Cartoon Network', asset: './assets/images/brands/cartoon-network.png' },
+        { name: 'Batman', asset: './assets/images/brands/batman.png' },
+        { name: 'Street Fighter', asset: './assets/images/brands/street-fighter.png' },
+        { name: 'Tokidoki', asset: './assets/images/brands/tokidoki.png' },
+        { name: 'Warner Brothers', asset: './assets/images/brands/warner-bros.png' },
+        { name: 'Jurassic Park', asset: './assets/images/brands/jurassic-park.png' },
+        { name: 'Superman', asset: './assets/images/brands/superman.png' },
+        { name: 'CBS', asset: './assets/images/brands/cbs.png' },
         { name: 'Mermicorno', asset: './assets/images/brands/mermicorno.jpg' },
         { name: 'Star Trek - The Next Generation', asset: './assets/images/brands/star-trek_the-next-generation.jpg' },
         { name: 'Adventure Time', asset: './assets/images/brands/adventure-time.jpg' },
@@ -39,30 +39,44 @@ const BrandsBlock = () => {
     ]
 
     return(
-        <section className={`bg-white text-center border-t border-b px-10 relative`}>
-            <span className={`cursor-pointer absolute -top-4`} data-tip={`Announced Feb 20th 2020 <a href="https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce" target="_blank" class="text-blue-400">https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce</a>`} data-html={true} data-event='click focus'>
-                <lord-icon
-                    animation="click"
-                    palette="#34D399"
-                    size={'30px'}
-                    params="30"
-                    className={`inline`}
-                    src={`./assets/icons/24-approved-checked/24-approved-checked-solid.json`}>
-                </lord-icon>
-            </span>
-            <ul>
-                <Carousel
-                    breakPoints={breakpoints}
-                    itemPadding={[20, 20]}
-                    pagination={false}
-                >
+        <section className={`text-center text-white px-10 relative mt-20 mb-20`}>
+            <div className="col-span-2">
+                <h6 className="text-3xl mb-3">
+                    Premium brands and licensors
+                    <span className={`cursor-pointer`} data-tip={`Announced Feb 20th 2020 <a href="https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce" target="_blank" class="text-blue-400">https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce</a>`} data-html={true} data-event='click focus'>
+                        <lord-icon
+                            animation="click"
+                            palette="#34D399"
+                            size={'30px'}
+                            params="30"
+                            className={`inline`}
+                            src={`./assets/icons/24-approved-checked/24-approved-checked-solid.json`}>
+                        </lord-icon>
+                    </span>
+                </h6>
+                <small className="block mb-5 text-gray-300">VEVE is trusted and recognised by some of the biggest and most popular brands in the world</small>
+            </div>
+
+            <div className="container">
+                <ul className="pt-5 grid grid-cols-9 gap-10">
+                    {/*<Carousel*/}
+                    {/*    breakPoints={breakpoints}*/}
+                    {/*    itemPadding={[20, 20]}*/}
+                    {/*    pagination={false}*/}
+                    {/*>*/}
+                    {/*    {brands && brands.map((brand, index) => (*/}
+                    {/*        <li key={index}>*/}
+                    {/*            <img src={brand.asset} alt={brand.name} title={brand.name} />*/}
+                    {/*        </li>*/}
+                    {/*    ))}*/}
+                    {/*</Carousel>*/}
                     {brands && brands.map((brand, index) => (
                         <li key={index}>
-                            <img src={brand.asset} alt={brand.name} title={brand.name} className={`opacity-70`}/>
+                            <img src={brand.asset} alt={brand.name} title={brand.name} />
                         </li>
                     ))}
-                </Carousel>
-            </ul>
+                </ul>
+            </div>
         </section>
     )
 }

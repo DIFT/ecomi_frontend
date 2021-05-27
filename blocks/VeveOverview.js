@@ -228,6 +228,9 @@ const VeveOverview = () => {
                 </div>
             </section>
 
+            <BrandsBlock />
+
+
             <section className={`pb-12  sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
                 <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                     <div className="flex flex-wrap items-center ">
@@ -252,7 +255,6 @@ const VeveOverview = () => {
                 </div>
             </section>
 
-            {/*<BrandsBlock />*/}
 
         </>
     )

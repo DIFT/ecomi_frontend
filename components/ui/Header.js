@@ -16,14 +16,11 @@ Router.onRouteChangeError = url => NProgress.done()
 
 import dynamic from 'next/dynamic';
 import EcomiLogo from "../EcomiLogo";
-const DynamicLordIcon = dynamic(() => import('../../components/LordIcon'), {
-    ssr: false
-});
+
 
 const Header = () => {
     return(
         <>
-            <DynamicLordIcon />
             <header className={`p-5 absolute w-full z-10`}>
                 <div className="flex justify-between">
                     <div>
@@ -112,6 +109,18 @@ const Header = () => {
                                     </lord-icon>
                                 </span>
                                 Feeds
+                            </a></Link></li>
+                            <li className={`inline-block text-gray-400`}><Link href={`/donate`}><a className={`uppercase block text-sm font-medium px-3 text-gray-400 hover:text-white transition duration-500`}>
+                                <span className={`mr-3 inline-block h-14 w-14 text-center`}>
+                                    <lord-icon
+                                        animation="auto"
+                                        palette="#db2777;#3C82F6"
+                                        size={'50px'}
+                                        params="100"
+                                        className={`inline`}
+                                        src={`./assets/icons/20-love-heart/20-love-heart-solid.json`}>
+                                    </lord-icon>
+                                </span>
                             </a></Link></li>
                         </ul>
                     </div>

@@ -1,0 +1,19 @@
+#f-primary{
+
+}
+
+#f-secondary{
+  position: relative;
+  background: rgba(0,0,0,0.3);
+  &:before{
+    content:"";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('/assets/images/ui/texture.png');
+    background-size: 20%;
+  }
+}
