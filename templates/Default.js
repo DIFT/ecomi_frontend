@@ -1,6 +1,7 @@
-import Header from "../components/ui/Header";
-import Footer from "../components/ui/Footer";
-import dynamic from "next/dynamic";
+import {useState} from 'react'
+import Header from "../components/ui/Header"
+import Footer from "../components/ui/Footer"
+import dynamic from "next/dynamic"
 
 const FireFly = dynamic(
     () => import("../components/ui/Firefly"),
@@ -8,16 +9,17 @@ const FireFly = dynamic(
 );
 
 const Default = ({ children }) => {
+    const [controlOverflow, setControlOverflow] = useState(false)
     return(
-        <>
-            <Header />
+        <div className={controlOverflow ? 'overflow-hidden h-screen' : ''}>
+            <Header setControlOverflow={setControlOverflow} />
             <main className={`overflow-x-hidden pt-40`}>
                 <span className={`ecomi__blue--radial-bg h-full fixed`}></span>
                 <FireFly />
                 {children}
             </main>
             <Footer />
-        </>
+        </div>
     )
 }
 

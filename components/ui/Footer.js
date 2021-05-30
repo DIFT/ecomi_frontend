@@ -7,6 +7,10 @@ const LinkIcon = dynamic(() => import('../LordIcon').then((mod) => mod.LinkIcon)
 });
 
 
+const DonateIcon = dynamic(() => import('../LordIcon').then((mod) => mod.DonateIcon), {
+    ssr: false
+});
+
 const Footer = () => {
     return(
         <>
@@ -33,11 +37,18 @@ const Footer = () => {
                                 className={`inline-block mr-2`}
                             />
                             <span className={`font-extrabold text-2xl text-white inline-block ml-2`}>ECOMI</span>
-                            <span className={`text-gray-300 text-2xl font-medium inline-block ml-1`}>INVESTORS</span>
+                            <span className={`text-gray-300 text-2xl font-medium inline-block ml-1`}>WIKI</span>
                         </span>
 
-                        <small className={`text-sm mt-5 text-gray-400 block`}>ECOMI Investors is an <strong>unofficial</strong> site and is not in any way affiliated with ECOMI, VEVE or any of the brands or licensors mentioned. ECOMI Investors is an open source community driven site ran not for profit. </small>
+                        <small className={`text-sm mt-5 text-gray-400 block`}>ECOMI WIKI is an <strong>unofficial</strong> site and is not in any way affiliated with ECOMI, VEVE or any of the brands or licensors mentioned. ECOMI WIKI is an open source community driven site ran not for profit. </small>
                         <small className={`text-sm mt-5 text-gray-400 block`}>No content on this site should be considered financial advice and is for entertainment purposes only. Although we do attempt to verify each claim through various sources your own research is strongly advised.</small>
+                        <Link href={`/donate`}><a>
+                            <DonateIcon
+                                palette={`#CCCCCC;#db2777;`}
+                                params={`40`}
+                            />
+                        </a></Link>
+
                     </div>
                     <div>
                         <h6 className={`mb-3 font-medium text-gray-300`}>Quick links</h6>
