@@ -122,7 +122,14 @@ const Footer = () => {
                             </li>
                             <li className={`inline-block mr-10`}>
                                 <Link href={`https://vevewiki.com`} target={"_blank"}><a>
-                                    <span className="font-bold text-base text-white inline-block ml-2">VEVEWIKI.COM</span>
+                                    <Image
+                                        src={`/assets/images/veve-logo--white.png`}
+                                        alt="VEVE"
+                                        width={60}
+                                        height={15}
+                                        className={`mx-auto`}
+                                    />
+                                    <span className="font-bold text-base text-white inline-block ecomiFont">WIKI</span>
                                 </a></Link>
                             </li>
                             <li className={`inline-block`}>

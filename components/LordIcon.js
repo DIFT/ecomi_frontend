@@ -104,6 +104,23 @@ export const DonateIcon = ({
     </lord-icon>
 )
 
+export const CloseIcon = ({
+                               size = '90px',
+                               type = 'outline',
+                               params = '50',
+                               palette = '#ffffff;#3C82F6',
+                               classes = 'inline'
+                           }) => (
+    <lord-icon
+        target={`a`}
+        animation="loop"
+        palette={palette}
+        size={size}
+        params={params}
+        className={classes}
+        src={`./assets/icons/38-error-cross-simple/38-error-cross-simple-${type}.json`}>
+    </lord-icon>
+)
 
 
 export const MenuIcon = () => (

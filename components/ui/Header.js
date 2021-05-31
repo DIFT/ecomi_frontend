@@ -4,6 +4,7 @@ import { signout, isAuth } from "../../actions/auth"
 import NProgress from 'nprogress'
 import Link from "next/link"
 import Image from 'next/image'
+import Modal from "../modals/Modal";
 
 import Router from "next/router"
 import Search from "../blog/Search"
@@ -15,6 +16,8 @@ Router.onRouteChangeComplete = url => NProgress.done()
 Router.onRouteChangeError = url => NProgress.done()
 
 import dynamic from 'next/dynamic';
+import SigninComponent from "../auth/SigninComponent";
+import SignupComponent from "../auth/SignupComponent";
 
 // Icons
 const LinkIcon = dynamic(() => import('../LordIcon').then((mod) => mod.LinkIcon), {
@@ -45,10 +48,20 @@ const MenuIcon = dynamic(() => import('../LordIcon').then((mod) => mod.MenuIcon)
 const Header = ({setControlOverflow}) => {
 
     const [menuOpen, setMenuOpen] = useState(false)
-    const [modalOpen, setModalOpen] = useState(false)
+    const [modalState, setModalState] = useState(false)
+    const [userExists, setUserExists] = useState(false)
+    const [toggleUserDD, setToggleUserDD] = useState(false)
 
-    const loginModal = (e) => {
-        e.preventDefault()
+    const userDropDown = () => {
+        return(
+            <div className={`bg-black p-5 absolute text-white right-2 ${toggleUserDD ? 'block' : 'hidden' }`}>
+                <ul>
+                    <li>Profile</li>
+                    <li>Something else</li>
+                    <li><button onClick={() => signout(() => Router.replace('/'))}>Signout</button></li>
+                </ul>
+            </div>
+        )
     }
     return(
         <>
@@ -116,19 +129,22 @@ const Header = ({setControlOverflow}) => {
 
                         {/*Logged in and not admin*/}
                         { isAuth() && isAuth().role === 0 && (<Link href={"/user"}>Dashboard</Link>)}
-                        {/*Logged in and is admin*/}
-                        { isAuth() && isAuth().role === 1 && (<Link href={"/admin"}>Admin</Link>)}
 
-                        {/* If user is logged in*/}
-                        { isAuth() && (
-                            <button onClick={() => signout(() => Router.replace('/signin'))}>Signout</button>
-                        )}
 
                         <ul>
+
+                            {/*Logged in and is admin*/}
+                            { isAuth() && isAuth().role === 1 && (
+                                <li className="inline-block">
+                                    <Link href={"/admin"}><a className={`uppercase bg-yellow-500 font-bold text-xs px-3 py-2 rounded mr-3`}>Admin</a></Link>
+                                </li>
+                            )}
+
+                            {/*If user is NOT logged in*/}
                             { !isAuth() && (
                                 <li className="inline-block">
                                     <button onClick={e => {
-                                        setModalOpen(true)
+                                        setModalState(true)
                                         setControlOverflow(true)
                                     }}>
                                             <span className="border border-gray-500 rounded-full inline-block text-center">
@@ -145,8 +161,9 @@ const Header = ({setControlOverflow}) => {
 
                             {/* If user is logged in*/}
                             { isAuth() && (
-                                <li className="inline-block">
-                                    <button>
+                                <>
+                                    <li className="inline-block">
+                                        <button onClick={e => setToggleUserDD(!toggleUserDD)}>
                                             <span className="border border-gray-500 rounded-full inline-block text-center">
                                                 <AvatarIcon
                                                     size={`30px`}
@@ -155,9 +172,10 @@ const Header = ({setControlOverflow}) => {
                                                     palette={`#ffffff`}
                                                 />
                                         </span>
-                                    </button>
-                                </li>
-                                // <button onClick={() => signout(() => Router.replace('/signin'))}>Signout</button>
+                                        </button>
+                                    </li>
+                                    {userDropDown()}
+                                </>
                             )}
 
                         </ul>
@@ -219,14 +237,12 @@ const Header = ({setControlOverflow}) => {
                         {/*        </a></Link></li>*/}
                         {/*    </ul>*/}
                         {/*</nav>*/}
-
                     </div>
                 </div>
-                {/*<EcomiLogo width={`30%`} classes={`mx-auto opacity-70`} />*/}
             </header>
-            {modalOpen ? (<div className={`fixed bg-black bg-opacity-75 z-50 inset-0`}>
-                Modal is open yo.
-            </div>) : null}
+            <Modal modalState={modalState} setModalState={setModalState} setControlOverflow={setControlOverflow}>
+                {userExists ? <SigninComponent setUserExists={setUserExists} /> :  <SignupComponent setUserExists={setUserExists} />}
+            </Modal>
         </>
     )
 }

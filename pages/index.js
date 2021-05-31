@@ -10,6 +10,7 @@ import { isChangeGoodOrBad } from "../utils";
 import { API } from "../config"
 import FireFly from "../components/ui/Firefly";
 import dynamic from "next/dynamic";
+import MeetTheTeam from "../blocks/MeetTheTeam";
 
 const LatestDrops = dynamic(
     () => import("../blocks/ecomi/LatestDrops"),
@@ -174,68 +175,6 @@ const Index = () => {
         )
     }
 
-    const meetTheTeam = () => {
-        return(
-            <section className={`relative z-10 text-white max-w-screen-lg xl:max-w-screen-xl mx-auto pt-16 sm:pt-20 md:pt-24 xl:pt-32`}>
-                <div className={`px-4 sm:px-6 md:px-8`}>
-                    <h2 className={`text-3xl mb-3 leading-none font-medium tracking-tight mb-8`}>Key team members.</h2>
-
-                    <div className="grid grid-cols-3 mb-10 place-items-center">
-                        <div>
-                            <img src={`./assets/images/ecomi/team/davidyu.png`} alt="" width={`250`}/>
-                        </div>
-                        <div className={`col-span-2`}>
-                            <h3 className={`text-2xl `}>David Yu</h3>
-                            <small
-                                className="sm:text-base sm:leading-snug font-semibold tracking-wide uppercase text-purple-400 mb-5 block">ECOMI Co-Founder & CEO</small>
-                            <p>
-                                David is an Auckland-based company director and was a founder of Games R Us Ltd at the age of 17. David has 21 years experience in the retail industry and working with intellectual property, transforming licenses into brands. David’s business extended into global projects with Retail Management Group Ltd, launching brands over several continents setting up international offices and distribution centres for electronics, skincare, food and beverage products. Both businesses have earned him Finalist in the Ernst & Young Entrepreneur of the Year in 2004 and 2008, the 2016 Australia New Zealand Chamber of Commerce award and Taipei Young Entrepreneur of the year. Equally as prestigious, David’s company was ranked 12th in 2014 “Deloitte Fast 50 growing companies“.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 mb-10 place-items-center">
-                        <div className={`col-span-2`}>
-                            <h3 className={`text-2xl `}>Dan Crothers</h3>
-                            <small
-                                className="sm:text-base sm:leading-snug font-semibold tracking-wide uppercase text-purple-400 mb-5 block">ECOMI Co-Founder & COO</small>
-                            <p>
-                                Dan has founded a variety of successful startups, including a web agency servicing international
-                                clients such as Hasbro and The Red Cross. Dan’s previous successful exit was a US media company
-                                he co-founded, which gained millions of social followers and an equal number of monthly
-                                pageviews. Dan continues to hold interests in numerous businesses. He entered the
-                                cryptocurrency space in early 2016 and quickly became passionate about the cryptocurrency and
-                                blockchain revolution and has since then has been deeply involved with the crypto-world.
-                            </p>
-                        </div>
-                        <div>
-                            <img src={`./assets/images/ecomi/team/davidyu.png`} alt="" width={`250`}/>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 place-items-center">
-                        <div>
-                            <img src={`./assets/images/ecomi/team/davidyu.png`} alt="" width={`250`}/>
-                        </div>
-                        <div className={`col-span-2`}>
-                            <h3 className={`text-2xl `}>Alfred Kahn</h3>
-                            <small
-                                className="sm:text-base sm:leading-snug font-semibold tracking-wide uppercase text-purple-400 mb-5 block">ECOMI Head of Global Licensing</small>
-                            <p>
-                                As a licensing executive, Kahn has spent more than 30 years distributing and promoting iconic
-                                brands such as Cabbage Patch Kids, Teenage Mutant Ninja Turtles and Yu- Gi-Oh! He is also
-                                credited for the marketing and licensing programs for other iconic brands like Mario Bros., Zelda,
-                                Donkey Kong, James Bond, WWF, Polly Pocket and more. The true highlight of Kahn’s career is that
-                                he is the man responsible for bringing Pokemon to the world.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-        )
-    }
-
     return(
         <Default>
             <ReactTooltip clickable={true} />
@@ -243,7 +182,7 @@ const Index = () => {
             <LatestDrops />
             {ecomiOverview()}
             <VeveOverview />
-            {meetTheTeam()}
+            <MeetTheTeam />
             {/*<Link href="/signup">Signup</Link>*/}
         </Default>
     )
