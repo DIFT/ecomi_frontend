@@ -29,6 +29,7 @@ const CreateTeamMember = ({ router }) => {
         success: '',
         formData: '',
         title: '',
+        name: '',
         hidePublishButton: false
     })
 
@@ -37,7 +38,7 @@ const CreateTeamMember = ({ router }) => {
         setValues({ ...values, formData: new FormData() })
     },[router])
 
-    const { error, sizeError, success, formData, title, hidePublishButton } = values
+    const { error, sizeError, success, formData, title, name, hidePublishButton } = values
     const token = getCookie('token')
 
     const handleChange = name => e => {
@@ -58,18 +59,24 @@ const CreateTeamMember = ({ router }) => {
         e.preventDefault()
         createTeamMember(formData, token)
             .then(data => {
+                console.log('data return is' ,data)
                 if (data.error){
                     setValues({...values, error: data.error})
                 } else {
-                    setValues({...values, title: '', error: '', success: `A new member titled "${data.title}" was created.`})
+                    setValues({...values, name: '', title: '', error: '', success: `A new member called "${data.name}" was created.`})
                     setBody('')
                 }
             })
+            .catch(err => console.log('Error creating team member: ', err))
     }
 
     const createTeamMemberForm = () => {
         return (
             <form onSubmit={publishTeamMember}>
+
+                <label>Name</label>
+                <input type="text" value={name} onChange={handleChange('name')} />
+
                 <label>Title</label>
                 <input type="text" value={title} onChange={handleChange('title')} />
 

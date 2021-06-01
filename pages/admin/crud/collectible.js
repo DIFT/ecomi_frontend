@@ -1,14 +1,14 @@
-import Default from "../../../templates/Default";
+import AdminTemplate from "../../../templates/AdminTemplate";
 import Admin from "../../../components/auth/Admin";
 import Collectible from "../../../components/crud/Collectible";
 
 const CollectibleCreate = () => (
-    <Default>
+    <AdminTemplate>
         <Admin>
             <h2>Manage Collectible</h2>
             <Collectible />
         </Admin>
-    </Default>
+    </AdminTemplate>
 )
 
 export default CollectibleCreate

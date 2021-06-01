@@ -1,15 +1,15 @@
-import Default from "../../../templates/Default";
+import AdminTemplate from "../../../templates/AdminTemplate";
 import Admin from "../../../components/auth/Admin";
 import BlogRead from "../../../components/crud/BlogRead"
 import Link from "next/link"
 
 const Blog = () => (
-    <Default>
+    <AdminTemplate>
         <Admin>
             <h2>Manage blogs</h2>
             <BlogRead />
         </Admin>
-    </Default>
+    </AdminTemplate>
 )
 
 export default Blog

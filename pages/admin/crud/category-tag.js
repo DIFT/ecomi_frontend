@@ -1,11 +1,11 @@
-import Default from "../../../templates/Default";
+import AdminTemplate from "../../../templates/AdminTemplate";
 import Admin from "../../../components/auth/Admin";
 import Link from "next/link"
 import Category from "../../../components/crud/Category";
 import Tag from "../../../components/crud/Tag";
 
 const CategoryTag = () => (
-    <Default>
+    <AdminTemplate>
         <Admin>
             <h2>Manage Categories and Tags</h2>
             <hr/>
@@ -15,7 +15,7 @@ const CategoryTag = () => (
             <h3>Tags</h3>
             <Tag />
         </Admin>
-    </Default>
+    </AdminTemplate>
 )
 
 export default CategoryTag

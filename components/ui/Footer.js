@@ -11,10 +11,10 @@ const DonateIcon = dynamic(() => import('../LordIcon').then((mod) => mod.DonateI
     ssr: false
 });
 
-const Footer = () => {
+const Footer = ({ classes }) => {
     return(
         <>
-            <footer id="f-primary" className={`text-white bg-gray-900 py-20 mt-20 border-t border-black`}>
+            <footer id="f-primary" className={`${classes}`}>
 
                 <div className=" container grid grid-cols-4 gap-10 relative place-items-center">
 
@@ -134,7 +134,11 @@ const Footer = () => {
                             </li>
                             <li className={`inline-block`}>
                                 <Link href={`https://veveartshow.com`} target={"_blank"}><a>
-                                    <span className="font-bold text-base text-white inline-block ml-2">#VEVEARTSHOW</span>
+                                    <span className="font-bold text-base text-white inline-block ml-2 relative">
+                                        <span className={`pr-3`}>#VEVE</span>
+                                        <span className={`font-medium uppercase left-11 -top-1 text-lg absolute transform -rotate-12 inline-block text-red-500`}>Art</span>
+                                        <span className={`pl-3`}>SHOW</span>
+                                    </span>
                                 </a></Link>
                             </li>
                         </ul>

@@ -1,9 +1,9 @@
-import Default from "../../templates/Default";
+import AdminTemplate from "../../templates/AdminTemplate";
 import Admin from "../../components/auth/Admin";
 import Link from "next/link"
 
 const AdminIndex = () => (
-    <Default>
+    <AdminTemplate>
         <Admin>
             <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -38,7 +38,7 @@ const AdminIndex = () => (
             </div>
 
         </Admin>
-    </Default>
+    </AdminTemplate>
 )
 
 export default AdminIndex

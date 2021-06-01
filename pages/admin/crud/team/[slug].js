@@ -1,15 +1,15 @@
 import AdminTemplate from "../../../../templates/AdminTemplate";
 import Admin from "../../../../components/auth/Admin";
-import CreateTeamMember from "../../../../components/crud/team/CreateTeamMember"
+import UpdateTeamMember from "../../../../components/crud/team/UpdateTeamMember"
 import Link from "next/link"
 
-const TeamMember = () => (
+const Member = () => (
     <AdminTemplate>
         <Admin>
-            <h2>Create a new team member</h2>
-            <CreateTeamMember />
+            <h2>Update Member</h2>
+            <UpdateTeamMember />
         </Admin>
     </AdminTemplate>
 )
 
-export default TeamMember
+export default Member

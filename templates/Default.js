@@ -18,7 +18,7 @@ const Default = ({ children }) => {
                 <FireFly />
                 {children}
             </main>
-            <Footer />
+            <Footer classes={`text-white bg-gray-900 py-20 border-t border-black mt-20`} />
         </div>
     )
 }
