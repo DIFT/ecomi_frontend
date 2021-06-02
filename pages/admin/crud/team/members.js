@@ -6,7 +6,7 @@ import Link from "next/link"
 const Blog = () => (
     <AdminTemplate>
         <Admin>
-            <h2>Manage team members</h2>
+            <h2 className={`text-3xl mb-5`}>Manage team members</h2>
             <ReadTeamMembers />
         </Admin>
     </AdminTemplate>

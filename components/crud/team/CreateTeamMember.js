@@ -74,11 +74,18 @@ const CreateTeamMember = ({ router }) => {
         return (
             <form onSubmit={publishTeamMember}>
 
-                <label>Name</label>
-                <input type="text" value={name} onChange={handleChange('name')} />
+                <label className={`text-xs font-medium text-gray-300 uppercase mb-2 block`}>Name</label>
+                <input type="text" value={name} onChange={handleChange('name')} className={`block rounded py-5 px-3 m-0  h-5 text-white bg-transparent border border-gray-700 shadow-none mb-5 w-72`} />
 
-                <label>Title</label>
-                <input type="text" value={title} onChange={handleChange('title')} />
+                <label className={`text-xs font-medium text-gray-300 uppercase mb-2 block`}>Job title</label>
+                <input type="text" value={title} onChange={handleChange('title')} className={` block rounded py-5 px-3 m-0 h-5 text-white bg-transparent border border-gray-700 shadow-none mb-5 w-72`} />
+
+                <h5>Featured image</h5>
+                <small className={`block mt-2`}>Max size: 1mb</small>
+                <label className={`uppercase bg-yellow-500 font-bold text-xs px-3 py-2 rounded mr-3 mb-3 inline-block mt-2 cursor-pointer`}>
+                    Upload featured image
+                    <input type="file" accept="image/*" onChange={handleChange('photo')} hidden />
+                </label>
 
                 <div className="quill">
                     <ReactQuill
@@ -90,7 +97,9 @@ const CreateTeamMember = ({ router }) => {
                     />
                 </div>
 
-                <button type={"submit"}>Publish</button>
+
+
+                <button type={"submit"} className={`uppercase bg-pink-600 font-bold text-xs px-3 py-2 rounded mr-3 mb-3 inline-block mt-2`}>Publish</button>
             </form>
         )
     }
@@ -105,18 +114,23 @@ const CreateTeamMember = ({ router }) => {
 
     return(
         <>
-            {showError()}
-            {showSuccess()}
-            {createTeamMemberForm()}
+            <div className="flex flex-col">
+                <div className="py-2 align-middle inline-block min-w-full">
+                    <div className="shadow overflow-hidden">
 
-            <hr/>
+                        <div className={`border border-gray-700 p-10 rounded-md bg-opacity-80 bg-gray-900`}>
 
-            <h5>Featured image</h5>
-            <small>Max size: 1mb</small>
-            <label>
-                Upload featured image
-                <input type="file" accept="image/*" onChange={handleChange('photo')} hidden />
-            </label>
+                            {showError()}
+                            {showSuccess()}
+                            {createTeamMemberForm()}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
         </>
     )
 }

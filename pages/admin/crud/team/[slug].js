@@ -6,7 +6,8 @@ import Link from "next/link"
 const Member = () => (
     <AdminTemplate>
         <Admin>
-            <h2>Update Member</h2>
+            <Link href={`/admin/crud/team/members`}><a className={`text-xs font-medium text-gray-300 uppercase mb-2 block`}>Back</a></Link>
+            <h2 className={`text-3xl mb-5`}>Update Member</h2>
             <UpdateTeamMember />
         </Admin>
     </AdminTemplate>

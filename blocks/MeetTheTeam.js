@@ -1,7 +1,27 @@
-import Slider from "react-slick";
+import { useState, useEffect } from 'react'
+import Slider from "react-slick"
+import {list} from "../actions/team/member"
+import {API} from "../config";
 
 
 const MeetTheTeam = () => {
+
+    const [team, setTeam] = useState([])
+
+    useEffect(() => {
+        loadTeamMembers()
+    },[])
+
+    const loadTeamMembers = () => {
+        list()
+            .then((data) => {
+                if (data.error){
+                    console.log('Error loading members: ', data.error)
+                } else {
+                    setTeam(data)
+                }
+            })
+    }
 
     const settings = {
         className: "center",
@@ -19,44 +39,15 @@ const MeetTheTeam = () => {
                 <p>ECOMI has composed itself with an all star team with a rich and vetted reputation of successful businesses.</p>
 
                 <Slider {...settings}>
-                    <div>
-                        <img src="./assets/images/ecomi/team/dan-crothers.jpg" alt="1"/>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/david-yu.jpg" alt="1"/>
-                        <div className="ninja mt-3">
-                            <h4>David Yu</h4>
-                            <strong className={`text-xs`}>CEO</strong>
+                    {team && team.map((member, index) => (
+                        <div key={index}>
+                            <img src={`${API}/team/photo/${member.slug}`} alt={`${member.title}`} />
+                            <div className="ninja mt-3">
+                                <h4>{member.name}</h4>
+                                <strong className="text-xs">{member.title}</strong>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/alfred-kahn.jpg" alt="1"/>
-                        <div className="ninja mt-3">
-                            <h4>Alfred Kahn</h4>
-                            <strong className={`text-xs`}>Head of Licensing</strong>
-                        </div>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/david-younts.jpg" alt="1"/>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/rhys-skellern.jpg" alt="1"/>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/mikel-duffy.jpg" alt="1"/>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/natalie-godoy.jpg" alt="1"/>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/trevor-dietz.jpg" alt="1"/>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/dan-crothers.jpg" alt="1"/>
-                    </div>
-                    <div>
-                        <img src="./assets/images/ecomi/team/dan-crothers.jpg" alt="1"/>
-                    </div>
+                    ))}
                 </Slider>
             </section>
         </>

@@ -17,13 +17,13 @@ const AdminTemplate = ({ children }) => {
             <main className={`overflow-x-hidden pt-14`}>
                 <span className={`ecomi__blue--radial-bg h-full fixed`}></span>
                 <FireFly />
-                <div className="grid grid-cols-7 gap-20">
+                <div className="grid grid-cols-7 gap-10">
 
                     <aside className={`bg-gray-900 border-r border-black bg-opacity-80 text-white p-3 min-h-screen `}>
                         <AdminMenu />
                     </aside>
 
-                    <div className={`col-span-6 text-white mt-10`}>
+                    <div className={`col-span-6 text-white mt-10 px-10`}>
                         {children}
                     </div>
                 </div>

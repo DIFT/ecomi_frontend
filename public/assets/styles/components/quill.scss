@@ -1,3 +1,21 @@
+.quill{
+  margin: 20px 0;
+}
+
 .ql-editor{
-  min-height: 300px;
+  min-height: 700px;
+}
+
+.ql-toolbar.ql-snow, .ql-container.ql-snow{
+  border-color: rgb(55, 65, 81);
+}
+
+.ql-toolbar.ql-snow{
+  background: #ccc;
+}
+
+.ql-editor{
+  p{
+    font-size: 16px;
+  }
 }
