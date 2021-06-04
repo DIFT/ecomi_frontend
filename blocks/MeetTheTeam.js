@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react'
 import Slider from "react-slick"
 import {list} from "../actions/team/member"
 import {API} from "../config";
+import Link from "next/link"
+import dynamic from "next/dynamic";
+
+const LinkIcon = dynamic(() => import('../components/LordIcon').then((mod) => mod.LinkIcon), {
+    ssr: false
+});
 
 
 const MeetTheTeam = () => {
@@ -24,7 +30,7 @@ const MeetTheTeam = () => {
     }
 
     const settings = {
-        className: "center",
+        className: "center z-50",
         centerMode: true,
         infinite: true,
         slidesToShow: 7,
@@ -40,10 +46,16 @@ const MeetTheTeam = () => {
 
                 <Slider {...settings}>
                     {team && team.map((member, index) => (
-                        <div key={index}>
-                            <img src={`${API}/team/photo/${member.slug}`} alt={`${member.title}`} />
+                        <div key={index} className={`relative meet-the-team__member`}>
+                            <figure className={`${member.vip ? 'vip' : ''}`}>
+                                {member.vip ? <span className={`absolute right-2 top-2 inline-block px-1 text-xxs font-medium rounded border bg-yellow-400 border-yellow-800 text-yellow-900`}>VIP</span> : null}
+                                <img src={`${API}/team/photo/${member.slug}`} alt={`${member.title}`} />
+                            </figure>
                             <div className="ninja mt-3">
-                                <h4>{member.name}</h4>
+                                <h4 className={`text-pink-600`}>
+                                    <Link href={`/team/${member.slug}`}><a>
+                                        <LinkIcon /> {member.name}
+                                    </a></Link></h4>
                                 <strong className="text-xs">{member.title}</strong>
                             </div>
                         </div>

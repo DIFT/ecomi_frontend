@@ -118,7 +118,7 @@ const CreateTeamMember = ({ router }) => {
                 <div className="py-2 align-middle inline-block min-w-full">
                     <div className="shadow overflow-hidden">
 
-                        <div className={`border border-gray-700 p-10 rounded-md bg-opacity-80 bg-gray-900`}>
+                        <div className={`border border-gray-700 p-10 rounded-md`} style={{ background: '#1E263C' }}>
 
                             {showError()}
                             {showSuccess()}

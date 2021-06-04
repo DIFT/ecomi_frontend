@@ -10,6 +10,8 @@
 .slick-center{
   opacity: 1;
   transform: scale(1.08);
+  z-index: 10;
+  position: relative;
   .ninja{
     opacity: 1;
     transition: 0.3s all;

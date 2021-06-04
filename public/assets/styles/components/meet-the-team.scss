@@ -1,0 +1,41 @@
+.meet-the-team{
+  &__member{
+    figure.vip{
+      position: relative;
+      &:before{
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        opacity: 0.2;
+        z-index: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        animation: holoGradient 15s ease infinite;
+        background-image: linear-gradient(115deg, transparent 0%, transparent 25%, rgba(0, 231, 255, 0.7) 45%, rgba(255, 0, 231, 0.7) 55%, transparent 70%, transparent 100%);
+        background-position: 0% 0%;
+        background-repeat: no-repeat;
+        background-size: 200% 200%;
+        mix-blend-mode: color-dodge;
+      }
+      &:after{
+        content: "";
+        background-image: url('/assets/images/ui/sparkles.gif');
+        background-position: center;
+        background-size: 180%;
+        mix-blend-mode: color-dodge;
+        border-radius: 10px;
+        opacity: 0.1;
+        z-index: 2;
+        animation: holoSparkle 5s ease infinite;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
