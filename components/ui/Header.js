@@ -86,7 +86,7 @@ const Header = ({setControlOverflow}) => {
                         <nav>
                             <ul className="text-right">
                                 <li className="inline-block mr-2">
-                                    <Link href={`/ecomi/collectibles`}><a>
+                                    <Link href={`/collectibles`}><a>
                                         <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
                                         <CollectibleIcon
                                             size={`40px`}
@@ -98,7 +98,7 @@ const Header = ({setControlOverflow}) => {
                                     </a></Link>
                                 </li>
                                 <li className="inline-block mr-2">
-                                    <Link href={`/ecomi/tokenomics`}><a>
+                                    <Link href={`/tokenomics`}><a>
                                         <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
                                         <TokenomicsIcon
                                             size={`40px`}
@@ -110,7 +110,7 @@ const Header = ({setControlOverflow}) => {
                                     </a></Link>
                                 </li>
                                 <li className="inline-block mr-2">
-                                    <Link href={`/ecomi/marketplace`}><a>
+                                    <Link href={`/marketplace`}><a>
                                         <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
                                         <MarketplaceIcon
                                             size={`40px`}

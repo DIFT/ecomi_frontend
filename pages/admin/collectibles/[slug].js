@@ -7,7 +7,7 @@ const Collectible = () => (
     <Default>
         <Admin>
             <a href={`/admin/crud/collectibles`}>Back</a>
-            <h2>Update blog</h2>
+            <h2>Update Collectibles</h2>
             <CollectibleUpdate />
         </Admin>
     </Default>

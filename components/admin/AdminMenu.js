@@ -27,6 +27,16 @@ const AdminMenu = () => {
                         </ul>
                     </span>
                 </li>
+
+                <li>
+                    <button onClick={e => toggleAccordion(e, 'veve')}>VEVE</button>
+                    <span className={`${activeAccordion === 'veve' ? 'show' : 'hidden'}`}>
+                        <ul>
+                            <li><Link href={`/admin/crud/collectibles/collectibles`}><a>Manage collectibles</a></Link></li>
+                        </ul>
+                    </span>
+                </li>
+
             </ul>
         </nav>
     )

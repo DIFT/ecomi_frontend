@@ -16,8 +16,8 @@ const LatestDrops = () => {
                 if (data.error){
                     console.log('Error fetching new arrivals', data.error)
                 } else {
-                    setNewArrivals(data.edges)
-                    setOffset(data.pageInfo.endCursor)
+                    console.log('Data returned is: ', data)
+                    setNewArrivals(data)
                 }
             })
             .catch(e => console.log('Failed to fetch', e))
@@ -53,18 +53,9 @@ const LatestDrops = () => {
     return(
         <section className={`text-white relative -mt-32`}>
             <div className="container">
-
-                <div className="grid grid-cols-3 items-center">
-                    <div className={`col-span-2`}>
-                        <h6 className={`text-3xl mb-3`}>Latest premium collectibles (NFTs)</h6>
-                        <small className={`block mb-5`}>Drag or scroll to see more premium collectibles</small>
-                    </div>
-                    <div className="text-right">
-                        <span className={`uppercase text-xs text-gray-400`}>View all</span>
-                    </div>
-                </div>
+                <h6 className={`text-3xl mb-3`}>Latest premium collectibles (NFTs)</h6>
+                <small className={`block mb-5`}>Drag or scroll to see more premium collectibles</small>
             </div>
-
 
             <ul className={`cursor-grab flex`}>
                 <Carousel
@@ -77,10 +68,8 @@ const LatestDrops = () => {
                     {newArrivals && newArrivals.map((collectible, index) => (
                         <CollectibleCard collectible={collectible} index={index} />
                     ))}
-                    <li className={`bg-gray-500 h-full w-full justify-center items-center flex`}>
-                        <button onClick={e => handleLoadMore()}>
-                            View all
-                        </button>
+                    <li className={`bg-gray-500 h-full w-full`}>
+                        <Link href={`/collectibles`}><a className={`h-full w-full justify-center text-center text-center align-center items-center flex`}>View all</a></Link>
                     </li>
                 </Carousel>
             </ul>

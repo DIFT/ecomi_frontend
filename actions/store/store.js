@@ -3,7 +3,7 @@ import { API } from "../../config";
 
 export const getNewArrivals = (props) => {
     console.log('Offset is from newArrivals: ', props)
-    return fetch(`${API}/ecomi/store/new-arrivals`, {
+    return fetch(`${API}/collectibles`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
