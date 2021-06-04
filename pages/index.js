@@ -53,7 +53,17 @@ const Index = () => {
                         </p>
                         <small className="text-sm font-semibold tracking-wide uppercase mb-4 text-gray-500">Did you know?</small>
                         <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-300`}>
-                            If you had chosen to invest just <strong className={`text-white`}>$10,000</strong> into ECOMI {moment("20210131", "YYYYMMDD").fromNow()}, today your investment would be worth a staggering <strong className={`sm:px-2 sm:py-2 inline-block bg-gray-800 rounded-xl text-green-400 text-lg sm:text-3xl`}>$<CountUp end={333555703.802535 * rtPrice} duration={2.75} separator="," decimals={4} decimal="."/></strong>
+                            If you had chosen to invest just <strong className={`text-white`}>$10,000</strong> into the OMI token {moment("20210131", "YYYYMMDD").fromNow()}, today your investment would be worth a staggering <strong className={`sm:px-2 sm:py-2 inline-block bg-gray-800 rounded-xl text-green-400 text-lg sm:text-3xl`}>$<CountUp end={333555703.802535 * rtPrice} duration={2.75} separator="," decimals={4} decimal="."/></strong>
+                            <span className={`cursor-pointer`} data-tip={`ECOMI is <strong>not</strong> a public company, any dicussion of investment is regarding the OMI token, which is a deflationary token at the heart of the ECOMI/VEVE ecosystem.`} data-html={true} data-event='click focus'>
+                                    <lord-icon
+                                        animation="click"
+                                        palette="#34D399"
+                                        size={'30px'}
+                                        params="30"
+                                        className={`inline`}
+                                        src={`./assets/icons/24-approved-checked/24-approved-checked-solid.json`}>
+                                    </lord-icon>
+                            </span>
                         </p>
                         <p className={`max-w-screen-lg text-lg mb-0 sm:mb-2`}>ECOMI(OMI) is currently available to buy on the following exchanges
                             <span className={`cursor-pointer`} data-tip={`Verified by <strong className="font-bold z-10">Coin Market Cap</strong> <a href="https://coinmarketcap.com/currencies/ecomi/markets/" target="_blank" class="text-blue-400">https://coinmarketcap.com/currencies/ecomi/markets/</a>`} data-html={true} data-event='click focus'>

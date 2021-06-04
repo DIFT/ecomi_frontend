@@ -29,6 +29,16 @@ const CollectibleCard = ({collectible}) => {
                                         {collectible.storePrice}
                                     </span>
                                 </div>
+                                <div className="py-2 px-4 bg-gray-900 h-9 overflow-hidden text-xs text-gray-300">
+                                    <div className="float-left">
+                                        Potential
+                                        <span className={`ml-1 inline-block bg-gray-800 text-green-400 text-xs px-1`}>${parseInt(collectible.revenue.potential).toLocaleString()}</span>
+                                    </div>
+                                    <div className="float-right">
+                                        Realised
+                                        <span className={`ml-1 inline-block bg-gray-800 text-green-400 text-xs px-1`}>${parseInt(collectible.revenue.realised).toLocaleString()}</span>
+                                    </div>
+                                </div>
                             </figcaption>
                         </div>
                     </div>

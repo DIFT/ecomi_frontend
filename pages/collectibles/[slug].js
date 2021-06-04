@@ -38,6 +38,10 @@ const Collectible = ({ collectible, query }) => {
                     {collectible.editionType}
                     <br/>
                     {collectible.updatedAt}
+                    <br/>
+                    {collectible.revenue.potential}
+                    <br/>
+                    {collectible.revenue.realised}
                 </main>
             </Default>
 
