@@ -4,10 +4,22 @@ import ReactTooltip from "react-tooltip";
 import moment from "moment";
 import { isChangeGoodOrBad } from "../utils";
 import BrandsBlock from "./BrandsBlock";
+import {getStoreTotalRevenue, getVeveMetrics} from "../actions/metrics/metrics";
 
 const VeveOverview = () => {
 
     const [tab, setTab] = useState(1)
+    const [vevemetrics, setVeveMetrics] = useState()
+
+    useEffect(() => {
+        getVeveMetrics()
+            .then(data => {
+                console.log('Metric data is: ', data)
+                setVeveMetrics(data)
+            })
+            .catch((e) => console.log('Error getting veve metrics: ', e))
+
+    },[])
 
     const toggleTab = (tab) => {
         setTab(tab)
@@ -106,31 +118,31 @@ const VeveOverview = () => {
         return(
             <div className={`pt-16 pb-12 sm:pt-20 md:pt-24 xl:pt-32 sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
                 <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                    <span className={`block mb-3 text-xs text-white`}>VEVE metrics as of {moment().format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-blue-500`}>https://cutt.ly/wbT97hb</a>)</span>
+                    <span className={`block mb-3 text-xs text-white`}>VEVE metrics as of {moment(vevemetrics && vevemetrics.revenue.last_updated).format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-blue-500`}>https://cutt.ly/wbT97hb</a>)</span>
                     <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
                         <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>Total sales</span>
-                            <span className={`block text-3xl text-green-400`}>$14,512,009</span>
+                            <span className={`block text-3xl text-green-400`}>${vevemetrics && vevemetrics.revenue.currentStoreRevenue.toLocaleString()}</span>
                         </li>
                         <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>24 hour change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.0%</span>
+                            <span className={`block text-3xl text-green-400`}>{vevemetrics && vevemetrics.revenue.twenty_four_hour_change.toFixed(3)}%</span>
                         </li>
                         <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>7 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.0%</span>
+                            <span className={`block text-3xl text-green-400`}>{vevemetrics && vevemetrics.revenue.seven_day_change.toFixed(3)}%</span>
                         </li>
                         <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>30 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(13.0)}`}>13.0%</span>
+                            <span className={`block text-3xl text-green-400`}>{vevemetrics && vevemetrics.revenue.thirty_day_change.toFixed(3)}%</span>
                         </li>
                         <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>No. NFT sales</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(514,826)}`}>532,602</span>
+                            <span className={`block text-3xl text-green-400`}>{vevemetrics && vevemetrics.nfts.currentNFTSales.toLocaleString()}</span>
                         </li>
                         <li className={`bg-gray-900 text-gray-400 leading-6 py-3 sm:px-3 rounded shadow`}>
                             <span className={`block text-sm`}>30 day change</span>
-                            <span className={`block text-3xl ${isChangeGoodOrBad(31.1)}`}>33.3%</span>
+                            <span className={`block text-3xl text-green-400`}>{vevemetrics && vevemetrics.nfts.thirty_day_change_nft.toFixed(3)}%</span>
                         </li>
                     </ul>
                 </div>

@@ -25,8 +25,8 @@ const CollectibleCard = ({collectible}) => {
                                         {collectible.editionType !== null ? collectible.editionType : 'N/A'}
                                     </span>
                                     <span className="text-white float-right inline-block">
-                                        <img width={`15`} className={`inline-block mr-1`} src={`./assets/images/veve/icons/gem.png`} alt={`Price is ${collectible.storePrice}`}/>
-                                        {collectible.storePrice}
+                                        {/*<img width={`15`} className={`inline-block mr-1`} src={`./assets/images/veve/icons/gem.png`} alt={`Price is ${collectible.storePrice}`}/>*/}
+                                        ${collectible.storePrice}
                                     </span>
                                 </div>
                                 <div className="py-2 px-4 bg-gray-900 h-9 overflow-hidden text-xs text-gray-300">
