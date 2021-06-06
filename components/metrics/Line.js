@@ -11,8 +11,6 @@ am4core.useTheme(am4themes_animated);
 
 function Line({ lineData, name }) {
 
-    console.log('Burn line data is: ', lineData)
-
     useLayoutEffect(() => {
 
         let chart = am4core.create(name, am4charts.XYChart);

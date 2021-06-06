@@ -5,7 +5,14 @@ import { useEffect, useState } from 'react'
 import { getBrands } from "../../actions/brand"
 import { getLicenses } from "../../actions/license";
 import dynamic from "next/dynamic";
-import {getHeatMapData, getAllBurnData, getStoreHistoricalRevenue} from "../../actions/metrics/metrics";
+import {
+    getHeatMapData,
+    getAllBurnData,
+    getStoreHistoricalRevenue,
+    getBrandRevenueData,
+    getLicensorRevenueData,
+    getCollectibleRevenueData
+} from "../../actions/metrics/metrics";
 
 const HeatMap = dynamic(
     () => import("../../components/metrics/HeatMap"),
@@ -32,12 +39,24 @@ const BrandRevenueBar = dynamic(
     { ssr: false }
 );
 
+const LicensorRevenueBar = dynamic(
+    () => import("../../components/metrics/LicensorRevenueBar"),
+    { ssr: false }
+);
+
+const CollectiblesRevenueBar = dynamic(
+    () => import("../../components/metrics/CollectiblesRevenueBar"),
+    { ssr: false }
+);
 
 const Metrics = () => {
 
     const [heatMapData, setHeatMapData] = useState()
     const [burnLineData, setBurnLineData] = useState()
     const [storeRevenue, setStoreRevenue] = useState()
+    const [brandRevenueData, setBrandRevenueData] = useState()
+    const [licensorRevenueData, setLicensorRevenueData] = useState()
+    const [nftRevenueData, setNftRevenueData] = useState()
 
     useEffect(() => {
         loadBurnData()
@@ -49,19 +68,38 @@ const Metrics = () => {
             .then(data => {
                 setHeatMapData(data)
             })
-            .catch(e => console.log('Error getting heatmap data from API'))
+            .catch(e => console.log('Error getting heatmap data'))
 
         getAllBurnData()
             .then((data) => {
                 setBurnLineData(data[0].burns)
             })
-            .catch(e => console.log('Error getting burn data from API'))
+            .catch(e => console.log('Error getting burn data'))
 
         getStoreHistoricalRevenue()
             .then((data) => {
                 setStoreRevenue(data)
             })
-            .catch(e => console.log('Error getting store historical revenue data from API'))
+            .catch(e => console.log('Error getting store historical revenue data'))
+
+        getBrandRevenueData()
+            .then((data) => {
+                setBrandRevenueData(data)
+            })
+            .catch(e => console.log('Error getting brand revenue data'))
+
+        getLicensorRevenueData()
+            .then((data) => {
+                console.log('licensor data returned is: ', data)
+                setLicensorRevenueData(data)
+            })
+            .catch(e => console.log('Error getting licensor revenue data'))
+
+        getCollectibleRevenueData()
+            .then((data) => {
+                setNftRevenueData(data)
+            })
+            .catch(e => console.log('Error getting nft revenue data'))
 
     }
 
@@ -103,11 +141,19 @@ const Metrics = () => {
 
                     <div className="grid grid-cols-2 gap-20 mt-10">
                         <div className={`p-5 border border-gray-700 rounded-md`} style={{ background: '#1E263C' }}>
-                            <div className="text-center text-gray-300">Store Revenue</div>
-                            <BrandRevenueBar  name={`brand-revenue-bar`} />
+                            <div className="text-center text-gray-300">Brand Revenue Leaderboard</div>
+                            <BrandRevenueBar data={brandRevenueData} name={`brand-revenue-bar`} />
                         </div>
                         <div className={`p-5 border border-gray-700 rounded-md`} style={{ background: '#1E263C' }}>
-                            <div className="text-center text-gray-300">NFT Sales</div>
+                            <div className="text-center text-gray-300">Licensor Revenue Leaderboard</div>
+                            <LicensorRevenueBar data={licensorRevenueData} name={`licensor-revenue-bar`} />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 mt-10">
+                        <div className="p-5 border border-gray-700 rounded-md" style={{ background: '#1E263C' }}>
+                            <div className="text-center text-gray-300">NFT Revenue Board</div>
+                            <CollectiblesRevenueBar data={nftRevenueData} name={`collectibles-revenue-bar`} />
                         </div>
                     </div>
 

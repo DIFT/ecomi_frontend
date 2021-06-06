@@ -9,7 +9,7 @@ import {getPercentageChangeNumberOnly, getRarityThresholds, getSerialRarity} fro
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-function BrandRevenueBar({ data, name }) {
+function LicensorRevenueBar({ data, name }) {
 
     useLayoutEffect(() => {
 
@@ -75,4 +75,4 @@ function BrandRevenueBar({ data, name }) {
     )
 }
 
-export default BrandRevenueBar
+export default LicensorRevenueBar

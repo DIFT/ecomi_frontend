@@ -52,6 +52,36 @@ export const getAllBurnData = () => {
         .catch(err => console.log('Error is: ', err))
 }
 
+export const getBrandRevenueData = () => {
+    return fetch(`${API}/metrics/brands`,{
+        method: "GET"
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log('Error is: ', err))
+}
+
+export const getLicensorRevenueData = () => {
+    return fetch(`${API}/metrics/licensor`,{
+        method: "GET"
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log('Error is: ', err))
+}
+
+export const getCollectibleRevenueData = () => {
+    return fetch(`${API}/metrics/collectibles`,{
+        method: "GET"
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log('Error is: ', err))
+}
+
 export const list = (offset, limit) => {
     const data = {
         limit,

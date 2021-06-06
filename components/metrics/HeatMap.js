@@ -50,8 +50,8 @@ const HeatMap = ({ heatMapData, name }) => {
         series.heatRules.push({
             target: columnTemplate,
             property: "fill",
-            min: chart.colors.getIndex(2),
-            max: chart.colors.getIndex(4)
+            min: chart.colors.getIndex(3),
+            max: chart.colors.getIndex(29)
         });
 
         // heat legend
