@@ -117,7 +117,7 @@ const Metrics = () => {
                     {/*    benefits within the app, such as the ’Master Collector Program’.*/}
                     {/*</p>*/}
 
-                    <div className="grid grid-cols-2 gap-20">
+                    <div className="grid grid-cols-2 gap-10">
                         <div className={`p-5 border border-gray-700 rounded-md`} style={{ background: '#1E263C' }}>
                             <div className="text-center text-gray-300">OMI Burn Heatmap</div>
                             <HeatMap heatMapData={heatMapData} name={'omiburn-heat'} />
@@ -128,7 +128,7 @@ const Metrics = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-20 mt-10">
+                    <div className="grid grid-cols-2 gap-10 mt-10">
                         <div className={`p-5 border border-gray-700 rounded-md`} style={{ background: '#1E263C' }}>
                             <div className="text-center text-gray-300">Store Revenue</div>
                             <StoreRevenueLine lineData={storeRevenue} name={`store-revenue`} />
@@ -139,7 +139,7 @@ const Metrics = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-20 mt-10">
+                    <div className="grid grid-cols-2 gap-10 mt-10">
                         <div className={`p-5 border border-gray-700 rounded-md`} style={{ background: '#1E263C' }}>
                             <div className="text-center text-gray-300">Brand Revenue Leaderboard</div>
                             <BrandRevenueBar data={brandRevenueData} name={`brand-revenue-bar`} />

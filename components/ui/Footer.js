@@ -55,10 +55,16 @@ const Footer = ({ classes }) => {
 
                         <ul className={`text-sm`}>
                             <li className={`mb-2`}>
-                                <Link href={"/metrics"}><a className={`py-2`}>
+                                <a href={"/data"} className={`py-2`}>
                                     <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Metrics</span></a>
-                                </Link>
+                                    <span className={`leading-6 ml-2 text-pink-600`}>Marketplace floors</span>
+                                </a>
+                            </li>
+                            <li className={`mb-2`}>
+                                <a href={"/metrics"} className={`py-2`}>
+                                    <LinkIcon />
+                                    <span className={`leading-6 ml-2 text-pink-600`}>Metrics</span>
+                                </a>
                             </li>
                             <li className={`mb-2`}>
                                 <Link href={"/"}><a className={`py-2`}>

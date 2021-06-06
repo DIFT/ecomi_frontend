@@ -1,0 +1,125 @@
+import Default from "../../templates/Default"
+import { API } from "../../config";
+import Link from "next/link"
+import React, { useEffect, useState } from 'react'
+import { getMarketData } from "../../actions/marketdata/marketdata";
+import dynamic from "next/dynamic";
+import moment from "moment";
+import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../utils";
+
+const DataTable = dynamic(
+    () => import("../../components/crud/DataTable"),
+    { ssr: false }
+);
+
+const Metrics = () => {
+
+    const [marketData, setMarketData] = useState()
+
+    useEffect(() => {
+        loadMarketData()
+    },[])
+
+    const loadMarketData = () => {
+        getMarketData()
+            .then(data => {
+                setMarketData(data)
+                console.log('Marketplace data is: ', data)
+            })
+            .catch(e => console.log('Error getting marketplace data'))
+    }
+
+    const columns = React.useMemo(
+        () => [
+            {
+                Header: 'Name',
+                accessor: 'name', // accessor is the "key" in the data
+            },
+            {
+                Header: 'Floor Price',
+                accessor: 'metrics[0].lowestPrice',
+                Cell: (cellProps) => (
+                    <>
+                        <span className={`font-medium`}>${cellProps.row.original.metrics[0].lowestPrice.toLocaleString()}</span>
+                        {getPercentageChange(cellProps.row.original.metrics[0].lowestPrice,cellProps.row.original.storePrice)}
+                    </>
+                )
+            },
+            {
+                Header: 'Store Price',
+                accessor: 'storePrice',
+                Cell: (cellProps => (
+                    <span>${cellProps.row.original.storePrice}</span>
+                ))
+            },
+            {
+                Header: 'Issue Number',
+                accessor: 'metrics[0].issueNumber',
+                Cell: (cellProps) => (
+                    <span className={`font-medium`}>{cellProps.row.original.metrics[0].issueNumber} <span className={`text-sm text-gray-300 font-normal`}>of {cellProps.row.original.totalIssued}</span></span>
+                )
+            },
+            {
+                Header: 'Rarity',
+                accessor: 'rarity',
+                Cell: (cellProps => (
+                    <span className={`inline-block px-1 text-xs font-bold rounded border ${getRarityThresholds(cellProps.row.original.rarity)}`}>
+                        {cellProps.row.original.rarity}
+                    </span>
+                ))
+            },
+            {
+                Header: 'Edition Type',
+                accessor: 'editionType',
+                Cell: (cellProps => (
+                    <span className={`inline-block px-1 text-xs font-bold rounded border ml-1 ${getEditionTypeThresholds(cellProps.row.original.editionType)}`}>
+                        {cellProps.row.original.editionType}
+                    </span>
+                ))
+            },
+            {
+                Header: 'Total Listed',
+                accessor: 'metrics[0].totalListings'
+            },
+            {
+                Header: 'Listed',
+                accessor: 'metrics[0].createdAt',
+                Cell: (cellProps => {
+                    console.log('Cell props is: ', cellProps)
+                    return moment(cellProps.row.original.metrics[0].createdAt).fromNow()
+                })
+            },
+            {
+                Header: 'User',
+                accessor: 'metrics[0].seller[0].username',
+                Cell: (cellProps => {
+                    return <span className={`text-gray-300`}><img src={cellProps.row.original.metrics[0].seller[0].avatar} className={`rounded-full inline-block mr-2 border border-gray-500`} width={`30`}/>${cellProps.row.original.metrics[0].seller[0].username}</span>
+                })
+            }
+        ],
+        []
+    )
+
+    return(
+        <Default>
+            <>
+                <div className="container text-white">
+                    <h1 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Marketplace Analytics</h1>
+                    <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-400`}>Smart data table automatically updated every hour</p>
+
+                    <p className={`text-lg mb-8`}>
+                        The table below showcases the floor price (lowest available) for all collectibles currently listed on the secondary market with a 'buy it now' option.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 mt-10 text-white px-20">
+                    <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
+                    <DataTable columns={columns} data={marketData} />
+                </div>
+
+            </>
+        </Default>
+    )
+}
+
+export default Metrics

@@ -2,7 +2,7 @@ import Default from "../../../templates/Default"
 import { API } from "../../../config"
 import Link from "next/link"
 import { useEffect, useState } from 'react'
-import { getMarketPlaceListings } from "../../../actions/marketplace/marketplace"
+import { getMarketPlaceListings } from "../../../actions/metrics/marketplace"
 
 const Collectibles = () => {
 

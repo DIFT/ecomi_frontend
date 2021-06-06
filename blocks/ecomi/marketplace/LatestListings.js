@@ -1,6 +1,6 @@
 import Carousel from "react-elastic-carousel"
 import { useEffect, useState } from 'react'
-import { getMarketPlaceListings } from "../../../actions/marketplace/marketplace"
+import { getMarketPlaceListings } from "../../../actions/metrics/marketplace"
 import CollectibleMarketCard from "../../../components/ecomi/CollectibleMarketCard";
 
 const LatestListings = () => {

@@ -3,7 +3,7 @@ import Head from "next/head"
 import Default from "../../../templates/Default"
 import Link from "next/link"
 import dynamic from "next/dynamic";
-import { readMarketplaceListing } from "../../../actions/marketplace/marketplace"
+import { readMarketplaceListing } from "../../../actions/metrics/marketplace"
 import { DOMAIN, APP_NAME } from '../../../config'
 import MarketListing from "../../../templates/MarketListing";
 import Image from "next/image";

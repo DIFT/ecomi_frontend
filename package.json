@@ -24,6 +24,7 @@
     "js-cookie": "^2.2.1",
     "lord-icon-element": "https://github.com/alienbuild/lord-icon-element.git",
     "lottie-web": "^5.6.10",
+    "match-sorter": "^6.3.0",
     "moment": "^2.29.1",
     "next": "^10.0.4",
     "nprogress": "^0.2.0",
