@@ -1,22 +1,22 @@
 import { useState } from 'react'
 import Head from "next/head"
-import Default from "../../../templates/Default"
+import Default from "../../templates/Default"
 import Link from "next/link"
 import dynamic from "next/dynamic";
-import { readMarketplaceListing } from "../../../actions/metrics/marketplace"
-import { DOMAIN, APP_NAME } from '../../../config'
-import MarketListing from "../../../templates/MarketListing";
+import { readMarketplaceListing } from "../../actions/metrics/marketplace"
+import { DOMAIN, APP_NAME } from '../../config'
+import MarketListing from "../../templates/MarketListing";
 import Image from "next/image";
 import Countdown from 'react-countdown'
-import {getPercentageChange, getRarityThresholds, getSerialRarity} from "../../../utils";
+import {getPercentageChange, getRarityThresholds, getSerialRarity} from "../../utils";
 
 const CollectibleValueChart = dynamic(
-    () => import("../../../components/ecomi/CollectibleValueChart"),
+    () => import("../../components/ecomi/CollectibleValueChart"),
     { ssr: false }
 );
 
 const MicroChart = dynamic(
-    () => import("../../../components/ecomi/MicroChart"),
+    () => import("../../components/ecomi/MicroChart"),
     { ssr: false }
 );
 

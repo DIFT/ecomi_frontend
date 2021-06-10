@@ -69,6 +69,10 @@ const Metrics = () => {
                 ))
             },
             {
+                Header: 'Brand',
+                accessor: 'brand'
+            },
+            {
                 Header: 'Edition Type',
                 accessor: 'editionType',
                 Cell: (cellProps => (
@@ -93,7 +97,7 @@ const Metrics = () => {
                 Header: 'User',
                 accessor: 'metrics[0].seller[0].username',
                 Cell: (cellProps => {
-                    return <span className={`text-gray-300`}><img src={cellProps.row.original.metrics[0].seller[0].avatar} className={`rounded-full inline-block mr-2 border border-gray-500`} width={`30`}/>${cellProps.row.original.metrics[0].seller[0].username}</span>
+                    return <span className={`text-gray-300`}><img src={cellProps.row.original.metrics[0].seller[0].avatar} className={`rounded-full inline-block mr-2 border border-gray-500`} width={`30`}/>{cellProps.row.original.metrics[0].seller[0].username}</span>
                 })
             }
         ],

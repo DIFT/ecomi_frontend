@@ -68,6 +68,60 @@ export const MarketplaceIcon = ({
     </lord-icon>
 )
 
+export const ChatIcon = ({
+                             size = '50px',
+                             type = 'outline',
+                             params = '50',
+                             palette = '#cccccc;#3C82F6',
+                             classes = 'inline'
+                         }) => (
+    <lord-icon
+        target={`a`}
+        animation="loop"
+        palette={palette}
+        size={size}
+        params={params}
+        className={classes}
+        src={`./assets/icons/202-chat/202-chat-${type}.json`}>
+    </lord-icon>
+)
+
+export const ThumbIcon = ({
+                             size = '50px',
+                             type = 'solid',
+                             params = '50',
+                             palette = '#cccccc;#3C82F6',
+                             classes = 'inline'
+                         }) => (
+    <lord-icon
+        target={`button`}
+        animation="loop"
+        palette={palette}
+        size={size}
+        params={params}
+        className={classes}
+        src={`./assets/icons/267-like-thumb-up/267-like-thumb-up-${type}.json`}>
+    </lord-icon>
+)
+
+export const AddCommentIcon = ({
+                              size = '50px',
+                              type = 'solid',
+                              params = '50',
+                              palette = '#cccccc;#3C82F6',
+                              classes = 'inline'
+                          }) => (
+    <lord-icon
+        target={`button`}
+        animation="loop"
+        palette={palette}
+        size={size}
+        params={params}
+        className={classes}
+        src={`./assets/icons/207-chat-message-plus/207-chat-message-plus-${type}.json`}>
+    </lord-icon>
+)
+
 export const AvatarIcon = ({
                                size = '90px',
                                type = 'outline',

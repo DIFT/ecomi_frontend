@@ -36,6 +36,10 @@ const MarketplaceIcon = dynamic(() => import('../LordIcon').then((mod) => mod.Ma
     ssr: false
 });
 
+const ChatIcon = dynamic(() => import('../LordIcon').then((mod) => mod.ChatIcon), {
+    ssr: false
+});
+
 const AvatarIcon = dynamic(() => import('../LordIcon').then((mod) => mod.AvatarIcon), {
     ssr: false
 });
@@ -113,6 +117,18 @@ const Header = ({setControlOverflow}) => {
                                     <Link href={`/marketplace`}><a>
                                         <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
                                         <MarketplaceIcon
+                                            size={`40px`}
+                                            params={`60`}
+                                            type={`outline`}
+                                            palette={`#ffffff;#ffffff`}
+                                        />
+                                    </span>
+                                    </a></Link>
+                                </li>
+                                <li className="inline-block mr-2">
+                                    <Link href={`/community`}><a>
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
+                                        <ChatIcon
                                             size={`40px`}
                                             params={`60`}
                                             type={`outline`}
