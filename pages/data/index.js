@@ -118,7 +118,8 @@ const Metrics = () => {
 
                 <div className="grid grid-cols-1 mt-10 text-white px-20">
                     <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
-                    <DataTable columns={columns} data={marketData} />
+                    {marketData && marketData ? <DataTable columns={columns} data={marketData} /> : null}
+
                 </div>
 
             </>

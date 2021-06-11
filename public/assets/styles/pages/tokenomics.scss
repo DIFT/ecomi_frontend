@@ -1,0 +1,86 @@
+.coin-stack{
+  position: relative;
+  display: inline-block;
+  margin: 30px 0!important;
+  min-height: 120px;
+  width: 100px;
+  .coin{
+    &:first-child{
+      bottom: 0;
+    }
+    &:nth-child(2){
+      bottom: 6px;
+    }
+    &:nth-child(3){
+      bottom: 12px;
+    }
+    &:nth-child(4){
+      bottom: 18px;
+    }
+    &:nth-child(5){
+      bottom: 24px;
+    }
+    &:nth-child(6){
+      bottom: 30px;
+    }
+    &:nth-child(7){
+      bottom: 36px;
+    }
+    &:nth-child(8){
+      bottom: 42px;
+    }
+    &:nth-child(9){
+      bottom: 48px;
+    }
+    &:nth-child(10){
+      bottom: 54px;
+    }
+  }
+}
+.coin{
+  height: 75px;
+  width: 100px;
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: inset 0px -5px 1px 0px rgba(0,0,0,0.3);
+  position: absolute;
+  &:after{
+    content:"";
+    background: url('/assets/images/token-logo.png');
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    background-size: 50px 53px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &.legend{
+    height: 40px;
+    width: 40px;
+    box-shadow: none;
+    position: relative;
+    &:after{
+      background-size: 25px;
+      background-position: center;
+    }
+  }
+  &.error{
+    background-color: #F56D6D;
+    &.half-b{
+      background-color: darken(#F56D6D,10%);
+      border: 1px solid #F56D6D;
+    }
+  }
+  &.half-b{
+    background-color: #373c4d;
+    border: 1px solid lighten(#20263a, 20%);
+    transform: scale(0.8);
+  }
+  &.ten-b{
+    background-color: #F5AB6D;
+    transform: scale(0.8);
+  }
+}

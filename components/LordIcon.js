@@ -91,7 +91,7 @@ export const ThumbIcon = ({
                              type = 'solid',
                              params = '50',
                              palette = '#cccccc;#3C82F6',
-                             classes = 'inline'
+                             classes
                          }) => (
     <lord-icon
         target={`button`}
@@ -99,17 +99,56 @@ export const ThumbIcon = ({
         palette={palette}
         size={size}
         params={params}
-        className={classes}
+        class={classes}
         src={`./assets/icons/267-like-thumb-up/267-like-thumb-up-${type}.json`}>
     </lord-icon>
 )
+
+export const QuestionIcon = ({
+                              animation = 'click',
+                              size = '50px',
+                              type = 'solid',
+                              params = '50',
+                              palette = '#cccccc;#3C82F6',
+                              classes
+                          }) => (
+    <lord-icon
+        target={`button`}
+        animation={animation}
+        palette={palette}
+        size={size}
+        params={params}
+        class={classes}
+        src={`./assets/icons/424-question-bubble/424-question-bubble-${type}.json`}>
+    </lord-icon>
+)
+
+export const BellIcon = ({
+                              size = '50px',
+                              type = 'solid',
+                              params = '50',
+                              palette = '#cccccc;#3C82F6',
+                              classes
+                          }) => (
+    <lord-icon
+        target={`button`}
+        animation="loop"
+        palette={palette}
+        size={size}
+        params={params}
+        class={classes}
+        src={`./assets/icons/193-bell-notification/193-bell-notification-${type}.json`}>
+    </lord-icon>
+)
+
+
 
 export const AddCommentIcon = ({
                               size = '50px',
                               type = 'solid',
                               params = '50',
                               palette = '#cccccc;#3C82F6',
-                              classes = 'inline'
+                              classes
                           }) => (
     <lord-icon
         target={`button`}

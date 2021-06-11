@@ -18,6 +18,11 @@ Router.onRouteChangeError = url => NProgress.done()
 import dynamic from 'next/dynamic';
 import SigninComponent from "../auth/SigninComponent";
 import SignupComponent from "../auth/SignupComponent";
+import AlertCentre from "./AlertCentre";
+
+const ReactTooltip = dynamic(() => import('react-tooltip'), {
+    ssr: false
+});
 
 // Icons
 const LinkIcon = dynamic(() => import('../LordIcon').then((mod) => mod.LinkIcon), {
@@ -40,6 +45,10 @@ const ChatIcon = dynamic(() => import('../LordIcon').then((mod) => mod.ChatIcon)
     ssr: false
 });
 
+const BellIcon = dynamic(() => import('../LordIcon').then((mod) => mod.BellIcon), {
+    ssr: false
+});
+
 const AvatarIcon = dynamic(() => import('../LordIcon').then((mod) => mod.AvatarIcon), {
     ssr: false
 });
@@ -49,12 +58,15 @@ const MenuIcon = dynamic(() => import('../LordIcon').then((mod) => mod.MenuIcon)
 });
 
 
+
+
 const Header = ({setControlOverflow}) => {
 
     const [menuOpen, setMenuOpen] = useState(false)
     const [modalState, setModalState] = useState(false)
     const [userExists, setUserExists] = useState(false)
     const [toggleUserDD, setToggleUserDD] = useState(false)
+    const [showAlerts, setShowAlerts] = useState(false)
 
     const userDropDown = () => {
         return(
@@ -91,7 +103,7 @@ const Header = ({setControlOverflow}) => {
                             <ul className="text-right">
                                 <li className="inline-block mr-2">
                                     <Link href={`/collectibles`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Collectibles`} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <CollectibleIcon
                                             size={`40px`}
                                             params={`60`}
@@ -103,7 +115,7 @@ const Header = ({setControlOverflow}) => {
                                 </li>
                                 <li className="inline-block mr-2">
                                     <Link href={`/tokenomics`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Tokenomics`} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <TokenomicsIcon
                                             size={`40px`}
                                             params={`60`}
@@ -115,7 +127,7 @@ const Header = ({setControlOverflow}) => {
                                 </li>
                                 <li className="inline-block mr-2">
                                     <Link href={`/marketplace`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Marketplace`} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <MarketplaceIcon
                                             size={`40px`}
                                             params={`60`}
@@ -127,7 +139,7 @@ const Header = ({setControlOverflow}) => {
                                 </li>
                                 <li className="inline-block mr-2">
                                     <Link href={`/community`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center">
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Community`} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <ChatIcon
                                             size={`40px`}
                                             params={`60`}
@@ -142,12 +154,32 @@ const Header = ({setControlOverflow}) => {
                         </nav>
                     </div>
                     <div>
+                        <ReactTooltip place="top" type="dark" effect="float"/>
+
+
 
                         {/*Logged in and not admin*/}
                         { isAuth() && isAuth().role === 0 && (<Link href={"/user"}>Dashboard</Link>)}
 
 
                         <ul>
+
+                            <li className="inline-block mr-2 relative">
+                                <button onClick={e => setShowAlerts(!showAlerts)}>
+                                        <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700 relative">
+                                        <BellIcon
+                                            size={`20px`}
+                                            params={`60`}
+                                            type={`solid`}
+                                            palette={`#ffffff;#ffffff`}
+                                        />
+                                        <span className="h-2 w-2 bg-red-500 absolute rounded-full"></span>
+                                    </span>
+                                </button>
+                                {showAlerts ? (
+                                    <AlertCentre />
+                                ) : null}
+                            </li>
 
                             {/*Logged in and is admin*/}
                             { isAuth() && isAuth().role === 1 && (
@@ -163,9 +195,9 @@ const Header = ({setControlOverflow}) => {
                                         setModalState(true)
                                         setControlOverflow(true)
                                     }}>
-                                            <span className="border border-gray-500 rounded-full inline-block text-center">
+                                            <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700">
                                             <AvatarIcon
-                                                size={`30px`}
+                                                size={`20px`}
                                                 params={`60`}
                                                 type={`solid`}
                                                 palette={`#ffffff;#ffffff`}
