@@ -57,7 +57,7 @@ const Footer = ({ classes }) => {
                             <li className={`mb-2`}>
                                 <a href={"/data"} className={`py-2`}>
                                     <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Marketplace floors</span>
+                                    <span className={`leading-6 ml-2 text-pink-600`}>Marketplace Analytics</span>
                                 </a>
                             </li>
                             <li className={`mb-2`}>
@@ -69,7 +69,7 @@ const Footer = ({ classes }) => {
                             <li className={`mb-2`}>
                                 <Link href={"/"}><a className={`py-2`}>
                                     <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Press package</span></a>
+                                    <span className={`leading-6 ml-2 text-pink-600`}>Press Package</span></a>
                                 </Link>
                             </li>
                             <li className={`mb-2`}>

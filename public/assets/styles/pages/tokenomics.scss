@@ -4,6 +4,7 @@
   margin: 30px 0!important;
   min-height: 120px;
   width: 100px;
+  margin-right: 20px;
   .coin{
     &:first-child{
       bottom: 0;
@@ -34,6 +35,12 @@
     }
     &:nth-child(10){
       bottom: 54px;
+    }
+    &:nth-child(11){
+      bottom: 60px;
+    }
+    &:nth-child(12){
+      bottom: 66px;
     }
   }
 }
@@ -69,12 +76,16 @@
   }
   &.error{
     background-color: #F56D6D;
-    &.half-b{
-      background-color: darken(#F56D6D,10%);
+    &.five-b{
+      background-color: darken(#F56D6D,5%);
       border: 1px solid #F56D6D;
     }
+    &.one-b{
+      background-color: darken(#F56D6D,10%);
+      transform: scale(0.6);
+    }
   }
-  &.half-b{
+  &.five-b{
     background-color: #373c4d;
     border: 1px solid lighten(#20263a, 20%);
     transform: scale(0.8);
@@ -82,5 +93,9 @@
   &.ten-b{
     background-color: #F5AB6D;
     transform: scale(0.8);
+  }
+  &.one-b{
+    background-color: #5C5AAB;
+    transform: scale(0.6);
   }
 }

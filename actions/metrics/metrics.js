@@ -42,6 +42,16 @@ export const getHeatMapData = () => {
         .catch(err => console.log('Error is: ', err))
 }
 
+export const getCurrentBurnTotal = () => {
+    return fetch(`${API}/metrics/burns/total`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log('Error is: ', err))
+}
+
 export const getAllBurnData = () => {
     return fetch(`${API}/metrics/burns`, {
         method: "GET"
@@ -100,3 +110,5 @@ export const list = (offset, limit) => {
         })
         .catch(err => console.log('Error is: ', err))
 }
+
+
