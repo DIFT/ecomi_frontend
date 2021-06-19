@@ -4,7 +4,14 @@ import { useEffect, useState } from 'react'
 import dynamic from "next/dynamic"
 import ReactTooltip from "react-tooltip"
 import { getCurrentBurnTotal } from "../../actions/metrics/metrics"
-import BurnHeatMap from "../../components/metrics/charts/BurnHeatMap";
+
+const UserGrowthChart = dynamic(() => import('../../components/metrics/charts/UserGrowthChart'), {
+    ssr: false
+})
+
+const BurnHeatMap = dynamic(() => import('../../components/metrics/charts/BurnHeatMap'), {
+    ssr: false
+})
 
 const BurnRateChart = dynamic(() => import('../../components/metrics/charts/BurnRateChart'), {
     ssr: false
@@ -357,6 +364,7 @@ const Tokenomics = () => {
                 <div className="grid grid-cols-2 gap-20 my-20 container">
                     <BurnRateChart />
                     <BurnHeatMap />
+                    <UserGrowthChart />
                 </div>
 
             </section>

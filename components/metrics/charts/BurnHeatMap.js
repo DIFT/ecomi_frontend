@@ -27,9 +27,9 @@ const BurnHeatMap = () => {
     }
 
     return(
-        <div className={`p-5 border border-gray-700 rounded-md`} style={{ background: '#1E263C' }}>
-            <div className="text-center text-gray-300">OMI Burn Line Chart</div>
-            <span className="text-sm text-gray-300">*Data is captured nightly at 12AM GMT</span>
+        <div className={`p-5 border border-gray-700 rounded-md text-center`} style={{ background: '#1E263C' }}>
+            <div className="text-gray-300">OMI Burn Heat Map</div>
+            <span className="text-sm text-gray-300">*Burn rate is captured nightly at 12AM GMT</span>
             <HeatMap heatMapData={heatMapData} name={'omiburn-heat'} />
         </div>
     )

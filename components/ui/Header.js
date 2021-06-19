@@ -81,7 +81,7 @@ const Header = ({setControlOverflow}) => {
     }
     return(
         <>
-            <header className={`px-5 py-2 absolute w-full z-10 border-b border-gray-600`}>
+            <header className={`px-5 py-2 absolute w-full z-10`}>
                 <div className="flex justify-between items-center">
                     <div>
                         <Link href={`/`}><a>

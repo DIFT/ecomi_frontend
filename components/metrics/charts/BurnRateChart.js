@@ -20,15 +20,15 @@ const BurnRateChart = () => {
     const loadBurnData = () => {
         getAllBurnData()
             .then((data) => {
-                console.log('Burn data is: ', data)
                 setBurnLineData(data[0].burns)
             })
             .catch(e => console.log('Error getting burn data'))
     }
 
     return(
-        <div className={`p-5 border border-gray-700 rounded-md`} style={{ background: '#1E263C' }}>
-            <div className="text-center text-gray-300">OMI Burn Line Chart</div>
+        <div className={`p-5 border border-gray-700 rounded-md text-center `} style={{ background: '#1E263C' }}>
+            <div className="text-gray-300">OMI Burn Line Chart</div>
+            <span className="text-sm text-gray-300">*Burn rate is captured nightly at 12AM GMT</span>
             <Line lineData={burnLineData} name={'omiburn-line'} />
         </div>
     )

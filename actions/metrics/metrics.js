@@ -52,6 +52,17 @@ export const getCurrentBurnTotal = () => {
         .catch(err => console.log('Error is: ', err))
 }
 
+//
+export const getUserGrowthData = () => {
+    return fetch(`${API}/metrics/user/growth`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log('Error is: ', err))
+}
+
 export const getAllBurnData = () => {
     return fetch(`${API}/metrics/burns`, {
         method: "GET"
