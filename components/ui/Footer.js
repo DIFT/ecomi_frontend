@@ -66,12 +66,12 @@ const Footer = ({ classes }) => {
                                     <span className={`leading-6 ml-2 text-pink-600`}>Metrics</span>
                                 </a>
                             </li>
-                            <li className={`mb-2`}>
-                                <Link href={"/"}><a className={`py-2`}>
-                                    <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Press Package</span></a>
-                                </Link>
-                            </li>
+                            {/*<li className={`mb-2`}>*/}
+                            {/*    <Link href={"/"}><a className={`py-2`}>*/}
+                            {/*        <LinkIcon />*/}
+                            {/*        <span className={`leading-6 ml-2 text-pink-600`}>Press Package</span></a>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                             <li className={`mb-2`}>
                                 <Link href={"https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view"}><a className={`py-2`}>
                                     <LinkIcon />
@@ -84,12 +84,12 @@ const Footer = ({ classes }) => {
                                     <span className={`leading-6 ml-2 text-pink-600`}>Collectibles</span></a>
                                 </Link>
                             </li>
-                            <li className={`mb-2`}>
-                                <Link href={"/"}><a className={`py-2`}>
-                                    <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Brands</span></a>
-                                </Link>
-                            </li>
+                            {/*<li className={`mb-2`}>*/}
+                            {/*    <Link href={"/"}><a className={`py-2`}>*/}
+                            {/*        <LinkIcon />*/}
+                            {/*        <span className={`leading-6 ml-2 text-pink-600`}>Brands</span></a>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                             <li className={`mb-2`}>
                                 <Link href={"/tokenomics"}><a className={`py-2`}>
                                     <LinkIcon />

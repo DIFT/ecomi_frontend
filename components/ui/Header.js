@@ -137,18 +137,18 @@ const Header = ({setControlOverflow}) => {
                                     </span>
                                     </a></Link>
                                 </li>
-                                <li className="inline-block mr-2">
-                                    <Link href={`/community`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Community`} data-effect={'solid'} data-event='mouseenter mouseleave'>
-                                        <ChatIcon
-                                            size={`40px`}
-                                            params={`60`}
-                                            type={`outline`}
-                                            palette={`#ffffff;#ffffff`}
-                                        />
-                                    </span>
-                                    </a></Link>
-                                </li>
+                                {/*<li className="inline-block mr-2">*/}
+                                {/*    <Link href={`/community`}><a>*/}
+                                {/*        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Community`} data-effect={'solid'} data-event='mouseenter mouseleave'>*/}
+                                {/*        <ChatIcon*/}
+                                {/*            size={`40px`}*/}
+                                {/*            params={`60`}*/}
+                                {/*            type={`outline`}*/}
+                                {/*            palette={`#ffffff;#ffffff`}*/}
+                                {/*        />*/}
+                                {/*    </span>*/}
+                                {/*    </a></Link>*/}
+                                {/*</li>*/}
                             </ul>
 
                         </nav>
@@ -156,30 +156,28 @@ const Header = ({setControlOverflow}) => {
                     <div>
                         <ReactTooltip place="top" type="dark" effect="float"/>
 
-
-
                         {/*Logged in and not admin*/}
                         { isAuth() && isAuth().role === 0 && (<Link href={"/user"}>Dashboard</Link>)}
 
 
                         <ul>
 
-                            <li className="inline-block mr-2 relative">
-                                <button onClick={e => setShowAlerts(!showAlerts)}>
-                                        <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700 relative">
-                                        <BellIcon
-                                            size={`20px`}
-                                            params={`60`}
-                                            type={`solid`}
-                                            palette={`#ffffff;#ffffff`}
-                                        />
-                                        <span className="h-2 w-2 bg-red-500 absolute rounded-full"></span>
-                                    </span>
-                                </button>
-                                {showAlerts ? (
-                                    <AlertCentre />
-                                ) : null}
-                            </li>
+                            {/*<li className="inline-block mr-2 relative">*/}
+                            {/*    <button onClick={e => setShowAlerts(!showAlerts)}>*/}
+                            {/*            <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700 relative">*/}
+                            {/*            <BellIcon*/}
+                            {/*                size={`20px`}*/}
+                            {/*                params={`60`}*/}
+                            {/*                type={`solid`}*/}
+                            {/*                palette={`#ffffff;#ffffff`}*/}
+                            {/*            />*/}
+                            {/*            <span className="h-2 w-2 bg-red-500 absolute rounded-full"></span>*/}
+                            {/*        </span>*/}
+                            {/*    </button>*/}
+                            {/*    {showAlerts ? (*/}
+                            {/*        <AlertCentre />*/}
+                            {/*    ) : null}*/}
+                            {/*</li>*/}
 
                             {/*Logged in and is admin*/}
                             { isAuth() && isAuth().role === 1 && (
@@ -227,64 +225,6 @@ const Header = ({setControlOverflow}) => {
                             )}
 
                         </ul>
-                        {/*<nav>*/}
-                        {/*    <ul className={`text-right text-white`}>*/}
-                        {/*        <li className={`inline-block mr-5`}><Link href={`/`}><a className={`uppercase block text-sm font-medium px-3 text-gray-400 hover:text-white transition duration-500`}>*/}
-                        {/*            <span className={`border-gray-500 border rounded-full mr-3 inline-block h-14 w-14 text-center`}>*/}
-                        {/*                <lord-icon*/}
-                        {/*                    target={`a`}*/}
-                        {/*                    animation="loop"*/}
-                        {/*                    palette="#cccccc;#3C82F6"*/}
-                        {/*                    size={'50px'}*/}
-                        {/*                    params="50"*/}
-                        {/*                    className={`inline`}*/}
-                        {/*                    src={`./assets/icons/298-coins/298-coins-outline.json`}>*/}
-                        {/*                </lord-icon>*/}
-                        {/*            </span>*/}
-                        {/*            Tokenomics*/}
-                        {/*        </a></Link></li>*/}
-                        {/*        <li className={`inline-block mr-5`}><Link href={`/`}><a className={`uppercase block text-sm font-medium px-3 text-gray-400 hover:text-white transition duration-500`}>*/}
-                        {/*            <span className={`border-gray-500 border rounded-full mr-3 inline-block h-14 w-14 text-center`}>*/}
-                        {/*                <lord-icon*/}
-                        {/*                    target={`a`}*/}
-                        {/*                    animation="loop"*/}
-                        {/*                    palette="#cccccc;#3C82F6"*/}
-                        {/*                    size={'50px'}*/}
-                        {/*                    params="50"*/}
-                        {/*                    className={`inline-block -ml-2`}*/}
-                        {/*                    src={`./assets/icons/262-emoji-wow/262-emoji-wow-outline.json`}>*/}
-                        {/*                </lord-icon>*/}
-                        {/*            </span>*/}
-                        {/*            Speculation*/}
-                        {/*        </a></Link></li>*/}
-                        {/*        <li className={`inline-block text-gray-400`}><Link href={`/`}><a className={`uppercase block text-sm font-medium px-3 text-gray-400 hover:text-white transition duration-500`}>*/}
-                        {/*            <span className={`border-gray-500 border rounded-full mr-3 inline-block h-14 w-14 text-center`}>*/}
-                        {/*                <lord-icon*/}
-                        {/*                    target={`a`}*/}
-                        {/*                    animation="loop"*/}
-                        {/*                    palette="#cccccc;#3C82F6"*/}
-                        {/*                    size={'50px'}*/}
-                        {/*                    params="50"*/}
-                        {/*                    className={`inline`}*/}
-                        {/*                    src={`./assets/icons/411-news-newspaper/411-news-newspaper-outline.json`}>*/}
-                        {/*                </lord-icon>*/}
-                        {/*            </span>*/}
-                        {/*            Feeds*/}
-                        {/*        </a></Link></li>*/}
-                        {/*        <li className={`inline-block`}><Link href={`/donate`}><a className={`uppercase inline-block text-sm font-medium pl-3 text-gray-400 hover:text-white transition duration-500`}>*/}
-                        {/*            <span className={`inline-block h-14 text-center`}>*/}
-                        {/*                <lord-icon*/}
-                        {/*                    animation="auto"*/}
-                        {/*                    palette="#db2777;#3C82F6"*/}
-                        {/*                    size={'50px'}*/}
-                        {/*                    params="100"*/}
-                        {/*                    className={`inline`}*/}
-                        {/*                    src={`./assets/icons/20-love-heart/20-love-heart-solid.json`}>*/}
-                        {/*                </lord-icon>*/}
-                        {/*            </span>*/}
-                        {/*        </a></Link></li>*/}
-                        {/*    </ul>*/}
-                        {/*</nav>*/}
                     </div>
                 </div>
             </header>
