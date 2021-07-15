@@ -1,5 +1,5 @@
 import Default from "../../templates/Default";
-import Private from "../../components/auth/Private";
+import Private from "../../components/Auth/Private";
 
 const UserIndex = () => (
     <Default>

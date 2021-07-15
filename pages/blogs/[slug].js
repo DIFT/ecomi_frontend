@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { singleBlog, listRelated } from "../../actions/blog"
 import { API, DOMAIN, APP_NAME } from '../../config'
 import renderHTML from 'react-render-html'
-import RelatedNews from "../../components/blog/RelatedNews"
+import RelatedNews from "../../components/Blog/RelatedNews"
 import parse from 'html-react-parser';
 
 const SingleBlog = ({ blog, query }) => {

@@ -2,20 +2,19 @@ import Image from "next/image";
 import Link from "next/link"
 import dynamic from 'next/dynamic'
 
-const LinkIcon = dynamic(() => import('../LordIcon').then((mod) => mod.LinkIcon), {
+const LinkIcon = dynamic(() => import('../../LordIcon').then((mod) => mod.LinkIcon), {
     ssr: false
 });
 
 
-const DonateIcon = dynamic(() => import('../LordIcon').then((mod) => mod.DonateIcon), {
+const DonateIcon = dynamic(() => import('../../LordIcon').then((mod) => mod.DonateIcon), {
     ssr: false
 });
 
 const Footer = ({ classes }) => {
     return(
         <>
-            <footer id="f-primary" className={`${classes}`}>
-
+            <footer className={`bg-gray-800 text-white bg-gray-900 py-20 border-t border-black mt-20`}>
                 <div className=" container grid grid-cols-4 gap-10 relative place-items-center">
 
                     <div className={`relative`}>
@@ -55,16 +54,16 @@ const Footer = ({ classes }) => {
 
                         <ul className={`text-sm`}>
                             <li className={`mb-2`}>
-                                <a href={"/data"} className={`py-2`}>
+                                <Link href={"/data"} ><a className={`py-2`}>
                                     <LinkIcon />
                                     <span className={`leading-6 ml-2 text-pink-600`}>Marketplace Analytics</span>
-                                </a>
+                                </a></Link>
                             </li>
                             <li className={`mb-2`}>
-                                <a href={"/metrics"} className={`py-2`}>
+                                <Link href={"/metrics"}><a className={`py-2`}>
                                     <LinkIcon />
                                     <span className={`leading-6 ml-2 text-pink-600`}>Metrics</span>
-                                </a>
+                                </a></Link>
                             </li>
                             {/*<li className={`mb-2`}>*/}
                             {/*    <Link href={"/"}><a className={`py-2`}>*/}
@@ -105,56 +104,6 @@ const Footer = ({ classes }) => {
                         </ul>
                     </div>
 
-                </div>
-            </footer>
-            <footer id="f-secondary" className={`border-t border-black p-3`}>
-                <div className="container">
-                    <div className={`text-white opacity-70`}>
-                        <ul className={`flex justify-center items-center`}>
-                            <li className={`inline-block mr-10`}>
-                                <Link href={`https://ecomi.com`} target={"_blank"}><a>
-                                    <span className="font-extrabold text-xl text-white inline-block ml-2">ECOMI</span>
-                                </a></Link>
-                            </li>
-                            <li className={`inline-block mr-10`}>
-                                <Link href={`https://veve.me`} target={"_blank"}><a>
-                                    <Image
-                                        src={`/assets/images/veve-logo--white.png`}
-                                        alt="VEVE"
-                                        width={60}
-                                        height={15}
-                                        className={`mx-auto`}
-                                    />
-                                </a></Link>
-                            </li>
-                            <li className={`inline-block mr-10`}>
-                                <Link href={`https://www.alienbuild.uk`} target={"_blank"}><a>
-                                    <img src={`/assets/images/alienbuild.svg`} width={`80`} className={`mx-auto`} alt={`Alienbuild Ltd`} />
-                                </a></Link>
-                            </li>
-                            <li className={`inline-block mr-10`}>
-                                <Link href={`https://vevewiki.com`} target={"_blank"}><a>
-                                    <Image
-                                        src={`/assets/images/veve-logo--white.png`}
-                                        alt="VEVE"
-                                        width={60}
-                                        height={15}
-                                        className={`mx-auto`}
-                                    />
-                                    <span className="font-bold text-base text-white inline-block ecomiFont">WIKI</span>
-                                </a></Link>
-                            </li>
-                            <li className={`inline-block`}>
-                                <Link href={`https://veveartshow.com`} target={"_blank"}><a>
-                                    <span className="font-bold text-base text-white inline-block ml-2 relative">
-                                        <span className={`pr-3`}>#VEVE</span>
-                                        <span className={`font-medium uppercase left-11 -top-1 text-lg absolute transform -rotate-12 inline-block text-red-500`}>Art</span>
-                                        <span className={`pl-3`}>SHOW</span>
-                                    </span>
-                                </a></Link>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </footer>
         </>

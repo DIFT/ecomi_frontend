@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Modal from "../modals/Modal";
 
 import Router from "next/router"
-import Search from "../blog/Search"
+import Search from "../Blog/Search"
 
 NProgress.configure({ showSpinner: false });
 
@@ -16,8 +16,8 @@ Router.onRouteChangeComplete = url => NProgress.done()
 Router.onRouteChangeError = url => NProgress.done()
 
 import dynamic from 'next/dynamic';
-import SigninComponent from "../auth/SigninComponent";
-import SignupComponent from "../auth/SignupComponent";
+import SigninComponent from "../Auth/SigninComponent";
+import SignupComponent from "../Auth/SignupComponent";
 import AlertCentre from "./AlertCentre";
 
 const ReactTooltip = dynamic(() => import('react-tooltip'), {

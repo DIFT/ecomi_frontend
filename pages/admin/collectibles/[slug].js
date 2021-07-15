@@ -1,5 +1,5 @@
 import Default from "../../../templates/Default";
-import Admin from "../../../components/auth/Admin";
+import Admin from "../../../components/Auth/Admin";
 import CollectibleUpdate from "../../../components/crud/CollectibleUpdate"
 import Link from "next/link"
 

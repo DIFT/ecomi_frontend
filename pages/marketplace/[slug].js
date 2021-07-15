@@ -11,12 +11,12 @@ import Countdown from 'react-countdown'
 import {getPercentageChange, getRarityThresholds, getSerialRarity} from "../../utils";
 
 const CollectibleValueChart = dynamic(
-    () => import("../../components/ecomi/CollectibleValueChart"),
+    () => import("../../components/Cards/CollectibleValueChart"),
     { ssr: false }
 );
 
 const MicroChart = dynamic(
-    () => import("../../components/ecomi/MicroChart"),
+    () => import("../../components/Cards/MicroChart"),
     { ssr: false }
 );
 

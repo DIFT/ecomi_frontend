@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import dynamic from "next/dynamic"
 import moment from "moment";
 import { getPosts } from '../../actions/social/social'
-import CommunityPost from "../../components/community/CommunityPost"
+import CommunityPost from "../../components/Community/CommunityPost"
 
 const Community = () => {
 

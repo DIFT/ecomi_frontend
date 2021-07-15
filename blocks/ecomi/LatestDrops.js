@@ -2,7 +2,7 @@ import Carousel from "react-elastic-carousel"
 import Link from "next/link"
 import {useEffect, useState} from "react"
 import {getNewArrivals} from "../../actions/store/store"
-import CollectibleCard from "../../components/ecomi/CollectibleCard"
+import CollectibleCard from "../../components/Cards/CollectibleCard"
 
 const LatestDrops = () => {
 

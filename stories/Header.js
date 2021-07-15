@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Button } from './Button';
 import './header.css';
 
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <header>
-    <div className="wrapper bg-gray-900">
+    <div className="wrapper">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
@@ -38,3 +39,14 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
     </div>
   </header>
 );
+
+Header.propTypes = {
+  user: PropTypes.shape({}),
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  onCreateAccount: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  user: null,
+};

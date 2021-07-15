@@ -48,12 +48,15 @@ const Index = () => {
                         <h1 className={`text-4xl sm:text-6xl lg:text-7xl leading-none font-medium tracking-tight mb-8 sm:mb-10`}>
                             Community due diligence package for curious investors.
                         </h1>
-                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-300`}>
-                            This is the <strong className={`text-white`}>unofficial</strong> due diligence package and rumour mill ran by enthusiastic and optimistic Ecomi investors. We've done all the heavy lifting for you to so that you can make your own informed decision. You can also view the <a href={`https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view`} target={'_blank'} className={`text-blue-500`}>official whitepaper here</a>.
+                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-200`}>
+                            This is the unofficial due diligence package and rumour mill ran by enthusiastic and optimistic ECOMI investors. We've done all the heavy lifting for you to so that you can make your own informed decision. You can also view the <a href={`https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view`} target={'_blank'} className={`text-pink-500`}>official whitepaper here</a>.
                         </p>
-                        <small className="text-sm font-semibold tracking-wide uppercase mb-4 text-gray-500">Did you know?</small>
-                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-300`}>
-                            If you had chosen to invest just <strong className={`text-white`}>$10,000</strong> into the OMI token {moment("20210131", "YYYYMMDD").fromNow()}, today your investment would be worth a staggering <strong className={`sm:px-2 sm:py-2 inline-block bg-gray-800 rounded-xl text-green-400 text-lg sm:text-3xl`}>$<CountUp end={333555703.802535 * rtPrice} duration={2.75} separator="," decimals={4} decimal="."/></strong>
+                        <small className="text-sm font-semibold tracking-wide uppercase mb-4 text-gray-200">Did you know?</small>
+                        <p className={`max-w-screen-lg text-lg sm:text-2xl sm:leading-10  mb-10 sm:mb-11 text-gray-200`}>
+                            If you had chosen to invest just $10,000 into the OMI token {moment("20210131", "YYYYMMDD").fromNow()}, today your investment would be worth a staggering
+                            <strong className={`sm:px-2 mx-2 inline-block bg-green-300 rounded-xl text-green-800`}>
+                                $<CountUp end={333555703.802535 * rtPrice} duration={2.75} separator="," decimals={4} decimal="."/>
+                            </strong>
                             <span className={`cursor-pointer`} data-tip={`ECOMI is <strong>not</strong> a public company, any dicussion of investment is regarding the OMI token, which is a deflationary token at the heart of the ECOMI/VEVE ecosystem.`} data-html={true} data-event='click focus'>
                                     <lord-icon
                                         animation="click"
@@ -65,8 +68,8 @@ const Index = () => {
                                     </lord-icon>
                             </span>
                         </p>
-                        <p className={`max-w-screen-lg text-lg mb-0 sm:mb-2`}>ECOMI(OMI) is currently available to buy on the following exchanges
-                            <span className={`cursor-pointer`} data-tip={`Verified by <strong className="font-bold z-10">Coin Market Cap</strong> <a href="https://coinmarketcap.com/currencies/ecomi/markets/" target="_blank" class="text-blue-400">https://coinmarketcap.com/currencies/ecomi/markets/</a>`} data-html={true} data-event='click focus'>
+                        <p className={`max-w-screen-lg text-sm text-gray-200 mb-0 sm:mb-2`}>ECOMI(OMI) is currently available to buy on the following exchanges
+                            <span className={`cursor-pointer`} data-tip={`Verified by <strong className="font-bold z-10">Coin Market Cap</strong> <a href="https://coinmarketcap.com/currencies/ecomi/markets/" target="_blank" class="text-pink-500">https://coinmarketcap.com/currencies/ecomi/markets/</a>`} data-html={true} data-event='click focus'>
                                     <lord-icon
                                         animation="click"
                                         palette="#34D399"
@@ -77,12 +80,16 @@ const Index = () => {
                                     </lord-icon>
                             </span>
                         </p>
-                        <ul className={`flex flex-wrap space-y-4 sm:space-y-0 sm:space-x-4 text-center`}>
+                        <ul className={`space-y-4 sm:space-y-0 sm:space-x-4`}>
                             <li className={`inline-block`}>
-                                <Link href={`https://ascendex.com/`} ><a className={`bg-gray-900 block p-2 h-full rounded-lg border-2 border-gray-700`} target={'_blank'}><img src={`./assets/images/exchanges/ascendex.png`} width={`100`} /></a></Link>
+                                <Link href={`https://ascendex.com/`} ><a className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" target={'_blank'}>
+                                    AscendEx
+                                </a></Link>
                             </li>
                             <li className={`inline-block`}>
-                                <Link href={`https://bitforex.com/`} ><a className={`w-full sm:w-auto flex-none bg-gray-50 text-gray-400 hover:text-gray-900 font-mono leading-6 py-3 sm:px-3 border border-gray-200 rounded-xl flex items-center justify-center space-x-2 sm:space-x-4 focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-300 focus:outline-none transition-colors duration-200`} target={'_blank'}><img src={`./assets/images/exchanges/bitforex.svg`} width={`100`} /></a></Link>
+                                <Link href={`https://bitforex.com/`} ><a className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full" target={'_blank'}>
+                                    BitForex
+                                </a></Link>
                             </li>
                         </ul>
                     </div>
@@ -132,7 +139,7 @@ const Index = () => {
             <section className={`text-white pt-16 pb-12 sm:pt-20 md:pt-24 xl:pt-32 sm:pb-20 relative border-b border-gray-800`} style={{ overflowX: 'clip'}}>
                 <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 overflow-hidden`}>
                     <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                        <div className={`mb-14 sm:mb-20 xl:mb-8`}>
+                        <div className={`mb-14 sm:mb-20 xl:mb-8 text-gray-200`}>
                             <small className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-blue-600 mb-3 block">Introducing...</small>
                             <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white ">ECOMI</h1>
                             <small className={`block mb-8 sm:mb-10 text-gray-400`}><strong>TLDR:</strong> ECOMI is the company. VEVE is the application. OMI is the token.</small>
@@ -154,7 +161,7 @@ const Index = () => {
                                 Taipei and Shanghai.
                             </p>
 
-                            <p className="max-w-screen-lg leading-relaxed mb-8 text-lg">
+                            <p className="max-w-screen-lg leading-relaxed mb-8 text-lg text-lg sm:text-2xl sm:leading-10">
                                 ECOMI’s aim is to create the world’s best platform to purchase, protect and collect premium
                                 licensed digital collectibles using Distributed Ledger Technology. ECOMI consists of two elements, the <a href={`https://www.veve.me`} target="_blank" className={`text-blue-500`}>VEVE ecosystem</a> and the <a href={`https://securewallet.shop`} className={`text-blue-500`} target={"_blank"}>ECOMI Secure Storage Wallet</a>
                             </p>

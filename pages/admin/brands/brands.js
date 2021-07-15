@@ -1,5 +1,5 @@
 import Default from "../../../templates/Default";
-import Admin from "../../../components/auth/Admin";
+import Admin from "../../../components/Auth/Admin";
 import BrandRead from "../../../components/crud/BrandRead"
 import Link from "next/link"
 

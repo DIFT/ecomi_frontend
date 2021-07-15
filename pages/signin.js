@@ -1,5 +1,5 @@
 import Default from "../templates/Default";
-import SigninComponent from "../components/auth/SigninComponent";
+import SigninComponent from "../components/Auth/SigninComponent";
 
 const Signin = () => (
     <Default>

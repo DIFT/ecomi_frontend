@@ -1,7 +1,7 @@
 import Carousel from "react-elastic-carousel"
 import { useEffect, useState } from 'react'
 import { getMarketPlaceEndingSoonest } from "../../../actions/metrics/marketplace"
-import CollectibleMarketCard from "../../../components/ecomi/CollectibleMarketCard";
+import CollectibleMarketCard from "../../../components/Cards/CollectibleMarketCard";
 
 const EndingSoonest = () => {
     const [listings, setListings] = useState([])

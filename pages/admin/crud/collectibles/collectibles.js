@@ -1,5 +1,5 @@
 import AdminTemplate from "../../../../templates/AdminTemplate";
-import Admin from "../../../../components/auth/Admin";
+import Admin from "../../../../components/Auth/Admin";
 import ReadCollectibles from "../../../../components/crud/collectibles/ReadCollectibles"
 import Link from "next/link"
 
