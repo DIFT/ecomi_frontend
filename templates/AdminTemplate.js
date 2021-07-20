@@ -1,8 +1,8 @@
 import {useState} from 'react'
 import Header from "../components/ui/Header"
-import Footer from "../components/ui/Footer"
+import Footer from "../components/ui/Footer/Footer"
 import dynamic from "next/dynamic"
-import AdminMenu from "../components/admin/AdminMenu";
+import AdminMenu from "../components/Admin/AdminMenu";
 
 const FireFly = dynamic(
     () => import("../components/ui/Firefly"),

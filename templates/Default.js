@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import Header from "../components/ui/Header"
-import Footer from "../components/ui/Footer"
+import Footer from "../components/ui/Footer/Footer"
 import dynamic from "next/dynamic"
 
 const FireFly = dynamic(
@@ -18,7 +18,7 @@ const Default = ({ children }) => {
                 <FireFly />
                 {children}
             </main>
-            <Footer classes={`text-white bg-gray-900 py-20 border-t border-black mt-20`} />
+            <Footer />
         </div>
     )
 }

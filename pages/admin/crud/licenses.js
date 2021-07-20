@@ -1,5 +1,5 @@
 import AdminTemplate from "../../../templates/AdminTemplate";
-import Admin from "../../../components/auth/Admin";
+import Admin from "../../../components/Auth/Admin";
 import License from "../../../components/crud/License";
 
 const Licenses = () => (

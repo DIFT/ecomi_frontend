@@ -1,6 +1,6 @@
 import Default from "../templates/Default";
 import Link from "next/link";
-import SignupComponent from "../components/auth/SignupComponent";
+import SignupComponent from "../components/Auth/SignupComponent";
 
 const Signup = () => (
     <Default>

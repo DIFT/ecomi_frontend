@@ -52,7 +52,7 @@ const MeetTheTeam = () => {
                                 <img src={`${API}/team/photo/${member.slug}`} alt={`${member.title}`} />
                             </figure>
                             <div className="ninja mt-3">
-                                <h4 className={`text-pink-600`}>
+                                <h4 className={`text-pink-600 font-medium`}>
                                     <Link href={`/team/${member.slug}`}><a>
                                         <LinkIcon /> {member.name}
                                     </a></Link></h4>
