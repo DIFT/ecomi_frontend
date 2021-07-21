@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Badge from "../../Atoms/Badge/Badge"
-import {getRarityThresholds, getEditionTypeThresholds, truncate} from "../../../utils"
+import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "../../../utils"
 
 
 const CollectibleCard = ({ collectible }) => {
@@ -10,6 +10,7 @@ const CollectibleCard = ({ collectible }) => {
                 <a className={`collectible__card collectible__card--${collectible.rarity.toLowerCase()} rounded-lg overflow-hidden block`}>
                     <span className="overflow-hidden block rounded-3xl">
                         <figure className={`relative z-10`}>
+                            {soldOut(collectible.totalAvailable)}
                             <div className={`card-fx card-fx--${collectible.rarity.toLowerCase()}`}>
                                 <img src={collectible.image.url} alt={collectible.name} width={"auto"} className={`rounded-3xl`} style={{ maxHeight: '369px'}}/>
                             </div>
@@ -17,7 +18,7 @@ const CollectibleCard = ({ collectible }) => {
                     </span>
                     <figcaption className={`relative -z-1`}>
                         <div className="-mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
-                            <h6 className={`block font-semibold py-2`}>{truncate(collectible.name, 30)}</h6>
+                            <h6 className={`block font-semibold py-2 text-white`}>{truncate(collectible.name, 30)}</h6>
                         </div>
                         <div className="flex items-center bg-white -mt-6 pt-7 px-6 pb-2 rounded-b-3xl">
                             <div className={`flex-auto`}>

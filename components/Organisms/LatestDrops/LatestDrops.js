@@ -31,7 +31,6 @@ const LatestDrops = () => {
                 if (data.error){
                     console.log('Error fetching new arrivals', data.error)
                 } else {
-                    console.log('Data returned is: ', data)
                     setNewArrivals(data)
                 }
             })
@@ -63,7 +62,7 @@ const LatestDrops = () => {
 
             <Slider {...settings} onSwipe={handleSwiped}>
                 {newArrivals && newArrivals.map(collectible => (
-                    <div onClickCapture={handleOnItemClick}><CollectibleCard collectible={collectible} /></div>
+                    <div onClickCapture={handleOnItemClick} key={collectible._id}><CollectibleCard collectible={collectible} /></div>
                 ))}
             </Slider>
         </section>

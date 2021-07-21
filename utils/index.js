@@ -67,3 +67,11 @@ export const truncate = (str, length) => {
         return str;
     }
 }
+
+export const soldOut = (collectible) => {
+    if (collectible < 1){
+        return <span className={`absolute z-10 top-2 right-2 -rotate-45 collectible__card--sold-out`}><img src={`./assets/images/ui/sold-out.png`} alt={"Item has sold out"} width={"70"} /></span>
+    } else {
+        return
+    }
+}

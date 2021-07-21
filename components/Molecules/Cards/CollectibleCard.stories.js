@@ -4,7 +4,7 @@ import { WithFigma } from 'storybook-addon-figma'
 
 
 export default {
-    title: 'Molecules/Collectible Cards',
+    title: 'Molecules/Cards/Collectible Cards',
     component: CollectibleCard,
 };
 
