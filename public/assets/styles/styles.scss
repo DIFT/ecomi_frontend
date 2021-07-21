@@ -1,0 +1,144 @@
+@import "typography";
+@import "react-slick.scss";
+
+body{
+  font-family: "Inter";
+  min-height: 100vh;
+  background: rgb(56,62,152);
+  background: radial-gradient(circle, rgba(56,62,152,1) 0%, rgba(13,20,72,1) 100%);
+}
+
+.slick-list{ padding-left: 10% ; cursor: grab; }
+
+
+// Collectible Cards
+.collectible__card{
+  position: relative;
+  .card-fx{
+    animation: holoCard 15s ease infinite;
+    &:before, &:after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      opacity: 0.2;
+      z-index: 1;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    &--common{
+    }
+    &--uncommon{
+      &:after{
+        content: "";
+        background-image: url("/assets/images/ui/sparkles.gif");
+        background-position: center;
+        background-size: 180%;
+        mix-blend-mode: color-dodge;
+        border-radius: 10px;
+        opacity: 1;
+        z-index: 50;
+        animation: holoSparkle 5s ease infinite;
+      }
+    }
+    &--rare, &--ultra_rare, &--secret_rare{
+      &:before, &:after{
+        background-image: linear-gradient(115deg, transparent 0%, rgb(0, 231, 255) 30%, rgb(255, 0, 231) 70%, transparent 100%);
+        background-position: 0% 0%;
+        background-repeat: no-repeat;
+        background-size: 200% 200%;
+        mix-blend-mode: color-dodge;
+      }
+      &:before{
+        opacity: 0.6;
+        animation: none;
+        transition: none;
+        background-image: linear-gradient(115deg, transparent 0%, transparent 25%, rgba(0, 231, 255,0.7) 45%, rgba(255, 0, 231,0.7) 55%, transparent 70%, transparent 100%
+        );
+      }
+      &:after{
+        background-image: url("/assets/images/ui/sparkles.gif");
+        background-position: center;
+        background-size: 180%;
+        mix-blend-mode: color-dodge;
+        border-radius: 10px;
+        opacity: 1;
+        z-index: 2;
+        animation: holoSparkle 5s ease infinite;
+      }
+    }
+    &--ultra_rare{
+      &:before{
+        animation: holoGradient 15s ease infinite;
+      }
+    }
+    &--secret_rare{
+      &:before{
+        animation: holoGradient 3s ease infinite;
+      }
+      &:after{
+        animation: none;
+      }
+    }
+  }
+  figure{
+    img{
+      transform: scale(1.09);
+    }
+  }
+
+}
+
+// Animations
+@keyframes holoSparkle {
+  0%, 5% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes holoGradient {
+  0%, 100% {
+    opacity: 0;
+    background-position: 0% 0%;
+  }
+  8% {
+    opacity: 0;
+  }
+  10% {
+    background-position: 0% 0%;
+  }
+  19% {
+    background-position: 100% 100%;
+    opacity: 0.5;
+  }
+  35% {
+    background-position: 100% 100%;
+  }
+  55% {
+    background-position: 0% 0%;
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+
+@keyframes holoCard {
+  0%, 100% {
+    transform: none;
+  }
+  25% {
+    transform: rotateZ(-3deg) rotateX(-7deg) rotateY(6deg);
+  }
+  66% {
+    transform: rotateZ(3deg) rotateX(7deg) rotateY(-6deg);
+  }
+}
