@@ -1,10 +1,15 @@
+import { useRef } from 'react'
 import Link from "next/link"
 import { useEffect, useState, useCallback } from "react"
 import { getNewArrivals } from "../../../actions/store/store"
 import Slider from "react-slick"
-import CollectibleCard from "../../Molecules/Cards/CollectibleCard";
+import CollectibleCard from "../../Molecules/Cards/CollectibleCard"
+import ArrowLeft from "../../Misc/Icons/ArrowLeft"
+import ArrowRight from "../../Misc/Icons/ArrowRight"
 
 const LatestDrops = () => {
+
+    const sliderRef = useRef()
 
     const [newArrivals, setNewArrivals] = useState([])
     const [swiped, setSwiped] = useState(false)
@@ -54,13 +59,26 @@ const LatestDrops = () => {
     };
 
     return(
-        <section className={`text-white relative -mt-64`}>
+        <section className={`text-white relative -mt-64 z-10`}>
             <div className="container">
-                <h6 className={`text-3xl mb-3`}>Latest premium collectibles (NFTs)</h6>
-                <small className={`block mb-5`}>Drag or scroll to see more premium collectibles</small>
+                <div className="flex items-center">
+                    <div className="flex-auto">
+                        <h6 className={`text-3xl mb-3`}>Latest premium collectibles (NFTs)</h6>
+                        <small className={`block mb-5`}>Drag or scroll to see more premium collectibles</small>
+                    </div>
+                    <div className="flex-auto">
+                        <nav className={`text-right`}>
+                            <ul>
+                                <li className={`inline-block`}><button onClick={e => sliderRef.current.slickPrev()}><ArrowLeft size={`30`}/></button></li>
+                                <li className={`inline-block ml-2`}><button onClick={e => sliderRef.current.slickNext()}><ArrowRight size={`30`}/></button></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
             </div>
 
-            <Slider {...settings} onSwipe={handleSwiped}>
+            <Slider {...settings} onSwipe={handleSwiped} ref={sliderRef}>
                 {newArrivals && newArrivals.map(collectible => (
                     <div onClickCapture={handleOnItemClick} key={collectible._id}><CollectibleCard collectible={collectible} /></div>
                 ))}

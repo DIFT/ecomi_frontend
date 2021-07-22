@@ -21,6 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Molecules/Cards/MediumArticleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Molecules/Cards/MediumArticleCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Organisms/LatestMediumArticles/LatestMediumArticles.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/LatestMediumArticles/LatestMediumArticles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
     </list>
@@ -66,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626772388413</updated>
-      <workItem from="1626772389707" duration="69226000" />
+      <workItem from="1626772389707" duration="74761000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -96,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626958000090</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="End of day commit">
+      <created>1626969594985</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626969594985</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,9 +126,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init rev" />
-    <MESSAGE value="End of day commit" />
     <MESSAGE value="Stash" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stash" />
+    <MESSAGE value="End of day commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="End of day commit" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1626874157029">
@@ -136,13 +147,17 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state width="2208" height="412" key="GridCell.Tab.0.right/0.0.2250.1460@0.0.2250.1460" timestamp="1626874157029" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1626958001680">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1626969596075">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1626958001680" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1626969596075" />
     <state x="784" y="347" key="run.anything.popup" timestamp="1626938395760">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="784" y="347" key="run.anything.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1626938395760" />
+    <state x="788" y="331" width="672" height="678" key="search.everywhere.popup" timestamp="1626978007659">
+      <screen x="0" y="0" width="2250" height="1460" />
+    </state>
+    <state x="788" y="331" width="672" height="678" key="search.everywhere.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1626978007659" />
   </component>
 </project>

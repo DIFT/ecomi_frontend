@@ -39,7 +39,8 @@ const Index = () => {
     const getExchanges = () => {
         const exchangeList = [
             {"id": 1, "title": "BitForex", "url": "https://bitforex.com"},
-            {"id": 2, "title": "AscendEx", "url": "https://ascendex.com"}
+            {"id": 2, "title": "AscendEx", "url": "https://ascendex.com"},
+            {"id": 3, "title": "Gate.io", "url": "https://gate.io"},
         ]
         setExchanges(exchangeList)
     }

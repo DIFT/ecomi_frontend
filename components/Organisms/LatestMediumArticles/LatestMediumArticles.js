@@ -1,8 +1,12 @@
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useRef } from "react"
 import Slider from "react-slick"
-import MediumArticleCard from "../../Molecules/Cards/MediumArticleCard";
+import MediumArticleCard from "../../Molecules/Cards/MediumArticleCard"
+import ArrowLeft from "../../Misc/Icons/ArrowLeft"
+import ArrowRight from "../../Misc/Icons/ArrowRight"
 
 const LatestMediumArticles = () => {
+
+    const sliderRef = useRef()
 
     const [mediumArticles, setMediumArticles] = useState([])
     const [swiped, setSwiped] = useState(false)
@@ -52,11 +56,25 @@ const LatestMediumArticles = () => {
     return(
         <section className={`text-white relative mt-24`}>
             <div className="container">
-                <h6 className={`text-3xl mb-3`}>Latest Medium articles</h6>
-                <small className={`block mb-5`}>Drag or scroll to see more Medium articles</small>
+                <div className="flex items-center">
+                    <div className="flex-auto">
+                        <h6 className={`text-3xl mb-3`}>Latest Medium articles</h6>
+                        <small className={`block mb-5`}>Drag or scroll to see more Medium articles</small>
+                    </div>
+                    <div className="flex-auto">
+                        <div className="flex-auto">
+                            <nav className={`text-right`}>
+                                <ul>
+                                    <li className={`inline-block`}><button onClick={e => sliderRef.current.slickPrev()}><ArrowLeft size={`30`}/></button></li>
+                                    <li className={`inline-block ml-2`}><button onClick={e => sliderRef.current.slickNext()}><ArrowRight size={`30`}/></button></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <Slider {...settings} onSwipe={handleSwiped}>
+            <Slider {...settings} onSwipe={handleSwiped} ref={sliderRef}>
                 {mediumArticles && mediumArticles.map((article) => (
                     <div onClickCapture={handleOnItemClick} key={article.guid}>
                         <MediumArticleCard article={article} />

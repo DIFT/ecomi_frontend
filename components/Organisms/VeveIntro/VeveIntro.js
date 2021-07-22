@@ -26,13 +26,30 @@ const VeveIntro = () => {
                     <p className={`font-base text-xl leading-relaxed`}>
                         VEVE is an app-based marketplace available on iOS and Android for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs).
                         With VEVE, users can obtain common, rare, or one-of-a-kind digital collectibles, customise and showcase them in the virtual showrooms,
-                        as well as buy, sell or trade collectibles with other VEVE users.
+                        as well as buy, sell or trade collectibles with other VEVE users. The app was officially launched in BETA on October 2020 and regularly drops new collectibles every Thursday at 4pm GMT - <strong>The drops tend to sell out within minutes!</strong>
+                        <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
+                            <CheckIcon />
+                    </span>
                     </p>
 
                     <ul className={`my-10`}>
                         <li className={`inline-block mr-3`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Google play</a></li>
                         <li className={`inline-block`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>App store</a></li>
                     </ul>
+                </div>
+            </section>
+        )
+    }
+
+    const VeveEmulatorSection = () => {
+        return(
+            <section className={`pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
+                <div className="container">
+                    <p className="mb-8 text-xl leading-relaxed">
+                        Using the VEVE app collectible enthusiasts and hobbyists can purchase a multitude of collectibles from their favourite brands.
+                        Each collectible is minted within a limited number of availability and is assigned a type of rarity typically associated with
+                        collectibles.
+                    </p>
                 </div>
             </section>
         )
@@ -88,15 +105,6 @@ const VeveIntro = () => {
                         scarcity and accurate provenance of collectibles. The rise of NFT popularity in 2021 is thought to exponentially increase this
                         industry worth over the coming years. VEVE have positioned themselves to be a front runner for the premium digital collectible
                         format due to their early foresight in 2017.
-                    </p>
-
-                    <p className="mb-8 text-xl leading-relaxed">
-                        Using the VEVE app collectible enthusiasts and hobbyists can purchase a multitude of collectibles from their favourite brands.
-                        Each collectible is minted within a limited number of availability and is assigned a type of rarity typically associated with
-                        collectibles. The app was officially launched in October 2020 and regularly drops new collectibles every Thursday 4pm GMT - <strong>The drops reguarly sell out within minutes!</strong>
-                        <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
-                                <CheckIcon />
-                        </span>
                     </p>
 
                 </div>
@@ -389,6 +397,7 @@ const VeveIntro = () => {
     return(
         <>
             {VeveIntroStripSection()}
+            {VeveEmulatorSection()}
             {VeveMetricsSection()}
             <LatestMediumArticles />
             {VeveMarketSection()}
