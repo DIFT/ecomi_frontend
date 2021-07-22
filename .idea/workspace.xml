@@ -20,16 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Molecules/Cards/Cards.stories.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.stories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Misc/LordIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Misc/LordIcon.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Templates/Default.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Templates/Default.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626772388413</updated>
-      <workItem from="1626772389707" duration="54104000" />
+      <workItem from="1626772389707" duration="63203000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -90,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626856019470</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="End of day commit">
+      <created>1626904089055</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1626904089055</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +114,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init rev" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init rev" />
+    <MESSAGE value="End of day commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="End of day commit" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1626874157029">
@@ -128,9 +134,13 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state width="2208" height="412" key="GridCell.Tab.0.right/0.0.2250.1460@0.0.2250.1460" timestamp="1626874157029" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1626856020598">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1626904090407">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1626856020598" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1626904090407" />
+    <state x="784" y="347" key="run.anything.popup" timestamp="1626938395760">
+      <screen x="0" y="0" width="2250" height="1460" />
+    </state>
+    <state x="784" y="347" key="run.anything.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1626938395760" />
   </component>
 </project>

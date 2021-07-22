@@ -15,7 +15,7 @@ const Default = ({ children }) => {
             <span className={`uppercase absolute text-xs top-14 -right-12 text-black font-black bg-yellow-400 py-1 px-10 transform rotate-45`}>Under construction</span>
             <Header setControlOverflow={setControlOverflow} />
             <main className={`pt-40`}>
-                <span className={`ecomi__blue--radial-bg h-full fixed`}></span>
+                <span className="radial-bg"></span>
                 <FireFly />
                 {children}
             </main>

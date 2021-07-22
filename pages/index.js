@@ -9,6 +9,10 @@ import PriceCard from "../components/Molecules/Cards/PriceCard"
 import TeamMembers from "../components/Organisms/TeamMembers/TeamMembers"
 import VeveIntro from "../components/Organisms/VeveIntro/VeveIntro"
 
+const CheckIcon = dynamic(() => import('../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
+    ssr: false
+});
+
 const LatestDrops = dynamic(
     () => import("../components/Organisms/LatestDrops/LatestDrops"),
     { ssr: false }
@@ -65,14 +69,21 @@ const Index = () => {
                     <section className={`mt-16 mb-16`}>
                         <small className="text-sm font-semibold tracking-wide uppercase mb-2 text-gray-300 block">Did you know?</small>
                         <p className={`font-normal text-xl`}>If you had chosen to invest just $10,000 into the OMI token {moment("20210131", "YYYYMMDD").fromNow()}, today your investment would be worth a staggering
-                            <strong className={`sm:px-2 mt-2 inline-block bg-green-300 rounded-xl text-green-800 text-2xl leading-relaxed`}>
+                            <strong className={`sm:px-2 my-2 mt-2 inline-block bg-green-300 rounded-xl text-green-800 text-2xl leading-relaxed`}>
                                 $<CountUp end={333555703.802535 * rtPrice} duration={2.75} separator="," decimals={4} decimal="."/>
                             </strong>
+                            <span className={`cursor-pointer`} data-tip={`ECOMI is <strong>not</strong> a public company, any dicussion of investment is regarding the OMI token.`} data-html={true} data-event='click focus'>
+                                <CheckIcon />
+                            </span>
                         </p>
                     </section>
 
                     <section>
-                        <small className={`block text-base`}>ECOMI(OMI) is currently available to buy on the following exchanges</small>
+                        <small className={`block text-base`}>ECOMI(OMI) is currently available to buy on the following exchanges
+                            <span className={`cursor-pointer`} data-tip={`Verified by <strong className="font-bold z-10">Coin Market Cap</strong> <a href="https://coinmarketcap.com/currencies/ecomi/markets/" target="_blank" class="text-pink-500">https://coinmarketcap.com/currencies/ecomi/markets/</a>`} data-html={true} data-event='click focus'>
+                                    <CheckIcon />
+                            </span>
+                        </small>
                         <ul className={`my-5`}>
                             {exchanges && exchanges.map(exchange => <li key={exchange.id} className={`inline-block mr-3`}>
                                 <a href={exchange.url} target={"_blank"} className="bg-pink-500 hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold">{exchange.title}</a>
@@ -96,7 +107,11 @@ const Index = () => {
 
                             <div className="text-white">
                                 <p className={`font-semibold text-2xl leading-relaxed mb-8`}>
-                                    ECOMI is a Singapore registered business, operated and supported by ORBIS Blockchain Technology Ltd. ORBIS is a registered company in New Zealand with offices in Auckland, New York, Taipei and Shanghai.
+                                    ECOMI is a Singapore registered business, operated and supported by ORBIS Blockchain Technology Ltd
+                                    <span className={`cursor-pointer`} data-tip={`Verified <strong className="font-bold">ECOMI TECHNOLOGY PTE. LTD</strong> via <a href="https://www.tis.bizfile.gov.sg/ngbtisinternet/faces/oracle/webcenter/portalapp/pages/TransactionMain.jspx?selectedETransId=dirSearch" target="_blank" class="text-blue-400">bizfile.gov.sg</a>`} data-html={true} data-event='click focus'>
+                                    <CheckIcon />
+                                    </span>.
+                                    ORBIS is a registered company in New Zealand with offices in Auckland, New York, Taipei and Shanghai.
                                 </p>
 
                                 <p className="mb-8 text-xl">
@@ -105,7 +120,11 @@ const Index = () => {
                                 </p>
 
                                 <p className="mb-8 text-xl">
-                                    In 2017 ECOMI identified a gap in the market for premium digital collectibles or NFTs to you and me. After identifying this gap, and predicting the rise of the technology, they started development on an end-to-end digital collectible ecosystem called VEVE. <span className={`text-base text-gray-300`}>(Previously titled 'Ecomi Collect')</span>
+                                    In 2017 ECOMI identified a gap in the market for premium digital collectibles
+                                    <span className={`inline-block cursor-pointer`} data-tip={`Source: <a href="https://medium.com/ecomi/why-collectables-are-going-digital-and-how-you-can-own-your-own-37b1cc30b0f7" target="_blank" class="text-blue-400">https://medium.com/ecomi/why-collectables-are-going-digital-and-how-you-can-own-your-own-37b1cc30b0f7</a>`} data-html={true} data-event='click focus'>
+                                        <CheckIcon />
+                                    </span>
+                                    , or NFTs to you and me. After identifying this gap, and predicting the rise of the technology, they started development on an end-to-end digital collectible ecosystem called VEVE. <span className={`text-base text-gray-300`}>(Previously titled 'Ecomi Collect')</span>
                                 </p>
 
                                 <p className="mb-8 text-xl">
@@ -135,6 +154,7 @@ const Index = () => {
 
     return(
         <Default>
+            <ReactTooltip clickable={true} />
             {hero()}
             <LatestDrops />
             {ecomiIntro()}

@@ -68,6 +68,23 @@ export const MarketplaceIcon = ({
     </lord-icon>
 )
 
+export const CheckIcon = ({
+                              size = '30px',
+                              type = 'outline',
+                              params = '100',
+                              palette="#ffffff;#ffffff;",
+                              classes = 'inline'
+                          }) => (
+    <lord-icon
+        animation="click"
+        palette={palette}
+        size={size}
+        params={params}
+        className={classes}
+        src={`./assets/icons/24-approved-checked/24-approved-checked-${type}.json`}>
+    </lord-icon>
+)
+
 export const ChatIcon = ({
                              size = '50px',
                              type = 'outline',

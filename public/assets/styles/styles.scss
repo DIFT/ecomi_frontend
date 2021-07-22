@@ -4,8 +4,18 @@
 body{
   font-family: "Inter";
   min-height: 100vh;
+  //background: rgb(56,62,152);
+  //background: radial-gradient(circle, rgba(56,62,152,1) 0%, rgba(13,20,72,1) 100%);
+}
+
+.radial-bg{
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
   background: rgb(56,62,152);
   background: radial-gradient(circle, rgba(56,62,152,1) 0%, rgba(13,20,72,1) 100%);
+  top: 0;
+  z-index: -10;
 }
 
 .slick-list{ padding-left: 10% ; cursor: grab; }
@@ -76,7 +86,57 @@ body{
 
 }
 
+// Gem
+.gem-svg{
+  display: inline-block;
+  margin-top: 1px;
+  .st0{fill:#D5D5D7;}
+  .st1{fill:#80D5F8;}
+  .st2{fill:#61C0F6;}
+  .st3{fill:#85DCFC;}
+  .st4{fill:#379BF1;}
+  .st5{fill:#2684EC;}
+  .st6{fill:#ada5ea;}
+  .st7{fill:#5757A0;}
+}
 
+// Bubbles
+.bubble {
+  background-color: white;
+  background-image: url(/assets/images/spritesheet.png);
+  background-size: 1076px 1076px;
+  border-radius: 50%;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
+  height: 152px;
+  margin-right: 20px;
+  position: absolute;
+  transition: opacity ease-in-out 1s;
+  width: 152px;
+  // TODO: Add links to bubbles, create pages and api and write articles for brands and show any available collectibles.
+  //&:hover{
+  //  box-shadow: 1px 1px 1px 1px red;
+  //  transition: 0.3s all;
+  //}
+}
+
+.bubbles {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bubbles-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+// test
+.veve-intro{
+  border-top: 3px solid #ccc;
+  border-bottom: 5px solid #ccc;
+}
 
 // Collectible Cards
 .collectible__card{
