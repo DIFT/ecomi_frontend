@@ -4,6 +4,8 @@ import { getVeveMetrics } from "../../../actions/metrics/metrics"
 import PriceCard from "../../Molecules/Cards/PriceCard"
 import dynamic from "next/dynamic"
 import { Noise } from 'noisejs'
+import {API} from "../../../config";
+import LatestMediumArticles from "../LatestMediumArticles/LatestMediumArticles";
 
 // Icons
 const CheckIcon = dynamic(() => import('../../../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
@@ -28,8 +30,8 @@ const VeveIntro = () => {
                     </p>
 
                     <ul className={`my-10`}>
-                        <li className={`inline-block mr-3`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold`}>Google play</a></li>
-                        <li className={`inline-block`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold`}>App store</a></li>
+                        <li className={`inline-block mr-3`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Google play</a></li>
+                        <li className={`inline-block`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>App store</a></li>
                     </ul>
                 </div>
             </section>
@@ -42,7 +44,6 @@ const VeveIntro = () => {
         useEffect(() => {
             getVeveMetrics()
                 .then(data => {
-                    console.log('Metric data is: ', data)
                     setVeveMetrics(data)
                 })
                 .catch((e) => console.log('Error getting veve metrics: ', e))
@@ -359,7 +360,7 @@ const VeveIntro = () => {
                     </span>
                 </h4>
                 <small className="block text-base text-gray-300">
-                    ECOMI has composed itself with an all star team with a rich and vetted reputation of successful businesses.
+                    VEVE is trusted and recognised by some of the biggest and most popular brands in the world
                 </small>
 
                 <div className="bubbles-wrapper">
@@ -379,6 +380,8 @@ const VeveIntro = () => {
                     </div>
                 </div>
 
+                <a href="#" target="_blank" className="text-sm border border-white text-white font-base py-2 px-4 rounded-full font-semibold">Browse</a>
+
             </section>
         )
     }
@@ -387,6 +390,7 @@ const VeveIntro = () => {
         <>
             {VeveIntroStripSection()}
             {VeveMetricsSection()}
+            <LatestMediumArticles />
             {VeveMarketSection()}
             {VevePremiumBrandsSection()}
         </>

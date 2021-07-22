@@ -62,7 +62,7 @@ const Index = () => {
                         <p className={`font-semibold text-2xl leading-relaxed`}>
                             This is the unofficial due diligence package, and rumour mill, ran by enthusiastic and optimistic ECOMI investors.
                             We've done all the heavy lifting for you to so that you can make your own informed decision.
-                            You can also view the <a href={`https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view`} target={'_blank'} className={`text-pink-500`}>official whitepaper here</a>.
+                            You can also view the <a href={`https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view`} target={'_blank'} className={`text-pink-500 font-semibold`}>official whitepaper here</a>.
                         </p>
                     </section>
 
@@ -86,7 +86,7 @@ const Index = () => {
                         </small>
                         <ul className={`my-5`}>
                             {exchanges && exchanges.map(exchange => <li key={exchange.id} className={`inline-block mr-3`}>
-                                <a href={exchange.url} target={"_blank"} className="bg-pink-500 hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold">{exchange.title}</a>
+                                <a href={exchange.url} target={"_blank"} className="bg-pink-500 hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold text-sm">{exchange.title}</a>
                             </li>)}
                         </ul>
                     </section>
@@ -116,7 +116,7 @@ const Index = () => {
 
                                 <p className="mb-8 text-xl">
                                     ECOMI’s aim is to create the world’s best platform to purchase, protect and collect premium
-                                    licensed digital collectibles using Distributed Ledger Technology. ECOMI consists of two elements, the <a href={`https://www.veve.me`} target="_blank" className={`text-pink-500`}>VEVE ecosystem</a> and the <a href={`https://securewallet.shop`} className={`text-pink-500`} target={"_blank"}>ECOMI Secure Storage Wallet</a>
+                                    licensed digital collectibles using Distributed Ledger Technology. ECOMI consists of two elements, the <a href={`https://www.veve.me`} target="_blank" className={`text-pink-500 font-semibold`}>VEVE ecosystem</a> and the <a href={`https://securewallet.shop`} className={`text-pink-500 font-semibold`} target={"_blank"}>ECOMI Secure Storage Wallet</a>
                                 </p>
 
                                 <p className="mb-8 text-xl">
@@ -134,7 +134,7 @@ const Index = () => {
 
                             <br/>
 
-                            <small className={`block mt-5 mb-2 sm:mb-5 text-gray-300`}>OMI token metrics as of June 21st 2021, 8:59:18 pm <a href={`https://www.coinbase.com/price/ecomi`} target={"_blank"} className={`text-pink-500`}>(https://www.coinbase.com/price/ecomi)</a></small>
+                            <small className={`block mt-5 mb-2 sm:mb-5 text-gray-300`}>OMI token metrics as of June 21st 2021, 8:59:18 pm <a href={`https://www.coinbase.com/price/ecomi`} target={"_blank"} className={`text-pink-500 font-semibold`}>(https://www.coinbase.com/price/ecomi)</a></small>
 
                             <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
                                 <li><PriceCard value={rtPrice && rtPrice.toString().substring(0,8)} label={`OMI Price`} suffix={"$"} /></li>
