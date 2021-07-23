@@ -77,12 +77,12 @@ const Footer = () => {
                                     <span className={`leading-6 ml-2 text-pink-600`}>Official Whitepaper</span></a>
                                 </Link>
                             </li>
-                            <li className={`mb-2`}>
-                                <Link href={"/collectibles"}><a className={`py-2`}>
-                                    <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Collectibles</span></a>
-                                </Link>
-                            </li>
+                            {/*<li className={`mb-2`}>*/}
+                            {/*    <Link href={"/collectibles"}><a className={`py-2`}>*/}
+                            {/*        <LinkIcon />*/}
+                            {/*        <span className={`leading-6 ml-2 text-pink-600`}>Collectibles</span></a>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                             {/*<li className={`mb-2`}>*/}
                             {/*    <Link href={"/"}><a className={`py-2`}>*/}
                             {/*        <LinkIcon />*/}

@@ -17,8 +17,8 @@ const CollectibleCard = ({ collectible }) => {
                     </figure>
                 </span>
                 <figcaption className={`relative -z-1`}>
-                    <Link href={`/collectibles/${collectible.slug}`}>
-                        <a>
+                    {/*<Link href={`/collectibles/${collectible.slug}`}>*/}
+                    {/*    <a>*/}
                             <div className="flex items-center -mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
                                 <div className="flex-auto">
                                     <h6 className={`block font-semibold py-2 text-white`}>{truncate(collectible.name, 28)}</h6>
@@ -27,8 +27,8 @@ const CollectibleCard = ({ collectible }) => {
                                     <ArrowRight classes={`text-white float-right`} />
                                 </div>
                             </div>
-                        </a>
-                    </Link>
+                    {/*    </a>*/}
+                    {/*</Link>*/}
                     <div className="flex items-center bg-white -mt-6 pt-7 px-6 pb-2 rounded-b-3xl">
                         <div className={`flex-auto`}>
                             <Badge classes={`inline-block px-2 py-1 text-xs rounded mr-2 ${getRarityThresholds(collectible.rarity)}`}>{collectible.rarity}</Badge>

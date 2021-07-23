@@ -53,18 +53,18 @@ const Header = ({ setControlOverflow }) => {
                 <div>
                     <nav>
                         <ul className="text-right">
-                            <li className="inline-block mr-2">
-                                <Link href={`/collectibles`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Collectibles`} data-effect={'solid'} data-event='mouseenter mouseleave'>
-                                        <CollectibleIcon
-                                            size={`40px`}
-                                            params={`60`}
-                                            type={`outline`}
-                                            palette={`#ffffff;#ffffff`}
-                                        />
-                                    </span>
-                                </a></Link>
-                            </li>
+                            {/*<li className="inline-block mr-2">*/}
+                            {/*    <Link href={`/collectibles`}><a>*/}
+                            {/*            <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Collectibles`} data-effect={'solid'} data-event='mouseenter mouseleave'>*/}
+                            {/*            <CollectibleIcon*/}
+                            {/*                size={`40px`}*/}
+                            {/*                params={`60`}*/}
+                            {/*                type={`outline`}*/}
+                            {/*                palette={`#ffffff;#ffffff`}*/}
+                            {/*            />*/}
+                            {/*        </span>*/}
+                            {/*    </a></Link>*/}
+                            {/*</li>*/}
                             <li className="inline-block mr-2">
                                 <Link href={`/tokenomics`}><a>
                                         <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Tokenomics`} data-effect={'solid'} data-event='mouseenter mouseleave'>
