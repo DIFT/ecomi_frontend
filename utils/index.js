@@ -1,23 +1,25 @@
+import CountUp from "react-countup"
+
 export const getRarityThresholds = (collectible) => {
     let threshold;
     switch (collectible){
         case 'COMMON':
-            threshold = 'bg-gray-400 border-gray-800 text-gray-900'
+            threshold = 'bg-gray-400 text-gray-900'
             break;
         case 'UNCOMMON':
-            threshold = 'bg-green-400 border-green-800 text-green-900'
+            threshold = 'bg-green-400 text-green-900'
             break
         case 'RARE':
-            threshold = 'bg-yellow-400 border-yellow-800 text-yellow-900'
+            threshold = 'bg-yellow-400 text-yellow-900'
             break;
         case 'ULTRA_RARE':
-            threshold = 'bg-red-400 border-red-800 text-red-900'
+            threshold = 'bg-red-400 text-red-900'
             break
         case 'SECRET_RARE':
-            threshold = 'bg-pink-400 border-pink-800 text-pink-900 omg'
+            threshold = 'bg-pink-400 text-pink-900 omg'
             break
         default:
-            threshold = 'bg-gray-400 border-gray-800 text-gray-900'
+            threshold = 'bg-gray-400 text-gray-900'
             break
     }
     return threshold;
@@ -27,13 +29,13 @@ export const getEditionTypeThresholds = (collectible) => {
     let threshold;
     switch (collectible){
         case 'FA':
-            threshold = 'bg-red-400 border-red-800 text-red-900'
+            threshold = 'bg-red-400 text-red-900'
             break;
         case 'FE':
-            threshold = 'bg-yellow-400 border-yellow-800 text-yellow-900'
+            threshold = 'bg-yellow-400 text-yellow-900'
             break
         default:
-            threshold = 'bg-gray-400 border-gray-800 text-gray-900'
+            threshold = 'bg-gray-400 text-gray-900'
             break
     }
     return threshold;
@@ -74,4 +76,22 @@ export const soldOut = (collectible) => {
     } else {
         return
     }
+}
+
+export const getPercentageChange = (currentPrice, storePrice) => {
+    const calc = (currentPrice - storePrice) / storePrice * 100
+    if (calc > 1){
+        return <span className="font-bold rounded ml-2 px-1 text-xs bg-green-400 text-green-900">
+            <CountUp end={calc} duration={2.75} separator="," decimals={2} decimal="."/>%
+        </span>
+    } else {
+        return <span className="font-bold rounded ml-2 px-1 text-xs bg-red-400 text-red-900">
+            <CountUp end={calc} duration={2.75} separator="," decimals={2} decimal="."/>%
+        </span>
+    }
+}
+
+export const getPercentageChangeNumberOnly = (currentPrice, storePrice) => {
+    const calc = (currentPrice - storePrice) / storePrice * 100
+    return calc
 }

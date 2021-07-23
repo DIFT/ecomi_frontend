@@ -8,6 +8,7 @@ import CountUp from 'react-countup'
 import PriceCard from "../components/Molecules/Cards/PriceCard"
 import TeamMembers from "../components/Organisms/TeamMembers/TeamMembers"
 import VeveIntro from "../components/Organisms/VeveIntro/VeveIntro"
+import LatestMediumArticles from "../components/Organisms/LatestMediumArticles/LatestMediumArticles";
 
 const CheckIcon = dynamic(() => import('../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
     ssr: false
@@ -99,42 +100,61 @@ const Index = () => {
 
     const ecomiIntro = () => {
         return(
-            <section className={`text-white pt-16 pb-12 sm:pt-20 md:pt-24 xl:pt-32 sm:pb-20 relative`} style={{ overflowX: 'clip'}}>
+            <>
+                <section className={`text-white pt-16 pb-12 relative`} style={{ overflowX: 'clip'}}>
+                    <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 overflow-hidden`}>
+                        <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
+                            <div className={`text-gray-300`}>
+                                <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white ">ECOMI</h1>
+                                <small className={`block mt-3 mb-8 sm:mb-10 text-gray-300`}><strong>TLDR:</strong> ECOMI is the company. VEVE is the application. OMI is the token.</small>
+                                <div className="text-white">
+                                    <p className={`font-semibold text-2xl leading-relaxed mb-8`}>
+                                        ECOMI is a Singapore registered business, operated and supported by ORBIS Blockchain Technology Ltd
+                                        <span className={`cursor-pointer`} data-tip={`Verified <strong className="font-bold">ECOMI TECHNOLOGY PTE. LTD</strong> via <a href="https://www.tis.bizfile.gov.sg/ngbtisinternet/faces/oracle/webcenter/portalapp/pages/TransactionMain.jspx?selectedETransId=dirSearch" target="_blank" class="text-blue-400">bizfile.gov.sg</a>`} data-html={true} data-event='click focus'>
+                                    <CheckIcon />
+                                    </span>.
+                                        ORBIS is a registered company in New Zealand with offices in Auckland, New York, Taipei and Shanghai.
+                                    </p>
+
+                                    <p className="mb-8 text-xl">
+                                        ECOMI’s aim is to create the world’s best platform to purchase, protect and collect premium
+                                        licensed digital collectibles using Distributed Ledger Technology. ECOMI consists of two elements, the <a href={`https://www.veve.me`} target="_blank" className={`text-pink-500 font-semibold`}>VEVE ecosystem</a> and the <a href={`https://securewallet.shop`} className={`text-pink-500 font-semibold`} target={"_blank"}>ECOMI Secure Storage Wallet</a>
+                                    </p>
+
+                                    <p className="mb-8 text-xl">
+                                        In 2017 ECOMI identified a gap in the market for premium digital collectibles
+                                        <span className={`inline-block cursor-pointer`} data-tip={`Source: <a href="https://medium.com/ecomi/why-collectables-are-going-digital-and-how-you-can-own-your-own-37b1cc30b0f7" target="_blank" class="text-blue-400">https://medium.com/ecomi/why-collectables-are-going-digital-and-how-you-can-own-your-own-37b1cc30b0f7</a>`} data-html={true} data-event='click focus'>
+                                        <CheckIcon />
+                                    </span>
+                                        , or NFTs to you and me. After identifying this gap, and predicting the rise of the technology, they started development on an end-to-end digital collectible ecosystem called VEVE. <span className={`text-base text-gray-300`}>(Previously titled 'Ecomi Collect')</span>
+                                    </p>
+
+                                    <p className="mb-8 text-xl">
+                                        The VEVE ecosystem offers IP licensors and collectors a new type of digital asset class which is powered by blockchain technology for legitimate authenticity and scarcity.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section className={`mb-16`}>
+                    <LatestMediumArticles mediumUser={`ecomi`} title={`Latest ECOMI Medium articles`} />
+                </section>
+            </>
+        )
+    }
+
+    return(
+        <Default>
+            <ReactTooltip clickable={true} />
+            {hero()}
+            <LatestDrops />
+            {ecomiIntro()}
+            <section className={`text-white relative`} style={{ overflowX: 'clip'}}>
                 <div className={`space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44 overflow-hidden`}>
                     <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                         <div className={`mb-14 sm:mb-20 xl:mb-8 text-gray-300`}>
-                            <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white ">ECOMI</h1>
-                            <small className={`block mt-3 mb-8 sm:mb-10 text-gray-300`}><strong>TLDR:</strong> ECOMI is the company. VEVE is the application. OMI is the token.</small>
-
-                            <div className="text-white">
-                                <p className={`font-semibold text-2xl leading-relaxed mb-8`}>
-                                    ECOMI is a Singapore registered business, operated and supported by ORBIS Blockchain Technology Ltd
-                                    <span className={`cursor-pointer`} data-tip={`Verified <strong className="font-bold">ECOMI TECHNOLOGY PTE. LTD</strong> via <a href="https://www.tis.bizfile.gov.sg/ngbtisinternet/faces/oracle/webcenter/portalapp/pages/TransactionMain.jspx?selectedETransId=dirSearch" target="_blank" class="text-blue-400">bizfile.gov.sg</a>`} data-html={true} data-event='click focus'>
-                                    <CheckIcon />
-                                    </span>.
-                                    ORBIS is a registered company in New Zealand with offices in Auckland, New York, Taipei and Shanghai.
-                                </p>
-
-                                <p className="mb-8 text-xl">
-                                    ECOMI’s aim is to create the world’s best platform to purchase, protect and collect premium
-                                    licensed digital collectibles using Distributed Ledger Technology. ECOMI consists of two elements, the <a href={`https://www.veve.me`} target="_blank" className={`text-pink-500 font-semibold`}>VEVE ecosystem</a> and the <a href={`https://securewallet.shop`} className={`text-pink-500 font-semibold`} target={"_blank"}>ECOMI Secure Storage Wallet</a>
-                                </p>
-
-                                <p className="mb-8 text-xl">
-                                    In 2017 ECOMI identified a gap in the market for premium digital collectibles
-                                    <span className={`inline-block cursor-pointer`} data-tip={`Source: <a href="https://medium.com/ecomi/why-collectables-are-going-digital-and-how-you-can-own-your-own-37b1cc30b0f7" target="_blank" class="text-blue-400">https://medium.com/ecomi/why-collectables-are-going-digital-and-how-you-can-own-your-own-37b1cc30b0f7</a>`} data-html={true} data-event='click focus'>
-                                        <CheckIcon />
-                                    </span>
-                                    , or NFTs to you and me. After identifying this gap, and predicting the rise of the technology, they started development on an end-to-end digital collectible ecosystem called VEVE. <span className={`text-base text-gray-300`}>(Previously titled 'Ecomi Collect')</span>
-                                </p>
-
-                                <p className="mb-8 text-xl">
-                                    The VEVE ecosystem offers IP licensors and collectors a new type of digital asset class which is powered by blockchain technology for legitimate authenticity and scarcity.
-                                </p>
-                            </div>
-
-                            <br/>
-
                             <small className={`block mt-5 mb-2 sm:mb-5 text-gray-300`}>OMI token metrics as of June 21st 2021, 8:59:18 pm <a href={`https://www.coinbase.com/price/ecomi`} target={"_blank"} className={`text-pink-500 font-semibold`}>(https://www.coinbase.com/price/ecomi)</a></small>
 
                             <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
@@ -145,20 +165,11 @@ const Index = () => {
                                 <li><PriceCard value={prices && prices[0].price.percent_change_30d.toString().substring(0,6)} label={`30 day change`} prefix={"%"} /></li>
                                 <li><PriceCard value={prices && prices[0].price.percent_change_60d.toString().substring(0,6)} label={`60 day change`} prefix={"%"} /></li>
                             </ul>
-
                         </div>
                     </div>
                 </div>
             </section>
-        )
-    }
 
-    return(
-        <Default>
-            <ReactTooltip clickable={true} />
-            {hero()}
-            <LatestDrops />
-            {ecomiIntro()}
             <TeamMembers />
             <VeveIntro />
         </Default>

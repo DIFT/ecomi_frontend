@@ -4,7 +4,7 @@ import MediumArticleCard from "../../Molecules/Cards/MediumArticleCard"
 import ArrowLeft from "../../Misc/Icons/ArrowLeft"
 import ArrowRight from "../../Misc/Icons/ArrowRight"
 
-const LatestMediumArticles = () => {
+const LatestMediumArticles = ({ mediumUser, title }) => {
 
     const sliderRef = useRef()
 
@@ -28,7 +28,7 @@ const LatestMediumArticles = () => {
 
     // Fetch latest medium articles via rss2json
     const getMediumArticles = () => {
-        fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/veve-collectibles`, {
+        fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${mediumUser}`, {
             method: 'GET'
         })
             .then(response => response.json())
@@ -58,7 +58,7 @@ const LatestMediumArticles = () => {
             <div className="container">
                 <div className="flex items-center">
                     <div className="flex-auto">
-                        <h6 className={`text-3xl mb-3`}>Latest Medium articles</h6>
+                        <h6 className={`text-3xl mb-3`}>{title}</h6>
                         <small className={`block mb-5`}>Drag or scroll to see more Medium articles</small>
                     </div>
                     <div className="flex-auto">

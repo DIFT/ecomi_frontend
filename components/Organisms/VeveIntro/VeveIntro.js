@@ -6,6 +6,7 @@ import dynamic from "next/dynamic"
 import { Noise } from 'noisejs'
 import {API} from "../../../config";
 import LatestMediumArticles from "../LatestMediumArticles/LatestMediumArticles";
+import PhoneApplication from "../../Misc/Emulator/PhoneApplication";
 
 // Icons
 const CheckIcon = dynamic(() => import('../../../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
@@ -42,7 +43,109 @@ const VeveIntro = () => {
     }
 
     const VeveEmulatorSection = () => {
+
+        const [tab, setTab] = useState(1)
+
+        const toggleTab = (tab) => {
+            setTab(tab)
+        }
+
+        const storeBlock = () => {
+            return(
+                <div className={`${tab === 1 ? 'block' : 'hidden'}`}>
+                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Store front</h2>
+                    <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Grow your collection</small>
+
+                    <p className={`font-semibold text-2xl leading-relaxed mb-10`}>
+                        Users can browse collectibles from their favorite brands in premium digital format and grow their collections.
+                    </p>
+                    <p className={`font-base text-xl leading-relaxed`}>
+                        Upon opening the VEVE app users are immediately presented with featured premium brands and collectibles, upcoming drops and powerful filtering methods. Users can easily navigate and browse digital collectibles offered, including those which are no longer available through the primary VEVE store front.
+                    </p>
+                </div>
+            )
+        }
+
+        const collectionBlock = () => {
+            return(
+                <div className={`${tab === 2 ? 'block' : 'hidden'}`}>
+                    <div className={`flex-1`}>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Collection</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Interactive NFTs</small>
+
+                        <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
+                            Users can put their collection on display in their own virtual 3D showrooms. Customize, decorate, create and share.
+                        </p>
+                        <p className={`leading-relaxed mb-8 text-lg`}>
+                            One of the key USPs of VEVE is the rich functionality offered within the application. Users can interact with their collectibles, arrange, scale and pose within a VR showroom or using augmented reality. Users can then create sharable content to show their collection off to the world.
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        const feedBlock = () => {
+            return(
+                <div className={`${tab === 3 ? 'block' : 'hidden'}`}>
+                    <div className={`flex-1`}>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Feed</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Show 'n' tell</small>
+
+                        <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
+                            The VEVE feed is at the heart of the VEVE community. Users can utilise the feed to share content, raise discussion, like, comment and subscribe to others users.
+                        </p>
+                        <p className={`leading-relaxed mb-8 text-lg`}>
+                            Community will play a massive part in the success of the VEVE application. VEVE is fortunate enough to have one of, if not the most, enthusiastic of communities in the market both on and off the application - this website is testament to that statement. The importance of community cannot be stressed enough and VEVE is forefronting this within their application.
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        const marketBlock = () => {
+            return(
+                <div className={`${tab === 4 ? 'block' : 'hidden'}`}>
+                    <div className={`flex-1`}>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Market</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Buy, sell and trade</small>
+
+                        <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
+                            The market is the 'ebay' of digital collectibles and allows users to buy, sell and swap with each other.
+                        </p>
+                        <p className={`leading-relaxed mb-8 text-lg`}>
+                            Users can accumulate desired NFTs through the peer 2 peer marketplace. The marketplace allows users to complete their collections or pick up collectibles that they otherwise might have missed out on.
+                        </p>
+                        <p className={`leading-relaxed mb-8 text-lg`}>
+                            Additionally, the VEVE marketplace has already proven to generate active users an exponential gain on their original purchases. For example we recently saw the <a href={`https://twitter.com/vevecollect/status/1386265208427974657`} className={`text-pink-500`}  target={"_blank"}>'Donny' NFT from the Powerpuff Girls sell for $27,000</a>. Donny was originally priced at just $15.99 on the <a href={"https://medium.com/veve-collectibles/powerpuff-girls-series-2-f61c8d4f30e5"} className={`text-pink-500`} target={"_blank"}>VEVE drop day</a>.
+                        </p>
+                        <p className={`leading-relaxed mb-8 text-lg`}>
+                            As the application continues to grow we expect collectibles to be more scarce in ratio to the user base, thus increasing their value more and more as time goes on. One could easily make the argument that purchasing the NFTs themselves is another solid investment choice for a quick turn around.
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        const accountBlock = () => {
+            return(
+                <div className={`${tab === 5 ? 'block' : 'hidden'}`}>
+                    <div className={`flex-1`}>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Account</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Management</small>
+
+                        <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
+                            Manage your entire collection from your phone. Browse your collectibles, complete sets, and much more.
+                        </p>
+                        <p className={`leading-relaxed mb-8 text-lg`}>
+                            One of the key USPs of VEVE is the rich functionality offered within the application. Users can interact with their collectibles, arrange, scale and pose within a VR showroom or using augmented reality. Users can then create sharable content to show their collection off to the world.
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
         return(
+            <>
             <section className={`pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
                 <div className="container">
                     <p className="mb-8 text-xl leading-relaxed">
@@ -52,6 +155,24 @@ const VeveIntro = () => {
                     </p>
                 </div>
             </section>
+
+                <section className={`pb-12 sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
+                    <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
+                        <div className="flex items-center ">
+                            <div className={`mr-36`}>
+                                <PhoneApplication screen={`store`} setTab={setTab}  />
+                            </div>
+                            <div className={`flex-1 text-white`}>
+                                {storeBlock()}
+                                {collectionBlock()}
+                                {feedBlock()}
+                                {marketBlock()}
+                                {accountBlock()}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </>
         )
     }
 
@@ -94,7 +215,7 @@ const VeveIntro = () => {
             <section className={`pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
                 <div className="container">
 
-                    <h4 className={`text-2xl font-semibold mb-3 uppercase`}>$370 Billion dollar market</h4>
+                    <h4 className={`text-2xl mb-3`}>$370 Billion dollar market</h4>
 
                     <p className="mb-8 text-xl leading-relaxed">
                         The collectibles industry is said to be worth approximately $370 billion dollars as of March 2020
@@ -397,9 +518,9 @@ const VeveIntro = () => {
     return(
         <>
             {VeveIntroStripSection()}
-            {VeveEmulatorSection()}
             {VeveMetricsSection()}
-            <LatestMediumArticles />
+            {VeveEmulatorSection()}
+            <LatestMediumArticles mediumUser={`veve-collectibles`} title={`Latest VEVE Medium articles`} />
             {VeveMarketSection()}
             {VevePremiumBrandsSection()}
         </>

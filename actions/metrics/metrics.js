@@ -122,4 +122,12 @@ export const list = (offset, limit) => {
         .catch(err => console.log('Error is: ', err))
 }
 
-
+export const getMarketData = () => {
+    return fetch(`${API}/metrics/marketplace`, {
+        method: "GET",
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log('Error is: ', err))
+}

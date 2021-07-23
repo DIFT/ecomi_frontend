@@ -82,6 +82,9 @@ const LatestDrops = () => {
                 {newArrivals && newArrivals.map(collectible => (
                     <div onClickCapture={handleOnItemClick} key={collectible._id}><CollectibleCard collectible={collectible} /></div>
                 ))}
+                <div className={`bg-gray-900 latest-drops--view-all rounded-3xl`}>
+                    <Link href={`/collectibles`}><a className={`h-full w-full justify-center text-center text-center align-center items-center flex text-xl`}>View all</a></Link>
+                </div>
             </Slider>
         </section>
     )
