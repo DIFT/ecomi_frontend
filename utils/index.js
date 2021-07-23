@@ -95,3 +95,11 @@ export const getPercentageChangeNumberOnly = (currentPrice, storePrice) => {
     const calc = (currentPrice - storePrice) / storePrice * 100
     return calc
 }
+
+export const isChangeGoodOrBad = ( value ) => {
+    if (value > 0) {
+        return 'text-green-400'
+    } else {
+        return 'text-red-400'
+    }
+}

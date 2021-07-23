@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { gsap } from 'gsap'
-import ListBrandsScreen from "./screens/ListBrands";
-import BrandScreen from "./screens/BrandScreen";
-
+import ListBrandsScreen from "./Screens/ListBrands"
+import BrandScreen from "./Screens/BrandScreen"
 const PhoneApplication = ({screen, setTab}) => {
 
     const [deviceScreen, setDeviceScreen] = useState('store');

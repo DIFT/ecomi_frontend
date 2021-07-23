@@ -1,4 +1,4 @@
-import {isChangeGoodOrBad} from "../../../_ref/ecomi_frontend-master/ecomi_frontend-master/utils";
+import { isChangeGoodOrBad } from "../../../utils"
 
 const PriceCard = ({ label, value, prefix, suffix = '', classes }) => {
     return (
