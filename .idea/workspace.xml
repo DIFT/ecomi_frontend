@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Footer/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626772388413</updated>
-      <workItem from="1626772389707" duration="87864000" />
+      <workItem from="1626772389707" duration="88403000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -119,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627002317866</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="End of day commit">
+      <created>1627003348575</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1627003348575</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,10 +164,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state width="2208" height="412" key="GridCell.Tab.0.right/0.0.2250.1460@0.0.2250.1460" timestamp="1626874157029" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1627002319876">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1627003350019">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1627002319876" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1627003350019" />
     <state x="784" y="347" key="run.anything.popup" timestamp="1626938395760">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
