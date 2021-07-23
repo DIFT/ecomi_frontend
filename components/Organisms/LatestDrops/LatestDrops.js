@@ -51,6 +51,8 @@ const LatestDrops = () => {
         className: "center z-50",
         centerPadding: "100px",
         swipeToSlide: true,
+        lazyLoad: true,
+        slidesToShow: 4,
         infinite: false,
         variableWidth: true,
         speed: 500,

@@ -48,6 +48,8 @@ const LatestMediumArticles = ({ mediumUser, title }) => {
         swipeToSlide: true,
         infinite: false,
         variableWidth: true,
+        lazyLoad: true,
+        slidesToShow: 5,
         speed: 500,
         arrows: false,
         dots: false,
@@ -80,6 +82,11 @@ const LatestMediumArticles = ({ mediumUser, title }) => {
                         <MediumArticleCard article={article} />
                     </div>
                 ))}
+                <div className={`bg-gray-900 medium-articles--view-all rounded-3xl`}>
+
+                        <a href={`https://medium.com/${mediumUser}`} target="_blank" className={`block h-full w-full justify-center text-center text-center align-center items-center flex text-xl`}>View all</a>
+
+                </div>
             </Slider>
         </section>
     )
