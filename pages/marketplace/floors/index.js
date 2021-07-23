@@ -109,9 +109,9 @@ const Metrics = () => {
             <>
                 <div className="container text-white">
                     <h1 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Marketplace Analytics</h1>
-                    <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-gray-400`}>Smart data table automatically updated every hour</p>
+                    <p className={`font-semibold text-2xl leading-relaxed`}>Smart data table automatically updated every hour</p>
 
-                    <p className={`text-lg mb-8`}>
+                    <p className={`block text-base text-gray-300`}>
                         The table below showcases the floor price (lowest available) for all collectibles currently listed on the secondary market with a 'buy it now' option.
                     </p>
                 </div>

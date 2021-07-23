@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react'
-import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
-
+import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy } from 'react-table'
+import CaretDown from "../Misc/Icons/CaretDown"
 import {matchSorter} from 'match-sorter'
+import CaretUp from "../Misc/Icons/CaretUp";
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -24,7 +25,7 @@ function GlobalFilter({
                     onChange(e.target.value);
                 }}
                 className={`bg-gray-900 p-3 w-full border border-gray-700 text-center focus:outline-none`}
-                placeholder={`Live filter ${count} floor priced collectibles`}
+                placeholder={`Live filter ${count} collectibles (floor prices only)`}
             />
     </span>
     )
@@ -86,6 +87,7 @@ const DataTable = ({ columns, data }) => {
         },
         useFilters,
         useGlobalFilter,
+        useSortBy,
         usePagination,
     )
 
@@ -101,17 +103,22 @@ const DataTable = ({ columns, data }) => {
                         />
                         <table className="min-w-full divide-y divide-gray-200" {...getTableProps()}>
                             <thead className={`border border-gray-700`} style={{ background: '#1E263C' }}>
+
                             {headerGroups.map(headerGroup => (
                                 <tr {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map(column => (
                                         <th
-                                            {...column.getHeaderProps()}
+                                            {...column.getHeaderProps(column.getSortByToggleProps())}
                                             className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                                             {column.render('Header')}
+                                            <span className={`text-white`}>
+                                            {column.isSorted ? column.isSortedDesc ? <CaretDown classes={`inline-block text-pink-500`} size={`15`} />  : (<><CaretUp classes={`inline-block text-pink-500`} size={`15`} /></>) : ''}
+                                          </span>
                                         </th>
                                     ))}
                                 </tr>
                             ))}
+
                             </thead>
                             <tbody className="divide-y divide-gray-700" {...getTableBodyProps()} style={{ background: '#1E263C' }}>
                             {page.map(row => {

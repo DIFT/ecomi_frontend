@@ -25,6 +25,7 @@ const TeamMembers = () => {
         className: "center z-50 my-10 team-members__slider",
         centerMode: true,
         infinite: true,
+        lazyLoad: true,
         slidesToShow: 7,
         focusOnSelect: true,
         speed: 500,
