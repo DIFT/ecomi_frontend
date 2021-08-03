@@ -52,7 +52,8 @@ const LatestDrops = () => {
         centerPadding: "100px",
         swipeToSlide: true,
         lazyLoad: true,
-        slidesToShow: 4,
+        slidesToShow: 5,
+        slidesToScroll: 2,
         infinite: false,
         variableWidth: true,
         speed: 500,
@@ -61,7 +62,7 @@ const LatestDrops = () => {
     };
 
     return(
-        <section className={`text-white relative -mt-64 z-10`}>
+        <section className={`text-white relative mt-20 z-10`}>
             <div className="container">
                 <div className="flex items-center">
                     <div className="flex-auto">

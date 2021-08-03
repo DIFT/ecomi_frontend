@@ -7,18 +7,23 @@ import { Noise } from 'noisejs'
 import {API} from "../../../config";
 import LatestMediumArticles from "../LatestMediumArticles/LatestMediumArticles";
 import PhoneApplication from "../../Misc/Emulator/PhoneApplication";
+import Default from "../../Templates/Default";
 
 // Icons
 const CheckIcon = dynamic(() => import('../../../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
     ssr: false
 });
 
+const LatestDrops = dynamic(
+    () => import("../../Organisms/LatestDrops/LatestDrops"),
+    { ssr: false }
+)
 
 const VeveIntro = () => {
 
     const VeveIntroStripSection = () => {
         return(
-            <section className={`veve-intro pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-gray-900 borer-t border-b border-black text-white text-center shadow-inner shadow-lg`}>
+            <section className={`veve-intro px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-gray-900 borer-t border-b border-black text-white text-center shadow-inner shadow-lg`}>
                 <div className="container">
                     <small className={`block mb-5 text-sm text-gray-300`}>The ECOMI team presents...</small>
                     <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10">
@@ -146,7 +151,7 @@ const VeveIntro = () => {
 
         return(
             <>
-            <section className={`pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
+            <section className={`px-10 pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
                 <div className="container">
                     <p className="mb-8 text-xl leading-relaxed">
                         Using the VEVE app collectible enthusiasts and hobbyists can purchase a multitude of collectibles from their favourite brands.
@@ -156,10 +161,10 @@ const VeveIntro = () => {
                 </div>
             </section>
 
-                <section className={`pb-12 sm:pb-20 space-y-20 sm:space-y-32 md:space-y-40 lg:space-y-44`}>
+                <section className={`px-10 pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
                     <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                         <div className="flex items-center ">
-                            <div className={`mr-36`}>
+                            <div className={`mr-10 lg:mr-36 hidden md:block`}>
                                 <PhoneApplication screen={`store`} setTab={setTab}  />
                             </div>
                             <div className={`flex-1 text-white`}>
@@ -189,7 +194,7 @@ const VeveIntro = () => {
         },[])
 
         return(
-            <section className={` pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
+            <section className={`px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
                 <div className="container">
 
                     <small className="block mt-5 mb-2 sm:mb-5 text-gray-300">
@@ -212,7 +217,7 @@ const VeveIntro = () => {
 
     const VeveMarketSection = () => {
         return(
-            <section className={`pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
+            <section className={`px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
                 <div className="container">
 
                     <h4 className={`text-2xl mb-3`}>$370 Billion dollar market</h4>
@@ -509,7 +514,7 @@ const VeveIntro = () => {
                     </div>
                 </div>
 
-                <a href="#" target="_blank" className="text-sm border border-white text-white font-base py-2 px-4 rounded-full font-semibold">Browse</a>
+                {/*<a href="#" target="_blank" className="text-sm border border-white text-white font-base py-2 px-4 rounded-full font-semibold">Browse</a>*/}
 
             </section>
         )
@@ -519,9 +524,10 @@ const VeveIntro = () => {
         <>
             {VeveIntroStripSection()}
             {VeveMetricsSection()}
+            <LatestDrops />
             {VeveEmulatorSection()}
-            <LatestMediumArticles mediumUser={`veve-collectibles`} title={`Latest VEVE Medium articles`} />
             {VeveMarketSection()}
+            <LatestMediumArticles mediumUser={`veve-collectibles`} title={`Latest VEVE Medium articles`} />
             {VevePremiumBrandsSection()}
         </>
     )

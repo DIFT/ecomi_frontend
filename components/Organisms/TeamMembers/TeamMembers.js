@@ -24,14 +24,38 @@ const TeamMembers = () => {
     const settings = {
         className: "center z-50 my-10 team-members__slider",
         centerMode: true,
-        infinite: true,
-        lazyLoad: true,
+        infinite: false,
         slidesToShow: 7,
         focusOnSelect: true,
         speed: 500,
         swipeToSlide: true,
         arrows: false,
         dots: false,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
 
     return(

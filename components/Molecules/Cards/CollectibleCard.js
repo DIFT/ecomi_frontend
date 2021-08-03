@@ -21,7 +21,7 @@ const CollectibleCard = ({ collectible }) => {
                     {/*    <a>*/}
                             <div className="flex items-center -mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
                                 <div className="flex-auto">
-                                    <h6 className={`block font-semibold py-2 text-white`}>{truncate(collectible.name, 28)}</h6>
+                                    <h6 className={`block font-semibold py-2 text-white`}>{truncate(collectible.name, 26)}</h6>
                                 </div>
                                 <div className="flex-auto">
                                     <ArrowRight classes={`text-white float-right`} />

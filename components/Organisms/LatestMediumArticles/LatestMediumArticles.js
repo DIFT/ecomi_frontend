@@ -56,16 +56,16 @@ const LatestMediumArticles = ({ mediumUser, title }) => {
     };
 
     return(
-        <section className={`text-white relative mt-24`}>
+        <section className={`text-white relative mt-24 z-10`}>
             <div className="container">
-                <div className="flex items-center">
+                <div className="flex items-center px-10">
                     <div className="flex-auto">
                         <h6 className={`text-3xl mb-3`}>{title}</h6>
                         <small className={`block mb-5`}>Drag or scroll to see more Medium articles</small>
                     </div>
                     <div className="flex-auto">
                         <div className="flex-auto">
-                            <nav className={`text-right`}>
+                            <nav className={`text-right hidden sm:block`}>
                                 <ul>
                                     <li className={`inline-block`}><button onClick={e => sliderRef.current.slickPrev()}><ArrowLeft size={`30`}/></button></li>
                                     <li className={`inline-block ml-2`}><button onClick={e => sliderRef.current.slickNext()}><ArrowRight size={`30`}/></button></li>

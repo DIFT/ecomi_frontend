@@ -93,15 +93,15 @@ const DataTable = ({ columns, data }) => {
 
     return(
         <>
-            <div className="flex flex-col">
-                <div className="py-2 align-middle inline-block min-w-full">
-                    <div className="shadow overflow-hidden">
+            <div className="flex flex-col overflow-auto">
+                <div className="py-2 align-middle inline-block min-w-full w-max">
+                    <div className="shadow  overflow-auto">
                         <GlobalFilter
                             preGlobalFilteredRows={preGlobalFilteredRows}
                             globalFilter={state.globalFilter}
                             setGlobalFilter={setGlobalFilter}
                         />
-                        <table className="min-w-full divide-y divide-gray-200" {...getTableProps()}>
+                        <table className="table-auto min-w-full divide-y divide-gray-200" {...getTableProps()}>
                             <thead className={`border border-gray-700`} style={{ background: '#1E263C' }}>
 
                             {headerGroups.map(headerGroup => (

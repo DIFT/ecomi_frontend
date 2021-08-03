@@ -93,13 +93,6 @@ const Metrics = () => {
                     return moment(cellProps.row.original.metrics[0].createdAt).fromNow()
                 })
             },
-            {
-                Header: 'User',
-                accessor: 'metrics[0].seller[0].username',
-                Cell: (cellProps => {
-                    return <span className={`text-gray-300`}>{cellProps.row.original.metrics[0].seller[0].username}</span>
-                })
-            }
         ],
         []
     )
@@ -107,7 +100,7 @@ const Metrics = () => {
     return(
         <Default>
             <>
-                <div className="container text-white">
+                <div className="container text-white px-10">
                     <h1 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Marketplace Analytics</h1>
                     <p className={`font-semibold text-2xl leading-relaxed`}>Smart data table automatically updated every hour</p>
 
@@ -116,12 +109,10 @@ const Metrics = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 mt-10 text-white px-20">
+                <div className="grid grid-cols-1 mt-10 text-white px-5">
                     <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
                     {marketData && marketData ? <DataTable columns={columns} data={marketData} /> : null}
-
                 </div>
-
             </>
         </Default>
     )

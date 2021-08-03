@@ -14,10 +14,10 @@ const DonateIcon = dynamic(() => import('../../Misc/LordIcon').then((mod) => mod
 const Footer = () => {
     return(
         <>
-            <footer className={`bg-gray-800 text-white bg-gray-900 py-20 border-t border-black mt-20`}>
-                <div className=" container grid grid-cols-4 gap-10 relative place-items-center">
+            <footer className={`px-10 bg-gray-800 text-white bg-gray-900 py-20 border-t border-black mt-20`}>
+                <div className="container grid grid-cols-1 md:grid-cols-4 gap-10 relative md:place-items-center">
 
-                    <div className={`relative`}>
+                    <div className={`relative -mt-36 md:mt-0`}>
                         <Image
                             src={`/assets/images/ecomi-art.png`}
                             alt="Ecomi Investors logo"
