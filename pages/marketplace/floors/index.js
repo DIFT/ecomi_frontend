@@ -24,7 +24,6 @@ const Metrics = () => {
         getMarketData()
             .then(data => {
                 setMarketData(data)
-                console.log('Marketplace data is: ', data)
             })
             .catch(e => console.log('Error getting marketplace data'))
     }
@@ -89,7 +88,6 @@ const Metrics = () => {
                 Header: 'Listed',
                 accessor: 'metrics[0].createdAt',
                 Cell: (cellProps => {
-                    console.log('Cell props is: ', cellProps)
                     return moment(cellProps.row.original.metrics[0].createdAt).fromNow()
                 })
             },
