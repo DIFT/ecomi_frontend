@@ -142,7 +142,7 @@ const Index = () => {
 
     const ecomiMediumArticles = () => {
         return(
-            <section className={`mb-16  -mt-64 z-10`}>
+            <section className={`mb-16 xl:-mt-72 z-10`}>
                 <LatestMediumArticles mediumUser={`ecomi`} title={`Latest ECOMI Medium articles`} />
             </section>
         )

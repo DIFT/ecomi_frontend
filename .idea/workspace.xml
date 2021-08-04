@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\_lab\ecomi_frontend\pages\donate" />
       <recent name="C:\_lab\ecomi_frontend\components\Organisms" />
       <recent name="C:\_lab\ecomi_frontend\components\Molecules" />
       <recent name="C:\_lab\ecomi_frontend\components\Atoms" />
@@ -65,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626772388413</updated>
-      <workItem from="1626772389707" duration="114699000" />
+      <workItem from="1626772389707" duration="120153000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -165,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628014112038</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Update purge to include utils">
+      <created>1628014809158</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1628014809158</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +201,8 @@
     <MESSAGE value="Optimisations round 1" />
     <MESSAGE value="Add responsive" />
     <MESSAGE value="Remove console logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove console logs" />
+    <MESSAGE value="Update purge to include utils" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update purge to include utils" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1626874157029">
@@ -212,10 +221,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state width="2208" height="412" key="GridCell.Tab.0.right/0.0.2250.1460@0.0.2250.1460" timestamp="1626874157029" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1628014113363">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1628014810289">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1628014113363" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1628014810289" />
     <state x="785" y="348" key="run.anything.popup" timestamp="1627117421553">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
