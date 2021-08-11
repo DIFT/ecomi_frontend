@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/alienbuild/ecomi_frontend#readme",
   "dependencies": {
+    "@amcharts/amcharts4": "^4.10.21",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "gsap": "^3.7.1",

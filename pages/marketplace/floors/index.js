@@ -12,6 +12,11 @@ const DataTable = dynamic(
     { ssr: false }
 );
 
+const MicroChart = dynamic(
+    () => import("../../../components/Atoms/MicroChart/MicroChart"),
+    { ssr: false }
+);
+
 const Metrics = () => {
 
     const [marketData, setMarketData] = useState()
@@ -35,7 +40,7 @@ const Metrics = () => {
                 accessor: 'name', // accessor is the "key" in the data
             },
             {
-                Header: 'Floor Price',
+                Header: 'Floor Price (%Gain)',
                 accessor: 'metrics[0].lowestPrice',
                 Cell: (cellProps) => (
                     <>
@@ -50,6 +55,20 @@ const Metrics = () => {
                 Cell: (cellProps => (
                     <span>${cellProps.row.original.storePrice}</span>
                 ))
+            },
+            {
+              Header: 'Chart',
+              accessor: '',
+              Cell: (cellProps => (
+                  <MicroChart id={(Math.random() + 1).toString(36).substring(7)} values={[
+                      {"date": new Date(2018, 0, 1, 8, 0, 0), "value": "1"},
+                      {"date": new Date(2018, 0, 1, 9, 0, 0), "value": "3"},
+                      {"date": new Date(2018, 0, 1, 10, 0, 0), "value": "2"},
+                      {"date": new Date(2018, 0, 1, 11, 0, 0), "value": "6"},
+                      {"date": new Date(2018, 0, 1, 12, 0, 0), "value": "4"},
+                      {"date": new Date(2018, 0, 1, 13, 0, 0), "value": "5"},
+                  ]} />
+              ))
             },
             {
                 Header: 'Issue Number',
