@@ -1,58 +1,79 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useEffect, useState, useRef } from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
-
+import { getMarketHistoricData } from '../../../actions/metrics/metrics'
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-const MicroChart = ({id, values}) => {
-    useLayoutEffect(() => {
+const MicroChart = ({id}) => {
 
-        let chart = am4core.create(`${id}`, am4charts.XYChart);
+    const chartRef = useRef(null);
 
-        chart.data = values
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
 
-        // Create axes
-        var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-        dateAxis.renderer.grid.template.disabled = true;
-        dateAxis.renderer.labels.template.disabled = true;
-        dateAxis.startLocation = 0.5;
-        dateAxis.endLocation = 0.7;
-        dateAxis.cursorTooltipEnabled = false;
+    useEffect(() => {
+        getMarketHistoricData(id)
+            .then(data => {
+                setData(data.prices)
+                setLoading(false)
+            })
+            .catch(e => console.log(e))
+    },[])
 
-        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-        valueAxis.min = 0;
-        valueAxis.renderer.grid.template.disabled = true;
-        valueAxis.renderer.baseGrid.disabled = true;
-        valueAxis.renderer.labels.template.disabled = true;
-        valueAxis.cursorTooltipEnabled = false;
+    useEffect(() => {
+        if (!chartRef.current) {
+            am4core.addLicense('ch-custom-attribution')
+            chartRef.current = am4core.create(`${id}`, am4charts.XYChart);
+            chartRef.current.data = data
 
-        // Create series
-        var series = chart.series.push(new am4charts.LineSeries());
-        series.tooltipText = "Paid: [bold]{value}[/]";
-        series.dataFields.dateX = "date";
-        series.dataFields.valueY = "value";
-        series.tensionX = 0.8;
-        series.strokeWidth = 2;
-        series.fillOpacity = 0.2;
-        series.stroke = chart.colors.getIndex(6);
-        series.fill = chart.colors.getIndex(4);
+            chartRef.current.paddingTop = 0;
+            chartRef.current.paddingRight = 0;
+            chartRef.current.paddingBottom = 0;
+            chartRef.current.paddingLeft = 0;
 
-        series.tooltip.pointerOrientation = "vertical";
+            // Create axes
+            var dateAxis = chartRef.current.xAxes.push(new am4charts.DateAxis());
+            dateAxis.renderer.grid.template.disabled = true;
+            dateAxis.renderer.labels.template.disabled = true;
+            dateAxis.startLocation = 0.5;
+            dateAxis.endLocation = 0.7;
+            dateAxis.cursorTooltipEnabled = false;
 
-        var bullet = series.bullets.push(new am4charts.CircleBullet());
-        bullet.circle.opacity = 0;
-        bullet.circle.propertyFields.opacity = "opacity";
-        bullet.circle.radius = 3;
+            var valueAxis = chartRef.current.yAxes.push(new am4charts.ValueAxis());
+            valueAxis.min = 0;
+            valueAxis.renderer.grid.template.disabled = false;
+            valueAxis.renderer.baseGrid.disabled = false;
+            valueAxis.renderer.labels.template.disabled = true;
+            valueAxis.cursorTooltipEnabled = false;
 
-        return () => {
-            chart.dispose();
-        };
-    }, []);
+            // Create series
+            var series = chartRef.current.series.push(new am4charts.LineSeries());
+            series.dataFields.dateX = "date";
+            series.dataFields.valueY = "value";
+            series.tensionX = 0.8;
+            series.strokeWidth = 2;
+            series.fillOpacity = 0.2;
+            series.stroke = chartRef.current.colors.getIndex(6);
+            series.fill = chartRef.current.colors.getIndex(4);
+
+            return () => {
+                chartRef.current && chartRef.current.dispose();
+            };
+        }
+    }, [])
+
+    // Load data into chart
+    useEffect(() => {
+        if (chartRef.current) {
+            chartRef.current.data = data;
+        }
+    }, [data]);
+
     return(
-        <div id={id} style={{ width: "200px", height: "60px" }} className={`block m-0 p-0 border`}></div>
+        <div id={id} style={{ width: "150px", height: "30px" }} className={`block m-0 p-0`}></div>
     )
 }
 

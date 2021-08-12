@@ -131,3 +131,14 @@ export const getMarketData = () => {
         })
         .catch(err => console.log('Error is: ', err))
 }
+
+export const getMarketHistoricData = (collectibleId) => {
+    return fetch(`${API}/metrics/marketplace/history/${collectibleId}`, {
+        method: "GET",
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log('Error is: ', err))
+}
+

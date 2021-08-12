@@ -57,18 +57,12 @@ const Metrics = () => {
                 ))
             },
             {
-              Header: 'Chart',
+              Header: 'pulse',
               accessor: '',
-              Cell: (cellProps => (
-                  <MicroChart id={(Math.random() + 1).toString(36).substring(7)} values={[
-                      {"date": new Date(2018, 0, 1, 8, 0, 0), "value": "1"},
-                      {"date": new Date(2018, 0, 1, 9, 0, 0), "value": "3"},
-                      {"date": new Date(2018, 0, 1, 10, 0, 0), "value": "2"},
-                      {"date": new Date(2018, 0, 1, 11, 0, 0), "value": "6"},
-                      {"date": new Date(2018, 0, 1, 12, 0, 0), "value": "4"},
-                      {"date": new Date(2018, 0, 1, 13, 0, 0), "value": "5"},
-                  ]} />
-              ))
+              disableSortBy: true,
+              Cell: (cellProps => {
+                  return <MicroChart id={cellProps.cell.row.original.collectibleId} />
+              })
             },
             {
                 Header: 'Issue Number',
@@ -88,11 +82,13 @@ const Metrics = () => {
             },
             {
                 Header: 'Brand',
-                accessor: 'brand'
+                accessor: 'brand',
+                disableSortBy: true,
             },
             {
                 Header: 'Edition Type',
                 accessor: 'editionType',
+                disableSortBy: true,
                 Cell: (cellProps => (
                     <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(cellProps.row.original.editionType)}`}>
                         {cellProps.row.original.editionType}
