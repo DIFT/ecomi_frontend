@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/metrics/metrics.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/metrics/metrics.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Atoms/MicroChart/MicroChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Atoms/MicroChart/MicroChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/marketplace/floors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/marketplace/floors/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1626772388413</updated>
       <workItem from="1626772389707" duration="131332000" />
-      <workItem from="1628757345805" duration="20655000" />
+      <workItem from="1628757345805" duration="28239000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -192,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628707481122</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Implement microcharts">
+      <created>1628801168122</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1628801168122</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +227,8 @@
     <MESSAGE value="Remove console logs" />
     <MESSAGE value="Update purge to include utils" />
     <MESSAGE value="End of day commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="End of day commit" />
+    <MESSAGE value="Implement microcharts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement microcharts" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -241,10 +247,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state width="2208" height="412" key="GridCell.Tab.0.right/0.0.2250.1460@0.0.2250.1460" timestamp="1628704446326" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1628707482430">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1628801169689">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1628707482430" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1628801169689" />
     <state x="786" y="349" key="run.anything.popup" timestamp="1628704391916">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>

@@ -17,6 +17,10 @@ const MicroChart = ({id}) => {
     useEffect(() => {
         getMarketHistoricData(id)
             .then(data => {
+
+                console.log('data prices is: ', data.prices)
+                data.prices[data.prices.push(data.prices.pop())-1].opacity = 1
+                console.log('data prices is now: ', data.prices)
                 setData(data.prices)
                 setLoading(false)
             })
@@ -34,6 +38,9 @@ const MicroChart = ({id}) => {
             chartRef.current.paddingBottom = 0;
             chartRef.current.paddingLeft = 0;
 
+            chartRef.current.dateFormatter.inputDateFormat = "yyyy-MM-dd HH:mm:ss";
+
+
             // Create axes
             var dateAxis = chartRef.current.xAxes.push(new am4charts.DateAxis());
             dateAxis.renderer.grid.template.disabled = true;
@@ -41,6 +48,9 @@ const MicroChart = ({id}) => {
             dateAxis.startLocation = 0.5;
             dateAxis.endLocation = 0.7;
             dateAxis.cursorTooltipEnabled = false;
+            dateAxis.baseInterval = {
+                timeUnit: "hour",
+            };
 
             var valueAxis = chartRef.current.yAxes.push(new am4charts.ValueAxis());
             valueAxis.min = 0;
@@ -59,6 +69,12 @@ const MicroChart = ({id}) => {
             series.stroke = chartRef.current.colors.getIndex(6);
             series.fill = chartRef.current.colors.getIndex(4);
 
+            // render data points as bullets
+            var bullet = series.bullets.push(new am4charts.CircleBullet());
+            bullet.circle.opacity = 0;
+            bullet.circle.propertyFields.opacity = "opacity";
+            bullet.circle.radius = 3;
+
             return () => {
                 chartRef.current && chartRef.current.dispose();
             };
@@ -67,6 +83,7 @@ const MicroChart = ({id}) => {
 
     // Load data into chart
     useEffect(() => {
+        console.log('Data is: ', data)
         if (chartRef.current) {
             chartRef.current.data = data;
         }
