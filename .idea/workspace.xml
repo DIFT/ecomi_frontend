@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Atoms/MicroChart/MicroChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Atoms/MicroChart/MicroChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Organisms/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -69,7 +72,8 @@
       <option name="presentableId" value="Default" />
       <updated>1626772388413</updated>
       <workItem from="1626772389707" duration="131332000" />
-      <workItem from="1628757345805" duration="28239000" />
+      <workItem from="1628757345805" duration="33611000" />
+      <workItem from="1629142465540" duration="2496000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -197,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628801168122</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Update microcharts">
+      <created>1628843780422</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1628843780422</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +239,8 @@
     <MESSAGE value="Update purge to include utils" />
     <MESSAGE value="End of day commit" />
     <MESSAGE value="Implement microcharts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement microcharts" />
+    <MESSAGE value="Update microcharts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update microcharts" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -247,10 +259,14 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state width="2208" height="412" key="GridCell.Tab.0.right/0.0.2250.1460@0.0.2250.1460" timestamp="1628704446326" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1628801169689">
+    <state x="627" y="375" key="SettingsEditor" timestamp="1629142435821">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1628801169689" />
+    <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629142435821" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1628843781445">
+      <screen x="0" y="0" width="2250" height="1460" />
+    </state>
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1628843781445" />
     <state x="786" y="349" key="run.anything.popup" timestamp="1628704391916">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>

@@ -14,8 +14,6 @@ const CheckIcon = dynamic(() => import('../components/Misc/LordIcon').then((mod)
     ssr: false
 });
 
-
-
 const Index = () => {
 
     const [rtPrice, setRtPrice] = useState(0)
@@ -43,8 +41,7 @@ const Index = () => {
         ]
         setExchanges(exchangeList)
     }
-
-
+    
     useEffect(() => {
         getOmiPrices()
         getExchanges() // TODO: Hook this up with back end
