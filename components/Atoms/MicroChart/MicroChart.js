@@ -7,7 +7,7 @@ import { getMarketHistoricData } from '../../../actions/metrics/metrics'
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-const MicroChart = ({id}) => {
+const MicroChart = ({id, storePrice, floorPrice}) => {
 
     const chartRef = useRef(null);
 
@@ -17,10 +17,7 @@ const MicroChart = ({id}) => {
     useEffect(() => {
         getMarketHistoricData(id)
             .then(data => {
-
-                console.log('data prices is: ', data.prices)
                 data.prices[data.prices.push(data.prices.pop())-1].opacity = 1
-                console.log('data prices is now: ', data.prices)
                 setData(data.prices)
                 setLoading(false)
             })
@@ -29,14 +26,26 @@ const MicroChart = ({id}) => {
 
     useEffect(() => {
         if (!chartRef.current) {
+
+            // Performance (before chart)
+            am4core.options.minPolylineStep = 5;
+            // am4core.options.onlyShowOnViewport = true;
+
             am4core.addLicense('ch-custom-attribution')
             chartRef.current = am4core.create(`${id}`, am4charts.XYChart);
             chartRef.current.data = data
 
+            // Performance (after)
+            chartRef.current.svgContainer.autoResize = false;
+
+            // Styling
             chartRef.current.paddingTop = 0;
             chartRef.current.paddingRight = 0;
             chartRef.current.paddingBottom = 0;
             chartRef.current.paddingLeft = 0;
+            chartRef.current.plotContainer.background.strokeWidth = 0;
+            chartRef.current.plotContainer.background.strokeOpacity = 0;
+
 
             chartRef.current.dateFormatter.inputDateFormat = "yyyy-MM-dd HH:mm:ss";
 
@@ -65,9 +74,27 @@ const MicroChart = ({id}) => {
             series.dataFields.valueY = "value";
             series.tensionX = 0.8;
             series.strokeWidth = 2;
-            series.fillOpacity = 0.2;
+            series.fillOpacity = 0.3;
+
+
+            var fillModifier = new am4core.LinearGradientModifier();
+            fillModifier.opacities = [1, 0];
+            fillModifier.offsets = [0, 3];
+            fillModifier.gradient.rotation = 90;
+            series.segments.template.fillModifier = fillModifier;
+
+
             series.stroke = chartRef.current.colors.getIndex(6);
-            series.fill = chartRef.current.colors.getIndex(4);
+            // series.fill = chartRef.current.colors.getIndex(4);
+            // series.fill = chartRef.current.colors.getIndex(10);
+
+            if (storePrice >= floorPrice){
+                series.fill = am4core.color("red");
+                series.stroke = am4core.color("red");
+            } else {
+                series.fill = am4core.color("#34d399");
+                series.stroke = am4core.color("#34d399");
+            }
 
             // render data points as bullets
             var bullet = series.bullets.push(new am4charts.CircleBullet());

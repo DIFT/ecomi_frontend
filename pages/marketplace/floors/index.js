@@ -61,7 +61,7 @@ const Metrics = () => {
               accessor: '',
               disableSortBy: true,
               Cell: (cellProps => {
-                  return <MicroChart id={cellProps.cell.row.original.collectibleId} />
+                  return <MicroChart id={cellProps.cell.row.original.collectibleId} storePrice={cellProps.row.original.storePrice} floorPrice={cellProps.row.original.metrics[0].lowestPrice} />
               })
             },
             {

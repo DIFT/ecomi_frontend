@@ -21,11 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/store/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/collectibles/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/collectibles/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Atoms/MicroChart/MicroChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Atoms/MicroChart/MicroChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/marketplace/floors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/marketplace/floors/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,7 @@
       <workItem from="1626772389707" duration="131332000" />
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
-      <workItem from="1629219970220" duration="592000" />
+      <workItem from="1629219970220" duration="6219000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -218,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629190143931</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fix latest drops component and implement low res urls">
+      <created>1629274775775</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1629274775775</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +254,8 @@
     <MESSAGE value="Implement microcharts" />
     <MESSAGE value="Update microcharts" />
     <MESSAGE value="End of day commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="End of day commit" />
+    <MESSAGE value="Fix latest drops component and implement low res urls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix latest drops component and implement low res urls" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -273,10 +278,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629142435821" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629190145340">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629274777302">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629190145340" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629274777302" />
     <state x="786" y="349" key="run.anything.popup" timestamp="1628704391916">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
