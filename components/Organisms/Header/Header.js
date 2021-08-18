@@ -17,15 +17,15 @@ const ReactTooltip = dynamic(() => import('react-tooltip'), {
 });
 
 // Icons
-const CollectibleIcon = dynamic(() => import('../../Misc/LordIcon').then((mod) => mod.CollectibleIcon), {
+const CollectibleIcon = dynamic(() => import('/components/Misc/LordIcon').then((mod) => mod.CollectibleIcon), {
     ssr: false
 });
 
-const TokenomicsIcon = dynamic(() => import('../../Misc/LordIcon').then((mod) => mod.TokenomicsIcon), {
+const TokenomicsIcon = dynamic(() => import('/components/Misc/LordIcon').then((mod) => mod.TokenomicsIcon), {
     ssr: false
 });
 
-const MarketplaceIcon = dynamic(() => import('../../Misc/LordIcon').then((mod) => mod.MarketplaceIcon), {
+const MarketplaceIcon = dynamic(() => import('/components/Misc/LordIcon').then((mod) => mod.MarketplaceIcon), {
     ssr: false
 });
 

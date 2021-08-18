@@ -28,7 +28,7 @@ export const CollectibleIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/108-box-package-open-close-morph/108-box-package-open-close-morph-${type}.json`}>
+        src={`/assets/icons/108-box-package-open-close-morph/108-box-package-open-close-morph-${type}.json`}>
     </lord-icon>
 )
 
@@ -46,7 +46,7 @@ export const TokenomicsIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/298-coins/298-coins-${type}.json`}>
+        src={`/assets/icons/298-coins/298-coins-${type}.json`}>
     </lord-icon>
 )
 
@@ -64,7 +64,7 @@ export const MarketplaceIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/119-law-judge/119-law-judge-${type}.json`}>
+        src={`/assets/icons/119-law-judge/119-law-judge-${type}.json`}>
     </lord-icon>
 )
 
@@ -81,7 +81,7 @@ export const CheckIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/24-approved-checked/24-approved-checked-${type}.json`}>
+        src={`/assets/icons/24-approved-checked/24-approved-checked-${type}.json`}>
     </lord-icon>
 )
 
@@ -99,7 +99,7 @@ export const ChatIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/202-chat/202-chat-${type}.json`}>
+        src={`/assets/icons/202-chat/202-chat-${type}.json`}>
     </lord-icon>
 )
 
@@ -117,7 +117,7 @@ export const ThumbIcon = ({
         size={size}
         params={params}
         class={classes}
-        src={`./assets/icons/267-like-thumb-up/267-like-thumb-up-${type}.json`}>
+        src={`/assets/icons/267-like-thumb-up/267-like-thumb-up-${type}.json`}>
     </lord-icon>
 )
 
@@ -136,7 +136,7 @@ export const QuestionIcon = ({
         size={size}
         params={params}
         class={classes}
-        src={`./assets/icons/424-question-bubble/424-question-bubble-${type}.json`}>
+        src={`/assets/icons/424-question-bubble/424-question-bubble-${type}.json`}>
     </lord-icon>
 )
 
@@ -154,7 +154,7 @@ export const BellIcon = ({
         size={size}
         params={params}
         class={classes}
-        src={`./assets/icons/193-bell-notification/193-bell-notification-${type}.json`}>
+        src={`/assets/icons/193-bell-notification/193-bell-notification-${type}.json`}>
     </lord-icon>
 )
 
@@ -174,7 +174,7 @@ export const AddCommentIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/207-chat-message-plus/207-chat-message-plus-${type}.json`}>
+        src={`/assets/icons/207-chat-message-plus/207-chat-message-plus-${type}.json`}>
     </lord-icon>
 )
 
@@ -192,7 +192,7 @@ export const AvatarIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/21-avatar/21-avatar-${type}.json`}>
+        src={`/assets/icons/21-avatar/21-avatar-${type}.json`}>
     </lord-icon>
 )
 
@@ -210,7 +210,7 @@ export const DonateIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/1016-donate-sign/1016-donate-sign-${type}.json`}>
+        src={`/assets/icons/1016-donate-sign/1016-donate-sign-${type}.json`}>
     </lord-icon>
 )
 
@@ -228,7 +228,7 @@ export const CloseIcon = ({
         size={size}
         params={params}
         className={classes}
-        src={`./assets/icons/38-error-cross-simple/38-error-cross-simple-${type}.json`}>
+        src={`/assets/icons/38-error-cross-simple/38-error-cross-simple-${type}.json`}>
     </lord-icon>
 )
 
@@ -241,6 +241,6 @@ export const MenuIcon = () => (
         size={'50px'}
         params="50"
         className={`inline`}
-        src={`./assets/icons/321-menu-7-morph/321-menu-7-morph.json`}>
+        src={`/assets/icons/321-menu-7-morph/321-menu-7-morph.json`}>
     </lord-icon>
 )
