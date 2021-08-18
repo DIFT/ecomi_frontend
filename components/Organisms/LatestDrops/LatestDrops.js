@@ -11,6 +11,11 @@ const LatestDrops = () => {
 
     const sliderRef = useRef()
 
+    const [offset, setOffset] = useState(0)
+    const [limit, setLimit] = useState(12)
+    const [size, setSize] = useState(0)
+
+
     const [newArrivals, setNewArrivals] = useState([])
     const [swiped, setSwiped] = useState(false)
 
@@ -31,12 +36,14 @@ const LatestDrops = () => {
 
     // Fetch new arrivals
     const listNewArrivals = () => {
-        getNewArrivals()
+        getNewArrivals(offset, limit)
             .then(data => {
                 if (data.error){
                     console.log('Error fetching new arrivals', data.error)
                 } else {
-                    setNewArrivals(data)
+                    setNewArrivals(data.data)
+                    setSize(data.size);
+                    setOffset(0)
                 }
             })
             .catch(e => console.log('Failed to fetch', e))
@@ -48,18 +55,36 @@ const LatestDrops = () => {
     },[])
 
     const settings = {
-        className: "center z-50",
-        centerPadding: "100px",
-        swipeToSlide: true,
         lazyLoad: true,
-        slidesToShow: 5,
-        slidesToScroll: 2,
+        slidesToShow: 7,
+        slidesToScroll: 3,
+        swipeToSlide: true,
         infinite: false,
         variableWidth: true,
         speed: 500,
         arrows: false,
         dots: false,
+        adaptiveHeight: false,
+        afterChange: () => {
+            fetchMoreDrops()
+        }
     };
+
+    const fetchMoreDrops = () => {
+        let toSkip = offset + limit
+
+        getNewArrivals(toSkip, limit)
+            .then(data => {
+                if (data.error){
+                    console.log('Something went wrong fetching more.')
+                } else {
+                    setNewArrivals([...newArrivals, ...data.data])
+                    console.log('new arrivals is now: ', ...newArrivals)
+                    setSize(data.size);
+                    setOffset(toSkip);
+                }
+            })
+    }
 
     return(
         <section className={`text-white relative mt-20 z-10`}>
@@ -85,10 +110,9 @@ const LatestDrops = () => {
                 {newArrivals && newArrivals.map(collectible => (
                     <div onClickCapture={handleOnItemClick} key={collectible._id}><CollectibleCard collectible={collectible} /></div>
                 ))}
-                <div className={`bg-gray-900 latest-drops--view-all rounded-3xl`}>
-                    <span className={`h-full w-full justify-center text-center text-center align-center items-center flex text-xl`}>View all <br />Coming soon</span>
-                </div>
             </Slider>
+
+            <button onClick={() => fetchMoreDrops()}>Load more</button>
         </section>
     )
 }

@@ -12,7 +12,7 @@ const CollectibleCard = ({ collectible }) => {
                     <figure className={`relative z-10`}>
                         {soldOut(collectible.totalAvailable)}
                         <div className={`card-fx card-fx--${collectible.rarity.toLowerCase()}`}>
-                            <img src={collectible.image.url} alt={collectible.name} width={"auto"} className={`rounded-3xl`} style={{ maxHeight: '369px'}}/>
+                            <img src={collectible.image.lowResolutionUrl} alt={collectible.name} width={"auto"} className={`rounded-3xl`} style={{ maxHeight: '369px'}}/>
                         </div>
                     </figure>
                 </span>

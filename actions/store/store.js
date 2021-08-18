@@ -1,14 +1,18 @@
 import fetch from 'isomorphic-fetch'
 import { API } from "../../config";
 
-export const getNewArrivals = (props) => {
+export const getNewArrivals = (offset, limit) => {
+    const data = {
+        limit,
+        offset
+    }
     return fetch(`${API}/collectibles`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({props})
+        body: JSON.stringify(data)
     })
         .then(response => {
             return response.json()

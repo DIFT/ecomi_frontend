@@ -18,8 +18,32 @@ body{
   z-index: -10;
 }
 
-.slick-list{ padding-left: 10% ; cursor: grab; }
+//.slick-track { margin: auto; }
 
+.slick-track {
+  display: flex;
+  align-items: stretch;
+}
+// slick slide is the container of a single slide item. There is also a wrapper div before our custom component
+.slick-slide {
+  display: flex;
+  align-self: stretch;
+  height: unset;
+  > div {
+    display: flex;
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+//.slick-list{ padding-left: 10% ; cursor: grab; }
+//.hacker{
+//  .slick-track{
+//    [data-index*="0"]{
+//        margin-left: 5%;
+//    }
+//  }
+//}
 // Team members
 .team-members__slider{
   figcaption{
