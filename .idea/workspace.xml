@@ -73,7 +73,7 @@
       <workItem from="1626772389707" duration="131332000" />
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
-      <workItem from="1629219970220" duration="6219000" />
+      <workItem from="1629219970220" duration="11092000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -222,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629274775775</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Update sparkline/microchart style">
+      <created>1629291076667</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1629291076667</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +262,8 @@
     <MESSAGE value="Update microcharts" />
     <MESSAGE value="End of day commit" />
     <MESSAGE value="Fix latest drops component and implement low res urls" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix latest drops component and implement low res urls" />
+    <MESSAGE value="Update sparkline/microchart style" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update sparkline/microchart style" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -278,10 +286,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629142435821" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629274777302">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629291077715">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629274777302" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629291077715" />
     <state x="786" y="349" key="run.anything.popup" timestamp="1628704391916">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>

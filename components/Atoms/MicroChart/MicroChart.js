@@ -89,8 +89,8 @@ const MicroChart = ({id, storePrice, floorPrice}) => {
             // series.fill = chartRef.current.colors.getIndex(10);
 
             if (storePrice >= floorPrice){
-                series.fill = am4core.color("red");
-                series.stroke = am4core.color("red");
+                series.fill = am4core.color("#f87171");
+                series.stroke = am4core.color("#f87171");
             } else {
                 series.fill = am4core.color("#34d399");
                 series.stroke = am4core.color("#34d399");
@@ -110,7 +110,6 @@ const MicroChart = ({id, storePrice, floorPrice}) => {
 
     // Load data into chart
     useEffect(() => {
-        console.log('Data is: ', data)
         if (chartRef.current) {
             chartRef.current.data = data;
         }

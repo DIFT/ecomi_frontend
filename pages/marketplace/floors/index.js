@@ -57,6 +57,16 @@ const Metrics = () => {
                 ))
             },
             {
+                Header: 'Prev Sold Price',
+                accessor: 'metrics[0].prevSold.price',
+                Cell: (cellProps => (
+                    <>
+                        <span>${cellProps.row.original.metrics[0].prevSold.price.toLocaleString()} <span className={`text-xs text-gray-300`}>({cellProps.row.original.editionType}#{cellProps.row.original.metrics[0].issueNumber})</span></span>
+                        <span className={`block text-xs text-gray-300`}>{moment(cellProps.row.original.metrics[0].prevSold.createdAt).fromNow()}</span>
+                    </>
+                ))
+            },
+            {
               Header: 'pulse',
               accessor: '',
               disableSortBy: true,
