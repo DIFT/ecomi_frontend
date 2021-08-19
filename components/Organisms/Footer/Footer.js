@@ -14,7 +14,7 @@ const DonateIcon = dynamic(() => import('../../Misc/LordIcon').then((mod) => mod
 const Footer = () => {
     return(
         <>
-            <footer className={`px-10 bg-gray-800 text-white bg-gray-900 py-20 border-t border-black mt-20`}>
+            <footer className={`px-10 text-white bg-gray-900 py-20 border-t border-black mt-20`}>
                 <div className="container grid grid-cols-1 md:grid-cols-4 gap-10 relative md:place-items-center">
 
                     <div className={`relative -mt-36 md:mt-0`}>

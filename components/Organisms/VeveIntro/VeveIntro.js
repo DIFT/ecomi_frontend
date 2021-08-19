@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import Link from "next/link"
+import Slider from "react-slick"
 import moment from "moment"
 import { getVeveMetrics } from "../../../actions/metrics/metrics"
 import PriceCard from "../../Molecules/Cards/PriceCard"
@@ -13,6 +14,7 @@ import CollectibleCard from '../../Molecules/Cards/CollectibleCard'
 import Badge from "../../Atoms/Badge/Badge"
 import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "../../../utils"
 import ArrowRight from "../../Misc/Icons/ArrowRight"
+import { getBrands } from "../../../actions/brand/brand"
 
 
 // Icons
@@ -51,10 +53,11 @@ const VeveIntro = () => {
                                 The app was officially launched in BETA on October 2020 and regularly drops new collectibles every Thursday at 4pm GMT
                             </p>
 
-                            <strong className={`text-pink-500`}>Drops frequently sell out within minutes generating millions of revenue.</strong>
+                            <small className={`uppercase text-sm text-gray-300 block tracking-wide`}>Drops frequently sell out within minutes generating millions of revenue.
                             <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
                                 <CheckIcon />
                             </span>
+                            </small>
                             {/*<p className={`font-base text-base leading-relaxed`}>*/}
                             {/*    With VEVE, users can obtain common, rare, or one-of-a-kind digital collectibles, customise and showcase them in the virtual showrooms,*/}
                             {/*    as well as buy, sell or trade collectibles with other VEVE users.*/}
@@ -71,6 +74,47 @@ const VeveIntro = () => {
                         </div>
                     </div>
                 </div>
+            </section>
+        )
+    }
+
+    const VevePremiumBrands = () => {
+
+        const [brands, setBrands] = useState([])
+
+        useEffect(() => {
+            listBrands()
+        },[])
+
+        const listBrands = () => {
+            getBrands()
+                .then(data => {
+                    if (data.error){
+                        console.log('Error fetching brands ', data.error)
+                    } else {
+                        setBrands(data)
+                    }
+                })
+        }
+
+        const settings = {
+            slidesToShow: 12,
+            slidesToScroll: 1,
+            swipeToSlide: true,
+            lazyLoad: true,
+            infinite: true,
+            arrows: false,
+            dots: false,
+            adaptiveHeight: false,
+        };
+
+        return(
+            <section className={`text-white border-t border-b shadow border-black bg-gray-900 py-2 text-center`}>
+                <Slider {...settings}>
+                    {brands && brands.map(brand => (
+                        <div><img src={brand.squareImage.thumbnailUrl} alt={brand.name} width={`100`} className={`rounded-full shadow border border-black`}/></div>
+                    ))}
+                </Slider>
             </section>
         )
     }
@@ -266,288 +310,6 @@ const VeveIntro = () => {
         )
     }
 
-    const VevePremiumBrandsSection = () => {
-
-        const CANVAS_WIDTH = 3000;
-        // The amplitude. The amount the noise affects the movement.
-        const NOISE_AMOUNT = 5;
-        // The frequency. Smaller for flat slopes, higher for jagged spikes.
-        const NOISE_SPEED = 0.004;
-        // Pixels to move per frame. At 60fps, this would be 18px a sec.
-        const SCROLL_SPEED = 0.3;
-
-        const bubbles = [
-            {
-                s: 0.6,
-                x: 1134,
-                y: 45,
-            },
-            {
-                s: 0.6,
-                x: 1620,
-                y: 271,
-            },
-            {
-                s: 0.6,
-                x: 1761,
-                y: 372,
-            },
-            {
-                s: 0.6,
-                x: 2499,
-                y: 79,
-            },
-            {
-                s: 0.8,
-                x: 2704,
-                y: 334,
-            },
-            {
-                s: 0.6,
-                x: 2271,
-                y: 356,
-            },
-            {
-                s: 0.6,
-                x: 795,
-                y: 226,
-            },
-            {
-                s: 0.6,
-                x: 276,
-                y: 256,
-            },
-            {
-                s: 0.6,
-                x: 1210,
-                y: 365,
-            },
-            {
-                s: 0.6,
-                x: 444,
-                y: 193,
-            },
-            {
-                s: 0.6,
-                x: 2545,
-                y: 387,
-            },
-            {
-                s: 0.8,
-                x: 1303,
-                y: 193,
-            },
-            {
-                s: 0.8,
-                x: 907,
-                y: 88,
-            },
-            {
-                s: 0.8,
-                x: 633,
-                y: 320,
-            },
-            {
-                s: 0.8,
-                x: 323,
-                y: 60,
-            },
-            {
-                s: 0.8,
-                x: 129,
-                y: 357,
-            },
-            {
-                s: 0.8,
-                x: 1440,
-                y: 342,
-            },
-            {
-                s: 0.8,
-                x: 1929,
-                y: 293,
-            },
-            {
-                s: 0.8,
-                x: 2135,
-                y: 198,
-            },
-            {
-                s: 0.8,
-                x: 2276,
-                y: 82,
-            },
-            {
-                s: 0.8,
-                x: 2654,
-                y: 182,
-            },
-            {
-                s: 0.8,
-                x: 2783,
-                y: 60,
-            },
-            {
-                s: 1.0,
-                x: 1519,
-                y: 118,
-            },
-            {
-                s: 1.0,
-                x: 1071,
-                y: 233,
-            },
-            {
-                s: 1.0,
-                x: 1773,
-                y: 148,
-            },
-            {
-                s: 1.0,
-                x: 2098,
-                y: 385,
-            },
-            {
-                s: 1.0,
-                x: 2423,
-                y: 244,
-            },
-            {
-                s: 1.0,
-                x: 901,
-                y: 385,
-            },
-            {
-                s: 1.0,
-                x: 624,
-                y: 111,
-            },
-            {
-                s: 1.0,
-                x: 75,
-                y: 103,
-            },
-            {
-                s: 1.0,
-                x: 413,
-                y: 367,
-            },
-            {
-                s: 1.0,
-                x: 2895,
-                y: 271,
-            },
-            {
-                s: 1.0,
-                x: 1990,
-                y: 75,
-            },
-        ];
-
-        const noise = new Noise();
-
-        const animationRef = useRef();
-        const bubblesRef = useRef(
-            bubbles.map((bubble) => ({
-                ...bubble,
-                noiseSeedX: Math.floor(Math.random() * 64000),
-                noiseSeedY: Math.floor(Math.random() * 64000),
-                xWithNoise: bubble.x,
-                yWithNoise: bubble.y,
-            })),
-        );
-
-        const [isReady, setReady] = useState(false);
-
-        useEffect(() => {
-            setTimeout(() => {
-                setReady(true);
-            }, 200);
-
-            animationRef.current = requestAnimationFrame(animate);
-
-            return () => {
-                if (animationRef.current) {
-                    cancelAnimationFrame(animationRef.current);
-                }
-            };
-        }, []);
-
-        function animate() {
-            bubblesRef.current = bubblesRef.current.map((bubble, index) => {
-                const newNoiseSeedX = bubble.noiseSeedX + NOISE_SPEED;
-                const newNoiseSeedY = bubble.noiseSeedY + NOISE_SPEED;
-
-                const randomX = noise.simplex2(newNoiseSeedX, 0);
-                const randomY = noise.simplex2(newNoiseSeedY, 0);
-
-                const newX = bubble.x - SCROLL_SPEED;
-
-                const newXWithNoise = newX + randomX * NOISE_AMOUNT;
-                const newYWithNoise = bubble.y + randomY * NOISE_AMOUNT;
-
-                const element = document.getElementById(`bubble-${index}`);
-
-                if (element) {
-                    element.style.transform = `translate(${newXWithNoise}px, ${newYWithNoise}px) scale(${bubble.s})`;
-                }
-
-                return {
-                    ...bubble,
-                    noiseSeedX: newNoiseSeedX,
-                    noiseSeedY: newNoiseSeedY,
-                    x: newX < -200 ? CANVAS_WIDTH : newX,
-                    xWithNoise: newXWithNoise,
-                    yWithNoise: newYWithNoise,
-                };
-            });
-
-            animationRef.current = requestAnimationFrame(animate);
-        }
-
-        const backgroundPositions = [];
-
-        for (let i = 0; i < 7; i++) {
-            for (let j = 0; j < 7; j++) {
-                backgroundPositions.push(`${-154 * j}px ${-154 * i}px`);
-            }
-        }
-
-        return(
-            <section className={`pt-4 pb-4 text-white text-center mb-10 overflow-hidden mt-10`}>
-                <h4 className="text-2xl mb-3">
-                    Premium brands and licenses
-                    <span className={`cursor-pointer inline-block`} data-tip={`Announced Feb 20th 2020 <a href="https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce" target="_blank" class="text-pink-500">https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce</a>`} data-html={true} data-event='click focus'>
-                        <CheckIcon />
-                    </span>
-                </h4>
-                <small className="block text-base text-gray-300">
-                    VEVE is trusted and recognised by some of the biggest and most popular brands in the world
-                </small>
-
-                <div className="bubbles-wrapper">
-                    <div className="bubbles">
-                        {bubbles.map((bubble, index) => (
-                            <div
-                                className="bubble"
-                                id={`bubble-${index}`}
-                                key={`${bubble.x} ${bubble.y}`}
-                                style={{
-                                    backgroundPosition: backgroundPositions[index],
-                                    opacity: isReady ? 1 : 0,
-                                    transform: `translate(${bubble.x}px, ${bubble.y}px) scale(${bubble.s})`,
-                                }}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                <Link href={`/brands`}><a className="text-sm border border-white text-white font-base py-2 px-4 rounded-full font-semibold">Browse</a></Link>
-
-            </section>
-        )
-    }
-
     const VeveRarityExplained = () => {
 
         const cardExample = {
@@ -635,8 +397,42 @@ const VeveIntro = () => {
         return(
             <section className={`pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
                 <div className="container">
-                    <h1 className={`text-3xl mb-3`}>How does it work?</h1>
-                    {demoCard()}
+                    <div className="grid grid-cols-3 gap-10">
+                        <div>{demoCard()}</div>
+                        <div className="col-span-2">
+                            <h1 className={`text-3xl mb-3`}>Smarter than your average NFT</h1>
+                            <p className={`mb-8 text-xl leading-relaxed`}>
+                                All of the collectibles offered on the VEVE platform undergo a strickt quality process between both the internal VEVE team and the brands and licensors themselves. Many of the collectibles used are actually derivited from the actual models used in movies, games and tv shows.
+                            </p>
+
+                            <p className={`mb-8 text-xl leading-relaxed`}>The Ghostbusters Ecto-1 car is one such example of high quality control as we can note a high poly count accompanied by several details depicted on the model such as environmental texture on the windshield and arches, chromatic texturing, and various opaque materials throughout.</p>
+
+                            <ul className={`grid grid-cols-4 gap-4`}>
+                                <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
+                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">Triangles</span>
+                                    <span className={`text-2xl font-semibold `}>142,828</span>
+                                </li>
+
+                                <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
+                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">Verticies</span>
+                                    <span className={`text-2xl font-semibold `}>128,473</span>
+                                </li>
+
+                                <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
+                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">Materials</span>
+                                    <span className={`text-2xl font-semibold `}>29</span>
+                                </li>
+                            </ul>
+
+                            <small className={`uppercase text-sm text-gray-300 block tracking-wide`}>
+                                The Ghostbusters 1:1 Ecto-1 (Interactive) NFT dropped on the VEVE platform on July 17th 2021.<br/>All 4,444 editions sold out within 1 minute.
+                                <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/otMND7Pg3-Y?t=1765" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
+                                <CheckIcon />
+                            </span>
+                            </small>
+
+                        </div>
+                    </div>
                 </div>
             </section>
         )
@@ -645,12 +441,12 @@ const VeveIntro = () => {
     return(
         <>
             {VeveIntroStripSection()}
+            {VevePremiumBrands()}
             {VeveRarityExplained()}
             {VeveMetricsSection()}
             {VeveEmulatorSection()}
             {VeveMarketSection()}
             <LatestMediumArticles mediumUser={`veve-collectibles`} title={`Latest VEVE Medium articles`} />
-            {VevePremiumBrandsSection()}
         </>
     )
 }
