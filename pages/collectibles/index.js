@@ -15,6 +15,7 @@ const Collectibles = () => {
     useEffect(() => {
         getCollectibles(0, 200)
             .then(data => {
+                console.log('collectible data is: ', data.data)
                 setCollectibles(data.data)
             })
             .catch(e => console.log('Error getting collectibles'))
@@ -28,7 +29,7 @@ const Collectibles = () => {
 
                 <ul>
                     {collectibles && collectibles.map((collectible) => (
-                        <li className={`inline-block`}><img src={collectible.image.url} alt={'Failed to load collectible'} width={`100`}  /></li>
+                        <li className={`inline-block`}><img src={collectible.image.fullResolutionUrl} alt={'Failed to load collectible'} width={`100`}  /></li>
                     ))}
                 </ul>
             </>

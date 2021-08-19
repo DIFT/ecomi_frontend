@@ -5,6 +5,7 @@ import ArrowRight from "../../Misc/Icons/ArrowRight";
 
 
 const CollectibleCard = ({ collectible }) => {
+    console.log('collectible data is: ', collectible)
     return(
         <article className={`${collectible.image.direction === 'PORTRAIT' ? 'max-w-xs' : 'max-w-2xl'} px-5`} >
             <div className={`collectible__card collectible__card--${collectible.rarity.toLowerCase()} rounded-lg overflow-hidden block`}>

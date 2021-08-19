@@ -18,23 +18,30 @@ body{
   z-index: -10;
 }
 
-//.slick-track { margin: auto; }
+.slick-track { margin: auto; }
 
 .slick-track {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  align-content: center;
 }
-// slick slide is the container of a single slide item. There is also a wrapper div before our custom component
-.slick-slide {
-  display: flex;
-  align-self: stretch;
-  height: unset;
-  > div {
-    display: flex;
-    align-self: stretch;
-    width: 100%;
-  }
-}
+
+
+//.slick-track {
+//  display: flex;
+//  align-items: stretch;
+//}
+//// slick slide is the container of a single slide item. There is also a wrapper div before our custom component
+//.slick-slide {
+//  display: flex;
+//  align-self: stretch;
+//  height: unset;
+//  > div {
+//    display: flex;
+//    align-self: stretch;
+//    width: 100%;
+//  }
+//}
 
 //.slick-list{ padding-left: 10% ; cursor: grab; }
 //.hacker{
@@ -476,12 +483,37 @@ $veveDarkGrey: #2D2D2D;
   height: 100%;
 }
 
-// test
-.veve-intro{
-  border-top: 3px solid #ccc;
-  border-bottom: 5px solid #ccc;
-}
 
+.max-w-none { max-width: none; }
+.veve-bg-gradient{
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(19,19,19,1) 20%, rgba(92,97,101,1) 100%);
+  position: relative;
+  &:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0.2;
+    z-index: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background-image: url("/assets/images/ui/sparkles.gif");
+    background-position: center;
+    background-size: 180%;
+    mix-blend-mode: color-dodge;
+    border-radius: 10px;
+    opacity: 1;
+    z-index: 50;
+    animation: holoSparkle 5s ease infinite;
+  }
+  img{
+    transform: none!important;
+    max-width: none;
+  }
+}
 // Collectible Cards
 .collectible__card{
   position: relative;

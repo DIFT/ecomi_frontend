@@ -1,4 +1,5 @@
 import Default from "../components/Templates/Default"
+import Link from "next/link"
 import { useState, useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
 import dynamic from "next/dynamic"
@@ -115,7 +116,7 @@ const Index = () => {
 
                                 <p className="mb-8 text-xl">
                                     ECOMI’s aim is to create the world’s best platform to purchase, protect and collect premium
-                                    licensed digital collectibles using Distributed Ledger Technology. ECOMI consists of two elements, the <a href={`https://www.veve.me`} target="_blank" className={`text-pink-500 font-semibold`}>VEVE ecosystem</a> and the <a href={`https://securewallet.shop`} className={`text-pink-500 font-semibold`} target={"_blank"}>ECOMI Secure Storage Wallet</a>
+                                    licensed digital collectibles using Distributed Ledger Technology. ECOMI consists of two elements, the <a href={`https://www.veve.me`} target="_blank" className={`text-pink-500 font-semibold`}>VEVE application</a> and the <a href={`https://securewallet.shop`} className={`text-pink-500 font-semibold`} target={"_blank"}>ECOMI Secure Storage Wallet</a>
                                 </p>
 
                                 <p className="mb-8 text-xl">
@@ -127,7 +128,7 @@ const Index = () => {
                                 </p>
 
                                 <p className="mb-8 text-xl">
-                                    The VEVE ecosystem offers IP licensors and collectors a new type of digital asset class which is powered by blockchain technology for legitimate authenticity and scarcity.
+                                    The VEVE ecosystem offers IP licensors and collectors a new type of digital asset class which is powered by blockchain technology for legitimate authenticity and scarcity. The entire ecosystem is underpinned by the deflationary OMI token and comprosies of some interesting tokenomics, which you can <Link href={`/tokenomics`}><a className={`text-pink-500`}>learn more about here</a></Link>.
                                 </p>
                             </div>
                         </div>

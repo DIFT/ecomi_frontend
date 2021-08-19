@@ -21,7 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/marketplace/floors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/marketplace/floors/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Molecules/Cards/CollectibleCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/LatestDrops/LatestDrops.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/collectibles/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/collectibles/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +44,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1vZb7G23Bgf4Q8eRulLynetu6Hf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -49,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -72,7 +83,7 @@
       <workItem from="1626772389707" duration="131332000" />
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
-      <workItem from="1629219970220" duration="11780000" />
+      <workItem from="1629219970220" duration="29360000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -235,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629326998217</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Correct previously sold issue number display">
+      <created>1629329234023</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1629329234023</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +288,8 @@
     <MESSAGE value="Fix latest drops component and implement low res urls" />
     <MESSAGE value="Update sparkline/microchart style" />
     <MESSAGE value="Implement prev sold data into market floor table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement prev sold data into market floor table" />
+    <MESSAGE value="Correct previously sold issue number display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correct previously sold issue number display" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -289,21 +308,21 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state width="2208" height="412" key="GridCell.Tab.0.right/0.0.2250.1460@0.0.2250.1460" timestamp="1628704446326" />
-    <state x="627" y="375" key="SettingsEditor" timestamp="1629142435821">
+    <state x="627" y="375" key="SettingsEditor" timestamp="1629367275118">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629142435821" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629326999349">
+    <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629367275118" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629329235247">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629326999349" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629329235247" />
     <state x="786" y="349" key="run.anything.popup" timestamp="1628704391916">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="786" y="349" key="run.anything.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1628704391916" />
-    <state x="789" y="332" width="672" height="678" key="search.everywhere.popup" timestamp="1628704745401">
+    <state x="790" y="333" width="672" height="678" key="search.everywhere.popup" timestamp="1629386001854">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="789" y="332" width="672" height="678" key="search.everywhere.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1628704745401" />
+    <state x="790" y="333" width="672" height="678" key="search.everywhere.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1629386001854" />
   </component>
 </project>

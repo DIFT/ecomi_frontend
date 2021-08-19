@@ -1,13 +1,19 @@
 import { useEffect, useState, useRef } from 'react'
+import Link from "next/link"
 import moment from "moment"
 import { getVeveMetrics } from "../../../actions/metrics/metrics"
 import PriceCard from "../../Molecules/Cards/PriceCard"
 import dynamic from "next/dynamic"
 import { Noise } from 'noisejs'
-import {API} from "../../../config";
-import LatestMediumArticles from "../LatestMediumArticles/LatestMediumArticles";
-import PhoneApplication from "../../Misc/Emulator/PhoneApplication";
-import Default from "../../Templates/Default";
+import {API} from "../../../config"
+import LatestMediumArticles from "../LatestMediumArticles/LatestMediumArticles"
+import PhoneApplication from "../../Misc/Emulator/PhoneApplication"
+import Default from "../../Templates/Default"
+import CollectibleCard from '../../Molecules/Cards/CollectibleCard'
+import Badge from "../../Atoms/Badge/Badge"
+import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "../../../utils"
+import ArrowRight from "../../Misc/Icons/ArrowRight"
+
 
 // Icons
 const CheckIcon = dynamic(() => import('../../../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
@@ -23,25 +29,47 @@ const VeveIntro = () => {
 
     const VeveIntroStripSection = () => {
         return(
-            <section className={`veve-intro px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-gray-900 borer-t border-b border-black text-white text-center shadow-inner shadow-lg`}>
+            <section className={`veve-intro px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-gray-900  text-white shadow-inner shadow-lg overflow-hidden relative`}>
                 <div className="container">
-                    <small className={`block mb-5 text-sm text-gray-300`}>The ECOMI team presents...</small>
-                    <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10">
-                        <img src={`./assets/images/veve-logo--white.png`} width={`300`} className={`mx-auto`} alt={`VEVE`} />
-                    </h1>
-                    <p className={`font-base text-xl leading-relaxed`}>
-                        VEVE is an app-based marketplace available on iOS and Android for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs).
-                        With VEVE, users can obtain common, rare, or one-of-a-kind digital collectibles, customise and showcase them in the virtual showrooms,
-                        as well as buy, sell or trade collectibles with other VEVE users. The app was officially launched in BETA on October 2020 and regularly drops new collectibles every Thursday at 4pm GMT - <strong>The drops tend to sell out within minutes!</strong>
-                        <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
-                            <CheckIcon />
-                    </span>
-                    </p>
+                    <div className="grid grid-cols-2 gap-3 py-20">
+                        <div>
+                            <small className={`block uppercase text-xs mb-5 font-medium text-gray-400`}>The ECOMI team presents...</small>
+                            <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10">
+                                <img src={`./assets/images/veve-logo--white.png`} width={`300`} alt={`VEVE`} />
+                            </h1>
+                            <h2 className={`text-6xl leading-none font-semibold tracking-tight mb-8 sm:mb-10`}>Premium, officially licensed, digital collectibles (NFTs)</h2>
+                            <p className={`font-base text-xl leading-relaxed mb-5`}>
+                                VEVE is an app-based marketplace available on iOS and Android for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs).
+                            </p>
 
-                    <ul className={`my-10`}>
-                        <li className={`inline-block mr-3`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Google play</a></li>
-                        <li className={`inline-block`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>App store</a></li>
-                    </ul>
+                            <ul className={`my-10`}>
+                                <li className={`inline-block mr-3`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Google play</a></li>
+                                <li className={`inline-block`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>App store</a></li>
+                            </ul>
+
+                            <p className={`font-base text-xl leading-relaxed mb-5 text-gray-300`}>
+                                The app was officially launched in BETA on October 2020 and regularly drops new collectibles every Thursday at 4pm GMT
+                            </p>
+
+                            <strong className={`text-pink-500`}>Drops frequently sell out within minutes generating millions of revenue.</strong>
+                            <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
+                                <CheckIcon />
+                            </span>
+                            {/*<p className={`font-base text-base leading-relaxed`}>*/}
+                            {/*    With VEVE, users can obtain common, rare, or one-of-a-kind digital collectibles, customise and showcase them in the virtual showrooms,*/}
+                            {/*    as well as buy, sell or trade collectibles with other VEVE users.*/}
+                            {/*    The app was officially launched in BETA on October 2020 and regularly drops new collectibles every Thursday at 4pm GMT - <strong>The drops tend to sell out within minutes!</strong>*/}
+                            {/*    <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>*/}
+                            {/*            <CheckIcon />*/}
+                            {/*    </span>*/}
+                            {/*</p>*/}
+                        </div>
+                        <div>
+                            <div className={`position`}>
+                                <img src={`assets/images/veve-hero.png`} alt="VEVE Hero Image" className={`absolute`} width={`600`} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         )
@@ -514,8 +542,102 @@ const VeveIntro = () => {
                     </div>
                 </div>
 
-                {/*<a href="#" target="_blank" className="text-sm border border-white text-white font-base py-2 px-4 rounded-full font-semibold">Browse</a>*/}
+                <Link href={`/brands`}><a className="text-sm border border-white text-white font-base py-2 px-4 rounded-full font-semibold">Browse</a></Link>
 
+            </section>
+        )
+    }
+
+    const VeveRarityExplained = () => {
+
+        const cardExample = {
+            "brand": {
+                "name": "Marvel Mightys",
+                "id": "c92feb01-ef87-4dcd-bb55-80d18cff7fa6",
+                "slug": "marvel-mightys"
+            },
+            "image": {
+                "url": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.full.jpeg",
+                "direction": "PORTRAIT",
+                "thumbnailUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.thumbnail.jpeg",
+                "lowResolutionUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.low.jpeg",
+                "fullResolutionUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.full.jpeg",
+                "highResolutionUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.high.jpeg"
+            },
+            "_id": "c6c4987d-df55-48bf-b727-655b73668c06",
+            "createdAt": "2021-08-14T16:21:18.091Z",
+            "editionType": "FA",
+            "name": "Red Skull",
+            "rarity": "ULTRA_RARE",
+            "slug": "red-skull",
+            "storePrice": 13,
+            "totalAvailable": 1,
+        }
+
+        const demoCard = () => {
+
+            const [rarity, setRarity] = useState("ULTRA_RARE")
+
+            return(
+                <article className={`max-w-md`} >
+                    <div className={`collectible__card rounded-lg block relative`}>
+                        <img src={`/assets/images/ecto-1.png`} className={`absolute -left-10 z-20 bottom-24 max-w-none`} width={"550px"}/>
+                        <span className="block rounded-3xl overflow-hidden">
+                            <figure className={`relative z-10`}>
+                                <span className={`veve-bg-gradient w-100 block relative`} style={{ height: "350px" }}>
+                                    {/*<img src={`https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.full.jpeg`} alt={`Spider-man`} width={"auto"} className={`rounded-3xl`} />*/}
+                                </span>
+                            </figure>
+                        </span>
+                        <figcaption className={`relative -z-1`}>
+                            <div className="flex items-center -mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
+                                <div className="flex-auto">
+                                    <h6 className={`block font-semibold py-2 text-xl text-white`}>Ghostbusters 1:1 Ecto-1 (Interactive)</h6>
+                                </div>
+                                <div className="flex-auto">
+                                    <ArrowRight size={"30px"} classes={`text-white float-right`} />
+                                </div>
+                            </div>
+                            <div className="flex items-center bg-white -mt-6 pt-7 px-6 pb-2 rounded-b-3xl">
+                                <div className={`flex-auto`}>
+                                    <Badge classes={`inline-block px-2 py-1 text-sm rounded mr-2 ${getRarityThresholds(rarity)}`}>{rarity}</Badge>
+                                    <Badge classes={`inline-block px-2 py-1 text-sm rounded ${getEditionTypeThresholds("FA")}`}>
+                                        FA
+                                    </Badge>
+                                </div>
+                                <div className={`flex-auto text-right text-lg font-semibold text-gray-500`}>
+                                    <svg className={`gem-svg`} version="1.1"  x="0px" y="0px" width="40px"
+                                         height="40px"
+                                         viewBox="0 0 102.5 132.2" >
+                                        <g id="sapphire">
+                                            <polygon className="st1" points="82,47.2 102.5,36.3 102.5,34.5 100.7,33.5 79.8,44.6 82,45.8 	"/>
+                                            <polygon className="st2" points="59,33.5 37.5,45.8 37.5,72.5 59,85 82,72.5 82,45.8 	"/>
+                                            <polygon id="shine" className="st3" points="31.3,76.7 83.7,42.7 87.2,50.9 34.2,85.5 	"/>
+                                            <polygon className="st4" points="16,34.5 59,10.3 59,33.5 37.5,45.8 	"/>
+                                            <polygon className="st5" points="16,34.5 16,85 37.5,72.5 37.5,45.8 	"/>
+                                            <polygon className="st5" points="16,85 59,110 59,85 37.5,72.5 	"/>
+                                            <polygon className="st4" points="59,85 59,110 102.5,85 82,72.5 	"/>
+                                            <polygon className="st1" points="82,72.5 82,45.8 102.5,34.5 102.5,85 	"/>
+                                            <polygon className="st1" points="82,45.8 59,33.5 59,10.3 102.5,34.5 	"/>
+                                            <polygon className="st5" points="16,84.3 37.5,71.8 37.5,72.5 38.7,73.2 16.5,85.3 16,85 	"/>
+                                            <polygon className="st5" points="58.3,109.6 59,110 59.4,109.8 59.4,84.8 59,85 58.3,84.6 	"/>
+                                            <polygon className="st5" points="37.5,46.2 37.5,45.8 38,45.5 16.5,34.2 16,34.5 16,34.9 	"/>
+                                        </g>
+                                    </svg>
+                                    120.00
+                                </div>
+                            </div>
+                        </figcaption>
+                    </div>
+                </article>
+            )
+        }
+        return(
+            <section className={`pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
+                <div className="container">
+                    <h1 className={`text-3xl mb-3`}>How does it work?</h1>
+                    {demoCard()}
+                </div>
             </section>
         )
     }
@@ -523,8 +645,8 @@ const VeveIntro = () => {
     return(
         <>
             {VeveIntroStripSection()}
+            {VeveRarityExplained()}
             {VeveMetricsSection()}
-            <LatestDrops />
             {VeveEmulatorSection()}
             {VeveMarketSection()}
             <LatestMediumArticles mediumUser={`veve-collectibles`} title={`Latest VEVE Medium articles`} />

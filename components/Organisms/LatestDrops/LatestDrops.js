@@ -112,7 +112,6 @@ const LatestDrops = () => {
                 ))}
             </Slider>
 
-            <button onClick={() => fetchMoreDrops()}>Load more</button>
         </section>
     )
 }
