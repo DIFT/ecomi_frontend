@@ -52,7 +52,7 @@ const Index = () => {
         return(
             <section className={`-mt-20 xs:-mt-40 px-10 pb-12 sm:pb-20 text-white relative min-h-screen flex items-center`}>
                 <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                    <img src={`./assets/images/ecomi-art.png`}  width={`50%`} className={`absolute -right-28 -bottom-96 opacity-20`} alt={"ECOMI Fan Art by OMI The Clown"}/>
+                    <img src={`./assets/images/ecomi-art.png`}  width={`50%`} className={`absolute -right-28 -bottom-96 opacity-30`} alt={"ECOMI Fan Art by OMI The Clown"}/>
                     <section>
                         <h1 className={`text-4xl sm:text-6xl lg:text-8xl leading-none font-semibold tracking-tight mb-8 sm:mb-10`}>
                             Community due diligence package for curious investors.

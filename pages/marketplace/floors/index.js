@@ -1,124 +1,30 @@
 import Default from "../../../components/Templates/Default"
 import { API } from "../../../config"
 import Link from "next/link"
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getMarketData } from "../../../actions/metrics/metrics"
 import dynamic from "next/dynamic"
 import moment from "moment"
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
-
-const DataTable = dynamic(
-    () => import("../../../components/crud/DataTable"),
-    { ssr: false }
-);
-
-const MicroChart = dynamic(
-    () => import("../../../components/Atoms/MicroChart/MicroChart"),
-    { ssr: false }
-);
+import CollectibleFloors from '../../../components/Organisms/Tables/CollectibleFloors'
+import ComicFloors from '../../../components/Organisms/Tables/ComicFloors'
 
 const Metrics = () => {
 
-    const [marketData, setMarketData] = useState()
+    const [tab, setTab] = useState('collectibleFloors')
 
-    useEffect(() => {
-        loadMarketData()
-    },[])
-
-    const loadMarketData = () => {
-        getMarketData()
-            .then(data => {
-                setMarketData(data)
-            })
-            .catch(e => console.log('Error getting marketplace data'))
+    const renderCorrectTable = () => {
+        switch (tab){
+            case "collectibleFloors":
+                return <CollectibleFloors />
+                break
+            case "comicFloors":
+                return <ComicFloors />
+                break
+            default:
+                return <ComicFloors />
+        }
     }
-
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: 'Name',
-                accessor: 'name', // accessor is the "key" in the data
-            },
-            {
-                Header: 'Floor Price (%Gain)',
-                accessor: 'metrics[0].lowestPrice',
-                Cell: (cellProps) => (
-                    <>
-                        <span className={`font-medium`}>${cellProps.row.original.metrics[0].lowestPrice.toLocaleString()}</span>
-                        {getPercentageChange(cellProps.row.original.metrics[0].lowestPrice,cellProps.row.original.storePrice)}
-                    </>
-                )
-            },
-            {
-                Header: 'Store Price',
-                accessor: 'storePrice',
-                Cell: (cellProps => (
-                    <span>${cellProps.row.original.storePrice}</span>
-                ))
-            },
-            {
-                Header: 'Prev Sold Price',
-                accessor: 'metrics[0].prevSold.price',
-                Cell: (cellProps => (
-                    <>
-                        <span>${cellProps.row.original.metrics[0].prevSold.price.toLocaleString()} <span className={`text-xs text-gray-300`}>({cellProps.row.original.editionType}#{cellProps.row.original.metrics[0].prevSold.issueNumber})</span></span>
-                        <span className={`block text-xs text-gray-300`}>{moment(cellProps.row.original.metrics[0].prevSold.createdAt).fromNow()}</span>
-                    </>
-                ))
-            },
-            {
-              Header: 'pulse',
-              accessor: '',
-              disableSortBy: true,
-              Cell: (cellProps => {
-                  return <MicroChart id={cellProps.cell.row.original.collectibleId} storePrice={cellProps.row.original.storePrice} floorPrice={cellProps.row.original.metrics[0].lowestPrice} />
-              })
-            },
-            {
-                Header: 'Issue Number',
-                accessor: 'metrics[0].issueNumber',
-                Cell: (cellProps) => (
-                    <span className={`font-medium`}>{cellProps.row.original.metrics[0].issueNumber} <span className={`text-sm text-gray-300 font-normal`}>of {cellProps.row.original.totalIssued}</span></span>
-                )
-            },
-            {
-                Header: 'Rarity',
-                accessor: 'rarity',
-                Cell: (cellProps => (
-                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
-                        {cellProps.row.original.rarity}
-                    </span>
-                ))
-            },
-            {
-                Header: 'Brand',
-                accessor: 'brand',
-                disableSortBy: true,
-            },
-            {
-                Header: 'Edition Type',
-                accessor: 'editionType',
-                disableSortBy: true,
-                Cell: (cellProps => (
-                    <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(cellProps.row.original.editionType)}`}>
-                        {cellProps.row.original.editionType}
-                    </span>
-                ))
-            },
-            {
-                Header: 'Total Listed',
-                accessor: 'metrics[0].totalListings'
-            },
-            {
-                Header: 'Listed',
-                accessor: 'metrics[0].createdAt',
-                Cell: (cellProps => {
-                    return moment(cellProps.row.original.metrics[0].createdAt).fromNow()
-                })
-            },
-        ],
-        []
-    )
 
     return(
         <Default>
@@ -132,10 +38,19 @@ const Metrics = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 mt-10 text-white px-5">
-                    <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
-                    {marketData && marketData ? <DataTable columns={columns} data={marketData} /> : null}
-                </div>
+                <nav className={`px-5 mt-10`}>
+                    <ul>
+                        <li className="inline-block mr-3">
+                            <button onClick={e => setTab("collectibleFloors")} className={`${tab === "collectibleFloors" ? 'bg-pink-500' : 'bg-transparent border border-white'} hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>Collectibles</button>
+                        </li>
+                        <li className="inline-block mr-3">
+                            <button onClick={e => setTab("comicFloors")} className={`${tab === "comicFloors" ? 'bg-pink-500' : 'bg-transparent border border-white'} hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>Comics</button>
+                        </li>
+                    </ul>
+                </nav>
+
+
+                {renderCorrectTable()}
             </>
         </Default>
     )

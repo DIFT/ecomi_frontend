@@ -21,8 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/metrics/metrics.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/metrics/metrics.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/VeveIntro/VeveIntro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/collectibles/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/collectibles/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/marketplace/floors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/marketplace/floors/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/ecomi-art.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/ecomi-art.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +83,7 @@
       <workItem from="1626772389707" duration="131332000" />
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
-      <workItem from="1629219970220" duration="34899000" />
+      <workItem from="1629219970220" duration="43196000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -256,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629392965403</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Refactor brands section and make api driven">
+      <created>1629410110957</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1629410110957</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +304,8 @@
     <MESSAGE value="Implement prev sold data into market floor table" />
     <MESSAGE value="Correct previously sold issue number display" />
     <MESSAGE value="Update homepage content" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update homepage content" />
+    <MESSAGE value="Refactor brands section and make api driven" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor brands section and make api driven" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -316,10 +328,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629367275118" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629392966877">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1629410112253">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629392966877" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1629410112253" />
     <state x="786" y="349" key="run.anything.popup" timestamp="1628704391916">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>

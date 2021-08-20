@@ -112,7 +112,7 @@ const VeveIntro = () => {
             <section className={`text-white border-t border-b shadow border-black bg-gray-900 py-2 text-center`}>
                 <Slider {...settings}>
                     {brands && brands.map(brand => (
-                        <div><img src={brand.squareImage.thumbnailUrl} alt={brand.name} width={`100`} className={`rounded-full shadow border border-black`}/></div>
+                        <div><img src={brand.squareImage.thumbnailUrl} alt={brand.name} width={`auto`} className={`rounded-xl shadow border border-black`}/></div>
                     ))}
                 </Slider>
             </section>
@@ -312,30 +312,6 @@ const VeveIntro = () => {
 
     const VeveRarityExplained = () => {
 
-        const cardExample = {
-            "brand": {
-                "name": "Marvel Mightys",
-                "id": "c92feb01-ef87-4dcd-bb55-80d18cff7fa6",
-                "slug": "marvel-mightys"
-            },
-            "image": {
-                "url": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.full.jpeg",
-                "direction": "PORTRAIT",
-                "thumbnailUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.thumbnail.jpeg",
-                "lowResolutionUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.low.jpeg",
-                "fullResolutionUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.full.jpeg",
-                "highResolutionUrl": "https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.high.jpeg"
-            },
-            "_id": "c6c4987d-df55-48bf-b727-655b73668c06",
-            "createdAt": "2021-08-14T16:21:18.091Z",
-            "editionType": "FA",
-            "name": "Red Skull",
-            "rarity": "ULTRA_RARE",
-            "slug": "red-skull",
-            "storePrice": 13,
-            "totalAvailable": 1,
-        }
-
         const demoCard = () => {
 
             const [rarity, setRarity] = useState("ULTRA_RARE")
@@ -346,6 +322,7 @@ const VeveIntro = () => {
                         <img src={`/assets/images/ecto-1.png`} className={`absolute -left-10 z-20 bottom-24 max-w-none`} width={"550px"}/>
                         <span className="block rounded-3xl overflow-hidden">
                             <figure className={`relative z-10`}>
+                                {soldOut(0)}
                                 <span className={`veve-bg-gradient w-100 block relative`} style={{ height: "350px" }}>
                                     {/*<img src={`https://d11unjture0ske.cloudfront.net/collectible_type_image.c6c4987d-df55-48bf-b727-655b73668c06.eafd37d1-295e-4079-ab98-2f9743818eb0.full.jpeg`} alt={`Spider-man`} width={"auto"} className={`rounded-3xl`} />*/}
                                 </span>
@@ -354,7 +331,9 @@ const VeveIntro = () => {
                         <figcaption className={`relative -z-1`}>
                             <div className="flex items-center -mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
                                 <div className="flex-auto">
-                                    <h6 className={`block font-semibold py-2 text-xl text-white`}>Ghostbusters 1:1 Ecto-1 (Interactive)</h6>
+                                    <h6 className={`block font-semibold py-2 text-lg text-gray-200`}>
+                                        Ghostbusters 1:1 Ecto-1 (Interactive)
+                                    </h6>
                                 </div>
                                 <div className="flex-auto">
                                     <ArrowRight size={"30px"} classes={`text-white float-right`} />
@@ -405,7 +384,7 @@ const VeveIntro = () => {
                                 All of the collectibles offered on the VEVE platform undergo a strickt quality process between both the internal VEVE team and the brands and licensors themselves. Many of the collectibles used are actually derivited from the actual models used in movies, games and tv shows.
                             </p>
 
-                            <p className={`mb-8 text-xl leading-relaxed`}>The Ghostbusters Ecto-1 car is one such example of high quality control as we can note a high poly count accompanied by several details depicted on the model such as environmental texture on the windshield and arches, chromatic texturing, and various opaque materials throughout.</p>
+                            <p className={`mb-8 text-xl leading-relaxed`}>The Ghostbusters Ecto-1 car is one such example of high quality control as we can note a high poly count accompanied by several details depicted on the model such as environmental texture on the windshield and arches, chromatic texturing, and various opaque materials.</p>
 
                             <ul className={`grid grid-cols-4 gap-4`}>
                                 <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
