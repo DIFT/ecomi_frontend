@@ -36,15 +36,15 @@ const VeveIntro = () => {
 
     const VeveIntroStripSection = () => {
         return(
-            <section className={`veve-intro px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 bg-gray-900  text-white shadow-inner shadow-lg overflow-hidden relative`}>
+            <section className={`veve-intro px-10 pt-4 pb-72 lg:pb-4 sm:pt-5 md:pt-6 xl:pt-8 bg-gray-900  text-white shadow-inner shadow-lg overflow-hidden relative`}>
                 <div className="container">
-                    <div className="grid grid-cols-2 gap-3 py-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 py-20">
                         <div>
                             <small className={`block uppercase text-xs mb-5 font-medium text-gray-400`}>The ECOMI team presents...</small>
                             <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10">
                                 <img src={`./assets/images/veve-logo--white.png`} width={`300`} alt={`VEVE`} />
                             </h1>
-                            <h2 className={`text-6xl leading-none font-semibold tracking-tight mb-8 sm:mb-10`}>Premium, officially licensed, digital collectibles (NFTs)</h2>
+                            <h2 className={`text-4xl lg:text-6xl leading-none font-semibold tracking-tight mb-8 sm:mb-10`}>Premium, officially licensed, digital collectibles (NFTs)</h2>
                             <p className={`font-base text-xl leading-relaxed mb-5`}>
                                 VEVE is an app-based marketplace available on iOS and Android for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs).
                             </p>
@@ -136,6 +136,32 @@ const VeveIntro = () => {
             arrows: false,
             dots: false,
             adaptiveHeight: false,
+            responsive: [
+                {
+                    breakpoint: 1600,
+                    settings: {
+                        slidesToShow: 12,
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 10,
+                    }
+                },
+                {
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 7,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                }
+            ],
             afterChange: () => {
                 fetchMoreDrops()
             }
@@ -320,6 +346,7 @@ const VeveIntro = () => {
             getVeveMetrics()
                 .then(data => {
                     setVeveMetrics(data)
+                    console.log('veve metrics is: ', data)
                 })
                 .catch((e) => console.log('Error getting veve metrics: ', e))
         },[])
@@ -394,7 +421,7 @@ const VeveIntro = () => {
                         <figcaption className={`relative -z-1`}>
                             <div className="flex items-center -mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
                                 <div className="flex-auto">
-                                    <h6 className={`block font-semibold py-2 text-lg text-gray-200`}>
+                                    <h6 className={`block font-semibold py-2 text-sm xl:text-lg text-gray-200`}>
                                         Ghostbusters 1:1 Ecto-1 (Interactive)
                                     </h6>
                                 </div>
@@ -437,9 +464,9 @@ const VeveIntro = () => {
             )
         }
         return(
-            <section className={`pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
+            <section className={`pt-4 pb-4 text-white mb-10 overflow-hidden mt-10 px-10`}>
                 <div className="container">
-                    <div className="grid grid-cols-3 gap-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                         <div>{demoCard()}</div>
                         <div className="col-span-2">
                             <h1 className={`text-3xl mb-3`}>Smarter than your average NFT</h1>
@@ -449,7 +476,7 @@ const VeveIntro = () => {
 
                             <p className={`mb-8 text-xl leading-relaxed`}>The Ghostbusters Ecto-1 car is one such example of high quality control as we can note a high poly count accompanied by several details depicted on the model such as environmental texture on the windshield and arches, chromatic texturing, and various opaque materials.</p>
 
-                            <ul className={`grid grid-cols-4 gap-4`}>
+                            <ul className={`grid grid-cols-2 lg:grid-cols-4 gap-4`}>
                                 <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
                                     <span className="uppercase text-sm text-gray-300 block tracking-wide">Triangles</span>
                                     <span className={`text-2xl font-semibold `}>142,828</span>
@@ -504,7 +531,35 @@ const VeveIntro = () => {
             infinite: true,
             speed: 500,
             slidesToShow: 5.5,
-            slidesToScroll: 3
+            slidesToScroll: 3,
+            responsive: [
+                {
+                    breakpoint: 1600,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 3,
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                    }
+                },
+                {
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                }
+            ]
         };
 
         return(
@@ -561,59 +616,61 @@ const VeveIntro = () => {
 
                 <Slider {...settings}>
                     {reviews && reviews.map((review, index) => (
-                        <div className={`trustpilot-card block relative shadow bg-gray-900 text-gray-300 p-5 max-w-sm rounded-3xl shadow-inner shadow-lg`} key={index}>
-                            <div className="block tp-stars tp-stars--5 mb-3">
-                                <svg viewBox="0 0 251 46" xmlns="http://www.w3.org/2000/svg" width={`100`}>
-                                    <g className="tp-star">
-                                    <path className="tp-star__canvas" fill="#dcdce6"
-                                    d="M0 46.330002h46.375586V0H0z"></path>
-                                    <path className="tp-star__shape"
-                                    d="M39.533936 19.711433L13.230239 38.80065l3.838216-11.797827L7.02115 19.711433h12.418975l3.837417-11.798624 3.837418 11.798624h12.418975zM23.2785 31.510075l7.183595-1.509576 2.862114 8.800152L23.2785 31.510075z"
-                                    fill="#FFF"></path>
-                                    </g>
-                                    <g className="tp-star">
-                                    <path className="tp-star__canvas" fill="#dcdce6"
-                                    d="M51.24816 46.330002h46.375587V0H51.248161z"></path>
-                                    <path className="tp-star__canvas--half" fill="#dcdce6"
-                                    d="M51.24816 46.330002h23.187793V0H51.248161z"></path>
-                                    <path className="tp-star__shape"
-                                    d="M74.990978 31.32991L81.150908 30 84 39l-9.660206-7.202786L64.30279 39l3.895636-11.840666L58 19.841466h12.605577L74.499595 8l3.895637 11.841466H91L74.990978 31.329909z"
-                                    fill="#FFF"></path>
-                                    </g>
-                                    <g className="tp-star">
-                                    <path className="tp-star__canvas" fill="#dcdce6"
-                                    d="M102.532209 46.330002h46.375586V0h-46.375586z"></path>
-                                    <path className="tp-star__canvas--half" fill="#dcdce6"
-                                    d="M102.532209 46.330002h23.187793V0h-23.187793z"></path>
-                                    <path className="tp-star__shape"
-                                    d="M142.066994 19.711433L115.763298 38.80065l3.838215-11.797827-10.047304-7.291391h12.418975l3.837418-11.798624 3.837417 11.798624h12.418975zM125.81156 31.510075l7.183595-1.509576 2.862113 8.800152-10.045708-7.290576z"
-                                    fill="#FFF"></path>
-                                    </g>
-                                    <g className="tp-star">
-                                    <path className="tp-star__canvas" fill="#dcdce6"
-                                    d="M153.815458 46.330002h46.375586V0h-46.375586z"></path>
-                                    <path className="tp-star__canvas--half" fill="#dcdce6"
-                                    d="M153.815458 46.330002h23.187793V0h-23.187793z"></path>
-                                    <path className="tp-star__shape"
-                                    d="M193.348355 19.711433L167.045457 38.80065l3.837417-11.797827-10.047303-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418974zM177.09292 31.510075l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
-                                    fill="#FFF"></path>
-                                    </g>
-                                    <g className="tp-star">
-                                    <path className="tp-star__canvas" fill="#dcdce6"
-                                    d="M205.064416 46.330002h46.375587V0h-46.375587z"></path>
-                                    <path className="tp-star__canvas--half" fill="#dcdce6"
-                                    d="M205.064416 46.330002h23.187793V0h-23.187793z"></path>
-                                    <path className="tp-star__shape"
-                                    d="M244.597022 19.711433l-26.3029 19.089218 3.837419-11.797827-10.047304-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418975zm-16.255436 11.798642l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
-                                    fill="#FFF"></path>
-                                    </g>
-                                </svg>
-                                <span className="block absolute right-3.5 top-3.5 text-gray-400">{review.date}</span>
+                        <div className="p-5">
+                            <div className={`trustpilot-card block relative shadow bg-gray-900 text-gray-300 p-5 max-w-sm rounded-3xl shadow-inner shadow-lg`} key={index}>
+                                <div className="block tp-stars tp-stars--5 mb-3">
+                                    <svg viewBox="0 0 251 46" xmlns="http://www.w3.org/2000/svg" width={`100`}>
+                                        <g className="tp-star">
+                                            <path className="tp-star__canvas" fill="#dcdce6"
+                                                  d="M0 46.330002h46.375586V0H0z"></path>
+                                            <path className="tp-star__shape"
+                                                  d="M39.533936 19.711433L13.230239 38.80065l3.838216-11.797827L7.02115 19.711433h12.418975l3.837417-11.798624 3.837418 11.798624h12.418975zM23.2785 31.510075l7.183595-1.509576 2.862114 8.800152L23.2785 31.510075z"
+                                                  fill="#FFF"></path>
+                                        </g>
+                                        <g className="tp-star">
+                                            <path className="tp-star__canvas" fill="#dcdce6"
+                                                  d="M51.24816 46.330002h46.375587V0H51.248161z"></path>
+                                            <path className="tp-star__canvas--half" fill="#dcdce6"
+                                                  d="M51.24816 46.330002h23.187793V0H51.248161z"></path>
+                                            <path className="tp-star__shape"
+                                                  d="M74.990978 31.32991L81.150908 30 84 39l-9.660206-7.202786L64.30279 39l3.895636-11.840666L58 19.841466h12.605577L74.499595 8l3.895637 11.841466H91L74.990978 31.329909z"
+                                                  fill="#FFF"></path>
+                                        </g>
+                                        <g className="tp-star">
+                                            <path className="tp-star__canvas" fill="#dcdce6"
+                                                  d="M102.532209 46.330002h46.375586V0h-46.375586z"></path>
+                                            <path className="tp-star__canvas--half" fill="#dcdce6"
+                                                  d="M102.532209 46.330002h23.187793V0h-23.187793z"></path>
+                                            <path className="tp-star__shape"
+                                                  d="M142.066994 19.711433L115.763298 38.80065l3.838215-11.797827-10.047304-7.291391h12.418975l3.837418-11.798624 3.837417 11.798624h12.418975zM125.81156 31.510075l7.183595-1.509576 2.862113 8.800152-10.045708-7.290576z"
+                                                  fill="#FFF"></path>
+                                        </g>
+                                        <g className="tp-star">
+                                            <path className="tp-star__canvas" fill="#dcdce6"
+                                                  d="M153.815458 46.330002h46.375586V0h-46.375586z"></path>
+                                            <path className="tp-star__canvas--half" fill="#dcdce6"
+                                                  d="M153.815458 46.330002h23.187793V0h-23.187793z"></path>
+                                            <path className="tp-star__shape"
+                                                  d="M193.348355 19.711433L167.045457 38.80065l3.837417-11.797827-10.047303-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418974zM177.09292 31.510075l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
+                                                  fill="#FFF"></path>
+                                        </g>
+                                        <g className="tp-star">
+                                            <path className="tp-star__canvas" fill="#dcdce6"
+                                                  d="M205.064416 46.330002h46.375587V0h-46.375587z"></path>
+                                            <path className="tp-star__canvas--half" fill="#dcdce6"
+                                                  d="M205.064416 46.330002h23.187793V0h-23.187793z"></path>
+                                            <path className="tp-star__shape"
+                                                  d="M244.597022 19.711433l-26.3029 19.089218 3.837419-11.797827-10.047304-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418975zm-16.255436 11.798642l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
+                                                  fill="#FFF"></path>
+                                        </g>
+                                    </svg>
+                                    <span className="block absolute right-3.5 top-3.5 text-gray-400">{review.date}</span>
+                                </div>
+                                <blockquote>
+                                    {truncate(`${review.review}`, 150)}
+                                    <cite className={`block text-gray-400 mt-2`}>{review.cite}</cite>
+                                </blockquote>
                             </div>
-                            <blockquote>
-                                {truncate(`${review.review}`, 150)}
-                                <cite className={`block text-gray-400 mt-2`}>{review.cite}</cite>
-                            </blockquote>
                         </div>
                     ))}
                 </Slider>

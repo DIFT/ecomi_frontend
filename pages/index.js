@@ -50,7 +50,7 @@ const Index = () => {
 
     const hero = () => {
         return(
-            <section className={`-mt-20 xs:-mt-40 px-10 pb-12 sm:pb-20 text-white relative min-h-screen flex items-center`}>
+            <section className={`mt-0 px-10 pb-12 sm:pb-20 text-white relative min-h-screen flex items-center`}>
                 <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                     <img src={`./assets/images/ecomi-art.png`}  width={`50%`} className={`absolute -right-28 -bottom-96 opacity-30`} alt={"ECOMI Fan Art by OMI The Clown"}/>
                     <section>
@@ -140,7 +140,7 @@ const Index = () => {
 
     const ecomiMediumArticles = () => {
         return(
-            <section className={`mb-16 xl:-mt-72 z-10`}>
+            <section className={`mb-16 xl:-mt-44 z-10`}>
                 <LatestMediumArticles mediumUser={`ecomi`} title={`Latest ECOMI Medium articles`} />
             </section>
         )
@@ -154,7 +154,7 @@ const Index = () => {
                         <div className={`mb-14 sm:mb-20 xl:mb-8 text-gray-300`}>
                             <small className={`block mt-5 mb-2 sm:mb-5 text-gray-300`}>OMI token metrics as of June 21st 2021, 8:59:18 pm <a href={`https://www.coinbase.com/price/ecomi`} target={"_blank"} className={`text-pink-500 font-semibold`}>(https://www.coinbase.com/price/ecomi)</a></small>
 
-                            <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
+                            <ul className={`grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
                                 <li><PriceCard value={rtPrice && rtPrice.toString().substring(0,8)} label={`OMI Price`} suffix={"$"} /></li>
                                 <li><PriceCard value={prices && prices[0].price.percent_change_1h.toString().substring(0,6)} label={`1 hour change`} prefix={"%"} /></li>
                                 <li><PriceCard value={prices && prices[0].price.percent_change_24h.toString().substring(0,6)} label={`24 hour change`} prefix={"%"} /></li>

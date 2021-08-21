@@ -89,12 +89,12 @@ const Footer = () => {
                             {/*        <span className={`leading-6 ml-2 text-pink-600`}>Brands</span></a>*/}
                             {/*    </Link>*/}
                             {/*</li>*/}
-                            <li className={`mb-2`}>
-                                <Link href={"/tokenomics"}><a className={`py-2`}>
-                                    <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Tokenomics</span></a>
-                                </Link>
-                            </li>
+                            {/*<li className={`mb-2`}>*/}
+                            {/*    <Link href={"/tokenomics"}><a className={`py-2`}>*/}
+                            {/*        <LinkIcon />*/}
+                            {/*        <span className={`leading-6 ml-2 text-pink-600`}>Tokenomics</span></a>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
                             <li>
                                 <Link href={"https://github.com/alienbuild/ecomi_frontend"}><a className={`py-2`}>
                                     <LinkIcon />

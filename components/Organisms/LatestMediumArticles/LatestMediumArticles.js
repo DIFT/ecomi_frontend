@@ -53,6 +53,28 @@ const LatestMediumArticles = ({ mediumUser, title }) => {
         speed: 500,
         arrows: false,
         dots: false,
+        responsive: [
+            {
+                breakpoint: 1600,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 850,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     };
 
     return(

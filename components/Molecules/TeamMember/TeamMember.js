@@ -11,7 +11,7 @@ const TeamMember = ({ member }) => {
     return(
         <div className={`relative px-5 team-members__slider${member.vip ? '--vip' : ''}`}>
             <figure>
-                <img src={`${API}/team/photo/${member.slug}`} alt={`${member.title}`} className={`rounded-3xl`} />
+                <img src={`assets/images/ecomi/team/${member.slug}.jpg`} alt={`${member.title}`} className={`rounded-3xl`} />
             </figure>
             <figcaption className={`my-3`}>
                 <h5 className={`text-pink-500 font-bold text-lg`}>

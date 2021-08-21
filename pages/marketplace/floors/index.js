@@ -29,8 +29,7 @@ const Metrics = () => {
     return(
         <Default>
             <>
-                <div className="container text-white px-10">
-                    <h1 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-8 sm:mb-10`}>Marketplace Analytics</h1>
+                <div className="text-white px-5 mt-20">
                     <p className={`font-semibold text-2xl leading-relaxed`}>Smart data table automatically updated every hour</p>
 
                     <p className={`block text-base text-gray-300`}>

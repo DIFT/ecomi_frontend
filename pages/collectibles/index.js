@@ -78,7 +78,7 @@ const Collectibles = () => {
     const loadMoreButton = () => {
         return (
             size > 0 && size >= limit && (
-                <button onClick={loadMore}>Load more</button>
+                <button onClick={loadMore} className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs mx-auto block`}>Load more</button>
             )
         )
     };
@@ -115,26 +115,26 @@ const Collectibles = () => {
 
     return (
         <Default>
-            <div className={`grid grid-cols-5 gap-5 px-5 my-10`}>
-                <aside>
+            <div className={`grid grid-col-1 xl:grid-cols-5 xl:gap-5 px-5 my-10`}>
+                <aside className={`mb-10 xl:mb-0`}>
                     <div className="bg-gray-900 shadow text-gray-300 rounded-3xl py-5">
                         <section className={`my-5 px-10`}>
                             <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">Rarity</h2>
                             <ul className={`my-2`}>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('COMMON', 'rarity')}>Common</button></li>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('UNCOMMON', 'rarity')}>Uncommon</button></li>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('RARE', 'rarity')}>Rare</button></li>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('ULTRA_RARE', 'rarity')}>Ultra Rare</button></li>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('SECRET_RARE', 'rarity')}>Secret Rare</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`border border-white hover:bg-pink-700 hover:border-pink-500 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.rarity === "COMMON" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('COMMON', 'rarity')}>Common</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.rarity === "UNCOMMON" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('UNCOMMON', 'rarity')}>Uncommon</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.rarity === "RARE" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('RARE', 'rarity')}>Rare</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.rarity === "ULTRA_RARE" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('ULTRA_RARE', 'rarity')}>Ultra Rare</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.rarity === "SECRET_RARE" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('SECRET_RARE', 'rarity')}>Secret Rare</button></li>
                             </ul>
                         </section>
 
                         <section className={`my-5 px-10`}>
                             <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">Edition</h2>
                             <ul className={`my-2`}>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('FA', 'editionType')}>First Apperance</button></li>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('FE', 'editionType')}>First Edition</button></li>
-                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`} onClick={filters => handleFilters('CE', 'editionType')}>Comic-Con Exclusive</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.editionType === "FA" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('FA', 'editionType')}>First Apperance</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.editionType === "FE" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('FE', 'editionType')}>First Edition</button></li>
+                                <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.editionType === "CE" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('CE', 'editionType')}>Comic-Con Exclusive</button></li>
                             </ul>
                         </section>
 
@@ -143,10 +143,21 @@ const Collectibles = () => {
                             <ul className={`my-2`}>
                                 {brands && brands.map(brand => (
                                     <li className={`inline-block my-2 mr-2`}>
-                                        <button onClick={filters => handleFilters(brand.name, 'brand.name')}><img key={brand._id} src={brand.squareImage.thumbnailUrl} alt={brand.name} className={`rounded-xl shadow border border-black hover:border-4 hover:border-pink-500  `} width={`60`} /></button>
+                                        <button onClick={filters => handleFilters(brand.name, 'brand.name')}><img key={brand._id} src={brand.squareImage.thumbnailUrl} alt={brand.name} className={`rounded-xl shadow border-2 hover:border-4 hover:border-pink-500 ${myFilters.filters['brand.name'] === brand.name ? 'border-pink-500' : 'border-black'}`} width={`60`} /></button>
                                     </li>
                                 ))}
                             </ul>
+                        </section>
+
+                        <section className="my-t px-10">
+                            <button onClick={e => {
+                                setMyFilters({
+                                    filters: {
+                                        price: []
+                                    }
+                                })
+                                loadFilteredResults(offset, limit, myFilters.filters);
+                            }} className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs `}>Clear filters</button>
                         </section>
                     </div>
                 </aside>
