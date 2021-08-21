@@ -97,8 +97,11 @@ const CollectibleFloors = () => {
             },
             {
                 Header: 'Brand',
-                accessor: 'brand',
+                accessor: 'brand.name',
                 disableSortBy: true,
+                Cell: (cellProps => (
+                    <img src={cellProps.row.original.brand.squareImage.thumbnailUrl} alt={cellProps.row.original.brand.name} width={`50`} className={`rounded-full border border-black shadow`} />
+                ))
             },
             {
                 Header: 'Edition Type',

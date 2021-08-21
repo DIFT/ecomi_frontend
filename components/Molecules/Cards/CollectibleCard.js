@@ -4,10 +4,10 @@ import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "
 import ArrowRight from "../../Misc/Icons/ArrowRight";
 
 
-const CollectibleCard = ({ collectible }) => {
+const CollectibleCard = ({ collectible, classes = '' }) => {
     console.log('collectible data is: ', collectible)
     return(
-        <article className={`${collectible.image.direction === 'PORTRAIT' ? 'max-w-xs' : 'max-w-2xl'} px-5`} >
+        <article className={`${collectible.image.direction === 'PORTRAIT' ? 'max-w-xs' : 'max-w-2xl'} px-5 mb-10`} >
             <div className={`collectible__card collectible__card--${collectible.rarity.toLowerCase()} rounded-lg overflow-hidden block`}>
                 <span className="overflow-hidden block rounded-3xl">
                     <figure className={`relative z-10`}>
@@ -22,7 +22,7 @@ const CollectibleCard = ({ collectible }) => {
                     {/*    <a>*/}
                             <div className="flex items-center -mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
                                 <div className="flex-auto">
-                                    <h6 className={`block font-semibold py-2 text-white`}>{truncate(collectible.name, 26)}</h6>
+                                    <h6 className={`block font-semibold py-2 text-white`}>{truncate(collectible.name, 20)}</h6>
                                 </div>
                                 <div className="flex-auto">
                                     <ArrowRight classes={`text-white float-right`} />

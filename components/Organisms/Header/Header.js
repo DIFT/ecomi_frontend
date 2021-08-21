@@ -32,7 +32,7 @@ const MarketplaceIcon = dynamic(() => import('/components/Misc/LordIcon').then((
 const Header = ({ setControlOverflow }) => {
 
     return(
-        <header className={`px-5 py-2 absolute w-full z-10`}>
+        <header className={`px-5 py-2 absolute w-full z-10 shadow`}>
             <ReactTooltip place="top" type="dark" effect="float"/>
             <div className="flex justify-between items-center">
                 <div>
@@ -65,18 +65,18 @@ const Header = ({ setControlOverflow }) => {
                                     </span>
                                 </a></Link>
                             </li>
-                            {/*<li className="inline-block mr-2">*/}
-                            {/*    <Link href={`/tokenomics`}><a>*/}
-                            {/*            <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Tokenomics`} data-effect={'solid'} data-event='mouseenter mouseleave'>*/}
-                            {/*            <TokenomicsIcon*/}
-                            {/*                size={`40px`}*/}
-                            {/*                params={`60`}*/}
-                            {/*                type={`outline`}*/}
-                            {/*                palette={`#ffffff;#ffffff`}*/}
-                            {/*            />*/}
-                            {/*        </span>*/}
-                            {/*    </a></Link>*/}
-                            {/*</li>*/}
+                            <li className="inline-block mr-2">
+                                <Link href={`/tokenomics`}><a>
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Tokenomics`} data-effect={'solid'} data-event='mouseenter mouseleave'>
+                                        <TokenomicsIcon
+                                            size={`40px`}
+                                            params={`60`}
+                                            type={`outline`}
+                                            palette={`#ffffff;#ffffff`}
+                                        />
+                                    </span>
+                                </a></Link>
+                            </li>
                             <li className="inline-block mr-2">
                                 <Link href={`/marketplace/floors`}><a>
                                         <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Marketplace Floors`} data-effect={'solid'} data-event='mouseenter mouseleave'>

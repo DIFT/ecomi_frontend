@@ -56,7 +56,7 @@ const LatestDrops = () => {
 
     const settings = {
         lazyLoad: true,
-        slidesToShow: 7,
+        slidesToShow: 7.5,
         slidesToScroll: 3,
         swipeToSlide: true,
         infinite: false,

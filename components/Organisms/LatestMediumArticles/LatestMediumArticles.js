@@ -49,7 +49,7 @@ const LatestMediumArticles = ({ mediumUser, title }) => {
         infinite: false,
         variableWidth: true,
         lazyLoad: true,
-        slidesToShow: 5,
+        slidesToShow: 6.5,
         speed: 500,
         arrows: false,
         dots: false,

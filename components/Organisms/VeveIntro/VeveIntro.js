@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import Link from "next/link"
 import Slider from "react-slick"
 import moment from "moment"
-import { getVeveMetrics, getCollectibleRevenueData } from "../../../actions/metrics/metrics"
+import Image from 'next/image'
+import { getVeveMetrics } from "../../../actions/metrics/metrics"
 import PriceCard from "../../Molecules/Cards/PriceCard"
 import dynamic from "next/dynamic"
 import { Noise } from 'noisejs'
@@ -13,7 +14,7 @@ import Default from "../../Templates/Default"
 import CollectibleCard from '../../Molecules/Cards/CollectibleCard'
 import Badge from "../../Atoms/Badge/Badge"
 import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "../../../utils"
-import ArrowRight from "../../Misc/Icons/ArrowRight" 
+import ArrowRight from "../../Misc/Icons/ArrowRight"
 import { getBrands } from "../../../actions/brand/brand"
 
 // Icons
@@ -84,24 +85,49 @@ const VeveIntro = () => {
 
     const VevePremiumBrands = () => {
 
+        const sliderRef = useRef()
+
+        const [offset, setOffset] = useState(0)
+        const [limit, setLimit] = useState(13)
+        const [size, setSize] = useState(0)
+
         const [brands, setBrands] = useState([])
+        const [swiped, setSwiped] = useState(false)
+
+        const handleSwiped = useCallback(() => {
+            setSwiped(true)
+        }, [setSwiped])
+
+        const handleOnItemClick = useCallback(
+            (e) => {
+                if (swiped) {
+                    e.stopPropagation()
+                    e.preventDefault()
+                    setSwiped(false)
+                }
+            },
+            [swiped],
+        )
+
+        const listBrands = () => {
+            getBrands(offset, limit)
+                .then(data => {
+                    if (data.error){
+                        console.log('Error fetching brands ', data.error)
+                    } else {
+                        setBrands(data.data)
+                        setSize(data.size);
+                        setOffset(0)
+                    }
+                })
+        }
 
         useEffect(() => {
             listBrands()
         },[])
 
-        const listBrands = () => {
-            getBrands()
-                .then(data => {
-                    if (data.error){
-                        console.log('Error fetching brands ', data.error)
-                    } else {
-                        setBrands(data)
-                    }
-                })
-        }
-
         const settings = {
+            className: 'center',
             slidesToShow: 12,
             slidesToScroll: 1,
             swipeToSlide: true,
@@ -110,7 +136,25 @@ const VeveIntro = () => {
             arrows: false,
             dots: false,
             adaptiveHeight: false,
+            afterChange: () => {
+                fetchMoreDrops()
+            }
         };
+
+        const fetchMoreDrops = () => {
+            let toSkip = offset + limit
+
+            getBrands(toSkip, limit)
+                .then(data => {
+                    if (data.error){
+                        console.log('Something went wrong fetching more.')
+                    } else {
+                        setBrands([...brands, ...data.data])
+                        setSize(data.size);
+                        setOffset(toSkip);
+                    }
+                })
+        }
 
         return(
             <section className={`pt-4 pb-4 text-white text-center overflow-hidden shadow bg-gray-900`}>
@@ -126,7 +170,9 @@ const VeveIntro = () => {
 
                 <Slider {...settings}>
                     {brands && brands.map(brand => (
-                        <div><img src={brand.squareImage.thumbnailUrl} alt={brand.name} width={`auto`} className={`rounded-xl shadow border border-black`}/></div>
+                        <div className={`px-2`}>
+                            <img key={brand._id} src={brand.squareImage.thumbnailUrl} alt={brand.name} className={`rounded-xl shadow border border-black`}/>
+                        </div>
                     ))}
                 </Slider>
             </section>
@@ -144,7 +190,7 @@ const VeveIntro = () => {
         const storeBlock = () => {
             return(
                 <div className={`${tab === 1 ? 'block' : 'hidden'}`}>
-                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Store front</h2>
+                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Store</h2>
                     <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Grow your collection</small>
 
                     <p className={`font-semibold text-2xl leading-relaxed mb-10`}>
@@ -250,15 +296,15 @@ const VeveIntro = () => {
                 <section className={`px-10 pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
                     <div className={`max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
                         <div className="flex items-center ">
-                            <div className={`mr-10 lg:mr-36 hidden md:block`}>
-                                <PhoneApplication screen={`store`} setTab={setTab}  />
-                            </div>
                             <div className={`flex-1 text-white`}>
                                 {storeBlock()}
                                 {collectionBlock()}
                                 {feedBlock()}
                                 {marketBlock()}
                                 {accountBlock()}
+                            </div>
+                            <div className={`mr-10 lg:ml-36 hidden md:block`}>
+                                <PhoneApplication screen={`store`} setTab={setTab}  />
                             </div>
                         </div>
                     </div>
@@ -269,58 +315,15 @@ const VeveIntro = () => {
 
     const VeveMetricsSection = () => {
         const [vevemetrics, setVeveMetrics] = useState()
-        const [nftRevenueData, setNftRevenueData] = useState()
 
         useEffect(() => {
-
-            loadMetricData()
-
             getVeveMetrics()
                 .then(data => {
                     setVeveMetrics(data)
                 })
                 .catch((e) => console.log('Error getting veve metrics: ', e))
-
         },[])
 
-        const loadMetricData = () => {
-            getCollectibleRevenueData()
-                .then((data) => {
-                    setNftRevenueData(data)
-                })
-                .catch(e => console.log('Error getting nft revenue data'))
-        }
-
-        return(
-            <section className={`px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
-                <div className="container">
-
-                    <small className="block mt-5 mb-2 sm:mb-5 text-gray-300">
-                        VEVE metrics as of {moment(vevemetrics && vevemetrics.revenue.last_updated).format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-pink-500`}>https://cutt.ly/wbT97hb</a>)
-                    </small>
-
-                    <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.currentStoreRevenue.toLocaleString()} label={`Total sales`} suffix={"$"} classes={`text-green-500`} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.twenty_four_hour_change.toFixed(3)} label={`24 hour change`} prefix={"%"} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.seven_day_change.toFixed(3)} label={`7 day change`} prefix={"%"} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.thirty_day_change.toFixed(3)} label={`30 day change`} prefix={"%"} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.currentNFTSales.toLocaleString()} label={`No. NFT sales`} classes={`text-green-500`} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.thirty_day_change_nft.toFixed(3)} label={`30 day change`} prefix={"%"} /></li>
-                    </ul>
-
-                    <div className="grid grid-cols-1 mt-10">
-                        <div className="p-5 shadow rounded-3xl bg-gray-900">
-                            <div className="text-center text-gray-300">Store Generated Revenue</div>
-                            <CollectiblesRevenueBar data={nftRevenueData} name={`collectibles-revenue-bar`} />
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-        )
-    }
-
-    const VeveMarketSection = () => {
         return(
             <section className={`px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
                 <div className="container">
@@ -338,6 +341,26 @@ const VeveIntro = () => {
                         format due to their early foresight in 2017.
                     </p>
 
+                    <small className="block mt-5 mb-2 sm:mb-5 text-gray-300">
+                        VEVE metrics as of {moment(vevemetrics && vevemetrics.revenue.last_updated).format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-pink-500`}>https://cutt.ly/wbT97hb</a>)
+                    </small>
+
+                    <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.currentStoreRevenue.toLocaleString()} label={`Total sales`} suffix={"$"} classes={`text-green-500`} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.twenty_four_hour_change.toFixed(3)} label={`24 hour change`} prefix={"%"} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.seven_day_change.toFixed(3)} label={`7 day change`} prefix={"%"} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.thirty_day_change.toFixed(3)} label={`30 day change`} prefix={"%"} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.currentNFTSales.toLocaleString()} label={`No. NFT sales`} classes={`text-green-500`} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.thirty_day_change_nft.toFixed(3)} label={`30 day change`} prefix={"%"} /></li>
+                    </ul>
+
+                    <div className="grid grid-cols-1 mt-10">
+                        <div className="p-5 shadow rounded-3xl bg-gray-900">
+                            <div className="text-center text-gray-300">Store Generated Revenue</div>
+                            <CollectiblesRevenueBar id={`collectibles-revenue-bar`} />
+                        </div>
+                    </div>
+
                 </div>
             </section>
         )
@@ -352,7 +375,14 @@ const VeveIntro = () => {
             return(
                 <article className={`max-w-md`} >
                     <div className={`collectible__card rounded-lg block relative`}>
-                        <img src={`/assets/images/ecto-1.png`} className={`absolute -left-10 z-20 bottom-24 max-w-none`} width={"550px"}/>
+                        <span className={`absolute -left-10 -right-10 z-20 bottom-24 max-w-none`}>
+                            <Image
+                                src="/assets/images/ecto-1.png"
+                                alt="Picture of the author"
+                                width={590}
+                                height={379}
+                            />
+                        </span>
                         <span className="block rounded-3xl overflow-hidden">
                             <figure className={`relative z-10`}>
                                 {soldOut(0)}
@@ -479,7 +509,7 @@ const VeveIntro = () => {
 
         return(
             <section className={`trustpilot__section py-20 `}>
-
+                <h4 className="text-2xl mb-3 text-white text-center">Trusted.</h4>
                 <div className="text-center segoe mb-10 text-gray-300">
                     <svg className={`mx-auto tp-stars tp-stars--5 mb-3`} viewBox="0 0 251 46" xmlns="http://www.w3.org/2000/svg" width={`120`}>
                         <g className="tp-star">
@@ -595,11 +625,10 @@ const VeveIntro = () => {
         <>
             {VeveIntroStripSection()}
             {VevePremiumBrands()}
-            {VeveReviews()}
-            {VeveRarityExplained()}
-            {VeveMetricsSection()}
             {VeveEmulatorSection()}
-            {VeveMarketSection()}
+            {VeveRarityExplained()}
+            {VeveReviews()}
+            {VeveMetricsSection()}
             <LatestMediumArticles mediumUser={`veve-collectibles`} title={`Latest VEVE Medium articles`} />
         </>
     )

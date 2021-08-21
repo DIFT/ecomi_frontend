@@ -1,11 +1,11 @@
-import { useLayoutEffect, useEffect, useState, useRef } from "react";
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import am4themes_dark from "@amcharts/amcharts4/themes/dark";
+import { useLayoutEffect, useEffect, useState, useRef } from "react"
+import * as am4core from "@amcharts/amcharts4/core"
+import * as am4charts from "@amcharts/amcharts4/charts"
+import am4themes_animated from "@amcharts/amcharts4/themes/animated"
+import am4themes_dark from "@amcharts/amcharts4/themes/dark"
 import { getMarketHistoricData } from '../../../actions/metrics/metrics'
-am4core.useTheme(am4themes_dark);
-am4core.useTheme(am4themes_animated);
+am4core.useTheme(am4themes_dark)
+am4core.useTheme(am4themes_animated)
 
 const MicroChart = ({id, storePrice, floorPrice}) => {
 

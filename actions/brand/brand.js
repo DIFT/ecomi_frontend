@@ -17,9 +17,18 @@ export const create = (brand, token) => {
         .catch( err => console.log(err))
 }
 
-export const getBrands = () => {
+export const getBrands = (offset = 0, limit = 10) => {
+    const data = {
+        limit,
+        offset
+    }
     return fetch(`${API}/brands`, {
-        method: "GET"
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     })
         .then(response => {
             return response.json()

@@ -9619,6 +9619,11 @@ react-tooltip@^4.2.21:
     prop-types "^15.7.2"
     uuid "^7.0.3"
 
+react-xmasonry@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/react-xmasonry/-/react-xmasonry-3.0.5.tgz#6522ff486acdf56b03c2954e97bfdb0f9ea167ed"
+  integrity sha512-/p0W4BU8FcCfwrt6rfEp0XiHuVma6vCypfiQA9P57TSuzT+OYbgvVhjfa+jWoP2gqyzRKQAKtBxXjjFmrSzY2g==
+
 react@^16.8.3:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
