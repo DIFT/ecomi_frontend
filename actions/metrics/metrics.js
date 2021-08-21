@@ -152,4 +152,3 @@ export const getMarketHistoricData = (collectibleId) => {
         })
         .catch(err => console.log('Error is: ', err))
 }
-

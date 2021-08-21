@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from "next/link"
 import Slider from "react-slick"
 import moment from "moment"
-import { getVeveMetrics } from "../../../actions/metrics/metrics"
+import { getVeveMetrics, getCollectibleRevenueData } from "../../../actions/metrics/metrics"
 import PriceCard from "../../Molecules/Cards/PriceCard"
 import dynamic from "next/dynamic"
 import { Noise } from 'noisejs'
@@ -13,9 +13,8 @@ import Default from "../../Templates/Default"
 import CollectibleCard from '../../Molecules/Cards/CollectibleCard'
 import Badge from "../../Atoms/Badge/Badge"
 import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "../../../utils"
-import ArrowRight from "../../Misc/Icons/ArrowRight"
+import ArrowRight from "../../Misc/Icons/ArrowRight" 
 import { getBrands } from "../../../actions/brand/brand"
-
 
 // Icons
 const CheckIcon = dynamic(() => import('../../../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
@@ -26,6 +25,11 @@ const LatestDrops = dynamic(
     () => import("../../Organisms/LatestDrops/LatestDrops"),
     { ssr: false }
 )
+
+const CollectiblesRevenueBar = dynamic(
+    () => import("../../Organisms/Metrics/CollectiblesRevenueBar"),
+    { ssr: false }
+);
 
 const VeveIntro = () => {
 
@@ -109,7 +113,17 @@ const VeveIntro = () => {
         };
 
         return(
-            <section className={`text-white border-t border-b shadow border-black bg-gray-900 py-2 text-center`}>
+            <section className={`pt-4 pb-4 text-white text-center overflow-hidden shadow bg-gray-900`}>
+                <h4 className="text-2xl mb-3">
+                    Premium brands and licenses
+                    <span className={`cursor-pointer inline-block`} data-tip={`Announced Feb 20th 2020 <a href="https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce" target="_blank" class="text-pink-500">https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce</a>`} data-html={true} data-event='click focus'>
+                        <CheckIcon />
+                    </span>
+                </h4>
+                <small className="block text-base text-gray-300 mb-10">
+                    VEVE is trusted and recognised by some of the biggest and most popular brands in the world
+                </small>
+
                 <Slider {...settings}>
                     {brands && brands.map(brand => (
                         <div><img src={brand.squareImage.thumbnailUrl} alt={brand.name} width={`auto`} className={`rounded-xl shadow border border-black`}/></div>
@@ -255,8 +269,12 @@ const VeveIntro = () => {
 
     const VeveMetricsSection = () => {
         const [vevemetrics, setVeveMetrics] = useState()
+        const [nftRevenueData, setNftRevenueData] = useState()
 
         useEffect(() => {
+
+            loadMetricData()
+
             getVeveMetrics()
                 .then(data => {
                     setVeveMetrics(data)
@@ -264,6 +282,14 @@ const VeveIntro = () => {
                 .catch((e) => console.log('Error getting veve metrics: ', e))
 
         },[])
+
+        const loadMetricData = () => {
+            getCollectibleRevenueData()
+                .then((data) => {
+                    setNftRevenueData(data)
+                })
+                .catch(e => console.log('Error getting nft revenue data'))
+        }
 
         return(
             <section className={`px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
@@ -281,6 +307,13 @@ const VeveIntro = () => {
                         <li><PriceCard value={vevemetrics && vevemetrics.nfts.currentNFTSales.toLocaleString()} label={`No. NFT sales`} classes={`text-green-500`} /></li>
                         <li><PriceCard value={vevemetrics && vevemetrics.nfts.thirty_day_change_nft.toFixed(3)} label={`30 day change`} prefix={"%"} /></li>
                     </ul>
+
+                    <div className="grid grid-cols-1 mt-10">
+                        <div className="p-5 shadow rounded-3xl bg-gray-900">
+                            <div className="text-center text-gray-300">Store Generated Revenue</div>
+                            <CollectiblesRevenueBar data={nftRevenueData} name={`collectibles-revenue-bar`} />
+                        </div>
+                    </div>
 
                 </div>
             </section>
@@ -417,10 +450,152 @@ const VeveIntro = () => {
         )
     }
 
+    const VeveReviews = () => {
+
+        const [reviews, setReviews] = useState([])
+
+        useEffect(() => {
+            setReviews([
+                { date: '12 Aug 2021', cite: 'John Robert Yelland', review: 'Already doubled my money with this app. Plus the veve do look at social media outlets and react very quickly to app issues. They are very efficient, and work very hard to make the app a bigger success than what it already is. Great NFT\'s, and prices reflect that. '},
+                { date:'10 Aug 2021', cite: 'Masumi Johnson', review: 'Solid app overall and cool concept. The digital asset trend is here to stay, it\'s just a matter of what specific collectibles people become interested in. Veve makes the most premium ones out'},
+                { date:'25 July 2021', cite: 'Macario Ramirez', review: 'This is an awesome app, very easy to use and straight forward. You can buy original limited edition art pieces from popular artists and collectables from major companies like Marvel, DC Comics, Cartoon Network and Universal to name a few. You can view your collection in a 3D setting or display them'},
+                { date: '19 June 2021', cite: 'Marcus Peachey', review: 'Thought i\'d wait a couple months before commenting. High quality collectibles, platform is easy to use and understand. They look great in augmented reality and in the virtual showroom. Secondary market works well if you don\'t manage to snag a drop off the primary market too! Can\'t wait to see Star T'},
+                { date:'15 July 2021', cite: 'Bryan Farley', review: 'Been on the app since 3/2021. App was in beta when joined. Although their were expected hiccups with Beta testing it\'s kinda amazing how well everything is working now. I had an issue this week not being able to pay for an auction, submitted a support ticket and the team had it resolved within an ho'},
+                { date: '4 Aug 2021', cite: 'Connor Christison', review: 'By far the beat NFT platform , the team are fantastic and interact every day with the community, Hugh detailed 3D modles for AR . Great for the family and hard core collectors!'},
+                { date:'9 July 2021', cite: 'Jordan Robinson', review: 'As an avid collector veve really did a good job with this app. They listen to the community and take action fast. Highly recommend anyone who likes collecting to try this app out you won\'t regret it. There\'s something for everyone and much much more to come.'},
+                { date:'23 June 2021', cite: 'Gary Lightfoot', review: 'Im addicted to veve. I love all the collectibles they release. The app is very user friendly and super easy to navigate. It has literally took over my life 🚀🚀🚀🚀'},
+            ])
+        },[])
+
+        const settings = {
+            className: "center",
+            arrows: false,
+            dots: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 5.5,
+            slidesToScroll: 3
+        };
+
+        return(
+            <section className={`trustpilot__section py-20 `}>
+
+                <div className="text-center segoe mb-10 text-gray-300">
+                    <svg className={`mx-auto tp-stars tp-stars--5 mb-3`} viewBox="0 0 251 46" xmlns="http://www.w3.org/2000/svg" width={`120`}>
+                        <g className="tp-star">
+                            <path className="tp-star__canvas" fill="#dcdce6"
+                                  d="M0 46.330002h46.375586V0H0z"></path>
+                            <path className="tp-star__shape"
+                                  d="M39.533936 19.711433L13.230239 38.80065l3.838216-11.797827L7.02115 19.711433h12.418975l3.837417-11.798624 3.837418 11.798624h12.418975zM23.2785 31.510075l7.183595-1.509576 2.862114 8.800152L23.2785 31.510075z"
+                                  fill="#FFF"></path>
+                        </g>
+                        <g className="tp-star">
+                            <path className="tp-star__canvas" fill="#dcdce6"
+                                  d="M51.24816 46.330002h46.375587V0H51.248161z"></path>
+                            <path className="tp-star__canvas--half" fill="#dcdce6"
+                                  d="M51.24816 46.330002h23.187793V0H51.248161z"></path>
+                            <path className="tp-star__shape"
+                                  d="M74.990978 31.32991L81.150908 30 84 39l-9.660206-7.202786L64.30279 39l3.895636-11.840666L58 19.841466h12.605577L74.499595 8l3.895637 11.841466H91L74.990978 31.329909z"
+                                  fill="#FFF"></path>
+                        </g>
+                        <g className="tp-star">
+                            <path className="tp-star__canvas" fill="#dcdce6"
+                                  d="M102.532209 46.330002h46.375586V0h-46.375586z"></path>
+                            <path className="tp-star__canvas--half" fill="#dcdce6"
+                                  d="M102.532209 46.330002h23.187793V0h-23.187793z"></path>
+                            <path className="tp-star__shape"
+                                  d="M142.066994 19.711433L115.763298 38.80065l3.838215-11.797827-10.047304-7.291391h12.418975l3.837418-11.798624 3.837417 11.798624h12.418975zM125.81156 31.510075l7.183595-1.509576 2.862113 8.800152-10.045708-7.290576z"
+                                  fill="#FFF"></path>
+                        </g>
+                        <g className="tp-star">
+                            <path className="tp-star__canvas" fill="#dcdce6"
+                                  d="M153.815458 46.330002h46.375586V0h-46.375586z"></path>
+                            <path className="tp-star__canvas--half" fill="#dcdce6"
+                                  d="M153.815458 46.330002h23.187793V0h-23.187793z"></path>
+                            <path className="tp-star__shape"
+                                  d="M193.348355 19.711433L167.045457 38.80065l3.837417-11.797827-10.047303-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418974zM177.09292 31.510075l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
+                                  fill="#FFF"></path>
+                        </g>
+                        <g className="">
+                            <path className="tp-star__canvas" fill="#8f8f8f"
+                                  d="M205.064416 46.330002h46.375587V0h-46.375587z"></path>
+                            <path className="tp-star__canvas--half" fill="#00b67a"
+                                  d="M205.064416 46.330002h23.187793V0h-23.187793z"></path>
+                            <path className="tp-star__shape"
+                                  d="M244.597022 19.711433l-26.3029 19.089218 3.837419-11.797827-10.047304-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418975zm-16.255436 11.798642l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
+                                  fill="#FFF"></path>
+                        </g>
+                    </svg>
+                    We're rated <strong>"Excellent"</strong> (<strong>4.3</strong> / 5) based on <a href="https://play.google.com/store/apps/details?id=com.ecomi.veve&hl=en_GB&gl=US&reviewId=gp%3AAOqpTOHDQ-Lo5qtpo0TEySbo1hVn8xzz2eaVStKhSE9TuGwg2xkAlFFjl9wiwgZePXja7RMX6A0skwssWWRhrxU&showAllReviews=true" className={`font-bold border-b border-gray-500`}>6,018+ reviews.</a> Showing our favourite reviews.
+                </div>
+
+                <Slider {...settings}>
+                    {reviews && reviews.map((review, index) => (
+                        <div className={`trustpilot-card block relative shadow bg-gray-900 text-gray-300 p-5 max-w-sm rounded-3xl shadow-inner shadow-lg`} key={index}>
+                            <div className="block tp-stars tp-stars--5 mb-3">
+                                <svg viewBox="0 0 251 46" xmlns="http://www.w3.org/2000/svg" width={`100`}>
+                                    <g className="tp-star">
+                                    <path className="tp-star__canvas" fill="#dcdce6"
+                                    d="M0 46.330002h46.375586V0H0z"></path>
+                                    <path className="tp-star__shape"
+                                    d="M39.533936 19.711433L13.230239 38.80065l3.838216-11.797827L7.02115 19.711433h12.418975l3.837417-11.798624 3.837418 11.798624h12.418975zM23.2785 31.510075l7.183595-1.509576 2.862114 8.800152L23.2785 31.510075z"
+                                    fill="#FFF"></path>
+                                    </g>
+                                    <g className="tp-star">
+                                    <path className="tp-star__canvas" fill="#dcdce6"
+                                    d="M51.24816 46.330002h46.375587V0H51.248161z"></path>
+                                    <path className="tp-star__canvas--half" fill="#dcdce6"
+                                    d="M51.24816 46.330002h23.187793V0H51.248161z"></path>
+                                    <path className="tp-star__shape"
+                                    d="M74.990978 31.32991L81.150908 30 84 39l-9.660206-7.202786L64.30279 39l3.895636-11.840666L58 19.841466h12.605577L74.499595 8l3.895637 11.841466H91L74.990978 31.329909z"
+                                    fill="#FFF"></path>
+                                    </g>
+                                    <g className="tp-star">
+                                    <path className="tp-star__canvas" fill="#dcdce6"
+                                    d="M102.532209 46.330002h46.375586V0h-46.375586z"></path>
+                                    <path className="tp-star__canvas--half" fill="#dcdce6"
+                                    d="M102.532209 46.330002h23.187793V0h-23.187793z"></path>
+                                    <path className="tp-star__shape"
+                                    d="M142.066994 19.711433L115.763298 38.80065l3.838215-11.797827-10.047304-7.291391h12.418975l3.837418-11.798624 3.837417 11.798624h12.418975zM125.81156 31.510075l7.183595-1.509576 2.862113 8.800152-10.045708-7.290576z"
+                                    fill="#FFF"></path>
+                                    </g>
+                                    <g className="tp-star">
+                                    <path className="tp-star__canvas" fill="#dcdce6"
+                                    d="M153.815458 46.330002h46.375586V0h-46.375586z"></path>
+                                    <path className="tp-star__canvas--half" fill="#dcdce6"
+                                    d="M153.815458 46.330002h23.187793V0h-23.187793z"></path>
+                                    <path className="tp-star__shape"
+                                    d="M193.348355 19.711433L167.045457 38.80065l3.837417-11.797827-10.047303-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418974zM177.09292 31.510075l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
+                                    fill="#FFF"></path>
+                                    </g>
+                                    <g className="tp-star">
+                                    <path className="tp-star__canvas" fill="#dcdce6"
+                                    d="M205.064416 46.330002h46.375587V0h-46.375587z"></path>
+                                    <path className="tp-star__canvas--half" fill="#dcdce6"
+                                    d="M205.064416 46.330002h23.187793V0h-23.187793z"></path>
+                                    <path className="tp-star__shape"
+                                    d="M244.597022 19.711433l-26.3029 19.089218 3.837419-11.797827-10.047304-7.291391h12.418974l3.837418-11.798624 3.837418 11.798624h12.418975zm-16.255436 11.798642l7.183595-1.509576 2.862114 8.800152-10.045709-7.290576z"
+                                    fill="#FFF"></path>
+                                    </g>
+                                </svg>
+                                <span className="block absolute right-3.5 top-3.5 text-gray-400">{review.date}</span>
+                            </div>
+                            <blockquote>
+                                {truncate(`${review.review}`, 150)}
+                                <cite className={`block text-gray-400 mt-2`}>{review.cite}</cite>
+                            </blockquote>
+                        </div>
+                    ))}
+                </Slider>
+            </section>
+        )
+    }
+
     return(
         <>
             {VeveIntroStripSection()}
             {VevePremiumBrands()}
+            {VeveReviews()}
             {VeveRarityExplained()}
             {VeveMetricsSection()}
             {VeveEmulatorSection()}
