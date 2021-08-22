@@ -54,13 +54,13 @@
     "@storybook/addon-links": "^6.3.4",
     "@storybook/addon-options": "^5.3.21",
     "@storybook/react": "^6.3.4",
-    "autoprefixer": "9",
+    "autoprefixer": "^10.3.2",
     "babel-loader": "^8.2.2",
     "http-proxy-middleware": "^2.0.1",
-    "postcss": "7",
+    "postcss": "^8.3.6",
     "sass": "^1.35.2",
     "storybook-addon-figma": "^0.1.0",
     "storybook-figma": "^0.1.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "^2.2.7"
   }
 }
