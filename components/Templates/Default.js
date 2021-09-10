@@ -19,8 +19,10 @@ const Default = ({ children }) => {
             <Header setControlOverflow={setControlOverflow} />
             <main className={`pt-16`}>
                 <span className="radial-bg"></span>
-                <FireFly />
-                {children}
+                <div className={`${controlOverflow ? 'blur-sm filter' : null}`}>
+                    {children}
+                    <FireFly />
+                </div>
             </main>
             <Footer />
         </div>

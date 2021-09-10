@@ -59,8 +59,7 @@ const Header = ({ setControlOverflow }) => {
         return(
             <div className={`bg-black p-5 absolute text-white right-2 ${toggleUserDD ? 'block' : 'hidden' }`}>
                 <ul>
-                    <li>Profile</li>
-                    <li>Something else</li>
+                    <li><Link href={`/user/vault/valuation`}><a>Valuation</a></Link></li>
                     <li><button onClick={() => signout(() => Router.replace('/'))}>Signout</button></li>
                 </ul>
             </div>
@@ -147,7 +146,7 @@ const Header = ({ setControlOverflow }) => {
                     <ReactTooltip place="top" type="dark" effect="float"/>
 
                     {/*Logged in and not admin*/}
-                    { isAuth() && isAuth().role === 0 && (<Link href={"/user"}>Dashboard</Link>)}
+                    {/*{ isAuth() && isAuth().role === 0 && (<Link href={"/user"}>Dashboard</Link>)}*/}
 
 
                     <ul>

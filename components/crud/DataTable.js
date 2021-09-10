@@ -1,8 +1,10 @@
-import { useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy } from 'react-table'
 import CaretDown from "../Misc/Icons/CaretDown"
 import {matchSorter} from 'match-sorter'
-import CaretUp from "../Misc/Icons/CaretUp";
+import CaretUp from "../Misc/Icons/CaretUp"
+
+
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -17,15 +19,16 @@ function GlobalFilter({
     }, 200)
 
     return (
-        <span className={`w-full block bg-gray-900`}>
+        <span className={`w-auto block bg-gray-900`}>
             <input
                 value={value || ""}
                 onChange={e => {
                     setValue(e.target.value);
                     onChange(e.target.value);
                 }}
-                className={`bg-gray-900 p-3 w-full border border-gray-700 text-center focus:outline-none`}
-                placeholder={`Live filter ${count} collectibles (floor prices only)`}
+                className={`bg-gray-900 p-3 w-screen border border-gray-700 text-center focus:outline-none`}
+                placeholder={`Search... (${count} collectibles)`}
+                autoFocus={true}
             />
     </span>
     )
@@ -39,6 +42,35 @@ function fuzzyTextFilterFn(rows, id, filterValue) {
 fuzzyTextFilterFn.autoRemove = val => !val
 
 const DataTable = ({ columns, data }) => {
+
+    const ref = useRef();
+
+    let fifthteen = 15
+
+    const observer = useRef(new IntersectionObserver((entries) => {
+        const first = entries[0]
+        if(first.isIntersecting){
+            fifthteen = fifthteen + 15
+            setPageSize(state.pageSize + fifthteen)
+        }
+    },{ rootMargin: '500px' }))
+
+    const [element, setElement] = useState(null)
+
+    useEffect(() => {
+        const currentElement = element
+        const currentObserver = observer.current
+
+        if (currentElement){
+            currentObserver.observe(currentElement)
+        }
+
+        return () => {
+            if (currentElement){
+                currentObserver.unobserve(currentElement)
+            }
+        }
+    }, [element])
 
     const filterTypes = useMemo(
         () => ({
@@ -65,6 +97,7 @@ const DataTable = ({ columns, data }) => {
         getTableBodyProps,
         headerGroups,
         page,
+        rows,
         prepareRow,
         canPreviousPage,
         canNextPage,
@@ -91,9 +124,13 @@ const DataTable = ({ columns, data }) => {
         usePagination,
     )
 
+    console.log('page count is: ', pageCount)
+    console.log('page size is: ', pageSize)
+    console.log('table state is: ', state)
+
     return(
         <>
-            <div className="flex flex-col overflow-auto">
+            <div className="flex flex-col overflow-auto customTable">
                 <div className="py-2 align-middle inline-block min-w-full w-max">
                     <div className="shadow  overflow-auto">
                         <GlobalFilter
@@ -101,75 +138,47 @@ const DataTable = ({ columns, data }) => {
                             globalFilter={state.globalFilter}
                             setGlobalFilter={setGlobalFilter}
                         />
-                        <table className="table-auto min-w-full divide-y divide-gray-200" {...getTableProps()}>
-                            <thead className={`border border-gray-700`} style={{ background: '#1E263C' }}>
-
-                            {headerGroups.map(headerGroup => (
-                                <tr {...headerGroup.getHeaderGroupProps()}>
-                                    {headerGroup.headers.map(column => (
-                                        <th
-                                            {...column.getHeaderProps(column.getSortByToggleProps())}
-                                            className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                                            {column.render('Header')}
-                                            <span className={`text-white`}>
-                                            {column.isSorted ? column.isSortedDesc ? <CaretDown classes={`inline-block text-pink-500`} size={`15`} />  : (<><CaretUp classes={`inline-block text-pink-500`} size={`15`} /></>) : ''}
-                                          </span>
-                                        </th>
-                                    ))}
-                                </tr>
-                            ))}
-
-                            </thead>
-                            <tbody className="divide-y divide-gray-700" {...getTableBodyProps()} style={{ background: '#1E263C' }}>
-                            {page.map(row => {
-                                prepareRow(row)
-                                return (
-                                    <tr className={`border border-gray-700`} {...row.getRowProps()}>
-                                        {row.cells.map(cell => {
-                                            return (
-                                                <td
-                                                    {...cell.getCellProps()}
-                                                    className="px-6 py-4 whitespace-nowrap"
-                                                >
-                                                    {cell.render('Cell')}
-                                                </td>
-                                            )
-                                        })}
+                            <table className="table-auto min-w-full divide-y divide-gray-200" {...getTableProps()}>
+                                <thead className={`border border-gray-700 hidden sm:table-header-group`} style={{ background: '#1E263C' }}>
+                                {headerGroups.map(headerGroup => (
+                                    <tr {...headerGroup.getHeaderGroupProps()} className={`bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0`}>
+                                        {headerGroup.headers.map(column => (
+                                            <th
+                                                {...column.getHeaderProps(column.getSortByToggleProps())}
+                                                className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                                {column.render('Header')}
+                                                <span className={`text-white`}>
+                                                {column.isSorted ? column.isSortedDesc ? <CaretDown classes={`inline-block text-pink-500`} size={`15`} />  : (<><CaretUp classes={`inline-block text-pink-500`} size={`15`} /></>) : ''}
+                                              </span>
+                                            </th>
+                                        ))}
                                     </tr>
-                                )
-                            })}
-                            </tbody>
-                        </table>
+                                ))}
+                                </thead>
+                                <tbody className="flex-1 sm:flex-none divide-y divide-gray-700" {...getTableBodyProps()} style={{ background: '#1E263C' }}>
+                                {page.map(row => {
+                                    prepareRow(row)
+                                    return (
+                                        <tr className={`flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 border border-gray-700`} {...row.getRowProps()}>
+                                            {row.cells.map(cell => {
+                                                return (
+                                                    <td
+                                                        {...cell.getCellProps()}
+                                                        className="px-6 py-4 whitespace-nowrap"
+                                                    >
+                                                        <span className={`block sm:hidden text-xs font-medium text-gray-300 uppercase tracking-wider mb-2`}>{cell.column.Header}</span>
+                                                        {console.log('getll props is: ', cell)}
+                                                        {cell.render('Cell')}
+                                                    </td>
+                                                )
+                                            })}
+                                        </tr>
+                                    )
+                                })}
+                                </tbody>
+                            </table>
 
-                        <div className="pagination flex justify-between bg-gray-900 p-5">
-
-                            <div>
-                                <select
-                                    value={pageSize}
-                                    className={`bg-gray-800 p-1 text-gray-300 border border-gray-600 text-sm`}
-                                    onChange={e => {
-                                        setPageSize(Number(e.target.value))
-                                    }}
-                                >
-                                    {[10, 20, 30, 40, 50].map(pageSize => (
-                                        <option key={pageSize} value={pageSize}>
-                                            Show {pageSize}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className={`text-gray-300`}>
-                                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                                    {'<'}
-                                </button>
-                                <span className={`inline-block ml-2 mr-2`}>Page <strong> {pageIndex + 1} of {pageOptions.length} </strong></span>
-                                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                                    {'>'}
-                                </button>
-                            </div>
-
-                        </div>
-
+                        <div ref={setElement}></div>
                     </div>
                 </div>
             </div>

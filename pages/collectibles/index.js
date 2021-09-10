@@ -38,7 +38,6 @@ const Collectibles = () => {
 
     const loadFilteredResults = (newFilters) => {
         getFilteredProducts(offset, limit, newFilters).then( data => {
-            console.log('Data is: ', data)
             if (data.error){
                 setError(data.error);
             } else {

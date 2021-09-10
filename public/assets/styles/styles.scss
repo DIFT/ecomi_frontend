@@ -786,3 +786,28 @@ $veveDarkGrey: #2D2D2D;
     opacity: 1;
   }
 }
+
+@media (min-width: 640px) {
+  .customTable{
+    table {
+      display: inline-table !important;
+    }
+    thead tr:not(:first-child) {
+      display: none;
+    }
+  }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.custom-number-input input:focus {
+  outline: none !important;
+}
+
+.custom-number-input button:focus {
+  outline: none !important;
+}

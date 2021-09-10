@@ -5,7 +5,6 @@ import { getMarketData } from "../../../actions/metrics/metrics"
 import moment from "moment"
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
 
-
 // const MicroChart = dynamic(
 //     () => import("../../../components/Atoms/MicroChart/MicroChart"),
 //     { ssr: false }
@@ -28,7 +27,6 @@ const CollectibleFloors = () => {
         getMarketData()
             .then(data => {
                 setMarketData(data)
-                console.log('table data is: ' ,data)
             })
             .catch(e => console.log('Error getting marketplace data'))
     }
@@ -38,14 +36,37 @@ const CollectibleFloors = () => {
             {
                 Header: 'Name',
                 accessor: 'name', // accessor is the "key" in the data
+                Cell: (cellProps => {
+                    console.log('cellprops are: ', cellProps)
+                    return (
+                        <>
+                            <div className="flex items-center">
+
+                                <div className={`w-16 h-16 mr-3 rounded-xl shadow border-2 hover:border-4 hover:border-pink-500 border-black`} style={{
+                                    background: `url(${cellProps.row.original.image?.thumbnailUrl})`,
+                                    backgroundPosition: '50%',
+                                    backgroundSize: 'cover'
+                                }}></div>
+                                <div>
+                                    <span>{cellProps.row.original.name}</span>
+                                    <br/>
+                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
+                                       {cellProps.row.original.rarity}
+                                    </span>
+                                    <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(cellProps.row.original.editionType)}`}>
+                                        {cellProps.row.original.editionType}
+                                    </span>
+                                </div>
+                            </div>
+
+                        </>
+                    )
+                })
             },
             {
                 Header: 'Floor Price (%Gain)',
                 accessor: 'metrics.lowestPrice',
                 Cell: (cellProps) => {
-                    console.log('Cell props is: ', cellProps)
-                    console.log('Metrics is: ', cellProps.row.original.metrics)
-                    console.log('LP is: ', cellProps.row.original.metrics.lowestPrice)
                     return(
                         <>
                             <span className={`font-medium`}>${cellProps.row.original.metrics.lowestPrice.toLocaleString()}</span>
@@ -87,30 +108,11 @@ const CollectibleFloors = () => {
                 )
             },
             {
-                Header: 'Rarity',
-                accessor: 'rarity',
-                Cell: (cellProps => (
-                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
-                        {cellProps.row.original.rarity}
-                    </span>
-                ))
-            },
-            {
                 Header: 'Brand',
                 accessor: 'brand.name',
                 disableSortBy: true,
                 Cell: (cellProps => (
                     <img src={cellProps.row.original.brand.squareImage.thumbnailUrl} alt={cellProps.row.original.brand.name} width={`50`} className={`rounded-full border border-black shadow`} />
-                ))
-            },
-            {
-                Header: 'Edition Type',
-                accessor: 'editionType',
-                disableSortBy: true,
-                Cell: (cellProps => (
-                    <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(cellProps.row.original.editionType)}`}>
-                        {cellProps.row.original.editionType}
-                    </span>
                 ))
             },
             {
@@ -128,10 +130,18 @@ const CollectibleFloors = () => {
         []
     )
 
+    const [loading, setLoading] = React.useState(false)
+    const [pageCount, setPageCount] = React.useState(0)
+
     return(
         <div className="grid grid-cols-1 mt-10 text-white px-5">
             <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
-            {marketData && marketData ? <DataTable columns={columns} data={marketData} /> : null}
+            {marketData && marketData ? <DataTable
+                columns={columns}
+                data={marketData}
+                loading={loading}
+                pageCount={pageCount}
+            /> : null}
         </div>
     )
 }

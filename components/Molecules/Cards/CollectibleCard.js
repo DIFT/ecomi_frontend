@@ -1,11 +1,10 @@
 import Link from "next/link"
 import Badge from "../../Atoms/Badge/Badge"
 import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "../../../utils"
-import ArrowRight from "../../Misc/Icons/ArrowRight";
+import ArrowRight from "../../Misc/Icons/ArrowRight"
 
 
 const CollectibleCard = ({ collectible, classes = '' }) => {
-    console.log('collectible data is: ', collectible)
     return(
         <article className={`${collectible.image.direction === 'PORTRAIT' ? 'max-w-xs' : 'max-w-2xl'} px-5 mb-10`} >
             <div className={`collectible__card collectible__card--${collectible.rarity.toLowerCase()} rounded-lg overflow-hidden block`}>
@@ -13,7 +12,7 @@ const CollectibleCard = ({ collectible, classes = '' }) => {
                     <figure className={`relative z-10`}>
                         {soldOut(collectible.totalAvailable)}
                         <div className={`card-fx card-fx--${collectible.rarity.toLowerCase()}`}>
-                            <img src={collectible.image.lowResolutionUrl} alt={collectible.name} width={"auto"} className={`rounded-3xl`} style={{ maxHeight: '369px'}}/>
+                            <img src={collectible.image.lowResolutionUrl} alt={collectible.name} width={"auto"} className={`rounded-3xl`} style={{ maxHeight: '330px' }}/>
                         </div>
                     </figure>
                 </span>
@@ -34,7 +33,7 @@ const CollectibleCard = ({ collectible, classes = '' }) => {
                         <div className={`flex-auto`}>
                             <Badge classes={`inline-block px-2 py-1 text-xs rounded mr-2 ${getRarityThresholds(collectible.rarity)}`}>{collectible.rarity}</Badge>
                             <Badge classes={`inline-block px-2 py-1 text-xs rounded ${getEditionTypeThresholds(collectible.editionType)}`}>
-                                {collectible.editionType !== null ? collectible.editionType : 'N/A'}
+                                {collectible.editionType !== null ? collectible.editionType : '?'}
                             </Badge>
                         </div>
                         <div className={`flex-auto text-right font-semibold text-gray-500`}>

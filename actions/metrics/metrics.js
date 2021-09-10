@@ -152,3 +152,20 @@ export const getMarketHistoricData = (collectibleId) => {
         })
         .catch(err => console.log('Error is: ', err))
 }
+
+export const getValuation = (collectibles, token) => {
+    console.log('get val collectibles is: ', collectibles)
+    return fetch(`${API}/metrics/account/valuation`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({"collectibles": collectibles})
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
