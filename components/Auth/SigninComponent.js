@@ -37,7 +37,7 @@ const SigninComponent = ({ setUserExists }) => {
                         if (isAuth() && isAuth().role === 1){
                             Router.push('/admin/dashboard')
                         } else {
-                            Router.push('/user/dashboard')
+                            Router.push('/user/vault/valuation')
                         }
                     })
                 }
@@ -81,11 +81,11 @@ const SigninComponent = ({ setUserExists }) => {
                     {/*    <li className={`flex-1 rounded text-center p-2 text-sm bg-blue-400 mr-2`}>Twitter</li>*/}
                     {/*    <li className={`flex-1 rounded text-center p-2 text-sm bg-red-500`}>Google</li>*/}
                     {/*</ul>*/}
-                    <button className={`text-pink-500 block mb-5 text-right text-sm float-right`} onClick={e => {
-                        e.preventDefault()
-                        setUserExists(false)
-                    }}>Don't have an account? Signup</button>
-                    <br/>
+                    {/*<button className={`text-pink-500 block mb-5 text-right text-sm float-right`} onClick={e => {*/}
+                    {/*    e.preventDefault()*/}
+                    {/*    setUserExists(false)*/}
+                    {/*}}>Don't have an account? Signup</button>*/}
+                    {/*<br/>*/}
                     <div className="flex justify-center w-full">
                         <button type="submit" className={`text-center border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Login</button>
                     </div>

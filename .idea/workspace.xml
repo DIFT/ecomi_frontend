@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="" />
+    <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Auth/SigninComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SigninComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +79,7 @@
       <workItem from="1626772389707" duration="131332000" />
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
-      <workItem from="1629219970220" duration="122412000" />
+      <workItem from="1629219970220" duration="125728000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -308,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631314381549</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="End of day commit">
+      <created>1631314402981</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1631314402981</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,10 +381,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629367275118" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1631314383328">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1631314404289">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1631314383328" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1631314404289" />
     <state x="787" y="350" key="run.anything.popup" timestamp="1629551796359">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
