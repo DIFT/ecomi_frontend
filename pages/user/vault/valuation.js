@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import dynamic from "next/dynamic"
 import Router from 'next/router'
 import { withRouter } from 'next/router'
+import CountUp from 'react-countup'
 import { XMasonry, XBlock } from "react-xmasonry"
 import { getCookie, isAuth } from '../../../actions/auth'
 import Default from "../../../components/Templates/Default"
@@ -99,7 +101,6 @@ const Valuation = ({ router }) => {
     )
 
     useEffect(() => {
-        console.log('Use effect triggered')
         getValuation(usersCollectibles, token)
             .then(data => {
                 if(data.error) {
@@ -110,64 +111,29 @@ const Valuation = ({ router }) => {
             })
     }, [usersCollectibles, setValuation])
 
-    // const handleToggle = (e, collectible) => {
-    //     const clickedCollectible = checked.indexOf(collectible)
-    //     const all = [...checked]
-    //     if (!checked.some(person => person.collectibleId === collectible.collectibleId)) {
-    //         all.push(collectible)
-    //     } else {
-    //         all.splice(clickedCollectible, 1)
-    //     }
-    //     setChecked(all)
-    //     formData.set('collectibles', all)
-    // }
-    //
-    // const handleQuantity = (collectible) => {
-    //     const all = [...checked]
-    //     const newObjArr = all.map(obj => {
-    //             if (collectible.collectibleId.includes(obj.collectibleId)) {
-    //                 return {...obj, quantity: collectible.quantity}
-    //             }
-    //             return obj
-    //         }
-    //     )
-    //     setChecked(newObjArr)
-    //     formData.set('collectibles', all)
-    // }
-    //
-    // const calcValuation = e => {
-    //     console.log('form data is: ' ,checked)
-    //     e.preventDefault()
-    //     getValuation(checked, token)
-    //         .then(data => {
-    //             if(data.error) {
-    //                 console.log('Error getting valuation: ', data.error)
-    //                 setValues({ ...values, error: data.error });
-    //             } else {
-    //                 setValuation(data.valuation)
-    //             }
-    //         })
-    // }
-
     return(
         <Default>
-            <section className={`mt-0 px-10 pb-12 sm:pb-20 text-white relative min-h-screen flex items-center`}>
-                <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                    <div className="text-center">
-                        <img src={`/assets/images/dunn.jpg`}  width={`150`} className={`mb-5 rounded-full mx-auto`}/>
-                        <h1 className={`text-4xl sm:text-6xl lg:text-8xl leading-none font-semibold tracking-tight mb-8 sm:mb-10`}>Valuation</h1>
-                        <p className={`font-semibold text-2xl leading-relaxed`}>
-                            Vault valuations are based off of the current floor prices last captured by ecomiwiki. The result should only serve as a floor expectation for your collection, the calculation will not take into account your mint numbers, provenance, or any other variables that could influence price.
-                        </p>
+            <section className="text-white px-5 mt-20">
+                <h1 className={`font-semibold text-2xl leading-relaxed`}>Valuation</h1>
+                <p className={`block text-base text-gray-300`}>
+                    Vault valuations are based off of the current <Link href={`/marketplace/floors`}><a className={`text-pink-500`}>floor prices</a></Link> last captured. In the near future you will be able to save your collectibles to your profile and track your valuation growth in various data charts.
+                </p>
+                <div
+                    className="bg-blue-300 border-t-4 border-blue-400 rounded-3xl text-black px-4 py-3 shadow-md mt-5"
+                    role="alert">
+                    <div className="flex">
+                        <div className="py-1">
+                            <svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 20 20">
+                                <path
+                                    d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"></path>
+                            </svg>
+                        </div>
+                        <div><p className="font-bold">Note</p>
+                            <p className="text-sm">The result should only serve as a floor expectation for your collection, the calculation will not take into account your mint numbers, provenance, or any other variables that could influence price.</p>
+                            <p className="text-sm font-medium">Comic floor prices are also currently unavailable at this time.</p>
+                        </div>
                     </div>
-                </div>
-            </section>
-
-            <section className={`mt-0 px-10 pb-12 sm:pb-20 text-white relative flex items-center`}>
-                <div className={`relative z-10 max-w-screen-lg xl:max-w-screen-xl mx-auto`}>
-                    <p className={`font-normal text-xl`}>
-                        Please click on each collectible you own, and be sure to enter the correct quantity of each collectible.
-                    </p>
                 </div>
             </section>
 
@@ -188,7 +154,9 @@ const Valuation = ({ router }) => {
 
             <footer className={`text-center p-5 text-white fixed w-full bottom-0 left-0 bg-gray-900 z-10 border-t border-black`}>
                 <small className={`block uppercase text-sm font-medium text-gray-300`}>Your vault is valued at:</small>
-                <p className={`font-normal text-xl text-green-500 font-medium text-3xl`}>${valuation.toLocaleString()}</p>
+                <p className={`font-normal text-xl text-green-500 font-medium text-3xl`}>
+                    $<CountUp end={valuation} duration={1} separator="," decimals={2} decimal="."/>
+                </p>
             </footer>
 
 

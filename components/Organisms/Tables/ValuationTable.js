@@ -42,6 +42,7 @@ const EditableCell = ({
                           row: { index },
                           column: { id },
                           updateMyData, // This is a custom function that we supplied to our table instance
+                          row
                       }) => {
     // We need to keep and update the state of the cell normally
     const [value, setValue] = React.useState(initialValue)
@@ -60,14 +61,8 @@ const EditableCell = ({
         setValue(initialValue)
     }, [initialValue])
 
-    return <input value={value} onChange={onChange} onBlur={onBlur} className={`bg-gray-900 text-white rounded-lg p-3`} />
+    return <input type="number" value={value} onChange={onChange} onBlur={onBlur} disabled={!row.isSelected} className={`${!row.isSelected ? 'bg-gray-900 text-gray-500 opacity-50' : 'bg-gray-900  text-white'} rounded-3xl p-3`} />
 }
-
-// Set our editable cell renderer as the default Cell renderer
-const defaultColumn = {
-    Cell: EditableCell,
-}
-
 
 const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, valuation, setValuation, usersCollectibles, setUsersCollectibles }) => {
 
@@ -123,16 +118,16 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
         previousPage,
         setPageSize,
         selectedFlatRows,
+        toggleAllRowsSelected,
         state: { pageIndex, pageSize, selectedRowIds },
     } = useTable(
         {
             columns,
             data,
-            // defaultColumn,
             autoResetPage: !skipPageReset,
             autoResetSelectedRows: false,
             updateMyData,
-            initialState: { pageIndex: 0, pageSize: 15 },
+            initialState: { pageIndex: 0, pageSize: 200 },
         },
         usePagination,
         useRowSelect,
@@ -143,16 +138,16 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
                 {
                     id: 'quantity',
                     Header: "Quantity",
-                    Cell: EditableCell
+                    Cell: (cellProps,{row}) => EditableCell(cellProps, row)
                 },
                 {
                     id: 'selection',
                     // The header can use the table's getToggleAllRowsSelectedProps method
                     // to render a checkbox
                     Header: "",
-                    Header: ({ getToggleAllPageRowsSelectedProps }) => (
+                    Header: () => (
                         <div>
-                            <button className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}{...getToggleAllPageRowsSelectedProps()}> Select all</button>
+                            <button className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`} onClick={() => {toggleAllRowsSelected()}}>Toggle all</button>
                         </div>
                     ),
                     // The cell can use the individual row's getToggleRowSelectedProps method
@@ -178,19 +173,14 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
 
     return(
         <>
-            <div className="flex flex-col">
-                <div className="py-2 align-middle inline-block w-full">
-                    <div className="shadow ">
-                        {/*<GlobalFilter*/}
-                        {/*    preGlobalFilteredRows={preGlobalFilteredRows}*/}
-                        {/*    globalFilter={state.globalFilter}*/}
-                        {/*    setGlobalFilter={setGlobalFilter}*/}
-                        {/*/>*/}
+            <div className="flex flex-col overflow-auto customTable">
+                <div className="py-2 align-middle inline-block min-w-full w-max">
+                    <div className="shadow overflow-auto">
                         <table className="table-auto min-w-full divide-y divide-gray-200" {...getTableProps()}>
-                            <thead className={`border border-gray-700`} style={{ background: '#1E263C' }}>
+                            <thead className={`border border-gray-700 hidden sm:table-header-group`} style={{ background: '#1E263C' }}>
 
                             {headerGroups.map(headerGroup => (
-                                <tr {...headerGroup.getHeaderGroupProps()}>
+                                <tr className={`bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0`} {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map(column => (
                                         <th
                                             className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
@@ -204,49 +194,19 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
                             ))}
 
                             </thead>
-                            <tbody className="divide-y divide-gray-700" {...getTableBodyProps()} style={{ background: '#1E263C' }}>
+                            <tbody className="flex-1 sm:flex-none divide-y divide-gray-700" {...getTableBodyProps()} style={{ background: '#1E263C' }}>
                             {page.map((row, i) => {
                                 prepareRow(row)
                                 return (
-                                    <tr {...row.getRowProps()}>
+                                    <tr className={`flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 border border-gray-700`} {...row.getRowProps()}>
                                         {row.cells.map(cell => {
-                                            return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                            return <td {...cell.getCellProps()} className={`px-6 py-4 whitespace-nowrap`}>{cell.render('Cell')}</td>
                                         })}
                                     </tr>
                                 )
                             })}
                             </tbody>
                         </table>
-
-                        <div className="pagination flex justify-between bg-gray-900 p-5">
-
-                            <div>
-                                <select
-                                    value={pageSize}
-                                    className={`bg-gray-800 p-1 text-gray-300 border border-gray-600 text-sm`}
-                                    onChange={e => {
-                                        setPageSize(Number(e.target.value))
-                                    }}
-                                >
-                                    {[10, 20, 30, 40, 50].map(pageSize => (
-                                        <option key={pageSize} value={pageSize}>
-                                            Show {pageSize}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className={`text-gray-300`}>
-                                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                                    {'<'}
-                                </button>
-                                <span className={`inline-block ml-2 mr-2`}>Page <strong> {pageIndex + 1} of {pageOptions.length} </strong></span>
-                                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                                    {'>'}
-                                </button>
-                            </div>
-
-                        </div>
-
                     </div>
                 </div>
             </div>
