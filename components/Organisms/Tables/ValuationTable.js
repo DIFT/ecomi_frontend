@@ -84,8 +84,7 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             selectedItems.push(newUserCollectible)
         })
 
-        const filtered = usersCollectibles.filter((e) => { return e.collectibleId != collectibleId })
-        setUsersCollectibles([...filtered, newUserCollectible])
+        setUsersCollectibles([...selectedItems])
 
     }
 
