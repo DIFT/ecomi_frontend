@@ -95,7 +95,8 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             //     newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
             //     return setUsersCollectibles([...usersCollectibles, newUserCollectible])
             // }
-
+            
+            const newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
             const existObj = usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)
             if (existObj){
                 existObj.quantity = quantity
@@ -103,7 +104,6 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
                 const tempArr = usersCollectibles.filter(obj1 => !compArr.some(obj2 => obj1.collectibleId === obj2.collectibleId))
                 setUsersCollectibles([...tempArr, ...compArr])
             }else{
-                const newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
                 setUsersCollectibles([...usersCollectibles, newUserCollectible])
             }
 
