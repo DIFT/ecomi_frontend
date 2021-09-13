@@ -72,12 +72,9 @@ const defaultColumn = {
 const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, valuation, setValuation, usersCollectibles, setUsersCollectibles }) => {
 
     const handleCalcValuation = (selectedFlatRows) => {
-
         let vaultValuation = []
         selectedFlatRows.forEach((collectible) => {
-
             const collectibleId = collectible.original.collectibleId
-
             let quantity
             collectible.original.quantity ? quantity = collectible.original.quantity : quantity = 1
 
@@ -95,17 +92,12 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             //     newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
             //     return setUsersCollectibles([...usersCollectibles, newUserCollectible])
             // }
-            
+
+
+            const filtered = usersCollectibles.filter((e) => { return e.collectibleId != collectibleId })
             const newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
-            const existObj = usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)
-            if (existObj){
-                existObj.quantity = quantity
-                const compArr = [existObj]
-                const tempArr = usersCollectibles.filter(obj1 => !compArr.some(obj2 => obj1.collectibleId === obj2.collectibleId))
-                setUsersCollectibles([...tempArr, ...compArr])
-            }else{
-                setUsersCollectibles([...usersCollectibles, newUserCollectible])
-            }
+            setUsersCollectibles([...filtered, newUserCollectible])
+
 
         })
     }
