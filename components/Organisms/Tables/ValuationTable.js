@@ -74,12 +74,13 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
     const handleCalcValuation = (selectedFlatRows) => {
         let vaultValuation = []
         const selectedItems = []
-        
+        let newUserCollectible = {}
+
         selectedFlatRows.map((collectible) => {
             const collectibleId = collectible.original.collectibleId
             let quantity
             collectible.original.quantity ? quantity = collectible.original.quantity : quantity = 1
-            const newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
+            newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
             selectedItems.push(newUserCollectible)
         })
 
