@@ -99,14 +99,18 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             //     return setUsersCollectibles([...usersCollectibles, newUserCollectible])
             // }
             
-            const tempUserCollectibles = usersCollectibles
 
-            const key = usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)
+            const existObj = usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)
             
-            if ()
-            
+            if (existObj){
+                existObj.quantity = quantity
+            }
+
+            const compArr = [existObj]
+            const tempArr = usersCollectibles.filter(obj1 => !compArr.some(obj2 => obj1.collectibleId === obj2.collectibleId))
+
             newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
-            setUsersCollectibles([...usersCollectibles, newUserCollectible])
+            setUsersCollectibles([...tempArr, ...compArr])
         })
     }
 
