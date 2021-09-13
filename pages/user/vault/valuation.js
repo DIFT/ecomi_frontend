@@ -22,6 +22,7 @@ const Valuation = ({ router }) => {
 
     const token = getCookie('token')
     const [valuation, setValuation] = useState(0)
+    const [vaultRetailPrice, setVaultRetailPrice] = useState(0)
 
     const [collectibles, setCollectibles] = useState([])
     const [usersCollectibles, setUsersCollectibles] = useState([])
@@ -30,6 +31,17 @@ const Valuation = ({ router }) => {
     useEffect(() => {
         loadMarketData()
     },[])
+
+    const calcStoreRetailPrice = () => {
+        let storeRetail = 0
+        collectibles.forEach((collectible) => {
+            storeRetail += collectible.storePrice
+        })
+    }
+
+    useEffect(() => {
+        calcStoreRetailPrice()
+    }, [collectibles])
 
     const loadMarketData = () => {
         getMarketData()
@@ -107,9 +119,26 @@ const Valuation = ({ router }) => {
                     setValues({ ...values, error: data.error });
                 } else {
                     setValuation(data.valuation)
+                    setVaultRetailPrice(data.retailPrice)
                 }
             })
     }, [usersCollectibles, setValuation])
+
+    const calcPercentageChange = () => {
+        const calc = (valuation - vaultRetailPrice) / vaultRetailPrice * 100
+        if (valuation === 0) {
+            return ''
+        }
+        if (calc > 1){
+            return <span className="font-bold rounded ml-2 px-1 text-xs bg-green-400 text-green-900">
+                 <CountUp end={calc} duration={1} separator="," decimals={2} decimal="."/>%
+            </span>
+        } else {
+            return <span className="font-bold rounded ml-2 px-1 text-xs bg-red-400 text-red-900">
+                <CountUp end={calc} duration={1} separator="," decimals={2} decimal="."/>%
+            </span>
+        }
+    }
 
     return(
         <Default>
@@ -150,12 +179,11 @@ const Valuation = ({ router }) => {
                 /> : null}
             </section>
 
-            {JSON.stringify(usersCollectibles)}
-
             <footer className={`text-center p-5 text-white fixed w-full bottom-0 left-0 bg-gray-900 z-10 border-t border-black`}>
-                <small className={`block uppercase text-sm font-medium text-gray-300`}>Your vault is valued at:</small>
-                <p className={`font-normal text-xl text-green-500 font-medium text-3xl`}>
+                <span className={`text-gray-400 text-sm font-medium mb-2 block`}>RRP: $<CountUp end={vaultRetailPrice} duration={1} separator="," decimals={2} decimal="."/></span>
+                <p className={`font-normal ${valuation > vaultRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-5xl`}>
                     $<CountUp end={valuation} duration={1} separator="," decimals={2} decimal="."/>
+                    {calcPercentageChange()}
                 </p>
             </footer>
 

@@ -154,7 +154,6 @@ export const getMarketHistoricData = (collectibleId) => {
 }
 
 export const getValuation = (collectibles, token) => {
-    console.log('get val collectibles is: ', collectibles)
     return fetch(`${API}/metrics/account/valuation`, {
         method: 'POST',
         headers: {

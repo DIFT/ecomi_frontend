@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/Tables/ComicFloors.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Tables/ComicFloors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/Tables/ValuationTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Tables/ValuationTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/marketplace/floors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/marketplace/floors/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/metrics/metrics.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/metrics/metrics.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/user/vault/valuation.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/user/vault/valuation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +79,7 @@
       <workItem from="1626772389707" duration="131332000" />
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
-      <workItem from="1629219970220" duration="160655000" />
+      <workItem from="1629219970220" duration="164174000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -335,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631528842673</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="End of day commit">
+      <created>1631535605985</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1631535605985</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,17 +402,17 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629367275118" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1631528844103">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1631535606995">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1631528844103" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1631535606995" />
     <state x="788" y="351" key="run.anything.popup" timestamp="1631525995653">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="788" y="351" key="run.anything.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1631525995653" />
-    <state x="791" y="334" width="672" height="678" key="search.everywhere.popup" timestamp="1631394453529">
+    <state x="792" y="335" width="672" height="678" key="search.everywhere.popup" timestamp="1631538183801">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="791" y="334" width="672" height="678" key="search.everywhere.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1631394453529" />
+    <state x="792" y="335" width="672" height="678" key="search.everywhere.popup/0.0.2250.1460@0.0.2250.1460" timestamp="1631538183801" />
   </component>
 </project>
