@@ -81,9 +81,6 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             let quantity
             collectible.original.quantity ? quantity = collectible.original.quantity : quantity = 1
 
-            let newUserCollectible = { "collectibleId": collectibleId }
-            console.log(`newUserCollectible: ${JSON.stringify(newUserCollectible)}. userCollectibles ${JSON.stringify(usersCollectibles)}`)
-
             // if (usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)){
             //     console.log('lol not updating state for you.')
             //     usersCollectibles.map((currentCollectibles, index) => {
@@ -98,19 +95,18 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             //     newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
             //     return setUsersCollectibles([...usersCollectibles, newUserCollectible])
             // }
-            
 
             const existObj = usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)
-            
             if (existObj){
                 existObj.quantity = quantity
+                const compArr = [existObj]
+                const tempArr = usersCollectibles.filter(obj1 => !compArr.some(obj2 => obj1.collectibleId === obj2.collectibleId))
+                setUsersCollectibles([...tempArr, ...compArr])
+            }else{
+                const newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
+                setUsersCollectibles([...usersCollectibles, newUserCollectible])
             }
 
-            const compArr = [existObj]
-            const tempArr = usersCollectibles.filter(obj1 => !compArr.some(obj2 => obj1.collectibleId === obj2.collectibleId))
-
-            newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
-            setUsersCollectibles([...tempArr, ...compArr])
         })
     }
 
