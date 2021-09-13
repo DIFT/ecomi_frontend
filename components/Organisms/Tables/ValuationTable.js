@@ -73,10 +73,20 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
 
     const handleCalcValuation = (selectedFlatRows) => {
         let vaultValuation = []
-        selectedFlatRows.forEach((collectible) => {
+        const selectedItems = []
+        
+        selectedFlatRows.map((collectible) => {
             const collectibleId = collectible.original.collectibleId
             let quantity
             collectible.original.quantity ? quantity = collectible.original.quantity : quantity = 1
+            const newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
+            selectedItems.push(newUserCollectible)
+        })
+
+        const filtered = usersCollectibles.filter((e) => { return e.collectibleId != collectibleId })
+        setUsersCollectibles([...filtered, newUserCollectible])
+
+
 
             // if (usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)){
             //     console.log('lol not updating state for you.')
@@ -93,10 +103,6 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             //     return setUsersCollectibles([...usersCollectibles, newUserCollectible])
             // }
 
-
-            const filtered = usersCollectibles.filter((e) => { return e.collectibleId != collectibleId })
-            const newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
-            setUsersCollectibles([...filtered, newUserCollectible])
 
 
         })
