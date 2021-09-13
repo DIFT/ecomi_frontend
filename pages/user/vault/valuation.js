@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import dynamic from "next/dynamic"
 import Router from 'next/router'
 import { withRouter } from 'next/router'
 import { XMasonry, XBlock } from "react-xmasonry"
@@ -6,7 +7,14 @@ import { getCookie, isAuth } from '../../../actions/auth'
 import Default from "../../../components/Templates/Default"
 import SelectCollectibleCard from '/components/Molecules/Cards/SelectCollectibleCard'
 import { getFilteredProducts } from '../../../actions/apiCore'
-import { getValuation } from '../../../actions/metrics/metrics'
+import { getValuation, getMarketData } from '../../../actions/metrics/metrics'
+import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
+
+
+const ValuationTable = dynamic(
+    () => import("../../../components/Organisms/Tables/ValuationTable"),
+    { ssr: false }
+);
 
 const Valuation = ({ router }) => {
 
@@ -14,107 +22,132 @@ const Valuation = ({ router }) => {
     const [valuation, setValuation] = useState(0)
 
     const [collectibles, setCollectibles] = useState([])
+    const [usersCollectibles, setUsersCollectibles] = useState([])
     const [loading, setLoading] = useState(true)
-    const [myFilters, setMyFilters] = useState({
-        filters: {
-            price: []
-        }
-    })
-    const [limit, setLimit] = useState(25)
-    const [offset, setOffset] = useState(0)
-    const [size, setSize] = useState(0)
-    const [filteredResults, setFilteredResults] = useState([])
-
-    const [values, setValues] = useState({
-        error: '',
-        success: '',
-        formData: '',
-        hideValuationButton: false
-    });
-
-    const { error, success, formData, hideValuationButton } = values;
 
     useEffect(() => {
-        setValues({ ...values, formData: new FormData() });
-    }, [router]);
+        loadMarketData()
+    },[])
 
-    const loadFilteredResults = (newFilters) => {
-        getFilteredProducts(offset, limit, newFilters).then( data => {
-            if (data.error){
-                setError(data.error);
-            } else {
-                setFilteredResults(data.data);
-                setSize(data.size);
-                setOffset(0);
-            }
-        })
-    };
+    const loadMarketData = () => {
+        getMarketData()
+            .then(data => {
+                setCollectibles(data)
+            })
+            .catch(e => console.log('Error getting marketplace data'))
+    }
 
-    const loadMore = () => {
-        let toSkip = offset + limit;
-        getFilteredProducts(toSkip, limit, myFilters.filters).then( data => {
-            if (data.error){
-                setError(data.error);
-            } else {
-                setFilteredResults([...filteredResults, ...data.data]);
-                setSize(data.size);
-                setOffset(toSkip);
-            }
-        })
-    };
+    const EditableCell = ({
+                              value: initialValue,
+                              row: { index },
+                              column: { id },
+                              updateMyData, // This is a custom function that we supplied to our table instance
+                          }) => {
+        // We need to keep and update the state of the cell normally
+        const [value, setValue] = React.useState(initialValue)
+
+        const onChange = e => {
+            setValue(e.target.value)
+        }
+
+        // We'll only update the external data when the input is blurred
+        const onBlur = () => {
+            updateMyData(index, id, value)
+        }
+
+        // If the initialValue is changed external, sync it up with our state
+        React.useEffect(() => {
+            setValue(initialValue)
+        }, [initialValue])
+
+        return <input value={value} onChange={onChange} onBlur={onBlur} className={`bg-gray-900 text-white rounded-lg p-3`} />
+    }
+
+    const columns = React.useMemo(
+        () => [
+            {
+                Header: 'Name',
+                accessor: 'name', // accessor is the "key" in the data
+                Cell: (cellProps => {
+                    return (
+                        <>
+                            <div className="flex items-center">
+
+                                <div className={`w-16 h-16 mr-3 rounded-xl shadow border-2 hover:border-4 hover:border-pink-500 border-black`} style={{
+                                    background: `url(${cellProps.row.original.image?.thumbnailUrl})`,
+                                    backgroundPosition: '50%',
+                                    backgroundSize: 'cover'
+                                }}></div>
+                                <div>
+                                    <span>{cellProps.row.original.name}</span>
+                                    <br/>
+                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
+                                       {cellProps.row.original.rarity}
+                                    </span>
+                                    <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(cellProps.row.original.editionType)}`}>
+                                        {cellProps.row.original.editionType}
+                                    </span>
+                                </div>
+                            </div>
+
+                        </>
+                    )
+                })
+            },
+        ],
+        []
+    )
 
     useEffect(() => {
-        loadFilteredResults(offset, limit, myFilters.filters);
-    }, [])
-
-    const loadMoreButton = () => {
-        return (
-            size > 0 && size >= limit && (
-                <button onClick={loadMore} className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs mx-auto block`}>Load more</button>
-            )
-        )
-    };
-
-    const [checked, setChecked] = useState([])
-
-    const handleToggle = (e, collectible) => {
-        const clickedCollectible = checked.indexOf(collectible)
-        const all = [...checked]
-        if (!checked.some(person => person.collectibleId === collectible.collectibleId)) {
-            all.push(collectible)
-        } else {
-            all.splice(clickedCollectible, 1)
-        }
-        setChecked(all)
-        formData.set('collectibles', all)
-    }
-
-    const handleQuantity = (collectible) => {
-        const all = [...checked]
-        const newObjArr = all.map(obj => {
-                if (collectible.collectibleId.includes(obj.collectibleId)) {
-                    return {...obj, quantity: collectible.quantity}
-                }
-                return obj
-            }
-        )
-        setChecked(newObjArr)
-        formData.set('collectibles', all)
-    }
-
-    const calcValuation = e => {
-        console.log('form data is: ' ,checked)
-        e.preventDefault()
-        getValuation(checked, token)
+        console.log('Use effect triggered')
+        getValuation(usersCollectibles, token)
             .then(data => {
                 if(data.error) {
-                    console.log('Error getting valuation: ', data.error)
                     setValues({ ...values, error: data.error });
                 } else {
                     setValuation(data.valuation)
                 }
             })
-    }
+    }, [usersCollectibles, setValuation])
+
+    // const handleToggle = (e, collectible) => {
+    //     const clickedCollectible = checked.indexOf(collectible)
+    //     const all = [...checked]
+    //     if (!checked.some(person => person.collectibleId === collectible.collectibleId)) {
+    //         all.push(collectible)
+    //     } else {
+    //         all.splice(clickedCollectible, 1)
+    //     }
+    //     setChecked(all)
+    //     formData.set('collectibles', all)
+    // }
+    //
+    // const handleQuantity = (collectible) => {
+    //     const all = [...checked]
+    //     const newObjArr = all.map(obj => {
+    //             if (collectible.collectibleId.includes(obj.collectibleId)) {
+    //                 return {...obj, quantity: collectible.quantity}
+    //             }
+    //             return obj
+    //         }
+    //     )
+    //     setChecked(newObjArr)
+    //     formData.set('collectibles', all)
+    // }
+    //
+    // const calcValuation = e => {
+    //     console.log('form data is: ' ,checked)
+    //     e.preventDefault()
+    //     getValuation(checked, token)
+    //         .then(data => {
+    //             if(data.error) {
+    //                 console.log('Error getting valuation: ', data.error)
+    //                 setValues({ ...values, error: data.error });
+    //             } else {
+    //                 setValuation(data.valuation)
+    //             }
+    //         })
+    // }
 
     return(
         <Default>
@@ -138,27 +171,26 @@ const Valuation = ({ router }) => {
                 </div>
             </section>
 
-            <form onSubmit={calcValuation}>
+            <section className="grid grid-cols-1 mt-10 text-white px-5">
+                {collectibles && collectibles ? <ValuationTable
+                    columns={columns}
+                    data={collectibles}
+                    setCollectibles={setCollectibles}
+                    loading={loading}
+                    setValuation={setValuation}
+                    valuation={valuation}
+                    setUsersCollectibles={setUsersCollectibles}
+                    usersCollectibles={usersCollectibles}
+                /> : null}
+            </section>
 
-                <section>
-                    <XMasonry>
-                        {filteredResults && filteredResults.map((collectible, index) => {
-                            if (collectible.image.direction === "LANDSCAPE"){
-                                return <XBlock width={2}><SelectCollectibleCard collectible={collectible} handleToggle={handleToggle} handleQuantity={handleQuantity} classes={`mb-5`} /></XBlock>
-                            } else {
-                                return <XBlock><SelectCollectibleCard collectible={collectible} handleToggle={handleToggle} handleQuantity={handleQuantity}  /></XBlock>
-                            }
-                        })}
-                    </XMasonry>
-                    {loadMoreButton()}
-                </section>
+            {JSON.stringify(usersCollectibles)}
 
-                <footer className={`text-center p-5 text-white fixed w-full bottom-0 left-0 bg-gray-900 z-10 border-t border-black`}>
-                    <small className={`block uppercase text-sm font-medium text-gray-300`}>Your vault is valued at:</small>
-                    <p className={`font-normal text-xl text-green-500 font-medium text-3xl`}>${valuation.toLocaleString()}</p>
-                </footer>
+            <footer className={`text-center p-5 text-white fixed w-full bottom-0 left-0 bg-gray-900 z-10 border-t border-black`}>
+                <small className={`block uppercase text-sm font-medium text-gray-300`}>Your vault is valued at:</small>
+                <p className={`font-normal text-xl text-green-500 font-medium text-3xl`}>${valuation.toLocaleString()}</p>
+            </footer>
 
-            </form>
 
         </Default>
     )

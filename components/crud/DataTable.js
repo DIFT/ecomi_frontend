@@ -4,8 +4,6 @@ import CaretDown from "../Misc/Icons/CaretDown"
 import {matchSorter} from 'match-sorter'
 import CaretUp from "../Misc/Icons/CaretUp"
 
-
-
 // Define a default UI for filtering
 function GlobalFilter({
                           preGlobalFilteredRows,
