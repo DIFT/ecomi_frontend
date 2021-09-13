@@ -86,26 +86,6 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
         const filtered = usersCollectibles.filter((e) => { return e.collectibleId != collectibleId })
         setUsersCollectibles([...filtered, newUserCollectible])
 
-
-
-            // if (usersCollectibles.find(c => c.collectibleId === newUserCollectible.collectibleId)){
-            //     console.log('lol not updating state for you.')
-            //     usersCollectibles.map((currentCollectibles, index) => {
-            //         if (currentCollectibles.collectibleId === newUserCollectible.collectibleId){
-            //             usersCollectibles[index] = {"collectibleId": collectibleId, "quantity": Number(quantity)}
-            //             setUsersCollectibles([...usersCollectibles])
-            //         }
-            //     })
-            //
-            // } else {
-            //     console.log('updating for you')
-            //     newUserCollectible = { "collectibleId": collectibleId, "quantity": Number(quantity) }
-            //     return setUsersCollectibles([...usersCollectibles, newUserCollectible])
-            // }
-
-
-
-        })
     }
 
     const filterTypes = useMemo(
