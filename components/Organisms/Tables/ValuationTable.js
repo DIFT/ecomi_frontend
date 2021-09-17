@@ -66,6 +66,18 @@ const EditableCell = ({
 
 const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, valuation, setValuation, usersCollectibles, setUsersCollectibles, selectedRows }) => {
 
+    const collectiblesFromLS = () => {
+        if (typeof window === 'undefined'){
+            return false
+        }
+
+        if (localStorage.getItem('collectibles')){
+            return JSON.parse(localStorage.getItem('collectibles'))
+        } else {
+            return false
+        }
+    }
+
     const handleCalcValuation = (selectedFlatRows) => {
         let vaultValuation = []
         const selectedItems = []
@@ -80,6 +92,10 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
         })
 
         setUsersCollectibles([...selectedItems])
+        // Post this to back end to save to user profile.
+        if (typeof window !== 'undefined'){
+            localStorage.setItem('collectibles', JSON.stringify(selectedItems))
+        }
 
     }
 
@@ -103,23 +119,27 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
         []
     )
 
-    const fakeData = [
-        {"collectibleId": "b94e5d49-35f0-4bdc-9e41-d5c484df5ae7", "quantity": 2},
-        {"collectibleId": "1def2f37-8043-4aa8-a490-b4024db216ff", "quantity": 2},
-        {"collectibleId": "ac5bc2af-f67d-46da-bac1-1b404a3dd6d1", "quantity": 2}
-    ]
+    // const preSelectTheseItems = [
+    //     {"collectibleId": "b94e5d49-35f0-4bdc-9e41-d5c484df5ae7", "quantity": 2},
+    //     {"collectibleId": "1def2f37-8043-4aa8-a490-b4024db216ff", "quantity": 2},
+    //     {"collectibleId": "ac5bc2af-f67d-46da-bac1-1b404a3dd6d1", "quantity": 2}
+    // ]
 
-    const handleSelectedRows = async () => {
-        let selectedObj = {}
-        await data && data.map((collectibleRow, index) => {
-            var check = fakeData.find(c => c.collectibleId === collectibleRow.collectibleId);
-            const stringMyIndex = `${index}`
-            if (check){
-                selectedObj = {...selectedObj, [stringMyIndex]: true}
-            }
-        })
-        console.log('selectedobj inside is: ', selectedObj)
-        return selectedObj
+    const handleSelectedRows = () => {
+        if (localStorage.getItem('collectibles')){
+            return JSON.parse(localStorage.getItem('collectibles'))
+        } else {
+            // let selectedObj = {}
+            // data && data.map((collectibleRow, index) => {
+            //     var check = preSelectTheseItems.find(c => c.collectibleId === collectibleRow.collectibleId);
+            //     const stringMyIndex = `${index}`
+            //     if (check){
+            //         return selectedObj = {...selectedObj, [stringMyIndex]: true}
+            //     }
+            // })
+            // return selectedObj
+            return {}
+        }
     }
 
     const {
@@ -144,7 +164,7 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             columns,
             data,
             autoResetPage: !skipPageReset,
-            autoResetSelectedRows: false,
+            autoResetSelectedRows: !skipPageReset,
             updateMyData,
             initialState: { pageIndex: 0, pageSize: 200, selectedRowIds: handleSelectedRows() },
         },

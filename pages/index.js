@@ -1,4 +1,5 @@
 import Default from "../components/Templates/Default"
+import Head from "next/head"
 import Link from "next/link"
 import { useState, useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
@@ -16,6 +17,13 @@ const CheckIcon = dynamic(() => import('../components/Misc/LordIcon').then((mod)
 });
 
 const Index = () => {
+
+    const head = () => (
+        <Head>
+            <title>ECOMI | VEVE | NFTS | COLLECTIBLES | ECOMI WIKI</title>
+            <meta name={"description"} content={`This is the unofficial due diligence package, and rumour mill, ran by enthusiastic and optimistic ECOMI investors. We've done all the heavy lifting for you to so that you can make your own informed decision`} />
+        </Head>
+    )
 
     const [rtPrice, setRtPrice] = useState(0)
     const [prices, setPrices] = useState()
@@ -170,14 +178,18 @@ const Index = () => {
     }
 
     return(
-        <Default>
-            <ReactTooltip clickable={true} />
-            {hero()}
-            {ecomiMediumArticles()}
-            {ecomiIntro()}
-            <TeamMembers />
-            <VeveIntro />
-        </Default>
+        <>
+            {head()}
+            <Default>
+                <ReactTooltip clickable={true} />
+                {hero()}
+                {ecomiMediumArticles()}
+                {ecomiIntro()}
+                <TeamMembers />
+                <VeveIntro />
+            </Default>
+        </>
+
     )
 }
 

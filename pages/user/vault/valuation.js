@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import Head from "next/head"
 import Link from 'next/link'
+import Image from 'next/image'
 import dynamic from "next/dynamic"
 import Router from 'next/router'
 import { withRouter } from 'next/router'
@@ -19,6 +21,13 @@ const ValuationTable = dynamic(
 );
 
 const Valuation = ({ router }) => {
+
+    const head = () => (
+        <Head>
+            <title>VEVE Vault Valuation | ECOMI WIKI</title>
+            <meta name={"description"} content={`Find out how much your VEVE vault is worth at a minimum using our valuation tool.`} />
+        </Head>
+    )
 
     const token = getCookie('token')
     const [valuation, setValuation] = useState(0)
@@ -173,7 +182,89 @@ const Valuation = ({ router }) => {
         }
     }
 
+    const getVaultQuotes = () => {
+        console.log('valuation is: ', valuation)
+        switch (true){
+            case (valuation > 100 && valuation < 500):
+                return(
+                    <>
+                        <Image
+                            src="/assets/images/Rhys.jpg"
+                            alt="Image of Rhys Skellern"
+                            width={70}
+                            height={70}
+                            className={`rounded-full border-2 border-black`}
+                        />
+                        <div className={`text-left`}>
+                                    <span className={`block`}>
+                                        <Link href={`https://twitter.com/ecomi_rhys`}><a target={"_blank"} className={`text-pink-500 font-medium`}>Rheme</a></Link> says:
+                                    </span>
+                            <blockquote className={`italic text-sm text-gray-400`}>"That's not a bad looking vault, mate!"</blockquote>
+                        </div>
+                    </>
+                )
+            break
+            case (valuation > 1000 && valuation < 5000):
+                return(
+                    <>
+                        <Image
+                            src="/assets/images/DanCrothers.jpg"
+                            alt="Image of Dan Crothers"
+                            width={70}
+                            height={70}
+                            className={`rounded-full border-2 border-black`}
+                        />
+                        <div className={`text-left`}>
+                                    <span className={`block`}>
+                                        <Link href={`https://twitter.com/ecomi_rhys`}><a target={"_blank"} className={`text-pink-500`}>DC</a></Link> says:
+                                    </span>
+                            <blockquote className={`italic text-sm text-gray-400`}>"That is an excellent vault, well done!"</blockquote>
+                        </div>
+                    </>
+                )
+            case (valuation > 5000):
+                return(
+                    <>
+                        <Image
+                            src="/assets/images/DavidYu.jpg"
+                            alt="Image of David Yu"
+                            width={70}
+                            height={70}
+                            className={`rounded-full border-2 border-black`}
+                        />
+                        <div className={`text-left`}>
+                                    <span className={`block`}>
+                                        <Link href={`https://twitter.com/DavidYuNZ`}><a target={"_blank"} className={`text-pink-500 font-medium`}>David Yu</a></Link> says:
+                                    </span>
+                            <blockquote className={`italic text-sm text-gray-400`}>"You think you are a collector?"</blockquote>
+                        </div>
+                    </>
+                )
+            break
+            default:
+                return (
+                    <>
+                        <Image
+                            src="/assets/images/OMITheClown.jpg"
+                            alt="Image of OMI The Clown"
+                            width={70}
+                            height={70}
+                            className={`rounded-full border-2 border-black`}
+                        />
+                        <div className={`text-left`}>
+                                    <span className={`block`}>
+                                        <Link href={`https://twitter.com/OMI_the_Clown`}><a target={"_blank"} className={`text-pink-500`}>OMI the Clown</a></Link> says:
+                                    </span>
+                            <blockquote className={`italic text-sm text-gray-400`}>"OMI doesn't play your vault."</blockquote>
+                        </div>
+                    </>
+                )
+        }
+    }
+
     return(
+        <>
+        {head()}
         <Default>
             <section className="text-white px-5 mt-20">
                 <h1 className={`font-semibold text-2xl leading-relaxed`}>Valuation</h1>
@@ -214,15 +305,29 @@ const Valuation = ({ router }) => {
             </section>
 
             <footer className={`text-center p-5 text-white fixed w-full bottom-0 left-0 bg-gray-900 z-10 border-t border-black`}>
-                <span className={`text-gray-400 text-sm font-medium mb-2 block`}>RRP: $<CountUp end={vaultRetailPrice} duration={1} separator="," decimals={2} decimal="."/></span>
-                <p className={`font-normal ${valuation > vaultRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-5xl`}>
-                    $<CountUp end={valuation} duration={1} separator="," decimals={2} decimal="."/>
-                    {calcPercentageChange()}
-                </p>
+                <div className="container">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
+                        <div className={`text-gray-300`}>
+                            <div className="flex gap-5 items-center">
+                                {getVaultQuotes()}
+                            </div>
+                        </div>
+                        <div className={`text-right`}>
+                            <div className="block">
+                                <span className={`text-gray-400 text-sm font-medium mb-2`}>RRP: $<CountUp end={vaultRetailPrice} duration={1} separator="," decimals={2} decimal="."/></span>
+                                {calcPercentageChange()}
+                            </div>
+                            <p className={`font-normal ${valuation > vaultRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-5xl`}>
+                                + $<CountUp end={valuation} duration={1} separator="," decimals={2} decimal="."/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </footer>
 
-
         </Default>
+        </>
     )
 }
 
