@@ -27,8 +27,8 @@ const ComicFloors = () => {
     const loadMarketData = () => {
         getMarketComicData()
             .then(data => {
+                console.log('data is: ', data)
                 setMarketData(data)
-                console.log('table data is: ' ,data)
             })
             .catch(e => console.log('Error getting marketplace data'))
     }
@@ -38,14 +38,31 @@ const ComicFloors = () => {
             {
                 Header: 'Name',
                 accessor: 'comicSeries.name', // accessor is the "key" in the data
+                Cell: (cellProps => {
+                    return(
+                        <>
+                            <div className="flex items-center">
+                                <div className={`w-16 h-16 mr-3 rounded-xl shadow border-2 hover:border-4 hover:border-pink-500 border-black`} style={{
+                                    background: `url(${cellProps.row.original.cover.image?.thumbnailUrl})`,
+                                    backgroundPosition: '50%',
+                                    backgroundSize: 'cover'
+                                }}></div>
+                                <div>
+                                    <span>{cellProps.row.original.comicSeries.name} #{cellProps.row.original.comicNumber}</span>
+                                    <br/>
+                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
+                                       {cellProps.row.original.cover.rarity}
+                                    </span>
+                                </div>
+                            </div>
+                        </>
+                    )
+                })
             },
             {
                 Header: 'Floor Price (%Gain)',
                 accessor: 'metrics.lowestPrice',
                 Cell: (cellProps) => {
-                    console.log('Cell props is: ', cellProps)
-                    console.log('Metrics is: ', cellProps.row.original.metrics)
-                    console.log('LP is: ', cellProps.row.original.metrics.lowestPrice)
                     return(
                         <>
                             <span className={`font-medium`}>${cellProps.row.original.metrics.lowestPrice.toLocaleString()}</span>
@@ -87,17 +104,15 @@ const ComicFloors = () => {
                 )
             },
             {
-                Header: 'Rarity',
-                accessor: 'rarity',
-                Cell: (cellProps => (
-                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.cover.rarity)}`}>
-                        {cellProps.row.original.cover.rarity}
-                    </span>
-                ))
-            },
-            {
                 Header: 'Total Listed',
                 accessor: 'metrics.totalListings'
+            },
+            {
+                Header: 'Listed',
+                accessor: 'metrics.createdAt',
+                Cell: (cellProps => {
+                    return moment(cellProps.row.original.metrics.createdAt).fromNow()
+                })
             },
         ],
         []

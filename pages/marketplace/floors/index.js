@@ -48,7 +48,7 @@ const Metrics = () => {
                             </div>
                             <div>
                                 <p className="font-bold">Comic prices</p>
-                                <p className="text-sm">Comic floor prices are currently unavailable at this time, please check back at a later date.</p>
+                                <p className="text-sm">Currently we only have comic floor prices available at this time. Please consider <Link href={`/donate`}><a className={`text-pink-500 font-medium`}>donating</a></Link> to help us develop features for you faster</p>
                             </div>
                         </div>
                     </div>
@@ -62,10 +62,10 @@ const Metrics = () => {
                 <nav className={`px-5 mt-10`}>
                     <ul>
                         <li className="inline-block mr-3">
-                            <button onClick={e => setTab("collectibleFloors")} className={`${tab === "collectibleFloors" ? 'bg-pink-500' : 'bg-transparent border border-white'} hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>Collectibles</button>
+                            <button onClick={e => setTab("collectibleFloors")} className={`${tab === "collectibleFloors" ? 'bg-pink-500 border border-pink-500' : 'bg-transparent border border-white'} hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>Collectibles</button>
                         </li>
                         <li className="inline-block mr-3">
-                            <button onClick={e => setTab("comicFloors")} disabled className={`${tab === "comicFloors" ? 'bg-pink-500' : 'bg-transparent border border-gray-500'} text-gray-500 font-base py-2 px-4 rounded-full font-semibold text-xs`}>Comics</button>
+                            <button onClick={e => setTab("comicFloors")} className={`${tab === "comicFloors" ? 'bg-pink-500 border border-pink-500' : 'bg-transparent border border-white'} text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>Comics</button>
                         </li>
                     </ul>
                 </nav>

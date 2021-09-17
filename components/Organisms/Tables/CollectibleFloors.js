@@ -37,7 +37,6 @@ const CollectibleFloors = () => {
                 Header: 'Name',
                 accessor: 'name', // accessor is the "key" in the data
                 Cell: (cellProps => {
-                    console.log('cellprops are: ', cellProps)
                     return (
                         <>
                             <div className="flex items-center">

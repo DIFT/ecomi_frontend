@@ -43,12 +43,45 @@ const Valuation = ({ router }) => {
         calcStoreRetailPrice()
     }, [collectibles])
 
+    const [mySelectedRows, setMySelectedRows] = useState({});
+
+    const fakeData = [
+        {"collectibleId": "b94e5d49-35f0-4bdc-9e41-d5c484df5ae7", "quantity": 2},
+        {"collectibleId": "1def2f37-8043-4aa8-a490-b4024db216ff", "quantity": 2},
+        {"collectibleId": "ac5bc2af-f67d-46da-bac1-1b404a3dd6d1", "quantity": 2}
+    ]
+
+    // useEffect(() => {
+    //     let selectedObj = {}
+    //     collectibles && collectibles.map((collectibleRow, index) => {
+    //         var check = fakeData.find(c => c.collectibleId === collectibleRow.collectibleId);
+    //         const stringMyIndex = `${index}`
+    //         selectedObj = {[stringMyIndex]: true}
+    //         if (check){
+    //             setMySelectedRows({...mySelectedRows, "77": true })
+    //             console.log('selected rows state is: ', mySelectedRows)
+    //         }
+    //     })
+    // }, [collectibles])
+
     const loadMarketData = () => {
         getMarketData()
             .then(data => {
                 setCollectibles(data)
             })
-            .catch(e => console.log('Error getting marketplace data'))
+            .catch(e => console.log('Error getting marketplace data', e))
+    }
+
+    const handleSelectedRows = () => {
+        let selectedObj = {}
+        collectibles && collectibles.map((collectibleRow, index) => {
+            var check = fakeData.find(c => c.collectibleId === collectibleRow.collectibleId);
+            const stringMyIndex = `${index}`
+            if (check){
+                selectedObj = {...selectedObj, [stringMyIndex]: true}
+            }
+        })
+        return selectedObj
     }
 
     const EditableCell = ({
@@ -176,6 +209,7 @@ const Valuation = ({ router }) => {
                     valuation={valuation}
                     setUsersCollectibles={setUsersCollectibles}
                     usersCollectibles={usersCollectibles}
+                    selectedRows={mySelectedRows}
                 /> : null}
             </section>
 

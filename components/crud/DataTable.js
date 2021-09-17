@@ -122,10 +122,6 @@ const DataTable = ({ columns, data }) => {
         usePagination,
     )
 
-    console.log('page count is: ', pageCount)
-    console.log('page size is: ', pageSize)
-    console.log('table state is: ', state)
-
     return(
         <>
             <div className="flex flex-col overflow-auto customTable">
@@ -165,7 +161,6 @@ const DataTable = ({ columns, data }) => {
                                                         className="px-6 py-4 whitespace-nowrap"
                                                     >
                                                         <span className={`block sm:hidden text-xs font-medium text-gray-300 uppercase tracking-wider mb-2`}>{cell.column.Header}</span>
-                                                        {console.log('getll props is: ', cell)}
                                                         {cell.render('Cell')}
                                                     </td>
                                                 )

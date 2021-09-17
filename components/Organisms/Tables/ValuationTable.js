@@ -64,7 +64,7 @@ const EditableCell = ({
     return <input type="number" value={value} onChange={onChange} onBlur={onBlur} disabled={!row.isSelected} className={`${!row.isSelected ? 'bg-gray-900 text-gray-500 opacity-50' : 'bg-gray-900  text-white'} rounded-3xl p-3`} />
 }
 
-const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, valuation, setValuation, usersCollectibles, setUsersCollectibles }) => {
+const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, valuation, setValuation, usersCollectibles, setUsersCollectibles, selectedRows }) => {
 
     const handleCalcValuation = (selectedFlatRows) => {
         let vaultValuation = []
@@ -103,6 +103,25 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
         []
     )
 
+    const fakeData = [
+        {"collectibleId": "b94e5d49-35f0-4bdc-9e41-d5c484df5ae7", "quantity": 2},
+        {"collectibleId": "1def2f37-8043-4aa8-a490-b4024db216ff", "quantity": 2},
+        {"collectibleId": "ac5bc2af-f67d-46da-bac1-1b404a3dd6d1", "quantity": 2}
+    ]
+
+    const handleSelectedRows = async () => {
+        let selectedObj = {}
+        await data && data.map((collectibleRow, index) => {
+            var check = fakeData.find(c => c.collectibleId === collectibleRow.collectibleId);
+            const stringMyIndex = `${index}`
+            if (check){
+                selectedObj = {...selectedObj, [stringMyIndex]: true}
+            }
+        })
+        console.log('selectedobj inside is: ', selectedObj)
+        return selectedObj
+    }
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -127,7 +146,7 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
             autoResetPage: !skipPageReset,
             autoResetSelectedRows: false,
             updateMyData,
-            initialState: { pageIndex: 0, pageSize: 200 },
+            initialState: { pageIndex: 0, pageSize: 200, selectedRowIds: handleSelectedRows() },
         },
         usePagination,
         useRowSelect,
@@ -214,7 +233,7 @@ const Table = ({ columns , data, updateMyData, skipPageReset, setCollectibles, v
     )
 }
 
-const ValuationTable = ({ columns, data, setCollectibles, setValuation, valuation, setUsersCollectibles, usersCollectibles }) => {
+const ValuationTable = ({ columns, data, setCollectibles, setValuation, valuation, setUsersCollectibles, usersCollectibles,selectedRows }) => {
 
     const [skipPageReset, setSkipPageReset] = React.useState(false)
 
@@ -249,6 +268,7 @@ const ValuationTable = ({ columns, data, setCollectibles, setValuation, valuatio
             valuation={valuation}
             usersCollectibles={usersCollectibles}
             setUsersCollectibles={setUsersCollectibles}
+            selectedRows={selectedRows}
         />
     )
 }
