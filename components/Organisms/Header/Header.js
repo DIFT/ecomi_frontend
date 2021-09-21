@@ -17,6 +17,7 @@ import { signout, isAuth } from "../../../actions/auth"
 import SigninComponent from "/components/Auth/SigninComponent"
 import SignupComponent from "/components/Auth/SignupComponent"
 import AlertCentre from "/components/Organisms/AlertCentre/AlertCentre"
+import { useTranslation } from 'react-i18next'
 
 const ReactTooltip = dynamic(() => import('react-tooltip'), {
     ssr: false
@@ -49,6 +50,8 @@ const MenuIcon = dynamic(() => import('/components/Misc/LordIcon').then((mod) =>
 
 const Header = ({ setControlOverflow }) => {
 
+    const { t } = useTranslation();
+
     const [menuOpen, setMenuOpen] = useState(false)
     const [modalState, setModalState] = useState(false)
     const [userExists, setUserExists] = useState(false)
@@ -59,8 +62,8 @@ const Header = ({ setControlOverflow }) => {
         return(
             <div className={`bg-black p-5 absolute text-white right-2 ${toggleUserDD ? 'block' : 'hidden' }`}>
                 <ul>
-                    <li><Link href={`/user/vault/valuation`}><a>Valuation</a></Link></li>
-                    <li><button onClick={() => signout(() => Router.replace('/'))}>Signout</button></li>
+                    <li><Link href={`/user/vault/valuation`}><a>{t(`header.valuation`)}</a></Link></li>
+                    <li><button onClick={() => signout(() => Router.replace('/'))}>{t(`header.signOut`)}</button></li>
                 </ul>
             </div>
         )
@@ -91,7 +94,7 @@ const Header = ({ setControlOverflow }) => {
                         <ul className="text-right">
                             <li className="inline-block mr-2">
                                 <Link href={`/collectibles`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Collectibles`} data-effect={'solid'} data-event='mouseenter mouseleave'>
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={t(`header.collectibles`)} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <CollectibleIcon
                                             size={`40px`}
                                             params={`60`}
@@ -115,7 +118,7 @@ const Header = ({ setControlOverflow }) => {
                             {/*</li>*/}
                             <li className="inline-block mr-2">
                                 <Link href={`/marketplace/floors`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Marketplace Floors`} data-effect={'solid'} data-event='mouseenter mouseleave'>
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={t(`header.marketplaceFloors`)} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <MarketplaceIcon
                                             size={`40px`}
                                             params={`60`}

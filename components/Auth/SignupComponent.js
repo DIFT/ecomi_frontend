@@ -3,8 +3,11 @@ import { isAuth, signup } from "../../actions/auth"
 import Link from "next/link"
 import Router from "next/router"
 import Image from "next/image"
+import { useTranslation } from 'react-i18next'
 
 const SignupComponent = ({setUserExists}) => {
+
+    const { t } = useTranslation();
 
     const [values, setValues] = useState({
         name: '',
@@ -53,9 +56,9 @@ const SignupComponent = ({setUserExists}) => {
         setValues({...values, error: false, [name]: e.target.value })
     }
 
-    const showLoading = () => loading ? <div>Loading...</div> : null
+    const showLoading = () => loading ? <div>{t(`signUp.loading`)}...</div> : null
     const showError = () => error ? <div className={`bg-red-300 text-red-700 font-semibold p-2 rounded-3xl text-center mb-5 text-sm`}>{error}</div> : null
-    const showMessage = () => message ? <div className={`text-center`}>You're signed up! Go ahead and <button onClick={e => setUserExists(true)} className={`text-pink-500`}>Log in</button></div> : null
+    const showMessage = () => message ? <div className={`text-center`}>{t(`signUp.youAre`)} <button onClick={e => setUserExists(true)} className={`text-pink-500`}>{t(`signUp.logIn`)}</button></div> : null
 
 
     const signupForm = () => {
@@ -71,9 +74,9 @@ const SignupComponent = ({setUserExists}) => {
                 </div>
 
                 <div className="text-center text-white">
-                    <h4 className="mx-0 mt-0 mb-1 text-2xl">Sign Up</h4>
+                    <h4 className="mx-0 mt-0 mb-1 text-2xl">{t(`signUp.signUp`)}</h4>
                     <p className="mb-5 text-sm text-gray-300">
-                        This site is free to use, but please be respectful to all other members of this site.
+                        {t(`signUp.freeToUse`)}
                     </p>
                 </div>
 
@@ -89,10 +92,10 @@ const SignupComponent = ({setUserExists}) => {
                     <button className={`text-pink-500 block mb-5 text-right text-sm float-right`} onClick={e => {
                         e.preventDefault()
                         setUserExists(true)
-                    }}>Already have an account? Login</button>
+                    }}>{t(`signUp.already`)}</button>
                     <br/>
                     <div className="flex justify-center w-full">
-                        <button type="submit" className={`text-center border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Signup</button>
+                        <button type="submit" className={`text-center border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>{t(`signUp.signUp`)}</button>
                     </div>
                 </form>
             </>

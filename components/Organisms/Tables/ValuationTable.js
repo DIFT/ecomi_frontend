@@ -7,6 +7,7 @@ function GlobalFilter({
                           globalFilter,
                           setGlobalFilter,
                       }) {
+    const { t } = useTranslation();              
     const count = preGlobalFilteredRows.length
     const [value, setValue] = useState(globalFilter)
     const onChange = useAsyncDebounce(value => {
@@ -22,7 +23,7 @@ function GlobalFilter({
                     onChange(e.target.value);
                 }}
                 className={`bg-gray-900 p-3 w-screen border border-gray-700 text-center focus:outline-none`}
-                placeholder={`Search... (${count} collectibles)`}
+                placeholder={`${t(`dataTable.search`)}... (${count} ${t(`dataTable.collectibles`)})`}
                 autoFocus={true}
             />
     </span>

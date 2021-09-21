@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link"
 import dynamic from 'next/dynamic'
+import { useTranslation } from 'react-i18next';
 
 const LinkIcon = dynamic(() => import('../../Misc/LordIcon').then((mod) => mod.LinkIcon), {
     ssr: false
@@ -12,6 +13,7 @@ const DonateIcon = dynamic(() => import('../../Misc/LordIcon').then((mod) => mod
 });
 
 const Footer = () => {
+    const { t } = useTranslation();
     return(
         <>
             <footer className={`px-10 text-white bg-gray-900 py-20 border-t border-black mt-20`}>
@@ -39,8 +41,8 @@ const Footer = () => {
                             <span className={`text-gray-300 text-2xl font-medium inline-block ml-1`}>WIKI</span>
                         </span>
 
-                        <small className={`text-sm mt-5 text-gray-400 block`}>ECOMI WIKI is an <strong>unofficial</strong> site and is not in any way affiliated with ECOMI, VEVE or any of the brands or licensors mentioned. ECOMI WIKI is an open source community driven site ran not for profit. </small>
-                        <small className={`text-sm mt-5 text-gray-400 block`}>No content on this site should be considered financial advice and is for entertainment purposes only. Although we do attempt to verify each claim through various sources your own research is strongly advised.</small>
+                        <small className={`text-sm mt-5 text-gray-400 block`}>{t(`footer.ecomiWiki`)}<strong>{t(`footer.unofficial`)}</strong>{t(`footer.notAffiliated`)}</small>
+                        <small className={`text-sm mt-5 text-gray-400 block`}>{t(`footer.noFinancialAdvice`)}</small>
                         <Link href={`/donate`}><a>
                             <DonateIcon
                                 palette={`#CCCCCC;#db2777;`}
@@ -50,13 +52,13 @@ const Footer = () => {
 
                     </div>
                     <div>
-                        <h6 className={`mb-3 font-medium text-gray-300`}>Quick links</h6>
+                        <h6 className={`mb-3 font-medium text-gray-300`}>{t(`footer.quickLink`)}</h6>
 
                         <ul className={`text-sm`}>
                             <li className={`mb-2`}>
                                 <Link href={"/marketplace/floors"} ><a className={`py-2`}>
                                     <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Marketplace Floors</span>
+                                    <span className={`leading-6 ml-2 text-pink-600`}>{t(`footer.floors`)}</span>
                                 </a></Link>
                             </li>
                             {/*<li className={`mb-2`}>*/}
@@ -74,7 +76,7 @@ const Footer = () => {
                             <li className={`mb-2`}>
                                 <Link href={"https://drive.google.com/file/d/1UNE-EvjuMIaWJUfvF3qQiTe0OKLFAJXV/view"}><a className={`py-2`}>
                                     <LinkIcon />
-                                    <span className={`leading-6 ml-2 text-pink-600`}>Official Whitepaper</span></a>
+                                    <span className={`leading-6 ml-2 text-pink-600`}>{t(`footer.whitepaper`)}</span></a>
                                 </Link>
                             </li>
                             {/*<li className={`mb-2`}>*/}

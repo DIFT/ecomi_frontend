@@ -3,8 +3,10 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 import { gsap } from 'gsap'
 import ListBrandsScreen from "./Screens/ListBrands"
 import BrandScreen from "./Screens/BrandScreen"
+import { useTranslation } from 'react-i18next'
 const PhoneApplication = ({screen, setTab}) => {
 
+    const { t } = useTranslation();
     const [deviceScreen, setDeviceScreen] = useState('store');
     const [slug, setSlug] = useState('');
 
@@ -500,7 +502,7 @@ const PhoneApplication = ({screen, setTab}) => {
                 </div>
                 {phoneFooter()}
             </div>
-            <span className={`text-sm text-center block text-gray-300`}>*You can interact with the above emulation.</span>
+            <span className={`text-sm text-center block text-gray-300`}>*{t(`canInteract`)}</span>
         </article>
     )
 }

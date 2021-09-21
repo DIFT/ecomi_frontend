@@ -4,6 +4,7 @@ import dynamic from "next/dynamic"
 import { getMarketData } from "../../../actions/metrics/metrics"
 import moment from "moment"
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
+import { useTranslation } from 'react-i18next'
 
 // const MicroChart = dynamic(
 //     () => import("../../../components/Atoms/MicroChart/MicroChart"),
@@ -16,6 +17,8 @@ const DataTable = dynamic(
 );
 
 const CollectibleFloors = () => {
+
+    const { t } = useTranslation();
 
     const [marketData, setMarketData] = useState()
 
@@ -34,7 +37,7 @@ const CollectibleFloors = () => {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Name',
+                Header: t('collectibleFloors.name'),
                 accessor: 'name', // accessor is the "key" in the data
                 Cell: (cellProps => {
                     return (
@@ -63,7 +66,7 @@ const CollectibleFloors = () => {
                 })
             },
             {
-                Header: 'Floor Price (%Gain)',
+                Header: t('collectibleFloors.gain'),
                 accessor: 'metrics.lowestPrice',
                 Cell: (cellProps) => {
                     return(
@@ -75,14 +78,14 @@ const CollectibleFloors = () => {
                 }
             },
             {
-                Header: 'Store Price',
+                Header: t('collectibleFloors.store'),
                 accessor: 'storePrice',
                 Cell: (cellProps => (
                     <span>${cellProps.row.original.storePrice}</span>
                 ))
             },
             {
-                Header: 'Last sold',
+                Header: t('collectibleFloors.lastSold'),
                 accessor: 'metrics.prevSold.price',
                 Cell: (cellProps => (
                     <>
@@ -100,14 +103,14 @@ const CollectibleFloors = () => {
             //   })
             // },
             {
-                Header: 'Issue Number',
+                Header: t('collectibleFloors.issueNo'),
                 accessor: 'metrics.issueNumber',
                 Cell: (cellProps) => (
-                    <span className={`font-medium`}>{cellProps.row.original.metrics.issueNumber} <span className={`text-sm text-gray-300 font-normal`}>of {cellProps.row.original.totalIssued}</span></span>
+                    <span className={`font-medium`}>{cellProps.row.original.metrics.issueNumber} <span className={`text-sm text-gray-300 font-normal`}>{t(`collectibleFloors.of`)} {cellProps.row.original.totalIssued}</span></span>
                 )
             },
             {
-                Header: 'Brand',
+                Header: t('collectibleFloors.brand'),
                 accessor: 'brand.name',
                 disableSortBy: true,
                 Cell: (cellProps => (
@@ -115,11 +118,11 @@ const CollectibleFloors = () => {
                 ))
             },
             {
-                Header: 'Total Listed',
+                Header: t('collectibleFloors.total'),
                 accessor: 'metrics.totalListings'
             },
             {
-                Header: 'Listed',
+                Header: t('collectibleFloors.listed'),
                 accessor: 'metrics.createdAt',
                 Cell: (cellProps => {
                     return moment(cellProps.row.original.metrics.createdAt).fromNow()
@@ -134,7 +137,7 @@ const CollectibleFloors = () => {
 
     return(
         <div className="grid grid-cols-1 mt-10 text-white px-5">
-            <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
+            <span className={`block mb-3 text-xs text-gray-300`}>{t(`floors.lastUpdate`)}: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
             {marketData && marketData ? <DataTable
                 columns={columns}
                 data={marketData}

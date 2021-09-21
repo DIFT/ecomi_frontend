@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react'
 import {signin, authenticate, isAuth} from "../../actions/auth"
 import Router from "next/router"
 import Image from "next/image"
+import { useTranslation } from 'react-i18next'
 
 const SigninComponent = ({ setUserExists }) => {
+
+    const { t } = useTranslation();
 
     const [values, setValues] = useState({
         email: '',
@@ -48,7 +51,7 @@ const SigninComponent = ({ setUserExists }) => {
         setValues({...values, error: false, [name]: e.target.value })
     }
 
-    const showLoading = () => loading ? <div>Loading...</div> : null
+    const showLoading = () => loading ? <div>{t(`signIn.loading`)}...</div> : null
     const showError = () => error ? <div>{error}</div> : null
     const showMessage = () => message ? <div>{message}</div> : null
 
@@ -66,9 +69,9 @@ const SigninComponent = ({ setUserExists }) => {
                 </div>
 
                 <div className="text-center text-white">
-                    <h4 className="mx-0 mt-0 mb-1 text-2xl">Sign in</h4>
+                    <h4 className="mx-0 mt-0 mb-1 text-2xl">{t(`signIn.signIn`)}</h4>
                     <p className="mb-5 text-sm text-gray-300">
-                        Welcome back! Let yourself in.
+                        {t(`signIn.welcome`)}
                     </p>
 
                 </div>
@@ -87,7 +90,7 @@ const SigninComponent = ({ setUserExists }) => {
                     {/*}}>Don't have an account? Signup</button>*/}
                     {/*<br/>*/}
                     <div className="flex justify-center w-full">
-                        <button type="submit" className={`text-center border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Login</button>
+                        <button type="submit" className={`text-center border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>{t(`signIn.login`)}</button>
                     </div>
                 </form>
             </>

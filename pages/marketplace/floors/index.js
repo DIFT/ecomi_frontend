@@ -9,13 +9,15 @@ import moment from "moment"
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
 import CollectibleFloors from '../../../components/Organisms/Tables/CollectibleFloors'
 import ComicFloors from '../../../components/Organisms/Tables/ComicFloors'
+import { useTranslation } from 'react-i18next'
 
 const Metrics = () => {
 
+    const { t } = useTranslation();
     const head = () => (
         <Head>
-            <title>VEVE Market Floor Prices | ECOMI WIKI</title>
-            <meta name={"description"} content={`VEVE marketplace floor prices updated hourly using the official API`} />
+            <title>{t(`floors.title`)}</title>
+            <meta name={"description"} content={t(`floors.updateByHour`)} />
         </Head>
     )
 
@@ -40,10 +42,10 @@ const Metrics = () => {
             <Default>
                 <>
                     <div className="text-white px-5 mt-20">
-                        <p className={`font-semibold text-2xl leading-relaxed`}>Smart data table automatically updated every hour</p>
+                        <p className={`font-semibold text-2xl leading-relaxed`}>{t(`floors.autoUpdate`)}</p>
 
                         <p className={`block text-base text-gray-300`}>
-                            The table below showcases the floor price (lowest available) for all collectibles currently listed on the secondary market with a 'buy it now' option.
+                            {t(`floors.floorPrices`)}
                         </p>
 
                         <div className="bg-yellow-400 border-t-4 border-yellow-600 rounded-3xl mt-5 text-black px-4 py-3 shadow-md"
@@ -57,14 +59,14 @@ const Metrics = () => {
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="font-bold">Comic prices</p>
-                                    <p className="text-sm">Currently we only have comic floor prices available at this time. Please consider <Link href={`/donate`}><a className={`text-pink-500 font-medium`}>donating</a></Link> to help us develop features for you faster</p>
+                                    <p className="font-bold">{t(`floors.comicPrices`)}</p>
+                                    <p className="text-sm">{t(`floors.currentlyComics`)}<Link href={`/donate`}><a className={`text-pink-500 font-medium`}>{t(`floors.currentlyComics1`)}</a></Link>{t(`floors.currentlyComics2`)}</p>
                                 </div>
                             </div>
                         </div>
 
                         <p className={`block text-base text-gray-300 mt-5`}>
-                            <Link href={`/user/vault/valuation`}><a className={`text-pink-500`}>Click here to get a vault valuation</a></Link> based off of the current market floor prices in this table.
+                            <Link href={`/user/vault/valuation`}><a className={`text-pink-500`}>{t(`floors.valutValuation`)}</a></Link>{t(`floors.basedOff`)}
                         </p>
 
                     </div>
@@ -72,10 +74,10 @@ const Metrics = () => {
                     <nav className={`px-5 mt-10`}>
                         <ul>
                             <li className="inline-block mr-3">
-                                <button onClick={e => setTab("collectibleFloors")} className={`${tab === "collectibleFloors" ? 'bg-pink-500 border border-pink-500' : 'bg-transparent border border-white'} hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>Collectibles</button>
+                                <button onClick={e => setTab("collectibleFloors")} className={`${tab === "collectibleFloors" ? 'bg-pink-500 border border-pink-500' : 'bg-transparent border border-white'} hover:bg-pink-700 text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>{t(`floors.collectibles`)}</button>
                             </li>
                             <li className="inline-block mr-3">
-                                <button onClick={e => setTab("comicFloors")} className={`${tab === "comicFloors" ? 'bg-pink-500 border border-pink-500' : 'bg-transparent border border-white'} text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>Comics</button>
+                                <button onClick={e => setTab("comicFloors")} className={`${tab === "comicFloors" ? 'bg-pink-500 border border-pink-500' : 'bg-transparent border border-white'} text-white font-base py-2 px-4 rounded-full font-semibold text-xs`}>{t(`floors.comics`)}</button>
                             </li>
                         </ul>
                     </nav>

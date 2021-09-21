@@ -16,6 +16,7 @@ import Badge from "../../Atoms/Badge/Badge"
 import {getRarityThresholds, getEditionTypeThresholds, truncate, soldOut} from "../../../utils"
 import ArrowRight from "../../Misc/Icons/ArrowRight"
 import { getBrands } from "../../../actions/brand/brand"
+import { useTranslation } from 'react-i18next'
 
 // Icons
 const CheckIcon = dynamic(() => import('../../../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
@@ -33,6 +34,7 @@ const CollectiblesRevenueBar = dynamic(
 );
 
 const VeveIntro = () => {
+    const { t } = useTranslation();
 
     const VeveIntroStripSection = () => {
         return(
@@ -40,13 +42,13 @@ const VeveIntro = () => {
                 <div className="container">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 py-20">
                         <div>
-                            <small className={`block uppercase text-xs mb-5 font-medium text-gray-400`}>The ECOMI team presents...</small>
+                            <small className={`block uppercase text-xs mb-5 font-medium text-gray-400`}>{t(`veveIntro.teamPresents`)}</small>
                             <h1 className="text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-gray-900 mb-8 sm:mb-10">
                                 <img src={`./assets/images/veve-logo--white.png`} width={`300`} alt={`VEVE`} />
                             </h1>
-                            <h2 className={`text-4xl lg:text-6xl leading-none font-semibold tracking-tight mb-8 sm:mb-10`}>Premium, officially licensed, digital collectibles (NFTs)</h2>
+                            <h2 className={`text-4xl lg:text-6xl leading-none font-semibold tracking-tight mb-8 sm:mb-10`}>{t(`veveIntro.premium`)}</h2>
                             <p className={`font-base text-xl leading-relaxed mb-5`}>
-                                VEVE is an app-based marketplace available on iOS and Android for premium <strong>licensed</strong> digital collectibles (Non-Fungible Tokens/NFTs).
+                                {t(`veveIntro.app`)}<strong>{t(`veveIntro.app1`)}</strong>{t(`veveIntro.app2`)}
                             </p>
 
                             <ul className={`my-10`}>
@@ -55,11 +57,11 @@ const VeveIntro = () => {
                             </ul>
 
                             <p className={`font-base text-xl leading-relaxed mb-5 text-gray-300`}>
-                                The app was officially launched in BETA on October 2020 and regularly drops new collectibles every Thursday at 4pm GMT
+                                {t(`veveIntro.lunched`)}
                             </p>
 
-                            <small className={`uppercase text-sm text-gray-300 block tracking-wide`}>Drops frequently sell out within minutes generating millions of revenue.
-                            <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
+                            <small className={`uppercase text-sm text-gray-300 block tracking-wide`}>{t(`veveIntro.drops`)}
+                            <span className={`cursor-pointer`} data-tip={`${t(`veveIntro.verified`)} <a href="https://youtu.be/LkRZtFeh88A?t=3438" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
                                 <CheckIcon />
                             </span>
                             </small>
@@ -185,13 +187,13 @@ const VeveIntro = () => {
         return(
             <section className={`pt-4 pb-4 text-white text-center overflow-hidden shadow bg-gray-900`}>
                 <h4 className="text-2xl mb-3">
-                    Premium brands and licenses
-                    <span className={`cursor-pointer inline-block`} data-tip={`Announced Feb 20th 2020 <a href="https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce" target="_blank" class="text-pink-500">https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce</a>`} data-html={true} data-event='click focus'>
+                    {t(`veveIntro.brand`)}
+                    <span className={`cursor-pointer inline-block`} data-tip={`${t(`veveIntro.announced`)} <a href="https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce" target="_blank" class="text-pink-500">https://medium.com/ecomi/huge-international-licenses-announced-for-ve-ve-d84f747c96ce</a>`} data-html={true} data-event='click focus'>
                         <CheckIcon />
                     </span>
                 </h4>
                 <small className="block text-base text-gray-300 mb-10">
-                    VEVE is trusted and recognised by some of the biggest and most popular brands in the world
+                    {t(`veveIntro.recognized`)}
                 </small>
 
                 <Slider {...settings}>
@@ -216,14 +218,14 @@ const VeveIntro = () => {
         const storeBlock = () => {
             return(
                 <div className={`${tab === 1 ? 'block' : 'hidden'}`}>
-                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Store</h2>
-                    <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Grow your collection</small>
+                    <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>{t(`veveIntro.store.title`)}</h2>
+                    <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>{t(`veveIntro.store.growCollection`)}</small>
 
                     <p className={`font-semibold text-2xl leading-relaxed mb-10`}>
-                        Users can browse collectibles from their favorite brands in premium digital format and grow their collections.
+                        {t(`veveIntro.store.browse`)}
                     </p>
                     <p className={`font-base text-xl leading-relaxed`}>
-                        Upon opening the VEVE app users are immediately presented with featured premium brands and collectibles, upcoming drops and powerful filtering methods. Users can easily navigate and browse digital collectibles offered, including those which are no longer available through the primary VEVE store front.
+                        {t(`veveIntro.store.offers`)}
                     </p>
                 </div>
             )
@@ -233,14 +235,14 @@ const VeveIntro = () => {
             return(
                 <div className={`${tab === 2 ? 'block' : 'hidden'}`}>
                     <div className={`flex-1`}>
-                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Collection</h2>
-                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Interactive NFTs</small>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>{t(`veveIntro.collection.title`)}</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>{t(`veveIntro.collection.interactiveNFT`)}</small>
 
                         <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
-                            Users can put their collection on display in their own virtual 3D showrooms. Customize, decorate, create and share.
+                            {t(`veveIntro.collection.showRooms`)}
                         </p>
                         <p className={`leading-relaxed mb-8 text-lg`}>
-                            One of the key USPs of VEVE is the rich functionality offered within the application. Users can interact with their collectibles, arrange, scale and pose within a VR showroom or using augmented reality. Users can then create sharable content to show their collection off to the world.
+                            {t(`veveIntro.collection.functionalities`)}
                         </p>
                     </div>
                 </div>
@@ -251,14 +253,14 @@ const VeveIntro = () => {
             return(
                 <div className={`${tab === 3 ? 'block' : 'hidden'}`}>
                     <div className={`flex-1`}>
-                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Feed</h2>
-                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Show 'n' tell</small>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>{t(`veveIntro.feed.title`)}</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>{t(`veveIntro.feed.show`)}</small>
 
                         <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
-                            The VEVE feed is at the heart of the VEVE community. Users can utilise the feed to share content, raise discussion, like, comment and subscribe to others users.
+                            {t(`veveIntro.feed.description`)}
                         </p>
                         <p className={`leading-relaxed mb-8 text-lg`}>
-                            Community will play a massive part in the success of the VEVE application. VEVE is fortunate enough to have one of, if not the most, enthusiastic of communities in the market both on and off the application - this website is testament to that statement. The importance of community cannot be stressed enough and VEVE is forefronting this within their application.
+                            {t(`veveIntro.feed.description2`)}
                         </p>
                     </div>
                 </div>
@@ -269,20 +271,20 @@ const VeveIntro = () => {
             return(
                 <div className={`${tab === 4 ? 'block' : 'hidden'}`}>
                     <div className={`flex-1`}>
-                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Market</h2>
-                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Buy, sell and trade</small>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>{t(`veveIntro.market.title`)}</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>{t(`veveIntro.market.subtitle`)}</small>
 
                         <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
-                            The market is the 'ebay' of digital collectibles and allows users to buy, sell and swap with each other.
+                            {t(`veveIntro.market.description`)}
                         </p>
                         <p className={`leading-relaxed mb-8 text-lg`}>
-                            Users can accumulate desired NFTs through the peer 2 peer marketplace. The marketplace allows users to complete their collections or pick up collectibles that they otherwise might have missed out on.
+                            {t(`veveIntro.market.description1`)}
                         </p>
                         <p className={`leading-relaxed mb-8 text-lg`}>
-                            Additionally, the VEVE marketplace has already proven to generate active users an exponential gain on their original purchases. For example we recently saw the <a href={`https://twitter.com/vevecollect/status/1386265208427974657`} className={`text-pink-500`}  target={"_blank"}>'Donny' NFT from the Powerpuff Girls sell for $27,000</a>. Donny was originally priced at just $15.99 on the <a href={"https://medium.com/veve-collectibles/powerpuff-girls-series-2-f61c8d4f30e5"} className={`text-pink-500`} target={"_blank"}>VEVE drop day</a>.
+                            {t(`veveIntro.market.description2`)}<a href={`https://twitter.com/vevecollect/status/1386265208427974657`} className={`text-pink-500`}  target={"_blank"}>{t(`veveIntro.market.description3`)}</a>. {t(`veveIntro.market.description4`)} <a href={"https://medium.com/veve-collectibles/powerpuff-girls-series-2-f61c8d4f30e5"} className={`text-pink-500`} target={"_blank"}>{t(`veveIntro.market.description4`)}</a>.
                         </p>
                         <p className={`leading-relaxed mb-8 text-lg`}>
-                            As the application continues to grow we expect collectibles to be more scarce in ratio to the user base, thus increasing their value more and more as time goes on. One could easily make the argument that purchasing the NFTs themselves is another solid investment choice for a quick turn around.
+                            {t(`veveIntro.market.description6`)}
                         </p>
                     </div>
                 </div>
@@ -293,14 +295,14 @@ const VeveIntro = () => {
             return(
                 <div className={`${tab === 5 ? 'block' : 'hidden'}`}>
                     <div className={`flex-1`}>
-                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>Account</h2>
-                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>Management</small>
+                        <h2 className={`text-5xl sm:text-6xl lg:text-6xl leading-none font-medium tracking-tight text-white mb-5`}>{t(`veveIntro.account.title`)}</h2>
+                        <small className={`uppercase text-sm text-gray-300 block tracking-wide block mb-8 `}>{t(`veveIntro.account.subtitle`)}</small>
 
                         <p className={`text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11`}>
-                            Manage your entire collection from your phone. Browse your collectibles, complete sets, and much more.
+                            {t(`veveIntro.account.description`)}
                         </p>
                         <p className={`leading-relaxed mb-8 text-lg`}>
-                            One of the key USPs of VEVE is the rich functionality offered within the application. Users can interact with their collectibles, arrange, scale and pose within a VR showroom or using augmented reality. Users can then create sharable content to show their collection off to the world.
+                            {t(`veveIntro.account.description1`)}
                         </p>
                     </div>
                 </div>
@@ -312,9 +314,7 @@ const VeveIntro = () => {
             <section className={`px-10 pt-4 pb-4 text-white mb-10 overflow-hidden mt-10`}>
                 <div className="container">
                     <p className="mb-8 text-xl leading-relaxed">
-                        Using the VEVE app collectible enthusiasts and hobbyists can purchase a multitude of collectibles from their favourite brands.
-                        Each collectible is minted within a limited number of availability and is assigned a type of rarity typically associated with
-                        collectibles.
+                        {t(`veveIntro.description`)}
                     </p>
                 </div>
             </section>
@@ -355,35 +355,32 @@ const VeveIntro = () => {
             <section className={`px-10 pt-4 pb-4 sm:pt-5 md:pt-6 xl:pt-8 sm:pb-5 text-white mt-10`}>
                 <div className="container">
 
-                    <h4 className={`text-2xl mb-3`}>$370 Billion dollar market</h4>
+                    <h4 className={`text-2xl mb-3`}>{t(`veveIntro.metrics.title`)}</h4>
 
                     <p className="mb-8 text-xl leading-relaxed">
-                        The collectibles industry is said to be worth approximately $370 billion dollars as of March 2020
+                        {t(`veveIntro.metrics.description`)}
                         <span className={`cursor-pointer`} data-tip={`Source: <strong className="font-bold z-10"><a href="https://techcrunch.com/2020/03/25/the-future-of-collectibles-is-digital/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAIu8AJeYB16zZo4BOLLKZdJd3lfzCHdUFBUQZoJm-zvnHvWGSrALKXtClg4P7wG9QPXodNAO7aQRwXJBnyaWF7kN0oPeaOgGOrTMy4numrPdywZXhsOAhZvfn4KUSbuGI5R4cK_nBO_cJFzyfXYrUEoMfcVWwDYEj0b4NsdaXuq1" target="_blank" class="text-pink-500">techcrunch.com</a></strong>`} data-html={true} data-event='click focus'>
                             <CheckIcon />
                         </span>.
-                        VEVE identified a gap in this market for premium digital collectibles backed by blockchain technology, which allows uniqueness,
-                        scarcity and accurate provenance of collectibles. The rise of NFT popularity in 2021 is thought to exponentially increase this
-                        industry worth over the coming years. VEVE have positioned themselves to be a front runner for the premium digital collectible
-                        format due to their early foresight in 2017.
+                        {t(`veveIntro.metrics.description1`)}
                     </p>
 
                     <small className="block mt-5 mb-2 sm:mb-5 text-gray-300">
-                        VEVE metrics as of {moment(vevemetrics && vevemetrics.revenue.last_updated).format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-pink-500`}>https://cutt.ly/wbT97hb</a>)
+                        {t(`veveIntro.metrics.description2`)} {moment(vevemetrics && vevemetrics.revenue.last_updated).format('MMMM Do YYYY, h:mm:ss a')} (<a href={"https://cutt.ly/wbT97hb"} target={"_blank"} className={`text-pink-500`}>https://cutt.ly/wbT97hb</a>)
                     </small>
 
                     <ul className={`grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6`}>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.currentStoreRevenue.toLocaleString()} label={`Total sales`} suffix={"$"} classes={`text-green-500`} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.twenty_four_hour_change.toFixed(3)} label={`24 hour change`} prefix={"%"} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.seven_day_change.toFixed(3)} label={`7 day change`} prefix={"%"} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.thirty_day_change.toFixed(3)} label={`30 day change`} prefix={"%"} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.currentNFTSales.toLocaleString()} label={`No. NFT sales`} classes={`text-green-500`} /></li>
-                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.thirty_day_change_nft.toFixed(3)} label={`30 day change`} prefix={"%"} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.currentStoreRevenue.toLocaleString()} label={t(`veveIntro.metrics.totalSales`)} suffix={"$"} classes={`text-green-500`} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.twenty_four_hour_change.toFixed(3)} label={`24 ${t(`veveIntro.metrics.hourChange`)}`} prefix={"%"} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.seven_day_change.toFixed(3)} label={`7 ${t(`veveIntro.metrics.dayChange`)}`} prefix={"%"} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.revenue.thirty_day_change.toFixed(3)} label={`30 ${t(`veveIntro.metrics.dayChange`)}`} prefix={"%"} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.currentNFTSales.toLocaleString()} label={t(`veveIntro.metrics.noNFT`)} classes={`text-green-500`} /></li>
+                        <li><PriceCard value={vevemetrics && vevemetrics.nfts.thirty_day_change_nft.toFixed(3)} label={`30 ${t(`veveIntro.metrics.dayChange`)}`} prefix={"%"} /></li>
                     </ul>
 
                     <div className="grid grid-cols-1 mt-10">
                         <div className="p-5 shadow rounded-3xl bg-gray-900">
-                            <div className="text-center text-gray-300">Store Generated Revenue</div>
+                            <div className="text-center text-gray-300">{t(`veveIntro.metrics.revenue`)}</div>
                             <CollectiblesRevenueBar id={`collectibles-revenue-bar`} />
                         </div>
                     </div>
@@ -422,7 +419,7 @@ const VeveIntro = () => {
                             <div className="flex items-center -mt-4 pt-5 pb-2 px-6 bg-gray-900 overflow-hidden rounded-b-3xl relative z-1">
                                 <div className="flex-auto">
                                     <h6 className={`block font-semibold py-2 text-sm xl:text-lg text-gray-200`}>
-                                        Ghostbusters 1:1 Ecto-1 (Interactive)
+                                        Ghostbusters 1:1 Ecto-1 ({t(`veveIntro.rarity.interactive`)})
                                     </h6>
                                 </div>
                                 <div className="flex-auto">
@@ -469,33 +466,33 @@ const VeveIntro = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                         <div>{demoCard()}</div>
                         <div className="col-span-2">
-                            <h1 className={`text-3xl mb-3`}>Smarter than your average NFT</h1>
+                            <h1 className={`text-3xl mb-3`}>{t(`veveIntro.rarity.title`)}</h1>
                             <p className={`mb-8 text-xl leading-relaxed`}>
-                                All of the collectibles offered on the VEVE platform undergo a strickt quality process between both the internal VEVE team and the brands and licensors themselves. Many of the collectibles used are actually derivited from the actual models used in movies, games and tv shows.
+                                {t(`veveIntro.rarity.description`)}
                             </p>
 
-                            <p className={`mb-8 text-xl leading-relaxed`}>The Ghostbusters Ecto-1 car is one such example of high quality control as we can note a high poly count accompanied by several details depicted on the model such as environmental texture on the windshield and arches, chromatic texturing, and various opaque materials.</p>
+                            <p className={`mb-8 text-xl leading-relaxed`}>{t(`veveIntro.rarity.description1`)}</p>
 
                             <ul className={`grid grid-cols-2 lg:grid-cols-4 gap-4`}>
                                 <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
-                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">Triangles</span>
+                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">{t(`veveIntro.rarity.triangles`)}</span>
                                     <span className={`text-2xl font-semibold `}>142,828</span>
                                 </li>
 
                                 <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
-                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">Verticies</span>
+                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">{t(`veveIntro.rarity.verticies`)}</span>
                                     <span className={`text-2xl font-semibold `}>128,473</span>
                                 </li>
 
                                 <li className={`bg-gray-900 max-w-xs mb-8 py-3 px-5 rounded-3xl shadow-inner shadow-lg`}>
-                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">Materials</span>
+                                    <span className="uppercase text-sm text-gray-300 block tracking-wide">{t(`veveIntro.rarity.materials`)}</span>
                                     <span className={`text-2xl font-semibold `}>29</span>
                                 </li>
                             </ul>
 
                             <small className={`uppercase text-sm text-gray-300 block tracking-wide`}>
-                                The Ghostbusters 1:1 Ecto-1 (Interactive) NFT dropped on the VEVE platform on July 17th 2021.<br/>All 4,444 editions sold out within 1 minute.
-                                <span className={`cursor-pointer`} data-tip={`Verified by various sources: <a href="https://youtu.be/otMND7Pg3-Y?t=1765" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
+                                {t(`veveIntro.rarity.ghostbuster`)}<br/>{t(`veveIntro.rarity.soldOut`)}
+                                <span className={`cursor-pointer`} data-tip={`${t(`veveIntro.rarity.verified`)} <a href="https://youtu.be/otMND7Pg3-Y?t=1765" target="_blank" class="text-pink-500">YouTube Live</a>`} data-html={true} data-event='click focus'>
                                 <CheckIcon />
                             </span>
                             </small>
@@ -686,7 +683,7 @@ const VeveIntro = () => {
             {VeveRarityExplained()}
             {VeveReviews()}
             {VeveMetricsSection()}
-            <LatestMediumArticles mediumUser={`veve-collectibles`} title={`Latest VEVE Medium articles`} />
+            <LatestMediumArticles mediumUser={`veve-collectibles`} title={t(`veveIntro.meduim`)} />
         </>
     )
 }
