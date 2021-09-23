@@ -202,6 +202,75 @@
     "findOut": "Find out how much your VEVE vault is worth at a minimum using our valuation tool.",
     "note": "Note",
     "note1": "The result should only serve as a floor expectation for your collection, the calculation will not take into account your mint numbers, provenance, or any other variables that could influence price.",
-    "note2": "Comic floor prices are also currently unavailable at this time."
+    "note2": "Comic floor prices are also currently unavailable at this time.",
+    "valuation": "Valuation",
+    "valuationBased": "Vault valuations are based off of the current",
+    "valuationBased1": "floor prices",
+    "valuationBased2": "last captured. In the near future you will be able to save your collectibles to your profile and track your valuation growth in various data charts."
+  },
+  "latestDrops": {
+    "title": "Latest premium collectibles (NFTs)",
+    "dragAndScroll": "Drag or scroll to see more premium collectibles"
+  },
+  "brands": {
+    "title": "Brands",
+    "dragAndScroll": "Drag or scroll to see more premium brands"
+  },
+  "donate": {
+    "title": "Donate",
+    "support": "You can support the work of the ECOMI Wiki community. This community website is ran not for profit and functions solely on the passion of its investors and collectors.",
+    "important": "Important",
+    "accept": "We accept donations in the form of OMI tokens or NFTs. The QR codes displayed below belong to the contributors of the",
+    "accept1": "front end",
+    "accept2": "and",
+    "accept3": "back end",
+    "accept4": "GitHub repository and are displayed to you at random, with a higher frequency of display rate to the most active monthly contributors.",
+    "veveQR": "VEVE QR Code",
+    "donateVeve": "Donate VEVE NFTs",
+    "omiQR": "OMI Tokens QR Code",
+    "donateOmi": "Donate OMI tokens"
+  },
+  "evaluate": {
+    "title": "Evaluate"
+  },
+  "tokenomics": {
+    "title": "What is OMI?",
+    "description": "OMI is a deflationary",
+    "description1": "cryptocurrency token that forms the underlying economy of the VEVE application. It is currently available to buy from the following exchanges:",
+    "breakdown": "Token breakdown",
+    "legend": "Legend",
+    "mintedTokens": "ECOMI minted 750 billion OMI tokens, which can immediately put uneducated investors off who are unwilling to dive into the tokenomics and the deflationary nature of the token. However, bare with us a second...",
+    "OMITokens": "OMI Tokens",
+    "important": "Important",
+    "important1": "Firstly, you'll notice the first stack of chips are red, this is because during the execution of smart contracts a user error was made which",
+    "important2": "accidently locked up 97 billion OMI tokens for thousands of years",
+    "important3": ", effectively taking them out of circulation. Secondly, in a recent community AMA the communications manager Rhys Skellern alluded to the possibility of an additional large burn",
+    "important4": "during the migration to",
+    "important5": "ImmutableX",
+    "important6": "Unfortunately, this is has since been revoked but we must note the open minds of the team to decrease the token circulation if they deem it necessary.",
+    "remaining": "The remaining 653 billion tokens are divided up as follows:",
+    "remaining1": "OMI Tokens",
+    "remaining2": "To be used in the in app reserve for liquidity.",
+    "remaining3": "Vault wallet for liquidity.",
+    "remaining4": "Founders tokens.",
+    "remaining5": "Developers tokens.",
+    "remaining6": "Business development.",
+    "remaining7": "ICO (Initial Coin Offering).",
+    "remaining8": "Remaining from ICO.",
+    "deflationary": "A deflationary token",
+    "deflationary1": "The OMI token is deflationary in nature which means an inevitable higher price per token, and a better return on your investment, as the supply of the tokens become more scarce. 97 billion tokens were already burnt by error, and additional burns are constantly being triggered by in app events.",
+    "deflationary2": "OMI tokens have been burnt since the VEVE app launched in October 2020",
+    "burningRate": "Burn rates",
+    "burningRate1": "Important",
+    "burningRate2": "Burn rates do not directly effect the price of the OMI token, however a 'buy back' does occur from the exchange as a result of the burnt tokens which does effect the price.",
+    "burningRate3": "The VEVE app has already burnt a massive",
+    "burningRate4": "tokens since Jan 2021 with only a few drops since it was launched as a beta to the public. To date the app remains in beta, and during this beta testing phase mass marketing has not yet started, collectible drops have not been consistent, and drop dates have often been pushed back to prioritise on bugs, security, improvements and other features. Yet despite all of this user growth has exceeded expectations and burn rates remain on an upward trend.",
+    "tokenomics": "Tokenomics",
+    "tokenomics1": "The tokenomics on this project have been described as both genuine brilliance, and innate madness.",
+    "tokenomics2": "Important",
+    "tokenomics3": "For a more complex and accurate break down of the tokenomics please check",
+    "tokenomics4": "the official whitepaper",
+    "tokenomics5": "Although every effort has been made to make this information as accurate as possible using easy to understand methods, there may be some errors. Your own research into the official whitepaper is highly encouraged.",
+    "pageNotBuilt": "This page is still being built..."
   }
 }

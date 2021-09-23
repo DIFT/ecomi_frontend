@@ -269,9 +269,9 @@ const Valuation = ({ router }) => {
         {head()}
         <Default>
             <section className="text-white px-5 mt-20">
-                <h1 className={`font-semibold text-2xl leading-relaxed`}>Valuation</h1>
+                <h1 className={`font-semibold text-2xl leading-relaxed`}>{t(`valuation.valuation`)}</h1>
                 <p className={`block text-base text-gray-300`}>
-                    Vault valuations are based off of the current <Link href={`/marketplace/floors`}><a className={`text-pink-500`}>floor prices</a></Link> last captured. In the near future you will be able to save your collectibles to your profile and track your valuation growth in various data charts.
+                    {t(`valuation.valuationBased`)} <Link href={`/marketplace/floors`}><a className={`text-pink-500`}>{t(`valuation.valuationBased1`)}</a></Link> {t(`valuation.valuationBased2`)}
                 </p>
                 <div
                     className="bg-blue-300 border-t-4 border-blue-400 rounded-3xl text-black px-4 py-3 shadow-md mt-5"

@@ -5,9 +5,12 @@ import { getBrands } from '/actions/brand/brand'
 import Slider from "react-slick"
 import ArrowLeft from "../../../Misc/Icons/ArrowLeft"
 import ArrowRight from "../../../Misc/Icons/ArrowRight"
+import { useTranslation } from 'react-i18next'
 
 const BrandsSlider = () => {
 
+    const { t } = useTranslation();
+    
     const sliderRef = useRef()
 
     const [loading, setLoading] = useState(true)
@@ -91,8 +94,8 @@ const BrandsSlider = () => {
             <div className="container">
                 <div className="flex items-center">
                     <div className="flex-auto">
-                        <h6 className={`text-3xl mb-3`}>Brands</h6>
-                        <small className={`block mb-5`}>Drag or scroll to see more premium brands</small>
+                        <h6 className={`text-3xl mb-3`}>{t(`brands.title`)}</h6>
+                        <small className={`block mb-5`}>{t(`brands.dragAndScroll`)}</small>
                     </div>
                     <div className="flex-auto">
                         {loading ? null : (

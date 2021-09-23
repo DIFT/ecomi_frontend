@@ -47,6 +47,13 @@
     "collectibles": "kolekcionarstvo",
     "search": "traži"
   },
+  "donate": {
+    "accept3": "stražnji kraj",
+    "accept4": "GitHub spremište i prikazuju vam se nasumično, s većom učestalošću prikaza za najaktivnije mjesečne suradnike.",
+    "donateOmi": "Donirajte OMI tokene",
+    "donateVeve": "Donirajte VEVE NFT",
+    "important": "Važno"
+  },
   "floors": {
     "autoUpdate": "Tablica pametnih podataka automatski se ažurira svakih sat vremena",
     "basedOff": "na temelju trenutnih najnižih cijena na tržištu u ovoj tablici.",
