@@ -21,12 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/Tables/ValuationTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Tables/ValuationTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/collectibles/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/collectibles/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/marketplace/floors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/marketplace/floors/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/user/vault/valuation.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/user/vault/valuation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Organisms/Tables/ComicFloors.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Tables/ComicFloors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +80,7 @@
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
       <workItem from="1629219970220" duration="169162000" />
-      <workItem from="1631687886539" duration="15920000" />
+      <workItem from="1631687886539" duration="25801000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -359,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631877204784</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Local storage for vault">
+      <created>1631913867995</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1631913867995</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,7 +402,8 @@
     <MESSAGE value="Implement collectible revenue chart" />
     <MESSAGE value="End of day commit" />
     <MESSAGE value="Update comic data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update comic data" />
+    <MESSAGE value="Local storage for vault" />
+    <option name="LAST_COMMIT_MESSAGE" value="Local storage for vault" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -422,10 +426,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629367275118" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1631877206003">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1631913869655">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1631877206003" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1631913869655" />
     <state x="789" y="352" key="run.anything.popup" timestamp="1631617670313">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>

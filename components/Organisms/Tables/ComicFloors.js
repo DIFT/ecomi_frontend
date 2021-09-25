@@ -37,7 +37,7 @@ const ComicFloors = () => {
         () => [
             {
                 Header: 'Name',
-                accessor: 'comicSeries.name', // accessor is the "key" in the data
+                accessor: 'name', // accessor is the "key" in the data
                 Cell: (cellProps => {
                     return(
                         <>
@@ -48,9 +48,9 @@ const ComicFloors = () => {
                                     backgroundSize: 'cover'
                                 }}></div>
                                 <div>
-                                    <span>{cellProps.row.original.comicSeries.name} #{cellProps.row.original.comicNumber}</span>
+                                    <span>{cellProps.row.original.name} #{cellProps.row.original.comicNumber}</span>
                                     <br/>
-                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
+                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.cover.rarity)}`}>
                                        {cellProps.row.original.cover.rarity}
                                     </span>
                                 </div>
@@ -78,6 +78,14 @@ const ComicFloors = () => {
                     <span>${cellProps.row.original.storePrice}</span>
                 ))
             },
+            {
+                Header: 'Variant Issued',
+                accessor: 'cover.totalIssued'
+            },
+            {
+                Header: 'Total Issued',
+                accessor: 'totalIssued'
+            },
             // {
             //     Header: 'Prev Sold Price',
             //     accessor: 'metrics.prevSold.price',
@@ -97,22 +105,8 @@ const ComicFloors = () => {
             //   })
             // },
             {
-                Header: 'Issue Number',
-                accessor: 'metrics.issueNumber',
-                Cell: (cellProps) => (
-                    <span className={`font-medium`}>{cellProps.row.original.metrics.issueNumber} <span className={`text-sm text-gray-300 font-normal`}>of {cellProps.row.original.totalIssued}</span></span>
-                )
-            },
-            {
                 Header: 'Total Listed',
                 accessor: 'metrics.totalListings'
-            },
-            {
-                Header: 'Listed',
-                accessor: 'metrics.createdAt',
-                Cell: (cellProps => {
-                    return moment(cellProps.row.original.metrics.createdAt).fromNow()
-                })
             },
         ],
         []
