@@ -10,10 +10,13 @@ import { XMasonry, XBlock } from "react-xmasonry"
 import { getCookie, isAuth } from '../../../actions/auth'
 import Default from "../../../components/Templates/Default"
 import SelectCollectibleCard from '/components/Molecules/Cards/SelectCollectibleCard'
+import SelectCollectibleItem from './components/SelectCollectibleItem'
+import SelectComicItem from './components/SelectComicItem'
 import { getFilteredProducts } from '../../../actions/apiCore'
-import { getValuation, getMarketData } from '../../../actions/metrics/metrics'
+import { getCollectiblesValuation, getComicsValuation, getMarketData, getMarketComicData } from '../../../actions/metrics/metrics'
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
 import { useTranslation } from 'react-i18next'
+import Sticky from 'react-sticky-el'
 
 
 const ValuationTable = dynamic(
@@ -34,13 +37,23 @@ const Valuation = ({ router }) => {
     const token = getCookie('token')
     const [valuation, setValuation] = useState(0)
     const [vaultRetailPrice, setVaultRetailPrice] = useState(0)
+    const [collectiblesValuation, setCollectiblesValuation] = useState(0)
+    const [collectiblesRetailPrice, setCollectiblesRetailPrice] = useState(0)
+    const [comicsValuation, setComicsValuation] = useState(0)
+    const [comicsRetailPrice, setComicsRetailPrice] = useState(0)
 
     const [collectibles, setCollectibles] = useState([])
+    const [comics, setComics] = useState([])
     const [usersCollectibles, setUsersCollectibles] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [usersComics, setUsersComics] = useState([])
+    const [collectibleLoading, setCollectibleLoading] = useState(true)
+    const [comicLoading, setComicLoading] = useState(true)
+
+    const [tab, setTab] = useState('')
 
     useEffect(() => {
-        loadMarketData()
+        loadCollectibleMarketData()
+        loadComicMarketData()
     },[])
 
     const calcStoreRetailPrice = () => {
@@ -54,31 +67,20 @@ const Valuation = ({ router }) => {
         calcStoreRetailPrice()
     }, [collectibles])
 
-    const [mySelectedRows, setMySelectedRows] = useState({});
-
-    const fakeData = [
-        {"collectibleId": "b94e5d49-35f0-4bdc-9e41-d5c484df5ae7", "quantity": 2},
-        {"collectibleId": "1def2f37-8043-4aa8-a490-b4024db216ff", "quantity": 2},
-        {"collectibleId": "ac5bc2af-f67d-46da-bac1-1b404a3dd6d1", "quantity": 2}
-    ]
-
-    // useEffect(() => {
-    //     let selectedObj = {}
-    //     collectibles && collectibles.map((collectibleRow, index) => {
-    //         var check = fakeData.find(c => c.collectibleId === collectibleRow.collectibleId);
-    //         const stringMyIndex = `${index}`
-    //         selectedObj = {[stringMyIndex]: true}
-    //         if (check){
-    //             setMySelectedRows({...mySelectedRows, "77": true })
-    //             console.log('selected rows state is: ', mySelectedRows)
-    //         }
-    //     })
-    // }, [collectibles])
-
-    const loadMarketData = () => {
+    const loadCollectibleMarketData = () => {
         getMarketData()
             .then(data => {
                 setCollectibles(data)
+                setCollectibleLoading(false)
+            })
+            .catch(e => console.log('Error getting marketplace data', e))
+    }
+
+    const loadComicMarketData = () => {
+        getMarketComicData()
+            .then(data => {
+                setComics(data)
+                setComicLoading(false)
             })
             .catch(e => console.log('Error getting marketplace data', e))
     }
@@ -95,81 +97,36 @@ const Valuation = ({ router }) => {
         return selectedObj
     }
 
-    const EditableCell = ({
-                              value: initialValue,
-                              row: { index },
-                              column: { id },
-                              updateMyData, // This is a custom function that we supplied to our table instance
-                          }) => {
-        // We need to keep and update the state of the cell normally
-        const [value, setValue] = React.useState(initialValue)
-
-        const onChange = e => {
-            setValue(e.target.value)
-        }
-
-        // We'll only update the external data when the input is blurred
-        const onBlur = () => {
-            updateMyData(index, id, value)
-        }
-
-        // If the initialValue is changed external, sync it up with our state
-        React.useEffect(() => {
-            setValue(initialValue)
-        }, [initialValue])
-
-        return <input value={value} onChange={onChange} onBlur={onBlur} className={`bg-gray-900 text-white rounded-lg p-3`} />
-    }
-
-    const columns = React.useMemo(
-        () => [
-            {
-                Header: 'Name',
-                accessor: 'name', // accessor is the "key" in the data
-                Cell: (cellProps => {
-                    return (
-                        <>
-                            <div className="flex items-center">
-
-                                <div className={`w-16 h-16 mr-3 rounded-xl shadow border-2 hover:border-4 hover:border-pink-500 border-black`} style={{
-                                    background: `url(${cellProps.row.original.image?.thumbnailUrl})`,
-                                    backgroundPosition: '50%',
-                                    backgroundSize: 'cover'
-                                }}></div>
-                                <div>
-                                    <span>{cellProps.row.original.name}</span>
-                                    <br/>
-                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
-                                       {cellProps.row.original.rarity}
-                                    </span>
-                                    <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(cellProps.row.original.editionType)}`}>
-                                        {cellProps.row.original.editionType}
-                                    </span>
-                                </div>
-                            </div>
-
-                        </>
-                    )
-                })
-            },
-        ],
-        []
-    )
-
     useEffect(() => {
-        getValuation(usersCollectibles, token)
+        getCollectiblesValuation(usersCollectibles, token)
             .then(data => {
                 if(data.error) {
                     setValues({ ...values, error: data.error });
                 } else {
-                    setValuation(data.valuation)
-                    setVaultRetailPrice(data.retailPrice)
+                    setCollectiblesValuation(data.valuation)
+                    setCollectiblesRetailPrice(data.retailPrice)
                 }
             })
     }, [usersCollectibles, setValuation])
 
-    const calcPercentageChange = () => {
-        const calc = (valuation - vaultRetailPrice) / vaultRetailPrice * 100
+    useEffect(() => {
+        getComicsValuation(usersComics, token)
+            .then(data => {
+                if(data.error) {
+                    setValues({ ...values, error: data.error });
+                } else {
+                    setComicsValuation(data.valuation)
+                    setComicsRetailPrice(data.retailPrice)
+                }
+            })
+    }, [usersComics, setValuation])
+
+    useEffect(() => {
+        setValuation(collectiblesValuation + comicsValuation)
+    }, [collectiblesValuation, comicsValuation])
+
+    const calcPercentageChange = (valuation, retailPrice) => {
+        const calc = (valuation - retailPrice) / retailPrice * 100
         if (valuation === 0) {
             return ''
         }
@@ -185,7 +142,6 @@ const Valuation = ({ router }) => {
     }
 
     const getVaultQuotes = () => {
-        console.log('valuation is: ', valuation)
         switch (true){
             case (valuation > 100 && valuation < 500):
                 return(
@@ -264,69 +220,165 @@ const Valuation = ({ router }) => {
         }
     }
 
+    const handleCollectibleSelection = (collectibleId, quantity, selected) => {
+        const filtered = usersCollectibles.filter((e) => { return e.collectibleId !== collectibleId })
+        if (selected) {
+            setUsersCollectibles([...filtered])
+        } else {
+            setUsersCollectibles([...filtered, {"collectibleId": collectibleId, "quantity": quantity }])
+        }
+    }
+
+    const handleQuantitySelection = (collectibleId, quantity, selected) => {
+        const filtered = usersCollectibles.filter((e) => { return e.collectibleId !== collectibleId })
+        if (selected){
+            setUsersCollectibles([...filtered, {"collectibleId": collectibleId, "quantity": quantity}])
+        }
+    }
+
+    const handleComicSelection = (uniqueCoverId, quantity, selected) => {
+        const filtered = usersCollectibles.filter((e) => { return e.uniqueCoverId !== uniqueCoverId })
+        if (selected) {
+            setUsersComics([...filtered])
+        } else {
+            setUsersComics([...filtered, {"uniqueCoverId": uniqueCoverId, "quantity": quantity }])
+        }
+    }
+
+    const handleQuantityComicSelection = (uniqueCoverId, quantity, selected) => {
+        const filtered = usersCollectibles.filter((e) => { return e.uniqueCoverId !== uniqueCoverId })
+        if (selected){
+            setUsersComics([...filtered, {"uniqueCoverId": uniqueCoverId, "quantity": quantity}])
+        }
+    }
+
     return(
         <>
         {head()}
         <Default>
             <section className="text-white px-5 mt-20">
-                <h1 className={`font-semibold text-2xl leading-relaxed`}>{t(`valuation.valuation`)}</h1>
-                <p className={`block text-base text-gray-300`}>
-                    {t(`valuation.valuationBased`)} <Link href={`/marketplace/floors`}><a className={`text-pink-500`}>{t(`valuation.valuationBased1`)}</a></Link> {t(`valuation.valuationBased2`)}
-                </p>
-                <div
-                    className="bg-blue-300 border-t-4 border-blue-400 rounded-3xl text-black px-4 py-3 shadow-md mt-5"
-                    role="alert">
-                    <div className="flex">
-                        <div className="py-1">
-                            <svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 20 20">
-                                <path
-                                    d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"></path>
-                            </svg>
-                        </div>
-                        <div><p className="font-bold">{t(`valuation.note`)}</p>
-                            <p className="text-sm">{t(`valuation.note1`)}</p>
-                            <p className="text-sm font-medium">{t(`valuation.note2`)}</p>
-                        </div>
+                <div className="container">
+                    <div className="pb-5 border-b border-gray-200">
+                        <h1 className="text-lg leading-6 font-medium text-gray-200">
+                            {t(`valuation.valuation`)}
+                        </h1>
+                        <p className="mt-2 max-w-4xl text-sm text-gray-300">
+                            {t(`valuation.valuationBased`)} <Link href={`/marketplace/floors`}><a className={`text-pink-500`}>{t(`valuation.valuationBased1`)}</a></Link> {t(`valuation.valuationBased2`)}
+                        </p>
                     </div>
                 </div>
             </section>
 
-            <section className="grid grid-cols-1 mt-10 text-white px-5">
-                {collectibles && collectibles ? <ValuationTable
-                    columns={columns}
-                    data={collectibles}
-                    setCollectibles={setCollectibles}
-                    loading={loading}
-                    setValuation={setValuation}
-                    valuation={valuation}
-                    setUsersCollectibles={setUsersCollectibles}
-                    usersCollectibles={usersCollectibles}
-                    selectedRows={mySelectedRows}
-                /> : null}
-            </section>
-
-            <footer className={`text-center p-5 text-white fixed w-full bottom-0 left-0 bg-gray-900 z-10 border-t border-black`}>
+            <section className={`text-white text-left py-10`}>
                 <div className="container">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
-                        <div className={`text-gray-300`}>
-                            <div className="flex gap-5 items-center">
-                                {getVaultQuotes()}
+
+                    <h1 className="text-lg leading-6 font-medium text-gray-200 mb-5">Collectibles</h1>
+                    <div className={`flex flex-col max-h-96 overflow-auto customTable shadow`}>
+                        <div className={`align-middle inline-block min-w-full w-max`}>
+                            <div className="shadow overflow-auto">
+                                <table className={`table-auto min-w-full divide-y divide-gray-900 border-b border-gray-900 rounded-md`} role={`table`}>
+                                    <thead className={`border border-gray-900 hidden sm:table-header-group rounded-t-md`} style={{ background: '#1E263C' }}>
+                                    <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
+                                        role="row">
+                                        <th className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Name</th>
+                                        <th className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Quantity</th>
+                                        <th className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody className={`flex-1 sm:flex-none divide-y divide-gray-900`} role={"rowgroup"} style={{ background: '#1E263C' }}>
+                                    {collectibles && collectibles.map((collectible, i) => (
+                                        <SelectCollectibleItem
+                                            collectible={collectible}
+                                            handleCollectibleSelection={handleCollectibleSelection}
+                                            handleQuantitySelection={handleQuantitySelection}
+                                        />
+                                    ))}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div className={`text-right`}>
-                            <div className="block">
-                                <span className={`text-gray-400 text-sm font-medium mb-2`}>RRP: $<CountUp end={vaultRetailPrice} duration={1} separator="," decimals={2} decimal="."/></span>
-                                {calcPercentageChange()}
+                    </div>
+                    <footer className={`px-6 py-4 rounded-md shadow border border-gray-900`} style={{ background: '#1E263C' }}>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
+                            <div className={`text-gray-300`}>
+                                <div className="flex gap-5 items-center">
+                                    {getVaultQuotes()}
+                                </div>
                             </div>
-                            <p className={`font-normal ${valuation > vaultRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-5xl`}>
-                                + $<CountUp end={valuation} duration={1} separator="," decimals={2} decimal="."/>
+                            <div className={`text-right`}>
+                                <div className="block">
+                                    <span className={`text-gray-400 text-sm font-medium mb-2`}>RRP: $<CountUp end={collectiblesRetailPrice} duration={1} separator="," decimals={2} decimal="."/></span>
+                                    {calcPercentageChange(collectiblesValuation, collectiblesRetailPrice)}
+                                </div>
+                                <p className={`font-normal ${collectiblesValuation > collectiblesRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-4xl`}>
+                                    + $<CountUp end={collectiblesValuation} duration={1} separator="," decimals={2} decimal="."/>
+                                </p>
+                            </div>
+                        </div>
+                    </footer>
+
+                    <h1 className="text-lg leading-6 font-medium text-gray-200 mt-10 mb-5">Comics</h1>
+                    <div className={`flex flex-col max-h-96 overflow-auto customTable shadow`}>
+                            <div className={`align-middle inline-block min-w-full w-max`}>
+                                <div className="shadow overflow-auto">
+                                    <table className={`table-auto min-w-full divide-y divide-gray-900 border-b border-gray-900 rounded-md`} role={`table`}>
+                                        <thead className={`border border-gray-900 hidden sm:table-header-group rounded-t-md`} style={{ background: '#1E263C' }}>
+                                        <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
+                                            role="row">
+                                            <th className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Name</th>
+                                            <th className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Quantity</th>
+                                            <th className="px-6 py-5 text-left text-xs font-medium text-gray-300 uppercase tracking-wider"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody className={`flex-1 sm:flex-none divide-y divide-gray-900`} role={"rowgroup"} style={{ background: '#1E263C' }}>
+                                        {comics && comics.map((comic, i) => (
+                                            <SelectComicItem
+                                                comic={comic}
+                                                handleComicSelection={handleComicSelection}
+                                                handleQuantityComicSelection={handleQuantityComicSelection}
+                                            />
+                                        ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <footer className={`px-6 py-4 rounded-md shadow border border-gray-900`} style={{ background: '#1E263C' }}>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
+                            <div className={`text-gray-300`}>
+                                <div className="flex gap-5 items-center">
+                                    {getVaultQuotes()}
+                                </div>
+                            </div>
+                            <div className={`text-right`}>
+                                <div className="block">
+                                    <span className={`text-gray-400 text-sm font-medium mb-2`}>RRP: $<CountUp end={comicsRetailPrice} duration={1} separator="," decimals={2} decimal="."/></span>
+                                    {calcPercentageChange()}
+                                </div>
+                                <p className={`font-normal ${comicsValuation > comicsRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-4xl`}>
+                                    + $<CountUp end={comicsValuation} duration={1} separator="," decimals={2} decimal="."/>
+                                </p>
+                            </div>
+                        </div>
+                    </footer>
+
+                </div>
+            </section>
+
+            <section>
+                <div className="container">
+                    <footer className={`mt-5 px-6 py-4 rounded-md shadow border border-gray-900`} style={{ background: '#1E263C' }}>
+                        <div className={`text-center`}>
+                            <div className="block">
+                                <span className={`text-gray-400 text-sm font-medium mb-2 uppercase`}>The vault is valued at</span>
+                            </div>
+                            <p className={`font-normal ${valuation > vaultRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-6xl`}>
+                                $<CountUp end={valuation} duration={1} separator="," decimals={2} decimal="."/>
                             </p>
                         </div>
-                    </div>
+                    </footer>
                 </div>
-
-            </footer>
+            </section>
 
         </Default>
         </>

@@ -117,7 +117,7 @@
     "unofficial": "unofficial",
     "notAffiliated": " site and is not in any way affiliated with ECOMI, VEVE or any of the brands or licensors mentioned. ECOMI WIKI is an open source community driven site ran not for profit. ",
     "noFinancialAdvice": "No content on this site should be considered financial advice and is for entertainment purposes only. Although we do attempt to verify each claim through various sources your own research is strongly advised.",
-    "quickLinks": "Quick links",
+    "quickLink": "Quick links",
     "floors": "Marketplace Floors",
     "whitepaper": "Official Whitepaper"
   },
@@ -133,7 +133,7 @@
     "valutValuation": "Click here to get a vault valuation",
     "basedOff": " based off of the current market floor prices in this table.",
     "collectibles": "Collectibles",
-    "comics": "comics",
+    "comics": "Comics",
     "lastUpdate": "Last updated"
   },
   "dataTable": {

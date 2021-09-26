@@ -19,15 +19,15 @@ function GlobalFilter({
     }, 200)
 
     return (
-        <span className={`w-auto block bg-gray-900`}>
+        <span className={`overflow-hidden block bg-gray-900`}>
             <input
                 value={value || ""}
                 onChange={e => {
                     setValue(e.target.value);
                     onChange(e.target.value);
                 }}
-                className={`bg-gray-900 p-3 w-screen border border-gray-700 text-center focus:outline-none`}
-                placeholder={`${t(`dataTable.search`)}... (${count} ${t(`collectibles`)})`}
+                className={`w-100 bg-gray-900 p-3 w-screen border border-gray-700 text-center focus:outline-none`}
+                placeholder={`${t(`dataTable.search`)}... (${count} ${t(`dataTable.collectibles`)})`}
                 autoFocus={true}
             />
     </span>
@@ -127,8 +127,8 @@ const DataTable = ({ columns, data }) => {
     return(
         <>
             <div className="flex flex-col overflow-auto customTable">
-                <div className="py-2 align-middle inline-block min-w-full w-max">
-                    <div className="shadow  overflow-auto">
+                <div className="py-2 align-middle inline-block w-100">
+                    <div className="shadow overflow-auto">
                         <GlobalFilter
                             preGlobalFilteredRows={preGlobalFilteredRows}
                             globalFilter={state.globalFilter}

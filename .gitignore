@@ -1,6 +1,6 @@
 node_modules
 .next
-.idea
+.idea/
 next.config.js
 _ref
 stories

@@ -48,23 +48,6 @@ const Metrics = () => {
                             {t(`floors.floorPrices`)}
                         </p>
 
-                        <div className="bg-yellow-400 border-t-4 border-yellow-600 rounded-3xl mt-5 text-black px-4 py-3 shadow-md"
-                             role="alert">
-                            <div className="flex">
-                                <div className="py-1">
-                                    <svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
-                                         viewBox="0 0 20 20">
-                                        <path
-                                            d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="font-bold">{t(`floors.comicPrices`)}</p>
-                                    <p className="text-sm">{t(`floors.currentlyComics`)}<Link href={`/donate`}><a className={`text-pink-500 font-medium`}>{t(`floors.currentlyComics1`)}</a></Link>{t(`floors.currentlyComics2`)}</p>
-                                </div>
-                            </div>
-                        </div>
-
                         <p className={`block text-base text-gray-300 mt-5`}>
                             <Link href={`/user/vault/valuation`}><a className={`text-pink-500`}>{t(`floors.valutValuation`)}</a></Link>{t(`floors.basedOff`)}
                         </p>
@@ -81,8 +64,7 @@ const Metrics = () => {
                             </li>
                         </ul>
                     </nav>
-
-
+                    
                     {renderCorrectTable()}
                 </>
             </Default>
