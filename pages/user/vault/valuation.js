@@ -245,8 +245,8 @@ const Valuation = ({ router }) => {
         }
     }
 
-    const handleQuantityComicSelection = (uniqueCoverId, quantity, selected) => {
-        const filtered = usersCollectibles.filter((e) => { return e.uniqueCoverId !== uniqueCoverId })
+    const handleQuantityComicSelection = (uniqueCoverId, quantity, selected) => { 
+        const filtered = usersComics.filter((e) => { return e.uniqueCoverId !== uniqueCoverId })
         if (selected){
             setUsersComics([...filtered, {"uniqueCoverId": uniqueCoverId, "quantity": quantity}])
         }
