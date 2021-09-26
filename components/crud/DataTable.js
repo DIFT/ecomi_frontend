@@ -3,13 +3,15 @@ import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce,
 import CaretDown from "../Misc/Icons/CaretDown"
 import {matchSorter} from 'match-sorter'
 import CaretUp from "../Misc/Icons/CaretUp"
+import { useTranslation } from 'react-i18next'
 
 // Define a default UI for filtering
 function GlobalFilter({
                           preGlobalFilteredRows,
                           globalFilter,
                           setGlobalFilter,
-                      }) {
+                      }) {       
+    const { t } = useTranslation();                                     
     const count = preGlobalFilteredRows.length
     const [value, setValue] = useState(globalFilter)
     const onChange = useAsyncDebounce(value => {
@@ -25,7 +27,7 @@ function GlobalFilter({
                     onChange(e.target.value);
                 }}
                 className={`bg-gray-900 p-3 w-screen border border-gray-700 text-center focus:outline-none`}
-                placeholder={`Search... (${count} collectibles)`}
+                placeholder={`${t(`dataTable.search`)}... (${count} ${t(`collectibles`)})`}
                 autoFocus={true}
             />
     </span>

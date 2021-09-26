@@ -6,8 +6,11 @@ import Slider from "react-slick"
 import CollectibleCard from "../../Molecules/Cards/CollectibleCard"
 import ArrowLeft from "../../Misc/Icons/ArrowLeft"
 import ArrowRight from "../../Misc/Icons/ArrowRight"
+import { useTranslation } from "react-i18next";
 
 const LatestDrops = () => {
+
+    const { t } = useTranslation();
 
     const sliderRef = useRef()
 
@@ -91,8 +94,8 @@ const LatestDrops = () => {
             <div className="container">
                 <div className="flex items-center">
                     <div className="flex-auto">
-                        <h6 className={`text-3xl mb-3`}>Latest premium collectibles (NFTs)</h6>
-                        <small className={`block mb-5`}>Drag or scroll to see more premium collectibles</small>
+                        <h6 className={`text-3xl mb-3`}>{t(`latestDrops.title`)}</h6>
+                        <small className={`block mb-5`}>{t(`latestDrops.dragAndScroll`)}</small>
                     </div>
                     <div className="flex-auto">
                         <nav className={`text-right`}>

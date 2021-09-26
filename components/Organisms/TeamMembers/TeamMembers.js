@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next';
 import Slider from "react-slick"
 import {list} from "../../../actions/team/member"
 import TeamMember from "../../Molecules/TeamMember/TeamMember";
 const TeamMembers = () => {
+
+    const { t } = useTranslation();
 
     const [team, setTeam] = useState([])
 
@@ -60,8 +63,8 @@ const TeamMembers = () => {
 
     return(
         <section className={`text-white text-center mb-10 overflow-hidden`}>
-            <h4 className={`text-2xl mb-3`}>Team members</h4>
-            <small className={`block text-base text-gray-300`}>ECOMI has composed itself with an all star team with a rich and vetted reputation of successful businesses.</small>
+            <h4 className={`text-2xl mb-3`}>{t(`teamMembers.title`)}</h4>
+            <small className={`block text-base text-gray-300`}>{t(`teamMembers.intro`)}</small>
             <Slider {...settings}>
                 {team && team.map((member => <TeamMember member={member} />))}
             </Slider>

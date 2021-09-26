@@ -8,6 +8,7 @@ import { getBrands } from "../../actions/brand/brand"
 import CollectibleCard from '/components/Molecules/Cards/CollectibleCard'
 import Default from "../../components/Templates/Default"
 import dynamic from "next/dynamic"
+import { useTranslation } from 'react-i18next'
 
 
 const LatestDrops = dynamic(
@@ -22,10 +23,12 @@ const Brands = dynamic(
 
 const Collectibles = () => {
 
+    const { t } = useTranslation();
+
     const head = () => (
         <Head>
             <title>VEVE Collectibles | ECOMI WIKI</title>
-            <meta name={"description"} content={`Officially licensed premium digital collectibles and NFTs bought to you via the VEVE platform`} />
+            <meta name={"description"} content={t(`collectibles.officially`)} />
         </Head>
     )
 
@@ -85,7 +88,7 @@ const Collectibles = () => {
     const loadMoreButton = () => {
         return (
             size > 0 && size >= limit && (
-                <button onClick={loadMore} className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs mx-auto block`}>Load more</button>
+                <button onClick={loadMore} className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs mx-auto block`}>{t(`collectibles.loadMore`)}</button>
             )
         )
     };
@@ -128,7 +131,7 @@ const Collectibles = () => {
                     <aside className={`mb-10 xl:mb-0`}>
                         <div className="bg-gray-900 shadow text-gray-300 rounded-3xl py-5">
                             <section className={`my-5 px-10`}>
-                                <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">Rarity</h2>
+                                <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">{t(`collectibles.rarity`)}</h2>
                                 <ul className={`my-2`}>
                                     <li className={`inline-block mr-2 my-2`}><button className={`border border-white hover:bg-pink-700 hover:border-pink-500 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.rarity === "COMMON" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('COMMON', 'rarity')}>Common</button></li>
                                     <li className={`inline-block mr-2 my-2`}><button className={`border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.rarity === "UNCOMMON" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('UNCOMMON', 'rarity')}>Uncommon</button></li>
@@ -139,7 +142,7 @@ const Collectibles = () => {
                             </section>
 
                             <section className={`my-5 px-10`}>
-                                <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">Edition</h2>
+                                <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">{t(`collectibles.edition`)}</h2>
                                 <ul className={`my-2`}>
                                     <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.editionType === "FA" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('FA', 'editionType')}>First Apperance</button></li>
                                     <li className={`inline-block mr-2 my-2`}><button className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs ${myFilters.filters.editionType === "FE" ? 'bg-pink-500 border-pink-500' : 'bg-transparent'}`} onClick={filters => handleFilters('FE', 'editionType')}>First Edition</button></li>
@@ -148,7 +151,7 @@ const Collectibles = () => {
                             </section>
 
                             <section className={`my-5 px-10`}>
-                                <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">Brand</h2>
+                                <h2 className="text-sm font-semibold tracking-wide uppercase text-gray-300">{t(`collectibles.brand`)}</h2>
                                 <ul className={`my-2`}>
                                     {brands && brands.map(brand => (
                                         <li className={`inline-block my-2 mr-2`}>
@@ -166,7 +169,7 @@ const Collectibles = () => {
                                         }
                                     })
                                     loadFilteredResults(offset, limit, myFilters.filters);
-                                }} className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs `}>Clear filters</button>
+                                }} className={`bg-transparent border border-white hover:bg-pink-700 hover:border-pink-500 text-white font-base py-2 px-4 rounded-full font-semibold text-xs `}>{t(`collectibles.clearFilters`)}</button>
                             </section>
                         </div>
                     </aside>

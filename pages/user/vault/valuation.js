@@ -13,6 +13,7 @@ import SelectCollectibleCard from '/components/Molecules/Cards/SelectCollectible
 import { getFilteredProducts } from '../../../actions/apiCore'
 import { getValuation, getMarketData } from '../../../actions/metrics/metrics'
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
+import { useTranslation } from 'react-i18next'
 
 
 const ValuationTable = dynamic(
@@ -22,10 +23,11 @@ const ValuationTable = dynamic(
 
 const Valuation = ({ router }) => {
 
+    const { t } = useTranslation();
     const head = () => (
         <Head>
-            <title>VEVE Vault Valuation | ECOMI WIKI</title>
-            <meta name={"description"} content={`Find out how much your VEVE vault is worth at a minimum using our valuation tool.`} />
+            <title>VEVE {t(`valuation.title`)} | ECOMI WIKI</title>
+            <meta name={"description"} content={t(`valuation.findOut`)} />
         </Head>
     )
 
@@ -267,9 +269,9 @@ const Valuation = ({ router }) => {
         {head()}
         <Default>
             <section className="text-white px-5 mt-20">
-                <h1 className={`font-semibold text-2xl leading-relaxed`}>Valuation</h1>
+                <h1 className={`font-semibold text-2xl leading-relaxed`}>{t(`valuation.valuation`)}</h1>
                 <p className={`block text-base text-gray-300`}>
-                    Vault valuations are based off of the current <Link href={`/marketplace/floors`}><a className={`text-pink-500`}>floor prices</a></Link> last captured. In the near future you will be able to save your collectibles to your profile and track your valuation growth in various data charts.
+                    {t(`valuation.valuationBased`)} <Link href={`/marketplace/floors`}><a className={`text-pink-500`}>{t(`valuation.valuationBased1`)}</a></Link> {t(`valuation.valuationBased2`)}
                 </p>
                 <div
                     className="bg-blue-300 border-t-4 border-blue-400 rounded-3xl text-black px-4 py-3 shadow-md mt-5"
@@ -282,9 +284,9 @@ const Valuation = ({ router }) => {
                                     d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"></path>
                             </svg>
                         </div>
-                        <div><p className="font-bold">Note</p>
-                            <p className="text-sm">The result should only serve as a floor expectation for your collection, the calculation will not take into account your mint numbers, provenance, or any other variables that could influence price.</p>
-                            <p className="text-sm font-medium">Comic floor prices are also currently unavailable at this time.</p>
+                        <div><p className="font-bold">{t(`valuation.note`)}</p>
+                            <p className="text-sm">{t(`valuation.note1`)}</p>
+                            <p className="text-sm font-medium">{t(`valuation.note2`)}</p>
                         </div>
                     </div>
                 </div>

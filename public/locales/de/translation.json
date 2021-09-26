@@ -1,0 +1,62 @@
+{
+  "alertCentre": {
+    "activities": "Aktivitäten",
+    "clearAll": "Alles löschen",
+    "disable": "Deaktivieren"
+  },
+  "index": {
+    "andThe": "und der",
+    "dayChange": "Tageswechsel",
+    "didYouKnow": "Wusstest du schon?",
+    "disclaimer": "Dies ist das inoffizielle Due-Diligence-Paket und die Gerüchteküche, die von enthusiastischen und optimistischen ECOMI-Investoren betrieben wird.",
+    "disclaimer2": "Wir haben die ganze Schwerarbeit für Sie erledigt, damit Sie Ihre eigene fundierte Entscheidung treffen können.",
+    "disclaimer3": "Sie können auch die",
+    "ecomiAim": "Das Ziel von ECOMI ist es, die weltweit beste Plattform zum Kaufen, Schützen und Sammeln von Prämien zu schaffen",
+    "ecomiAim2": "lizenzierte digitale Sammlerstücke mit der Distributed Ledger Technology. \nECOMI besteht aus zwei Elementen, dem",
+    "ecomiBusiness": "ECOMI ist ein in Singapur registriertes Unternehmen, das von ORBIS Blockchain Technology Ltd . betrieben und unterstützt wird",
+    "exchanges": "ECOMI(OMI) ist derzeit an den folgenden Börsen erhältlich",
+    "gap": "Im Jahr 2017 identifizierte ECOMI eine Marktlücke für digitale Premium-Sammlerstücke",
+    "gap2": ", oder NFTs für Sie und mich. \nNachdem sie diese Lücke identifiziert und den Aufstieg der Technologie vorhergesagt hatten, begannen sie mit der Entwicklung eines End-to-End-Ökosystems für digitale Sammlerstücke namens VEVE.",
+    "hourChange": "Stundenwechsel",
+    "ifInvested": "Wenn Sie sich entschieden hätten, nur 10.000 US-Dollar in den OMI-Token zu investieren",
+    "isNotPublic": "ECOMI ist <strong>keine</strong> Aktiengesellschaft, jede Diskussion über Investitionen bezieht sich auf den OMI-Token.",
+    "medium": "Neueste ECOMI Medium Artikel",
+    "newZeland": "ORBIS ist ein in Neuseeland registriertes Unternehmen.",
+    "theVeve": "Das VEVE-Ökosystem bietet IP-Lizenzgebern und -Sammlern eine neue Art von digitaler Assetklasse, die auf Blockchain-Technologie für legitime Authentizität und Knappheit basiert. \nDas gesamte Ökosystem wird von dem deflationären OMI-Token und einigen interessanten Tokenomics unterstützt, die Sie können",
+    "title": "Community-Due-Diligence-Paket für neugierige Investoren.",
+    "tldr": "ECOMI ist das Unternehmen. \nVEVE ist die Anwendung. \nOMI ist das Zeichen.",
+    "tokenMetrics": "OMI-Token-Metriken vom 21. Juni 2021, 20:59:18 Uhr",
+    "verifiedBy": "Geprüft von",
+    "veveLink": "erfahre hier mehr darüber",
+    "whitepaper": "offizielles Whitepaper hier",
+    "wouldBe": ", heute wäre Ihre Investition eine unglaubliche Wertigkeit"
+  },
+  "latestMediumArticles": "Ziehen oder scrollen Sie, um weitere mittlere Artikel anzuzeigen",
+  "teamMembers": {
+    "intro": "ECOMI hat sich mit einem All-Star-Team mit einem reichen und geprüften Ruf erfolgreicher Unternehmen zusammengestellt.",
+    "title": "Teammitglieder"
+  },
+  "veveIntro": {
+    "account": {
+      "description": "Verwalten Sie Ihre gesamte Sammlung von Ihrem Telefon aus. \nDurchsuchen Sie Ihre Sammlerstücke, komplette Sets und vieles mehr.",
+      "description1": "Einer der wichtigsten USPs von VEVE ist die reichhaltige Funktionalität der Anwendung. \nBenutzer können mit ihren Sammlerstücken interagieren, in einem VR-Showroom oder mithilfe von Augmented Reality arrangieren, skalieren und posieren. \nBenutzer können dann gemeinsam nutzbare Inhalte erstellen, um ihre Sammlung der Welt zu präsentieren.",
+      "subtitle": "Verwaltung",
+      "title": "Konto"
+    },
+    "announced": "Angekündigt am 20. Februar 2020",
+    "app": "VEVE ist ein App-basierter Marktplatz, der auf iOS und Android für hochwertige <strong>lizenzierte</strong> digitale Sammlerstücke (Non-Fungible Tokens/NFTs) verfügbar ist.",
+    "brand": "Premiummarken und Lizenzen",
+    "collection": {
+      "functionalities": "Einer der wichtigsten USPs von VEVE ist die reichhaltige Funktionalität der Anwendung. \nBenutzer können mit ihren Sammlerstücken interagieren, in einem VR-Showroom oder mithilfe von Augmented Reality arrangieren, skalieren und posieren. \nBenutzer können dann gemeinsam nutzbare Inhalte erstellen, um ihre Sammlung der Welt zu präsentieren.",
+      "interactiveNFT": "Interaktive NFTs",
+      "showRooms": "Nutzer können ihre Sammlung in eigenen virtuellen 3D-Showrooms präsentieren. \nAnpassen, dekorieren, erstellen und teilen.",
+      "title": "Sammlung"
+    },
+    "description": "Mit der VEVE-App können Sammler-Enthusiasten und Bastler eine Vielzahl von Sammlerstücken ihrer Lieblingsmarken kaufen. \nJedes Sammlerstück wird innerhalb einer begrenzten Anzahl von Verfügbarkeiten geprägt und ist einer Seltenheit zugeordnet, die typischerweise mit Sammlerstücken verbunden ist.",
+    "drops": "Drops sind häufig innerhalb von Minuten ausverkauft und generieren Millionenumsätze.",
+    "feed": {
+      "description": "Der VEVE-Feed ist das Herzstück der VEVE-Community. \nBenutzer können den Feed verwenden, um Inhalte zu teilen, Diskussionen anzustoßen, zu liken, zu kommentieren und andere Benutzer zu abonnieren.",
+      "description2": "Die Community wird einen großen Anteil am Erfolg der VEVE-Anwendung haben. \nVEVE hat das Glück, eine der, wenn nicht die enthusiastischste Community auf dem Markt sowohl innerhalb als auch außerhalb der Anwendung zu haben - diese Website ist ein Beweis für diese Aussage. \nDie Bedeutung der Gemeinschaft kann nicht genug betont werden und VEVE stellt dies in ihrer Anwendung in den Vordergrund."
+    }
+  }
+}

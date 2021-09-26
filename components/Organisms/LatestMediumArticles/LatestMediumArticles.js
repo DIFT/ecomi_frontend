@@ -3,10 +3,13 @@ import Slider from "react-slick"
 import MediumArticleCard from "../../Molecules/Cards/MediumArticleCard"
 import ArrowLeft from "../../Misc/Icons/ArrowLeft"
 import ArrowRight from "../../Misc/Icons/ArrowRight"
+import { useTranslation } from 'react-i18next'
 
 const LatestMediumArticles = ({ mediumUser, title }) => {
 
     const sliderRef = useRef()
+
+    const { t } = useTranslation();
 
     const [mediumArticles, setMediumArticles] = useState([])
     const [swiped, setSwiped] = useState(false)
@@ -83,7 +86,7 @@ const LatestMediumArticles = ({ mediumUser, title }) => {
                 <div className="flex items-center px-10">
                     <div className="flex-auto">
                         <h6 className={`text-3xl mb-3`}>{title}</h6>
-                        <small className={`block mb-5`}>Drag or scroll to see more Medium articles</small>
+                        <small className={`block mb-5`}>{t(`latestMediumArticles`)}</small>
                     </div>
                     <div className="flex-auto">
                         <div className="flex-auto">
@@ -106,7 +109,7 @@ const LatestMediumArticles = ({ mediumUser, title }) => {
                 ))}
                 <div className={`bg-gray-900 medium-articles--view-all rounded-3xl`}>
 
-                        <a href={`https://medium.com/${mediumUser}`} target="_blank" className={`block h-full w-full justify-center text-center text-center align-center items-center flex text-xl`}>View all</a>
+                        <a href={`https://medium.com/${mediumUser}`} target="_blank" className={`block h-full w-full justify-center text-center text-center align-center items-center flex text-xl`}>{t(`viewAll`)}</a>
 
                 </div>
             </Slider>

@@ -1,0 +1,214 @@
+{
+  "alertCentre": {
+    "activities": "Aktivnosti",
+    "clearAll": "Očistiti sve",
+    "disable": "Onemogući",
+    "edit": "Uredi",
+    "listedUnder": "bio je naveden za pod",
+    "marketplace": "Tržnica",
+    "minAgo": "prije nekoliko minuta",
+    "missed": "Promašeno",
+    "new": "Novi",
+    "notifications": "Obavijesti",
+    "settings": "Postavke"
+  },
+  "canInteract": "Možete komunicirati s gornjom emulacijom.",
+  "collectibleFloors": {
+    "brand": "Marka",
+    "gain": "Najniža cijena (%dobiti)",
+    "issueNo": "Broj izdanja",
+    "lastSold": "Posljednje prodano",
+    "listed": "Naveden",
+    "name": "Ime",
+    "of": "od",
+    "store": "Cijena u trgovini",
+    "total": "Ukupno na popisu"
+  },
+  "collectibles": {
+    "brand": "Marka",
+    "clearFilters": "Očistite filtere",
+    "edition": "Izdanje",
+    "loadMore": "Učitaj više",
+    "officially": "Službeno licencirani premium digitalni kolekcionarski predmeti i NFT -ovi kupljeni putem VEVE platforme",
+    "rarity": "Rijetkost"
+  },
+  "comicsFloors": {
+    "brand": "Marka",
+    "gain": "Najniža cijena (%dobiti)",
+    "issueNo": "Broj izdanja",
+    "lastSold": "Posljednje prodano",
+    "listed": "Naveden",
+    "name": "Ime",
+    "of": "od",
+    "store": "Cijena u trgovini",
+    "total": "Ukupno na popisu"
+  },
+  "dataTable": {
+    "collectibles": "kolekcionarstvo",
+    "search": "traži"
+  },
+  "donate": {
+    "accept3": "stražnji kraj",
+    "accept4": "GitHub spremište i prikazuju vam se nasumično, s većom učestalošću prikaza za najaktivnije mjesečne suradnike.",
+    "donateOmi": "Donirajte OMI tokene",
+    "donateVeve": "Donirajte VEVE NFT",
+    "important": "Važno"
+  },
+  "floors": {
+    "autoUpdate": "Tablica pametnih podataka automatski se ažurira svakih sat vremena",
+    "basedOff": "na temelju trenutnih najnižih cijena na tržištu u ovoj tablici.",
+    "collectibles": "Kolekcionarski predmeti",
+    "comicPrices": "Cijene stripova",
+    "comics": "stripovi",
+    "currentlyComics": "Trenutačno imamo na raspolaganju samo donje cijene stripova. \nMolim uzmite u obzir",
+    "currentlyComics1": "darivanje",
+    "currentlyComics2": "kako biste nam pomogli da brže razvijemo značajke za vas",
+    "floorPrices": "Donja tablica prikazuje najnižu cijenu (najnižu dostupnu) za sve kolekcionarske predmete koji su trenutno navedeni na sekundarnom tržištu s opcijom \"kupi odmah\".",
+    "lastUpdate": "Posljednji put ažurirano",
+    "title": "VEVE tržišne najniže cijene | \nECOMI WIKI",
+    "updateByHour": "Najniže cijene na tržištu VEVE ažuriraju se po satu pomoću službenog API -ja",
+    "valutValuation": "Kliknite ovdje za procjenu trezora"
+  },
+  "footer": {
+    "ecomiWiki": "ECOMI WIKI je an",
+    "floors": "Podovi na tržnici",
+    "noFinancialAdvice": "Nijedan sadržaj na ovoj web stranici ne treba smatrati financijskim savjetom i služi samo za zabavu. \nIako svaku tvrdnju pokušavamo provjeriti kroz različite izvore, toplo se preporučuje vlastito istraživanje.",
+    "notAffiliated": "web mjesto i ni na koji način nije povezano s tvrtkama ECOMI, VEVE ili bilo kojim od spomenutih robnih marki ili davatelja licence. \nECOMI WIKI je web mjesto otvorenog koda koje vodi zajednica, a ne radi zarade.",
+    "quickLinks": "Brze veze",
+    "unofficial": "neslužbeno",
+    "whitepaper": "Službeni bijeli papir"
+  },
+  "header": {
+    "collectibles": "Kolekcionarski predmeti",
+    "marketplaceFloors": "Podovi na tržnici",
+    "signOut": "Odjavi se",
+    "valuation": "Vrijednost"
+  },
+  "index": {
+    "andThe": "i",
+    "dayChange": "promjena dana",
+    "didYouKnow": "Jeste li znali?",
+    "disclaimer": "Ovo je neslužbeni paket informacija i glasina, od strane entuzijasta i optimističnih ECOM investitora.",
+    "disclaimer2": "Odradili smo posao za tebe kako bi donio informiranu ulogu.",
+    "disclaimer3": "Možeš pogledati ",
+    "ecomiAim": "ECOMI-jev cilj je stvoriti najbolju svjetsku platformu za kupnju, zaštitu i prikupljanje premija",
+    "ecomiAim2": "licencirani digitalni kolekcionarski predmeti koji koriste tehnologiju distribuirane knjige. \nECOMI se sastoji od dva elementa,",
+    "ecomiBusiness": "ECOMI je registrirana tvrtka u Singapuru, kojom upravlja i podržava ORBIS Blockchain Technology Ltd",
+    "exchanges": "ECOMI (OMI) je trenutno dostupan za kupnju na sljedećim burzama",
+    "gap": "U 2017. ECOMI je identificirao jaz na tržištu premium digitalnog kolekcionarstva",
+    "gap2": ", ili NFT-ove vama i meni. \nNakon što su identificirali ovaj jaz i predvidjeli uspon tehnologije, započeli su razvoj end-to-end digitalnog kolekcijskog ekosustava pod nazivom VEVE.",
+    "hourChange": "promjena sata",
+    "ifInvested": "Da si investirao $10,000 u OMI token ",
+    "isNotPublic": "ECOMI <strong> nije </strong> javno poduzeće, bilo kakva rasprava o ulaganju odnosi se na OMI token.",
+    "medium": "Najnoviji ECOMI Medium članci",
+    "newZeland": "ORBIS je registrirana tvrtka na Novom Zelandu.",
+    "theVeve": "Sustav VEVE nudi davateljima licenci i sakupljačima IP-a novu vrstu digitalne klase imovine koju pokreće blockchain tehnologija za legitimnu autentičnost. \nCijeli sustav potkrijepljen je deflacijskim OMI tokenom i zanimljivom tokenomikom, koju možete",
+    "title": "Paket informacija za zainteresirane investitore",
+    "tldr": "ECOMI je kompanija. VEVE je aplikacija. OMI je token.",
+    "tokenMetrics": "OMI metričke oznake od 21. lipnja 2021. u 20:59:18",
+    "verifiedBy": "Ovjerio",
+    "veveLink": "saznajte više ovdje",
+    "whitepaper": "služeni whitepaper ovdje",
+    "wouldBe": ", danas bi tvoja investicija bila velikih"
+  },
+  "latestMediumArticles": "Povuci ili skrolaj za jođ Medium članaka",
+  "signIn": {
+    "loading": "Učitavam",
+    "login": "Prijaviti se",
+    "signIn": "Prijaviti se",
+    "welcome": "Dobrodošao natrag! \nPustite se unutra."
+  },
+  "signUp": {
+    "already": "Već imate račun? \nPrijaviti se",
+    "freeToUse": "Ova stranica je besplatna za korištenje, ali imajte poštovanja prema svim ostalim članovima ove stranice.",
+    "loading": "Učitavam",
+    "logIn": "Prijaviti se",
+    "signUp": "Prijavite se",
+    "youAre": "Prijavljeni ste! \nSamo naprijed i"
+  },
+  "teamMembers": {
+    "intro": "ECOMI se sastavio sa all star timom s bogatom i provjerenom reputacijom uspješnih tvrtki.",
+    "title": "Članovi tima"
+  },
+  "valuation": {
+    "findOut": "Saznajte koliko minimalno vrijedi vaš trezor VEVE pomoću našeg alata za vrednovanje.",
+    "note": "Bilješka",
+    "note1": "Rezultat bi trebao poslužiti samo kao minimalno očekivanje za vašu zbirku, izračun neće uzeti u obzir vaše brojeve kovnica, porijeklo ili bilo koje druge varijable koje bi mogle utjecati na cijenu.",
+    "note2": "Cijene komičnih poda trenutno također nisu dostupne.",
+    "title": "Procjena trezora"
+  },
+  "veveIntro": {
+    "account": {
+      "description": "Upravljajte cijelom zbirkom sa svog telefona. \nPregledajte svoje kolekcionarske predmete, kompletne setove i još mnogo toga.",
+      "description1": "Jedan od ključnih USP -ova VEVE -a je bogata funkcionalnost koja se nudi unutar aplikacije. \nKorisnici mogu komunicirati sa svojim kolekcionarskim predmetima, dogovarati, skalirati i pozirati unutar VR izložbenog prostora ili pomoću proširene stvarnosti. \nKorisnici tada mogu stvoriti sadržaj koji se može dijeliti kako bi svoju zbirku predstavili svijetu.",
+      "subtitle": "Upravljanje",
+      "title": "Račun"
+    },
+    "announced": "Najavljeno 20. veljače 2020",
+    "app": "VEVE je tržište temeljeno na aplikacijama dostupno na iOS-u i Androidu za premiju",
+    "app1": "licenciran",
+    "app2": "digitalno kolekcionarstvo (Non-Fungible Tokens/NFT).",
+    "brand": "Vrhunske marke i licence",
+    "collection": {
+      "functionalities": "Jedan od ključnih USP -ova VEVE -a je bogata funkcionalnost koja se nudi unutar aplikacije. \nKorisnici mogu komunicirati sa svojim kolekcionarskim predmetima, dogovarati, skalirati i pozirati unutar VR izložbenog prostora ili pomoću proširene stvarnosti. \nKorisnici tada mogu stvoriti sadržaj koji se može dijeliti kako bi svoju zbirku predstavili svijetu.",
+      "interactiveNFT": "Interaktivni NFT -ovi",
+      "showRooms": "Korisnici mogu izložiti svoju zbirku u vlastitim virtualnim 3D izložbenim salonima. \nPrilagodite, ukrasite, stvarajte i dijelite.",
+      "title": "Kolekcija"
+    },
+    "description": "Pomoću aplikacije VEVE entuzijasti i ljubitelji kolekcionarstva mogu kupiti mnoštvo kolekcionarskih predmeta od svojih omiljenih marki. \nSvaki kolekcionarski predmet kovan je u ograničenom broju dostupnosti i dodjeljuje mu se vrsta rijetkosti koja je tipično povezana s kolekcijskim predmetima.",
+    "drops": "Kapi se često rasprodaju u roku od nekoliko minuta stvarajući milijunske prihode.",
+    "feed": {
+      "description": "VEVE feed je srce VEVE zajednice. \nKorisnici mogu koristiti feed za dijeljenje sadržaja, pokretanje rasprave, lajkanje, komentiranje i pretplatu na druge korisnike.",
+      "description2": "Zajednica će odigrati veliku ulogu u uspjehu VEVE aplikacije. \nVEVE ima sreću imati jednu od, ako ne i najveću, entuzijastičnih zajednica na tržištu i u aplikaciji i izvan nje - ova web stranica svjedoči o toj izjavi. \nVažnost zajednice ne može se dovoljno naglasiti, a VEVE to zaobilazi u svojoj primjeni.",
+      "show": "Pokaži i reci",
+      "title": "Hraniti"
+    },
+    "lunched": "Aplikacija je službeno pokrenuta u BETA -i u listopadu 2020. i redovito izbacuje nove kolekcionarske predmete svakog četvrtka u 16:00 GMT",
+    "market": {
+      "description": "Tržište je 'ebay' digitalnog kolekcionarstva i omogućuje korisnicima međusobnu kupnju, prodaju i zamjenu.",
+      "description1": "Korisnici mogu akumulirati željene NFT -ove putem peer 2 peer tržišta. \nTržište omogućuje korisnicima da upotpune svoje zbirke ili pokupe kolekcionarske predmete koje bi inače propustili.",
+      "description2": "Nadalje, tržište VEVE već se pokazalo da aktivnim korisnicima generira eksponencijalnu dobit od njihovih izvornih kupnji. \nNa primjer, nedavno smo vidjeli",
+      "description3": "'Donny' NFT iz Powerpuff Girls prodaje se za 27.000 dolara",
+      "description4": "Donny je prvotno imao cijenu od samo 15,99 USD",
+      "description5": "VEVE drop day",
+      "description6": "Kako aplikacija nastavlja rasti, očekujemo da će kolekcionarski predmeti biti sve oskudniji u odnosu na bazu korisnika, pa će s vremenom njihova vrijednost sve više rasti. \nMoglo bi se lako iznijeti argument da je kupnja samih NFT -a još jedan solidan izbor ulaganja za brzi preokret.",
+      "subtitle": "Kupujte, prodajte i trgujte",
+      "title": "Tržište"
+    },
+    "meduim": "Najnoviji članci VEVE Medium",
+    "metrics": {
+      "dayChange": "promjena dana",
+      "description": "Rečeno je da industrija kolekcionarstva od ožujka 2020. vrijedi približno 370 milijardi dolara",
+      "description1": "VEVE je na ovom tržištu identificirao jaz u premium digitalnim kolekcionarskim predmetima potpomognut blockchain tehnologijom, što omogućuje jedinstvenost, oskudicu i točnu porijeklo kolekcionarskih predmeta. \nSmatra se da će porast popularnosti NFT -a 2021. godine u sljedećim godinama eksponencijalno povećati vrijednost ove industrije. \nVEVE su se pozicionirali kao vodeći u vrhunskom digitalnom kolekcionarskom formatu zbog svog ranog predviđanja u 2017.",
+      "description2": "VEVE metrike od",
+      "hourChange": "promjena sata",
+      "noNFT": "Ne. NFT prodaja",
+      "revenue": "Ostvareni prihod trgovine",
+      "title": "Tržište od 370 milijardi dolara",
+      "totalSales": "Totalna rasprodaja"
+    },
+    "premium": "Premium, službeno licencirani, digitalni kolekcionarski predmeti (NFT)",
+    "rarity": {
+      "description": "Svi predmeti za kolekcionarstvo koji se nude na VEVE platformi prolaze strogi proces kvalitete između internog VEVE tima i samih marki i davatelja licence. \nMnogi korišteni kolekcionarski predmeti zapravo su izvedeni iz stvarnih modela koji se koriste u filmovima, igrama i TV emisijama.",
+      "description1": "Automobil Ghostbusters Ecto-1 jedan je od primjera kontrole visoke kvalitete jer možemo primijetiti visok broj poli popraćenih s nekoliko detalja prikazanih na modelu, poput teksture okoliša na vjetrobranu i lukovima, kromatskih tekstura i raznih neprozirnih materijala.",
+      "ghostbuster": "Lovci na duhove 1: 1 Ecto-1 (interaktivni) NFT pali su na platformu VEVE 17. srpnja 2021.",
+      "interactive": "Interaktivno",
+      "materials": "Materijali",
+      "soldOut": "Svih 4444 izdanja rasprodano je u roku od jedne minute.",
+      "title": "Pametniji od vašeg prosječnog NFT -a",
+      "triangles": "Trokuti",
+      "verified": "Provjereno iz različitih izvora:",
+      "verticies": "Verticies"
+    },
+    "recognized": "VEVE -u vjeruju i priznaju ga neki od najvećih i najpopularnijih svjetskih brandova",
+    "store": {
+      "browse": "Korisnici mogu pregledavati kolekcionarske predmete omiljenih marki u premium digitalnom formatu i povećavati svoje zbirke.",
+      "growCollection": "Povećajte svoju kolekciju",
+      "offers": "Nakon otvaranja aplikacije VEVE korisnicima se odmah prezentiraju istaknuti premium brendovi i kolekcionarski predmeti, nadolazeći padovi i moćne metode filtriranja. \nKorisnici mogu jednostavno navigirati i pregledavati digitalne kolekcionarske proizvode, uključujući one koji više nisu dostupni kroz primarnu trgovinu VEVE.",
+      "title": "Trgovina"
+    },
+    "teamPresents": "ECOMI tim predstavlja ...",
+    "verified": "Provjereno iz različitih izvora:"
+  },
+  "viewAll": "Pogledaj sve"
+}

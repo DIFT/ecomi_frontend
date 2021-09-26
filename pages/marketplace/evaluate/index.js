@@ -1,8 +1,12 @@
 import Default from "../../../components/Templates/Default"
 import React, { useEffect, useState } from 'react'
 import { getBrandRevenueData } from "../../../actions/metrics/metrics"
+import { useTranslation } from 'react-i18next'
 
 const Evaluate = () => {
+
+    const { t } = useTranslation();
+    
     const [brandMarketData, setBrandMarketData] = useState()
 
 
@@ -25,7 +29,7 @@ const Evaluate = () => {
         <Default>
             <>
                 <div className="container text-white px-10">
-                    Evaluate
+                    {t(`evaluate.title`)}
                 </div>
             </>
         </Default>

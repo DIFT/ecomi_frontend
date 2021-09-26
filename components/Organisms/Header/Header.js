@@ -1,3 +1,4 @@
+import '../../../pages/i18n'
 import { useState } from 'react'
 import Link from "next/link"
 import Image from 'next/image'
@@ -17,6 +18,7 @@ import { signout, isAuth } from "../../../actions/auth"
 import SigninComponent from "/components/Auth/SigninComponent"
 import SignupComponent from "/components/Auth/SignupComponent"
 import AlertCentre from "/components/Organisms/AlertCentre/AlertCentre"
+import { useTranslation } from 'react-i18next'
 
 const ReactTooltip = dynamic(() => import('react-tooltip'), {
     ssr: false
@@ -49,8 +51,15 @@ const MenuIcon = dynamic(() => import('/components/Misc/LordIcon').then((mod) =>
 
 const Header = ({ setControlOverflow }) => {
 
+    const { t, i18n } = useTranslation();
+
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language)
+    }
+
     const [menuOpen, setMenuOpen] = useState(false)
-    const [modalState, setModalState] = useState(false)
+    const [signInModalState, setSignInModalState] = useState(false)
+    const [settingsModalState, setSettingsModalState] = useState(false)
     const [userExists, setUserExists] = useState(false)
     const [toggleUserDD, setToggleUserDD] = useState(false)
     const [showAlerts, setShowAlerts] = useState(false)
@@ -59,8 +68,8 @@ const Header = ({ setControlOverflow }) => {
         return(
             <div className={`bg-black p-5 absolute text-white right-2 ${toggleUserDD ? 'block' : 'hidden' }`}>
                 <ul>
-                    <li><Link href={`/user/vault/valuation`}><a>Valuation</a></Link></li>
-                    <li><button onClick={() => signout(() => Router.replace('/'))}>Signout</button></li>
+                    <li><Link href={`/user/vault/valuation`}><a>{t(`header.valuation`)}</a></Link></li>
+                    <li><button onClick={() => signout(() => Router.replace('/'))}>{t(`header.signOut`)}</button></li>
                 </ul>
             </div>
         )
@@ -91,7 +100,7 @@ const Header = ({ setControlOverflow }) => {
                         <ul className="text-right">
                             <li className="inline-block mr-2">
                                 <Link href={`/collectibles`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Collectibles`} data-effect={'solid'} data-event='mouseenter mouseleave'>
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={t(`header.collectibles`)} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <CollectibleIcon
                                             size={`40px`}
                                             params={`60`}
@@ -115,7 +124,7 @@ const Header = ({ setControlOverflow }) => {
                             {/*</li>*/}
                             <li className="inline-block mr-2">
                                 <Link href={`/marketplace/floors`}><a>
-                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={`Marketplace Floors`} data-effect={'solid'} data-event='mouseenter mouseleave'>
+                                        <span className="border border-gray-500 rounded-full mr-3 inline-block text-center" data-tip={t(`header.marketplaceFloors`)} data-effect={'solid'} data-event='mouseenter mouseleave'>
                                         <MarketplaceIcon
                                             size={`40px`}
                                             params={`60`}
@@ -148,8 +157,17 @@ const Header = ({ setControlOverflow }) => {
                     {/*Logged in and not admin*/}
                     {/*{ isAuth() && isAuth().role === 0 && (<Link href={"/user"}>Dashboard</Link>)}*/}
 
-
                     <ul>
+                        <li className="inline-block">
+                            <button onClick={e => {
+                                setSettingsModalState(true)
+                                setControlOverflow(true)
+                            }}>
+                                            <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700">
+                                            <span className={`text-white font-medium text-sm`}>EN</span>
+                                        </span>
+                            </button>
+                        </li>
 
                         {/*<li className="inline-block mr-2 relative">*/}
                         {/*    <button onClick={e => setShowAlerts(!showAlerts)}>*/}
@@ -179,7 +197,7 @@ const Header = ({ setControlOverflow }) => {
                         { !isAuth() && (
                             <li className="inline-block">
                                 <button onClick={e => {
-                                    setModalState(true)
+                                    setSignInModalState(true)
                                     setControlOverflow(true)
                                 }}>
                                             <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700">
@@ -217,8 +235,13 @@ const Header = ({ setControlOverflow }) => {
                 </div>
             </div>
         </header>
-            <Modal modalState={modalState} setModalState={setModalState} setControlOverflow={setControlOverflow}>
+            <Modal modalState={signInModalState} setModalState={setSignInModalState} setControlOverflow={setControlOverflow}>
                 {userExists ? <SigninComponent setUserExists={setUserExists} /> :  <SignupComponent setUserExists={setUserExists} />}
+            </Modal>
+
+            <Modal modalState={settingsModalState} setModalState={setSettingsModalState} setControlOverflow={setControlOverflow}>
+                <button onClick={() => changeLanguage('en')} className={`text-white px-2`}>EN</button>
+                <button onClick={() => changeLanguage('de')} className={`text-white px-2`}>DE</button>
             </Modal>
         </>
     )
