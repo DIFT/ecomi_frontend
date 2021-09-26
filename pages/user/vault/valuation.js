@@ -237,11 +237,11 @@ const Valuation = ({ router }) => {
     }
 
     const handleComicSelection = (uniqueCoverId, quantity, selected) => {
-        const filtered = usersCollectibles.filter((e) => { return e.uniqueCoverId !== uniqueCoverId })
+        const filtered = usersComics.filter((e) => { return e.uniqueCoverId !== uniqueCoverId })
         if (selected) {
             setUsersComics([...filtered])
         } else {
-            setUsersComics([...filtered, {"uniqueCoverId": uniqueCoverId, "quantity": quantity }])
+            setUsersComics([...usersComics, {"uniqueCoverId": uniqueCoverId, "quantity": quantity }])
         }
     }
 
@@ -353,7 +353,7 @@ const Valuation = ({ router }) => {
                             <div className={`text-right`}>
                                 <div className="block">
                                     <span className={`text-gray-400 text-sm font-medium mb-2`}>RRP: $<CountUp end={comicsRetailPrice} duration={1} separator="," decimals={2} decimal="."/></span>
-                                    {calcPercentageChange()}
+                                    {calcPercentageChange(comicsValuation, comicsRetailPrice)}
                                 </div>
                                 <p className={`font-normal ${comicsValuation > comicsRetailPrice ? 'text-green-500' : 'text-red-500'} font-medium text-4xl`}>
                                     + $<CountUp end={comicsValuation} duration={1} separator="," decimals={2} decimal="."/>
