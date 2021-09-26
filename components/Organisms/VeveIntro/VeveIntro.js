@@ -52,8 +52,8 @@ const VeveIntro = () => {
                             </p>
 
                             <ul className={`my-10`}>
-                                <li className={`inline-block mr-3`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Google play</a></li>
-                                <li className={`inline-block`}><a href="#" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>App store</a></li>
+                                <li className={`inline-block mr-3`}><a href="https://play.google.com/store/apps/details?id=com.ecomi.veve&hl=en_GB&gl=US" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>Google play</a></li>
+                                <li className={`inline-block`}><a href="https://apps.apple.com/us/app/veve-collectibles/id1478403837" target={"_blank"} className={`border border-white text-white font-base py-2 px-4 rounded-full font-semibold text-sm`}>App store</a></li>
                             </ul>
 
                             <p className={`font-base text-xl leading-relaxed mb-5 text-gray-300`}>

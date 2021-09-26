@@ -153,8 +153,8 @@ export const getMarketHistoricData = (collectibleId) => {
         .catch(err => console.log('Error is: ', err))
 }
 
-export const getValuation = (collectibles, token) => {
-    return fetch(`${API}/metrics/account/valuation`, {
+export const getCollectiblesValuation = (collectibles, token) => {
+    return fetch(`${API}/metrics/account/collectibles/valuation`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -168,3 +168,19 @@ export const getValuation = (collectibles, token) => {
         })
         .catch(err => console.log(err));
 };
+
+export const getComicsValuation = (comics, token) => {
+    return fetch(`${API}/metrics/account/comics/valuation`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({"comics": comics})
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+}

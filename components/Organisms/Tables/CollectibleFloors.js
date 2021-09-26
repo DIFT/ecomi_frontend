@@ -5,7 +5,7 @@ import { getMarketData } from "../../../actions/metrics/metrics"
 import moment from "moment"
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
 import { useTranslation } from 'react-i18next'
-
+import LoadingSpinner from '../../Atoms/LoadingSpinner/LoadingSpinner'
 // const MicroChart = dynamic(
 //     () => import("../../../components/Atoms/MicroChart/MicroChart"),
 //     { ssr: false }
@@ -21,6 +21,8 @@ const CollectibleFloors = () => {
     const { t } = useTranslation();
 
     const [marketData, setMarketData] = useState()
+    const [loading, setLoading] = useState(true)
+    const [pageCount, setPageCount] = useState(0)
 
     useEffect(() => {
         loadMarketData()
@@ -30,6 +32,7 @@ const CollectibleFloors = () => {
         getMarketData()
             .then(data => {
                 setMarketData(data)
+                setLoading(false)
             })
             .catch(e => console.log('Error getting marketplace data'))
     }
@@ -38,7 +41,7 @@ const CollectibleFloors = () => {
         () => [
             {
                 Header: t('collectibleFloors.name'),
-                accessor: 'name', // accessor is the "key" in the data
+                accessor: 'name', 
                 Cell: (cellProps => {
                     return (
                         <>
@@ -132,18 +135,24 @@ const CollectibleFloors = () => {
         []
     )
 
-    const [loading, setLoading] = React.useState(false)
-    const [pageCount, setPageCount] = React.useState(0)
+    const renderTable = () => {
+        return (
+            <>
+                <span className={`block mb-3 text-xs text-gray-300`}>{t(`floors.lastUpdate`)}: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
+                {marketData && marketData ? <DataTable
+                    columns={columns}
+                    data={marketData}
+                    loading={loading}
+                    pageCount={pageCount}
+                /> : null}
+            </>
+        )
+    }
+
 
     return(
         <div className="grid grid-cols-1 mt-10 text-white px-5">
-            <span className={`block mb-3 text-xs text-gray-300`}>{t(`floors.lastUpdate`)}: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
-            {marketData && marketData ? <DataTable
-                columns={columns}
-                data={marketData}
-                loading={loading}
-                pageCount={pageCount}
-            /> : null}
+            {loading ? <LoadingSpinner /> : renderTable()}
         </div>
     )
 }

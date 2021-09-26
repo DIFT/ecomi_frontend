@@ -59,7 +59,7 @@
     "basedOff": "na temelju trenutnih najnižih cijena na tržištu u ovoj tablici.",
     "collectibles": "Kolekcionarski predmeti",
     "comicPrices": "Cijene stripova",
-    "comics": "stripovi",
+    "comics": "Stripovi",
     "currentlyComics": "Trenutačno imamo na raspolaganju samo donje cijene stripova. \nMolim uzmite u obzir",
     "currentlyComics1": "darivanje",
     "currentlyComics2": "kako biste nam pomogli da brže razvijemo značajke za vas",
@@ -74,7 +74,7 @@
     "floors": "Podovi na tržnici",
     "noFinancialAdvice": "Nijedan sadržaj na ovoj web stranici ne treba smatrati financijskim savjetom i služi samo za zabavu. \nIako svaku tvrdnju pokušavamo provjeriti kroz različite izvore, toplo se preporučuje vlastito istraživanje.",
     "notAffiliated": "web mjesto i ni na koji način nije povezano s tvrtkama ECOMI, VEVE ili bilo kojim od spomenutih robnih marki ili davatelja licence. \nECOMI WIKI je web mjesto otvorenog koda koje vodi zajednica, a ne radi zarade.",
-    "quickLinks": "Brze veze",
+    "quickLink": "Brze veze",
     "unofficial": "neslužbeno",
     "whitepaper": "Službeni bijeli papir"
   },

@@ -3,6 +3,7 @@ import { API } from "../../../config"
 import dynamic from "next/dynamic"
 import { getMarketComicData } from "../../../actions/metrics/metrics"
 import moment from "moment"
+import LoadingSpinner from '../../Atoms/LoadingSpinner/LoadingSpinner'
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
 
 
@@ -19,6 +20,7 @@ const DataTable = dynamic(
 const ComicFloors = () => {
 
     const [marketData, setMarketData] = useState()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         loadMarketData()
@@ -27,8 +29,8 @@ const ComicFloors = () => {
     const loadMarketData = () => {
         getMarketComicData()
             .then(data => {
-                console.log('data is: ', data)
                 setMarketData(data)
+                setLoading(false)
             })
             .catch(e => console.log('Error getting marketplace data'))
     }
@@ -112,10 +114,18 @@ const ComicFloors = () => {
         []
     )
 
+    const renderTable = () => {
+        return(
+            <>
+                <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
+                {marketData && marketData ? <DataTable columns={columns} data={marketData} /> : null}
+            </>
+        )
+    }
+
     return(
         <div className="grid grid-cols-1 mt-10 text-white px-5">
-            <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
-            {marketData && marketData ? <DataTable columns={columns} data={marketData} /> : null}
+            {loading ? <LoadingSpinner /> : renderTable()}
         </div>
     )
 }
