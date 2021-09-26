@@ -25,13 +25,13 @@ const SelectCollectibleItem = ({ collectible, handleCollectibleSelection, handle
                     </div>
                     <div>
 
-                        <span>{collectible.name}</span>
+                        <span>{collectible && collectible.name}</span>
                         <br/>
-                        <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(collectible.rarity)}`}>
-                           {collectible.rarity}
+                        <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(collectible && collectible.rarity)}`}>
+                           {collectible && collectible.rarity}
                         </span>
-                        <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(collectible.editionType)}`}>
-                            {collectible.editionType}
+                        <span className={`inline-block px-1 text-xs font-bold rounded ml-1 ${getEditionTypeThresholds(collectible && collectible.editionType)}`}>
+                            {collectible && collectible.editionType}
                         </span>
                     </div>
                 </div>

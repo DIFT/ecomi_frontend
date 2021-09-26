@@ -7,8 +7,8 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 // have a look at the Quick start guide 
 // for passing in lng and translations on init
 
-import translationEN from "../public/locales/en/translation.json";
-import translationDE from "../public/locales/de/translation.json";
+import translationEN from "./public/locales/en/translation.json";
+import translationDE from "./public/locales/de/translation.json";
 
 const resources = {
     en: {

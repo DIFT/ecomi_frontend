@@ -6,7 +6,7 @@ defineLordIconElement(lottie.loadAnimation);
 export const LinkIcon = () => (
     <lord-icon
         animation="morph"
-        target="a"
+        target="a" 
         palette="#CCCCCC;#ff2696;"
         size={'20px'}
         params="20"

@@ -1,4 +1,4 @@
-import '../../../pages/i18n'
+import '../../../i18n'
 import { useState, useEffect } from 'react'
 import Link from "next/link"
 import Image from 'next/image'

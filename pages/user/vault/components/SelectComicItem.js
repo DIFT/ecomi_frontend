@@ -24,10 +24,10 @@ const SelectComicItem = ({ comic, handleComicSelection, handleQuantityComicSelec
                         }}>
                     </div>
                     <div>
-                        <span>{comic.name}</span>
+                        <span>{comic && comic.name}</span>
                         <br/>
-                        <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(comic.cover.rarity)}`}>
-                           {comic.cover.rarity}
+                        <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(comic && comic.cover.rarity)}`}>
+                           {comic && comic.cover.rarity}
                         </span>
                     </div>
                 </div>

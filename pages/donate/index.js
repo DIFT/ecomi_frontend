@@ -2,8 +2,11 @@ import Default from "../../components/Templates/Default"
 import Image from 'next/image'
 import veveQrCode from '../../public/assets/images/contributors/omitheclown/veve-qrcode.jpg'
 import exchangeQrCode from '../../public/assets/images/contributors/omitheclown/exchange-qrcode.png'
+import { useTranslation } from 'react-i18next'
 
 const Donate = () => {
+    
+    const { t } = useTranslation();
 
     return(
         <Default>
