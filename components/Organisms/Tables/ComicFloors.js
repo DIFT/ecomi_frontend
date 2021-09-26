@@ -4,7 +4,6 @@ import dynamic from "next/dynamic"
 import { getMarketComicData } from "../../../actions/metrics/metrics"
 import moment from "moment"
 import {getEditionTypeThresholds, getPercentageChange, getRarityThresholds} from "../../../utils"
-import { useTranslation } from 'react-i18next'
 
 
 // const MicroChart = dynamic(
@@ -18,8 +17,6 @@ const DataTable = dynamic(
 );
 
 const ComicFloors = () => {
-
-    const { t } = useTranslation();
 
     const [marketData, setMarketData] = useState()
 
@@ -39,8 +36,8 @@ const ComicFloors = () => {
     const columns = React.useMemo(
         () => [
             {
-                Header: t(`comicsFloors.name`),
-                accessor: 'comicSeries.name', // accessor is the "key" in the data
+                Header: 'Name',
+                accessor: 'name', // accessor is the "key" in the data
                 Cell: (cellProps => {
                     return(
                         <>
@@ -51,9 +48,9 @@ const ComicFloors = () => {
                                     backgroundSize: 'cover'
                                 }}></div>
                                 <div>
-                                    <span>{cellProps.row.original.comicSeries.name} #{cellProps.row.original.comicNumber}</span>
+                                    <span>{cellProps.row.original.name} #{cellProps.row.original.comicNumber}</span>
                                     <br/>
-                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.rarity)}`}>
+                                    <span className={`inline-block px-1 text-xs font-bold rounded ${getRarityThresholds(cellProps.row.original.cover.rarity)}`}>
                                        {cellProps.row.original.cover.rarity}
                                     </span>
                                 </div>
@@ -63,7 +60,7 @@ const ComicFloors = () => {
                 })
             },
             {
-                Header: t(`comicsFloors.gain`),
+                Header: 'Floor Price (%Gain)',
                 accessor: 'metrics.lowestPrice',
                 Cell: (cellProps) => {
                     return(
@@ -75,11 +72,19 @@ const ComicFloors = () => {
                 }
             },
             {
-                Header: t(`comicsFloors.store`),
+                Header: 'Store Price',
                 accessor: 'storePrice',
                 Cell: (cellProps => (
                     <span>${cellProps.row.original.storePrice}</span>
                 ))
+            },
+            {
+                Header: 'Variant Issued',
+                accessor: 'cover.totalIssued'
+            },
+            {
+                Header: 'Total Issued',
+                accessor: 'totalIssued'
             },
             // {
             //     Header: 'Prev Sold Price',
@@ -100,22 +105,8 @@ const ComicFloors = () => {
             //   })
             // },
             {
-                Header: t(`comicsFloors.issueNo`),
-                accessor: 'metrics.issueNumber',
-                Cell: (cellProps) => (
-                    <span className={`font-medium`}>{cellProps.row.original.metrics.issueNumber} <span className={`text-sm text-gray-300 font-normal`}>{t(`comicsFloors.of`)} {cellProps.row.original.totalIssued}</span></span>
-                )
-            },
-            {
-                Header: t(`comicsFloors.total`),
+                Header: 'Total Listed',
                 accessor: 'metrics.totalListings'
-            },
-            {
-                Header: t(`comicsFloors.listed`),
-                accessor: 'metrics.createdAt',
-                Cell: (cellProps => {
-                    return moment(cellProps.row.original.metrics.createdAt).fromNow()
-                })
             },
         ],
         []
@@ -123,7 +114,7 @@ const ComicFloors = () => {
 
     return(
         <div className="grid grid-cols-1 mt-10 text-white px-5">
-            <span className={`block mb-3 text-xs text-gray-300`}>{t(`floors.lastUpdate`)}: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
+            <span className={`block mb-3 text-xs text-gray-300`}>Last updated: {moment(marketData && marketData[0].updatedAt).format('LLL')}</span>
             {marketData && marketData ? <DataTable columns={columns} data={marketData} /> : null}
         </div>
     )
