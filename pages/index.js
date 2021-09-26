@@ -10,9 +10,8 @@ import CountUp from 'react-countup'
 import PriceCard from "../components/Molecules/Cards/PriceCard"
 import TeamMembers from "../components/Organisms/TeamMembers/TeamMembers"
 import VeveIntro from "../components/Organisms/VeveIntro/VeveIntro"
-import LatestMediumArticles from "../components/Organisms/LatestMediumArticles/LatestMediumArticles";
-import './i18n';
-import { useTranslation } from 'react-i18next';
+import LatestMediumArticles from "../components/Organisms/LatestMediumArticles/LatestMediumArticles"
+import { useTranslation } from 'react-i18next'
 
 const CheckIcon = dynamic(() => import('../components/Misc/LordIcon').then((mod) => mod.CheckIcon), {
     ssr: false
@@ -20,9 +19,8 @@ const CheckIcon = dynamic(() => import('../components/Misc/LordIcon').then((mod)
 
 const Index = () => {
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation()
 
-    
     const head = () => (
       <Head>
             <title>ECOMI | VEVE | NFTS | COLLECTIBLES | ECOMI WIKI</title>
@@ -58,8 +56,7 @@ const Index = () => {
     
     useEffect(() => {
       getOmiPrices()
-      i18n.changeLanguage("hr")
-      getExchanges() // TODO: Hok this up with back end
+      getExchanges()
     },[])
 
     const hero = () => {

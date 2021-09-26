@@ -1,3 +1,4 @@
+import '../../../pages/i18n'
 import { useState } from 'react'
 import Link from "next/link"
 import Image from 'next/image'
@@ -50,10 +51,15 @@ const MenuIcon = dynamic(() => import('/components/Misc/LordIcon').then((mod) =>
 
 const Header = ({ setControlOverflow }) => {
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language)
+    }
 
     const [menuOpen, setMenuOpen] = useState(false)
-    const [modalState, setModalState] = useState(false)
+    const [signInModalState, setSignInModalState] = useState(false)
+    const [settingsModalState, setSettingsModalState] = useState(false)
     const [userExists, setUserExists] = useState(false)
     const [toggleUserDD, setToggleUserDD] = useState(false)
     const [showAlerts, setShowAlerts] = useState(false)
@@ -151,8 +157,17 @@ const Header = ({ setControlOverflow }) => {
                     {/*Logged in and not admin*/}
                     {/*{ isAuth() && isAuth().role === 0 && (<Link href={"/user"}>Dashboard</Link>)}*/}
 
-
                     <ul>
+                        <li className="inline-block">
+                            <button onClick={e => {
+                                setSettingsModalState(true)
+                                setControlOverflow(true)
+                            }}>
+                                            <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700">
+                                            <span className={`text-white font-medium text-sm`}>EN</span>
+                                        </span>
+                            </button>
+                        </li>
 
                         {/*<li className="inline-block mr-2 relative">*/}
                         {/*    <button onClick={e => setShowAlerts(!showAlerts)}>*/}
@@ -182,7 +197,7 @@ const Header = ({ setControlOverflow }) => {
                         { !isAuth() && (
                             <li className="inline-block">
                                 <button onClick={e => {
-                                    setModalState(true)
+                                    setSignInModalState(true)
                                     setControlOverflow(true)
                                 }}>
                                             <span className="p-1 rounded-full mr-3 inline-block text-center h-9 w-9 bg-gray-700">
@@ -220,8 +235,13 @@ const Header = ({ setControlOverflow }) => {
                 </div>
             </div>
         </header>
-            <Modal modalState={modalState} setModalState={setModalState} setControlOverflow={setControlOverflow}>
+            <Modal modalState={signInModalState} setModalState={setSignInModalState} setControlOverflow={setControlOverflow}>
                 {userExists ? <SigninComponent setUserExists={setUserExists} /> :  <SignupComponent setUserExists={setUserExists} />}
+            </Modal>
+
+            <Modal modalState={settingsModalState} setModalState={setSettingsModalState} setControlOverflow={setControlOverflow}>
+                <button onClick={() => changeLanguage('en')} className={`text-white px-2`}>EN</button>
+                <button onClick={() => changeLanguage('de')} className={`text-white px-2`}>DE</button>
             </Modal>
         </>
     )
