@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Organisms/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Organisms/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="7ba57ee8-2051-40ff-aa4a-05e98b51907c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +76,7 @@
       <workItem from="1628757345805" duration="33611000" />
       <workItem from="1629142465540" duration="12211000" />
       <workItem from="1629219970220" duration="169162000" />
-      <workItem from="1631687886539" duration="31590000" />
+      <workItem from="1631687886539" duration="31931000" />
     </task>
     <task id="LOCAL-00001" summary="Init rev">
       <created>1626855963928</created>
@@ -371,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632594663769</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Update translate files and setup button switcher">
+      <created>1632653967847</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1632653967847</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +413,8 @@
     <MESSAGE value="End of day commit" />
     <MESSAGE value="Local storage for vault" />
     <MESSAGE value="Update comic data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update comic data" />
+    <MESSAGE value="Update translate files and setup button switcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update translate files and setup button switcher" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2208" height="412" key="GridCell.Tab.0.bottom" timestamp="1628704446326">
@@ -439,10 +441,10 @@
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
     <state x="627" y="375" key="SettingsEditor/0.0.2250.1460@0.0.2250.1460" timestamp="1629367275118" />
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1632594664879">
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2" timestamp="1632653971260">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
-    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1632594664879" />
+    <state x="718" y="450" key="Vcs.Push.Dialog.v2/0.0.2250.1460@0.0.2250.1460" timestamp="1632653971260" />
     <state x="835" y="462" width="579" height="534" key="find.popup" timestamp="1632649299419">
       <screen x="0" y="0" width="2250" height="1460" />
     </state>
